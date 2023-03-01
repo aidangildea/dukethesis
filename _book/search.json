@@ -1,0 +1,100 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Promoting Accessibility in Duke Data Visualization",
+    "section": "",
+    "text": "Preface\nThis is the primary documentation for the Duke Statistical Science Thesis, “Promoting Accessibility in Duke Data Visualization: Creating a Color-Blind Friendly Duke Color Package.” It was developed and published in the Spring of 2023. A special thanks to my wonderful advisor, Dr. Mine Çetinkaya-Rundel, who carefully guided this project’s creation and ensured its success. An additional thank you to the members of my thesis committee, Dr. Colin Rundel and Dr. Merlise Clyde, for offering their extensive experience in statistical computing and R package development. I hope this book successfully details the motivation, process, and results of the duke package and how it can effectively empower users to create colorblind friendly Duke visualizations.\nFor questions and concerns, please reach out to me at aidan.gildea@duke.edu. In addition, I encourage you to post any Issues on Github."
+  },
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "1  Introduction",
+    "section": "",
+    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n1 + 1\n\n[1] 2\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+  },
+  {
+    "objectID": "summary.html",
+    "href": "summary.html",
+    "title": "7  Summary",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
+    "section": "",
+    "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+  },
+  {
+    "objectID": "intro.html#motivation",
+    "href": "intro.html#motivation",
+    "title": "1  Introduction",
+    "section": "1.1 Motivation",
+    "text": "1.1 Motivation"
+  },
+  {
+    "objectID": "intro.html#personal-motivation",
+    "href": "intro.html#personal-motivation",
+    "title": "1  Introduction",
+    "section": "1.1 Personal Motivation",
+    "text": "1.1 Personal Motivation"
+  },
+  {
+    "objectID": "intro.html#background",
+    "href": "intro.html#background",
+    "title": "1  Introduction",
+    "section": "1.2 Background",
+    "text": "1.2 Background"
+  },
+  {
+    "objectID": "methods.html#color-sources",
+    "href": "methods.html#color-sources",
+    "title": "2  Methods",
+    "section": "2.1 Color Sources",
+    "text": "2.1 Color Sources"
+  },
+  {
+    "objectID": "methods.html#package-development",
+    "href": "methods.html#package-development",
+    "title": "2  Methods",
+    "section": "2.2 Package Development",
+    "text": "2.2 Package Development"
+  },
+  {
+    "objectID": "methods.html#colorblind-accessibility-best-practices",
+    "href": "methods.html#colorblind-accessibility-best-practices",
+    "title": "2  Methods",
+    "section": "2.3 Colorblind Accessibility Best Practices",
+    "text": "2.3 Colorblind Accessibility Best Practices"
+  },
+  {
+    "objectID": "palmers.html#visualizations",
+    "href": "palmers.html#visualizations",
+    "title": "3  Package Use",
+    "section": "3.1 Visualizations",
+    "text": "3.1 Visualizations"
+  },
+  {
+    "objectID": "analysis.html#introduction",
+    "href": "analysis.html#introduction",
+    "title": "4  Applied Data Analysis",
+    "section": "4.1 Introduction",
+    "text": "4.1 Introduction"
+  },
+  {
+    "objectID": "analysis.html#data-description",
+    "href": "analysis.html#data-description",
+    "title": "4  Applied Data Analysis",
+    "section": "4.2 Data Description",
+    "text": "4.2 Data Description"
+  },
+  {
+    "objectID": "analysis.html#exploratory-data-analysis",
+    "href": "analysis.html#exploratory-data-analysis",
+    "title": "4  Applied Data Analysis",
+    "section": "4.3 Exploratory Data Analysis",
+    "text": "4.3 Exploratory Data Analysis"
+  }
+]

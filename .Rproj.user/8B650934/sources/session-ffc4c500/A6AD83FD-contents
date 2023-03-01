@@ -2,13 +2,19 @@ project:
   type: book
 
 book:
-  title: "dukethesis"
-  author: "Jane Doe"
+  title: "Promoting Accessibility in Duke Data Visualization"
+  subtitle: "Creating a Color-Blind Friendly Duke Color Package"
+  author: "Aidan Gildea"
   date: "3/1/2023"
+  abstract: "A detailed explanation on the creation and use of the <b><i>duke</b></i> package."
   chapters:
     - index.qmd
     - intro.qmd
-    - summary.qmd
+    - methods.qmd
+    - palmers.qmd
+    - analysis.qmd
+    - conclusion.qmd
+    - about.qmd
     - references.qmd
 
 bibliography: references.bib
