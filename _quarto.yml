@@ -5,6 +5,7 @@ book:
   title: "Promoting Accessibility in Duke Data Visualization"
   subtitle: "Creating a Color-Blind Friendly Duke Color Package"
   author: "Aidan Gildea"
+  cover-image: images/dukelogo.png
   date: "3/1/2023"
   abstract: "A detailed explanation of the creation and use of the <b><i>duke</b></i> package."
   chapters:
