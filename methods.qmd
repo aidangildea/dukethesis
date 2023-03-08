@@ -2,6 +2,119 @@
 
 ## Color Sources
 
+The office of University Communications provides an official color guide for the Duke brand. The color palette is intended to both bolster the brand of the university, as well as ensure cohesion among all official content \[1\]. The primary colors of the official palette are Duke Royal Blue and Duke Navy Blue. It is highly encouraged that one of these colors is present in any Duke official project, as they are reflective of the Duke Brand. The color guide also details an extended palette, which includes an additional 18 secondary and tertiary colors. Colors such as Copper, Eno, Ironweed, Whisper Gray, and Cast Iron are in the extended palette. University Communications urges the use of this extended palette for, "graphic accents, typography, backgrounds, \[and\] call-to-action buttons" \[2\]. For each color, users can access the following information:
+
+-   Color Name
+
+-   Pantone Matching System (PMS)
+
+-   Hex Code (HEX)
+
+<!-- -->
+
+-   Cyan, Magenta, Yellow, and Key (CMYK) Color Model
+
+-   Red, Green, Blue Color Model
+
+We will primarily use the Hex codes for these colors. Hex codes are a hexidecimal (base 16 numbering system) format for representing the amount of RBG in a particular shade \[3\] \[4\]. Additionally, hex codes are recognized as the best color system for HTML and CSS formats; therefore, their use will work well for data visualization in publication and web browser contexts.
+
+| Color | Name            | Hex Code |
+|-------|-----------------|----------|
+|       | Duke Royal Blue | #00539B  |
+|       | Duke Navy Blue  | #012169  |
+|       | Copper          | #C84E00  |
+|       | Persimmon       | #E89923  |
+|       | Dandelion       | #FFD960  |
+|       | Piedmont        | #A1B70D  |
+|       | Eno             | #339898  |
+|       | Magnolia        | #1D6363  |
+|       | Prussian Blue   | #005587  |
+|       | Shale Blue      | #0577B1  |
+|       | Ironweed        | #993399  |
+|       | Hatteras        | #E2E6ED  |
+|       | Whisper Gray    | #F3F2F1  |
+|       | Ginger Beer     | #FCF7E5  |
+|       | Dogwood         | #988675  |
+|       | Shackleford     | #DAD0C6  |
+|       | Cast Iron       | #262626  |
+|       | Graphite        | #666666  |
+|       | Granite         | #B5B5B5  |
+|       | Limestone       | #E5E5E5  |
+
+: **Duke Color Palette**
+
+In 2018, a color accessibility guide was added to the brand guide outlining how users could meet Web Content Accessibility Guidelines (WCAG) 2.0 AA guidelines. The WCAG are internationally recognized standards on how to make web content more accessible to people with disability - including those with color vision deficiency. Their accessibility standards are principled on four tenets: Perceivable, Operable, Understandable, and Robust \[5\]. Duke's accessibility guide illustrates a grid of every text-background color pairing and its respective compliance to the WCAG. There are four compliance categories specified:
+
+-   AAA: highest compliance, text-background contrast ratio of 7+
+
+-   AA: mid-range compliance, text-background contrast ratio of 4.5+
+
+-   AA18: mid-range compliance with large text only (18pt or 14pt bold), text-background contrast ratio of 3+
+
+-   DNP: does not pass compliance guidelines, text-background contrast ratio of less than 3
+
+These compliance metrics are an important resource for identifying color combinations that are inaccessible and eliminating them from use in the ***duke*** package. In line with best practices in visualization accessibility, the package ultimately implements a very simple design for background features; therefore, this accessibility resource is used in a limited capacity. The inclusion on an accessibility guide on the Duke branding website is an important step, but would benefit from a built-in functionality that allows users to interact with its information more easily. Future work - either on this project or on a project of a similar nature - may benefit from achieving that goal.
+
+-   Outline Process for Color Selection
+
+    -   Weighing metrics like color distance
+
+    -   Integrating multiple color palettes into the package
+
+        -   Balance of aesthetic (particularly with regard to Duke) as well as accessibility
+
 ## Package Development
 
+-   Walk through the process
+
+    -   Starting with the dummy regexcite package to better understand package creation
+
+    -   Creating first function
+
+        -   practicing formatting, devtools function use, and implementation with graph
+
+    -   Applying those lessons to all other functions
+
+    -   Importance of creating test cases (testthat files)
+
+        -   Use of cover package
+
+    -   Lessons learned through the process
+
+        -   iterative process --\> identify issues immediately and address them
+
+        -   engage with existing resources/packages
+
+            -   drew a lot from other theme/scale_color functionalities
+
 ## Colorblind Accessibility Best Practices
+
+-   importance of text
+
+    -   using hyperlegible font
+
+    -   ensuring its size is appropriate
+
+        -   scaling it to the rest of the visualization, rather than manually setting so it is appropriate per use
+
+    -   use of background colors, lines
+
+        -   clean minimal design allows for things most important to be visible
+
+    -   limiting the number of colors to 8 in discrete case
+
+        -   best practice when it comes to readable graphs
+
+    -   describe things not neccessarily addressed in thesis but other best practices to be aware of
+
+        -   categories
+
+        -   type of data
+
+    ## References
+
+    1.  https://brand.duke.edu/colors/
+    2.  Ibid
+    3.  https://www.techopedia.com/definition/29788/color-hex-code
+    4.  https://www.sciencedirect.com/topics/engineering/hexadecimal
+    5.  https://www.w3.org/TR/UNDERSTANDING-WCAG20/intro.html#introduction-fourprincs-head

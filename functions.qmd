@@ -1,0 +1,9 @@
+# Function Descriptions
+
+## theme_duke()
+
+## scale_duke_continuous()
+
+## scale_duke_fill_discrete()
+
+## scale_duke_color_discrete()
