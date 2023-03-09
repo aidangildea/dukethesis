@@ -4,17 +4,15 @@
 
 The office of University Communications provides an official color guide for the Duke brand. The color palette is intended to both bolster the brand of the university, as well as ensure cohesion among all official content \[1\]. The primary colors of the official palette are Duke Royal Blue and Duke Navy Blue. It is highly encouraged that one of these colors is present in any Duke official project, as they are reflective of the Duke Brand. The color guide also details an extended palette, which includes an additional 18 secondary and tertiary colors. Colors such as Copper, Eno, Ironweed, Whisper Gray, and Cast Iron are in the extended palette. University Communications urges the use of this extended palette for, "graphic accents, typography, backgrounds, \[and\] call-to-action buttons" \[2\]. For each color, users can access the following information:
 
--   Color Name
+  -   Color Name
 
--   Pantone Matching System (PMS)
+  -   Pantone Matching System (PMS)
 
--   Hex Code (HEX)
+  -   Hex Code (HEX)
 
-<!-- -->
+  -   Cyan, Magenta, Yellow, and Key (CMYK) Color Model
 
--   Cyan, Magenta, Yellow, and Key (CMYK) Color Model
-
--   Red, Green, Blue Color Model
+  -   Red, Green, Blue Color Model
 
 We will primarily use the Hex codes for these colors. Hex codes are a hexidecimal (base 16 numbering system) format for representing the amount of RBG in a particular shade \[3\] \[4\]. Additionally, hex codes are recognized as the best color system for HTML and CSS formats; therefore, their use will work well for data visualization in publication and web browser contexts.
 
@@ -65,7 +63,13 @@ These compliance metrics are an important resource for identifying color combina
 
 ## Package Development
 
--   Walk through the process
+As previously mentioned, package development posed a new challenge to the skill set I had learned through the Statistics curriculum. The "R Packages" text book served as an essential guide for learning, understanding, and eventually building the ***duke*** package.
+
+The package development process began by constructing a dummy R package, ***regexcite***. Its functionality is similar to ***stringr*** and ***rex***, which simplify the use of regular expressions. While the package is not intended for use, it is critical first-time developers complete this process because it exposes them to the complexities of packages. Most importantly, it familiarizes users with the ***devtools*** package which is essential to package development. Its functionality allows developers simulate the loading of their package (`load_all()`), checking their package for issues (`check()`), producing documentation for functions (`document()`), and eventually install the package to their environment (`install()`). Included in the ***devtools*** package is the ***usethis*** package. **usethis** is integral to the creation of a package structure in your environment (`create_package()`), creating your function documentation (`use_r()`), and developing test files for your functions (`use_testthat()`). By playing around with these functionalities in a dummy package environment, you are empowered to more efficiently and adeptly create your package of interest.
+
+Walk through the process
+
+-   
 
     -   Starting with the dummy regexcite package to better understand package creation
 
@@ -111,7 +115,7 @@ These compliance metrics are an important resource for identifying color combina
 
         -   type of data
 
-    ## References
+## References
 
     1.  https://brand.duke.edu/colors/
     2.  Ibid
