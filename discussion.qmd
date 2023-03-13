@@ -1,0 +1,28 @@
+# Discussion
+
+Main idea: What you should do in addition to what this package allows?
+
+## Colorblind Accessibility Best Practices
+
+-   importance of text
+
+    -   using hyperlegible font
+
+    -   ensuring its size is appropriate
+
+        -   scaling it to the rest of the visualization, rather than manually setting so it is appropriate per use
+
+    -   use of background colors, lines
+
+        -   clean minimal design allows for things most important to be visible
+
+    -   limiting the number of colors to 8 in discrete case
+
+        -   best practice when it comes to readable graphs
+
+    -   describe things not neccessarily addressed in thesis but other best practices to be aware of
+
+        -   categories
+
+        -   type of data
+
