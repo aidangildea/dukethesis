@@ -1,9 +1,116 @@
 # Applied Data Analysis
 
-Description of why applied example is important.
+```{r}
+#| include: false
+library(tidyverse)
+library(duke)
+```
 
 ## Introduction
+The **duke** package is intended to promote color blind accessibility in Duke official visualizations. This applied analysis aims to demonstrate how, when, and why the package may be used within the Duke community.
 
-## Data Description
+The data for this analysis is sourced from the Office of the University Registrar and details information about all Duke courses between 2013-2022. The data set has 10 variables and 63,433 observations, each of which is a unique class. Included in the data is information on the course department, subject, enrollment numbers, and room description. See Table 1 for a full description of the data set.
 
-## Exploratory Data Analysis
+```{r}
+#| echo: false
+#| warning: false
+registrar <- read.csv("~/Desktop/dukethesis/registrar.csv")
+colnames(registrar) <- c("Acad_Year", "Acad_Org", "Class_Num", "Subject","Catalog_Num", "Class_Desc",  "Total_Enroll", "Enroll_Cap", "Room_Cap", "Room_Desc")
+```
+
+| Variable     | Description                                                             |
+|-------------------------------|----------------------------------------|
+| Acad_Year    | Academic year of the course.                                            |
+| Acad_Org     | Academic organization abbreviation of the course; proxy for department. |
+| Class_Num    | Unique class number for the course.                                     |
+| Subject      | Subject abbreviation for course.                                        |
+| Catalog_Num  | Course number within academic organizations.                            |
+| Class_Desc   | Course name.                                                            |
+| Total_Enroll | Number of students enrolled in course.                                  |
+| Enroll_Cap   | Enrollment capacity for course.                                         |
+| Room_Cap     | Capacity for students permitted in course room.                         |
+| Room_Desc    | Room where course is held.                                              |
+: **Registrar Data Description**
+
+## Analysis
+
+The Duke Office of the University Registrar facilitates the academic processes of the University by supporting students, faculty and staff in enrollment, academic records, and course scheduling - among many other tasks. It is crucial that the Office continuously explores the academic data they collect to identify the most successful policies for Duke's educational environment. 
+
+```{r}
+#| echo: false
+#| warning: false
+registrar <- registrar %>%
+  mutate(Undergraduate = case_when(
+    as.numeric(gsub("([0-9]+).*$", "\\1", Catalog_Num)) >= 500 | Acad_Org %in% c("FUQUA", "NURSING", "LAW") ~ FALSE,
+    TRUE ~ TRUE
+  ))
+```
+
+Identifying "departments" that have offered the most of amount of classes in past 10 years.
+```{r}
+#| echo: false
+#| warning: false
+top_5 <- registrar %>%
+  filter(Undergraduate == TRUE) %>%
+  count(Acad_Org) %>%
+  top_n(5, n) %>%
+  pull(Acad_Org)
+
+ggplot(registrar %>%
+         filter(Acad_Org %in% top_5), aes(Acad_Org, fill = Acad_Org)) +
+  geom_bar() +
+  labs(x = "Academic Organization", y = "Count", title = "Academic Organizations with Highest \n Number of Undergraduate Courses", subtitle = "Between 2013-2022") +
+  theme_duke() +
+  scale_duke_fill_discrete() +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+```
+
+Undergraduate "Departments" with the largest class size.
+
+```{r}
+#| echo: false
+#| warning: false
+high_enroll <- registrar %>%
+  filter(Undergraduate == TRUE) %>%
+  group_by(Acad_Org) %>%
+  summarise(Acad_Org, Avg_Cap = mean(Enroll_Cap)) %>%
+  ungroup(Acad_Org) %>%
+  distinct(Acad_Org, Avg_Cap) %>%
+  top_n(6, Avg_Cap) %>% 
+  filter(Acad_Org != "PAS") %>%
+  pull(Acad_Org)
+
+ggplot(registrar %>%
+         filter(Acad_Org %in% high_enroll), aes(Acad_Org, Enroll_Cap, fill = Acad_Org)) +
+  geom_boxplot() +
+  ylim(0, 150) +
+  labs(x = "Academic Organization", y = "Enrollment Capacity", title = "Academic Organizations with Highest \n Enrollment Capacities", subtitle = "Between 2013-2022") +
+  theme_duke() +
+  scale_duke_fill_discrete() +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+```
+Decision Science has high capacity, do students enroll at same degree?
+
+```{r}
+#| echo: false
+#| warning: false
+hist1 <- registrar %>%
+  filter(Acad_Org == "COMP SCI") %>%
+  ggplot(aes(Enroll_Cap, fill = Acad_Org)) +
+  geom_histogram() +
+  theme_duke() +
+  scale_duke_fill_discrete()
+hist2 <- registrar %>%
+  filter(Acad_Org == "COMP SCI") %>%
+  ggplot(aes(Total_Enroll, , fill = Acad_Org)) +
+  geom_histogram() +
+  theme_duke() +
+  scale_duke_fill_discrete()
+par(mfrow=c(1,1))
+
+cowplot::plot_grid(hist1, hist2, ncol = 1)
+
+```
+
+
+
