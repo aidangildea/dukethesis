@@ -6,21 +6,28 @@ formal: html
 
 ```{r}
 #| include: false
+
 library(tidyverse)
-library(duke)
-library(cowplot)
-library(colorblindr)
+library(cowplot) # use patchwork package instead
+library(colorblindr) # devtools::install_github("___/___")
+library(duke)        # devtools::install_github("___/___")
 ```
 
 ## Introduction
-The **duke** package is intended to promote color blind accessibility in Duke official visualizations. This applied analysis aims to demonstrate how, when, and why the package may be used within the Duke community.
 
-The data for this analysis is sourced from the Office of the University Registrar and details information about all Duke courses between 2013-2022. The data set has 10 variables and 63,433 observations, each of which is a unique class. Included in the data is information on the course department, subject, enrollment numbers, and room description. See the table below for a full data description.
+The **duke** package is intended to promote color blind accessibility in Duke official visualizations.
+This applied analysis aims to demonstrate how, when, and why the package may be used within the Duke community.
+
+The data for this analysis is sourced from the Office of the University Registrar and details information about all Duke courses between 2013-2022.
+The data set has 10 variables and 63,433 observations, each of which is a unique class.
+Included in the data is information on the course department, subject, enrollment numbers, and room description.
+See the table below for a full data description.
 
 ```{r}
 #| echo: false
 #| warning: false
-registrar <- read.csv("~/Desktop/dukethesis/registrar.csv")
+
+registrar <- read_csv("data/registrar.csv")
 colnames(registrar) <- c("Acad_Year", "Acad_Org", "Class_Num", "Subject","Catalog_Num", "Class_Desc",  "Total_Enroll", "Enroll_Cap", "Room_Cap", "Room_Desc")
 ```
 
@@ -36,25 +43,27 @@ colnames(registrar) <- c("Acad_Year", "Acad_Org", "Class_Num", "Subject","Catalo
 | Enroll_Cap   | Enrollment capacity for course.                                         |
 | Room_Cap     | Capacity for students permitted in course room.                         |
 | Room_Desc    | Room where course is held.                                              |
+
 : **Registrar Data Description**
 
-## Analysis 
+## Analysis
 
-The Duke Office of the University Registrar facilitates the academic processes of the University by supporting students, faculty and staff in enrollment, academic records, and course scheduling - among many other tasks. It is crucial that the Office continuously explores the academic data they collect to identify the most successful policies for Duke's educational environment. 
+The Duke Office of the University Registrar facilitates the academic processes of the University by supporting students, faculty and staff in enrollment, academic records, and course scheduling - among many other tasks.
+It is crucial that the Office continuously explores the academic data they collect to identify the most successful policies for Duke's educational environment.
 
+The following tabs allows users without color blindess to see **duke** from their perspective and from the perspective of those who are deuteronamolous.
+This allows for a better understanding of how the package improves accessibility in Duke data visualizations.
 
-The following tabs allows users without color blindess to see **duke** from their perspective and from the perspective of those who are deuteronamolous. This allows for a better understanding of how the package improves accessibility in Duke data visualizations.
+TO DO: See https://quarto.org/docs/authoring/conditional.html#content-visible for conditional content.
 
-::: {.panel-tabset}
-
+::: panel-tabset
 ### Non-Deuteronamolous Perspective
 
 ```{r}
 #| echo: false
 #| warning: false
 
-
-registrar <- registrar %>%
+registrar <- registrar |>
   # create undergraduate course boolean
   mutate(Undergraduate = case_when(
     as.numeric(gsub("([0-9]+).*$", "\\1", Catalog_Num)) >= 500 | Acad_Org %in% c("FUQUA", "NURSING", "LAW") ~ FALSE,
@@ -62,26 +71,26 @@ registrar <- registrar %>%
   ),
   # create course variable
   Course = paste(Subject, Catalog_Num, sep = ""),
-  Seminar = if_else(str_detect(Catalog_Num, "S"), TRUE, FALSE)) %>%
+  Course = str_remove(Course, " "),
+  Seminar = if_else(str_detect(Catalog_Num, "S"), TRUE, FALSE)) |>
   # remove Abroad Classes
   filter(!endsWith(Catalog_Num, 'A'))
-
-# remove blank spaces from course variable
-registrar$Course <- gsub(" ", "", registrar$Course)
 ```
 
 Identifying "departments" that have offered the highest number of classes in past 10 years.
+
 ```{r}
 #| echo: false
 #| warning: false
 #| fig-asp: .618
-top_5 <- registrar %>%
-  filter(Undergraduate == TRUE) %>%
-  count(Acad_Org) %>%
-  top_n(5, n) %>% 
+
+top_5 <- registrar |>
+  filter(Undergraduate == TRUE) |>
+  count(Acad_Org) |>
+  top_n(5, n) |> 
   pull(Acad_Org)
 
-dept_plot <- ggplot(registrar %>%
+dept_plot <- ggplot(registrar |>
          filter(Acad_Org %in% top_5), aes(Acad_Org, fill = Acad_Org)) +
   geom_bar() +
   labs(x = "Academic Organization", y = "Count", title = "Academic Organizations with Highest \n Number of Undergraduate Courses", subtitle = "Between 2013-2022") +
@@ -98,17 +107,17 @@ Undergraduate "Departments" with the largest class size.
 #| warning: false
 #| message: false
 #| fig-asp: .618
-high_enroll <- registrar %>%
-  filter(Undergraduate == TRUE) %>%
-  group_by(Acad_Org) %>%
-  summarise(Acad_Org, Avg_Cap = mean(Enroll_Cap), Count = n()) %>%
-  ungroup(Acad_Org) %>%
-  distinct(Acad_Org, Avg_Cap, .keep_all = TRUE) %>%
-  filter(Count > 50) %>%
-  top_n(5, Avg_Cap) %>%
+high_enroll <- registrar |>
+  filter(Undergraduate == TRUE) |>
+  group_by(Acad_Org) |>
+  summarise(Acad_Org, Avg_Cap = mean(Enroll_Cap), Count = n()) |>
+  ungroup(Acad_Org) |>
+  distinct(Acad_Org, Avg_Cap, .keep_all = TRUE) |>
+  filter(Count > 50) |>
+  top_n(5, Avg_Cap) |>
   pull(Acad_Org)
 
-enroll_plot <- ggplot(registrar %>%
+enroll_plot <- ggplot(registrar |>
          filter(Acad_Org %in% high_enroll), aes(Acad_Org, Enroll_Cap, fill = Acad_Org)) +
   geom_boxplot() +
   ylim(0, 150) +
@@ -119,6 +128,7 @@ enroll_plot <- ggplot(registrar %>%
 
 enroll_plot
 ```
+
 Computer Science has high capacity, do students enroll at same degree?
 
 ```{r}
@@ -127,9 +137,9 @@ Computer Science has high capacity, do students enroll at same degree?
 #| message: false
 #| fig-asp: .618
 
-hist1 <- registrar %>%
-  filter(Acad_Org == "COMP SCI") %>%
-  ggplot(aes(Total_Enroll, , fill = Acad_Org)) +
+hist1 <- registrar |>
+  filter(Acad_Org == "COMP SCI") |>
+  ggplot(aes(Total_Enroll, , fill = Acad_Org)) + # TO DO: Something is missing here?
   geom_histogram() +
   labs(title = "COMPSCI Class Enrollment Does Not Meet Capacity", x = "Students Enrolled", y = "Count") +
   xlim(0, 150) + 
@@ -137,8 +147,8 @@ hist1 <- registrar %>%
   scale_duke_fill_discrete() +
   theme(legend.position = "none")
 
-hist2 <- registrar %>%
-  filter(Acad_Org == "COMP SCI") %>%
+hist2 <- registrar |>
+  filter(Acad_Org == "COMP SCI") |>
   ggplot(aes(Enroll_Cap, fill = Acad_Org)) +
   geom_histogram() +
   labs(x = "Enrollment Capacity", y = "Count") +
@@ -150,21 +160,23 @@ hist2 <- registrar %>%
 cowplot::plot_grid(hist1, hist2, ncol = 1)
 ```
 
-Introductory courses with the most successful enrollment rates. May guide which cources to expand or add additional sections.
+Introductory courses with the most successful enrollment rates.
+May guide which cources to expand or add additional sections.
+
 ```{r}
 #| warning: false
 #| echo: false
 #| message: false
 #| fig-asp: .618
 
-high_succ <- registrar %>%
-  filter(as.numeric(gsub("([0-9]+).*$", "\\1", Catalog_Num)) == 101) %>%
-  group_by(Course) %>%
-  summarise(Course, Catalog_Num, Subject, Class_Desc, Enroll_Succ = sum(Total_Enroll)/sum(Enroll_Cap), Avg_Size = mean(Enroll_Cap)) %>%
-  distinct(Course, .keep_all = TRUE) %>%
-  arrange(desc(Enroll_Succ)) %>%
-  ungroup(Course) %>%
-  top_n(8, Enroll_Succ) %>%
+high_succ <- registrar |>
+  filter(as.numeric(gsub("([0-9]+).*$", "\\1", Catalog_Num)) == 101) |>
+  group_by(Course) |>
+  summarise(Course, Catalog_Num, Subject, Class_Desc, Enroll_Succ = sum(Total_Enroll)/sum(Enroll_Cap), Avg_Size = mean(Enroll_Cap)) |>
+  distinct(Course, .keep_all = TRUE) |>
+  arrange(desc(Enroll_Succ)) |>
+  ungroup(Course) |>
+  top_n(8, Enroll_Succ) |>
   ggplot(aes(Course, y = Enroll_Succ, color = Course)) +
   geom_point() + 
   geom_text(aes(label= round(Enroll_Succ, 3)), nudge_x=.4, nudge_y=0, 
@@ -182,7 +194,8 @@ high_succ <- registrar %>%
 high_succ
 ```
 
-Introductory courses with the least successful enrollment rates. May guide which courses to decrease size or remove.
+Introductory courses with the least successful enrollment rates.
+May guide which courses to decrease size or remove.
 
 ```{r}
 #| warning: false
@@ -190,14 +203,14 @@ Introductory courses with the least successful enrollment rates. May guide which
 #| message: false
 #| fig-asp: .618
 
-low_succ <- registrar %>%
-  filter(as.numeric(gsub("([0-9]+).*$", "\\1", Catalog_Num)) == 101) %>%
-  group_by(Course) %>%
-  summarise(Course, Catalog_Num, Subject, Class_Desc, Enroll_Succ = sum(Total_Enroll)/sum(Enroll_Cap), Avg_Size = mean(Enroll_Cap)) %>%
-  distinct(Course, .keep_all = TRUE) %>%
-  arrange(Enroll_Succ) %>%
-  ungroup(Course) %>%
-  top_n(-8, Enroll_Succ) %>%
+low_succ <- registrar |>
+  filter(as.numeric(gsub("([0-9]+).*$", "\\1", Catalog_Num)) == 101) |>
+  group_by(Course) |>
+  summarise(Course, Catalog_Num, Subject, Class_Desc, Enroll_Succ = sum(Total_Enroll)/sum(Enroll_Cap), Avg_Size = mean(Enroll_Cap)) |>
+  distinct(Course, .keep_all = TRUE) |>
+  arrange(Enroll_Succ) |>
+  ungroup(Course) |>
+  top_n(-8, Enroll_Succ) |>
   ggplot(aes(Course, y = Enroll_Succ, color = Course)) +
   geom_point() + 
   geom_text(aes(label= round(Enroll_Succ, 3)), nudge_x=.4, nudge_y=0, 
@@ -214,24 +227,25 @@ low_succ <- registrar %>%
 low_succ
 ```
 
-Departments with the highest proportion of seminar courses. 
+Departments with the highest proportion of seminar courses.
+
 ```{r}
 #| warning: false
 #| echo: false
 #| message: false
 #| fig-asp: .618
 
-sem_rates <- registrar %>%
-  filter(Undergraduate == TRUE) %>%
-  group_by(Acad_Org) %>%
-  count(Acad_Org, Seminar) %>%
-  summarise(Acad_Org, Seminar, Count = n, Total = sum(n)) %>%
-  filter(Seminar == TRUE, Acad_Org != "FOCUS") %>%
-  summarise(Acad_Org, Rate = Count/Total) %>%
-  top_n(5, Rate) %>%
+sem_rates <- registrar |>
+  filter(Undergraduate == TRUE) |>
+  group_by(Acad_Org) |>
+  count(Acad_Org, Seminar) |>
+  summarise(Acad_Org, Seminar, Count = n, Total = sum(n)) |>
+  filter(Seminar == TRUE, Acad_Org != "FOCUS") |>
+  summarise(Acad_Org, Rate = Count/Total) |>
+  top_n(5, Rate) |>
   pull(Acad_Org)
 
-sem_plot <- ggplot(registrar %>%
+sem_plot <- ggplot(registrar |>
          filter(Acad_Org %in% sem_rates), aes(x = Acad_Org, fill = Seminar))+
 geom_bar(position = "fill") +
   labs(title = "Academic Organizations with\n Highest Seminar Rates", x = "Academic Organization", y = "Proportion", subtitle = "Between 2013-2022") +
@@ -240,26 +254,26 @@ scale_duke_fill_discrete() +
     theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
 sem_plot
 
-sem_rates_low <- registrar %>%
-  filter(Undergraduate == TRUE) %>%
-  group_by(Acad_Org) %>%
-  count(Acad_Org, Seminar) %>%
-  summarise(Acad_Org, Seminar, Count = n, Total = sum(n)) %>%
-  filter(Seminar == TRUE, Acad_Org != "FOCUS") %>%
-  summarise(Acad_Org, Rate = Count/Total) %>%
-  top_n(-5, Rate) %>%
+sem_rates_low <- registrar |>
+  filter(Undergraduate == TRUE) |>
+  group_by(Acad_Org) |>
+  count(Acad_Org, Seminar) |>
+  summarise(Acad_Org, Seminar, Count = n, Total = sum(n)) |>
+  filter(Seminar == TRUE, Acad_Org != "FOCUS") |>
+  summarise(Acad_Org, Rate = Count/Total) |>
+  top_n(-5, Rate) |>
   pull(Acad_Org)
 ```
 
-Departments with the lowest proportion of seminar courses. 
+Departments with the lowest proportion of seminar courses.
+
 ```{r}
 #| warning: false
 #| echo: false
 #| message: false
 #| fig-asp: .618
 
-
-sem_plot2 <- ggplot(registrar %>%
+sem_plot2 <- ggplot(registrar |>
          filter(Acad_Org %in% sem_rates_low), aes(x = Acad_Org, fill = Seminar))+
 geom_bar(position = "fill") +
   labs(title = "Academic Organizations with\n Lowest Seminar Rates", x = "Academic Organization", y = "Proportion", subtitle = "Between 2013-2022") +
@@ -322,7 +336,6 @@ low_succ2 <- edit_colors(low_succ, deutan, sev = 0.7)
 cowplot::plot_grid(low_succ2, ncol = 1)
 ```
 
-
 ```{r}
 #| warning: false
 #| echo: false
@@ -342,10 +355,4 @@ cowplot::plot_grid(sem_plot3, ncol = 1)
 sem_plot4 <- edit_colors(sem_plot2, deutan, sev = 0.7)
 cowplot::plot_grid(sem_plot4, ncol = 1)
 ```
-
-
 :::
-
-
-
-
