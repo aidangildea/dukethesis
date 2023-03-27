@@ -1,20 +1,21 @@
 project:
   type: book
+  output-dir: docs
 
 book:
   title: "Promoting Accessibility in Duke Data Visualization"
   subtitle: "Creating a Color-Blind Friendly Duke Color Package"
   author: "Aidan Gildea"
   cover-image: images/dukelogo.png
-  date: "3/1/2023"
+  date: now
   abstract: "A detailed explanation of the creation and use of the <b><i>duke</b></i> package."
   chapters:
     - index.qmd
     - intro.qmd
     - methods.qmd
     - functions.qmd
-    - palmers.qmd
-    - analysis.qmd
+    #- palmers.qmd
+    #- analysis.qmd
     - discussion.qmd
     - about.qmd
     - references.qmd
