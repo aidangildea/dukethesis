@@ -20,7 +20,7 @@ The data for this analysis is sourced from the Office of the University Registra
 ```{r}
 #| echo: false
 #| warning: false
-registrar <- read.csv("~/Desktop/dukethesis/registrar.csv")
+registrar <- read_csv("dukethesis/registrar.csv")
 colnames(registrar) <- c("Acad_Year", "Acad_Org", "Class_Num", "Subject","Catalog_Num", "Class_Desc",  "Total_Enroll", "Enroll_Cap", "Room_Cap", "Room_Desc")
 ```
 
