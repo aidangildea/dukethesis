@@ -14,8 +14,8 @@ book:
     - intro.qmd
     - methods.qmd
     - functions.qmd
-    #- palmers.qmd
-    #- analysis.qmd
+    - palmers.qmd
+    - analysis.qmd
     - discussion.qmd
     - about.qmd
     - references.qmd

@@ -93,29 +93,51 @@ To implement a discrete scale from Duke's official color palette, users can add 
 
 As previously mentioned, this project observes color contrast ratio as the primary metric for determining colorblind friendly combinations. To identify visibly distinct colors for our discrete palette, we generate the contrast ratio between all pairing from the Duke color guide, with the addition of White since it is the background color. Using this data, we can generate a heat map to visually explore the contrast of the pairings.
 
-![Figure X: Heatmap of color contrast ratio between color pairings.](images/heatmap.png){width="500"}
+![Figure X: Heatmap of color contrast ratio between color pairings.](images/heatmap_all.png){width="500"}
 
 Lighter tiles in the heat map indicate pairings with higher contrast ratios, which are preferred. Using the heatmap and data frame of ratios, we craft a palette that promotes accessibility and the Duke aesthetic. It is quickly evident that selecting eight colors all with pairing ratios compliant with WCAG is not be possible. While this is not ideal, visualization best practices recommend users limit their number of discrete categories. This lends to less busy plots that are more easily understandable. Thus, the goal of the our discrete palette is to carefully order colors so that those most used (those at beginning of palette) are most compliant. The result is the following palette:
 
 ![Figure X: Discrete palette. Colors (from left to right): Duke Navy Blue, Piedmont, Duke Royal Blue, Eno, Copper, Ironweed, Cast Iron, Persimmon](images/palette.png)
 
+While not perfectly compliant with WCAG guidelines, the palette achieves our goal of optimizing colorblind accessibility in tandem with representing the Duke brand. As seen in Figure X, a majority of our color pairings meet at minimum the AA18 rating, as indicated by lighter tiles. 
+
+![Figure X: Heatmap of color contrast ratio between final color pairings.](images/heatmap.png){width="500"}
+The final palette includes the following colors: Duke Navy Blue, Piedmont, Copper, Duke Royal Blue, Eno, Persimmon, Dandelion and Cast Iron. Out the 28 distinct colors pairings that exist from this palette (excluding pairings of identical colors), 14 have a color contrast ratio of 3 or greater.This is compliant with WCAG's AA18 rating, which specifies the use of larger text to be accessible. The colors from this palette will primarily be used to fill or color geometric objects in ggplot - rather than color text - which offers complimentary features (ie. shape, larger areas, borders) that promote accessibility. Thus, we proceed under the assumption that an AA18 categorization is sufficient.
+
+<center>
+**Table X: Color Contrast Ratios**
+</center>
+```{r}
+#| label: ratios
+#| echo: false
+
+library(kableExtra)
+ratios <- readRDS("saved/contrastratios.rds.gzip") 
+
+ratios %>%
+  kbl() %>%
+  kable_styling("striped", position = "center", fixed_thead = T) %>% 
+  #row_spec(1:14, bold = T, color = "white", background = "#00539B") %>%
+  scroll_box(height = "275px") 
+```
+
+<br>
 To ensure that this palette is accessible, we use the `colorblindr` package to visualize sample plots from the perspective of individuals with different types of color vision deficiency. There are several categorizations of CVD, yet the most common is red-green color blindness. As the name suggests, it makes it difficult for individuals to distinguish between red and green. Among this population, approximately 62.5% are deuteranomalous - meaning they have green-weak vision that makes green appear more red \[12\]. Protonopia and deuteraonopia prevent individuals from distinguishing between red and green at all, yet are far less prevalent at only 12.5% of the red-green colorblind population each \[13\].
 
 Red-green color blindness is by far the most common type, accounting for approximately 99% of those with CVD. For the purpose of creating a feasible project scope, we focus primarily on accessibility for those with red-green colorblindness. Future work on this project - or one with a similar goal - should investigate the feasibility of visualization accessibility for those with blue-yellow color blindess, monochromacy, etc.
 
+UPDATE
 ![Figure X: Sample scatter plot from true perspective (left) and deuteranomalous perspective (right) using colorblindr package.](images/deut_comp.png)
 
 ## Lessons Learned
 
-    -   Importance of creating test cases (testthat files)
+The package development process can be daunting; I know it was for me. The excess of package dependencies, function documentations, and test scripts quickly becomes complex and overwhelming, making it all the more important to approach with intention. Here are some lessons I learned throughout the process and takeaways for success in package development:
 
-        -   Use of cover package
+**1. Package development is an iterative process, take your time.** It is crucial that you approach each step in building your package with care - even those that are mundane. I often found myself skipping ahead to more attractive tasks like constructing a new function, leaving tedious but important tasks like documentation behind. This typically resulted in errors when checking my package. And they were increasingly harder to address when time had passed since I last worked on it. The process is far smoother when you continuously check for issues and address them immediately, rather than put them on the back-burner. It will save you from  wasted time and frustration, so make sure to lean into the iterative style of package development. 
 
-    -   iterative process --\> identify issues immediately and address them
+**2. The devtools package is your best friend.** The `devtools` package is inherent to the package development process, but the way you use it can make all the difference. The [R Package (2e)](https://r-pkgs.org) textbook was an integral resource for learning when and how to use the various functions of `devtools`. It details the order you should use its functions to load your package, create necessary documentation and vignettes, check for existing errors, and eventually build your package. While it may seem minor, memorize the shortcuts for devtools primary functions (load_all(), check(), document()). Over time, they will save you a modest amount of time and make your package development process more efficient. 
 
-    -   engage with existing resources/packages
-
-          -   drew a lot from other theme/scale_color functionalities
+**3. Engage with existing resources online and collaborate with others.** A common misconception in building new packages is that it is an entirely individual undertaking. I identified colorblind accessibility in the Duke data visualization as a unique and necessary problem to address, in turn, inspiring the **duke** package. At first, I thought that this meant I would and ***should*** construct the package on my own. This could not be further from the truth. As a package intended to be integrated into ggplot2 visualizations, **duke** shares many of the same functionalities as those in theme() and scale(). These existing resources demonstrated how to create the general structures of my functions, which then I could adapt to implement Duke's official palette, a minimalist background aesthetic, etc. The "worth" of your package is not defined by its lack in crossover with other packages existing; therefore, make sure to engage with the resources at your disposal. I recommend you explore existing packages on [Github](https://github.com), troubleshoot package issues by asking questions in the [Posit community](https://community.rstudio.com), and find answers to difficult questions already asked on [StackOverflow](https://stackoverflow.com).
 
 ## References
 
