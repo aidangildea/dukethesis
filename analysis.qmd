@@ -100,13 +100,15 @@ dept_plot <- ggplot(registrar |>
 dept_plot
 ```
 
-Undergraduate "Departments" with the largest class size.
+Undergraduate "Departments" with the largest class size is shown in @fig-enroll-plot.
 
 ```{r}
+#| label: fig-enroll-plot
 #| echo: false
 #| warning: false
 #| message: false
 #| fig-asp: .618
+
 high_enroll <- registrar |>
   filter(Undergraduate == TRUE) |>
   group_by(Acad_Org) |>
@@ -127,7 +129,6 @@ enroll_plot <- ggplot(registrar |>
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
 
 enroll_plot
-
 ```
 
 Computer Science has high capacity, do students enroll at same degree?
