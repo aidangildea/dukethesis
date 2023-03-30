@@ -7,6 +7,7 @@ By the end of "Promoting Accessibility in Duke Data Visualization," you should b
 
 ## Personal Motivation
 
+
 (CHANGE WORDING)When first considering an undergraduate thesis, I found the typical format of an undergraduate thesis was daunting to me.
 I was not sure that an 80+ page paper with all the academic fixings - literature review, methodology, etc - was of interest to me.
 This was particularly true because a pertinent research topic did not immediately come to mind.
@@ -23,7 +24,8 @@ By developing an R package that allows for the creation of Duke official visuali
 
 ## Background
 
-There are approximately 300 million color blind people across the globe [1](https://www.colourblindawareness.org/colour-blindness/).
+
+There are approximately 300 million color blind people across the globe [@aboutco].
 Approximately 1 in 12 men (8%) and 1 in 200 women (0.5%) are affected [2](https://www.colourblindawareness.org/colour-blindness/).
 More properly known as Color Vision Deficiency, or CVD, the condition is primarily inherited genetically but can also be acquired due to other chronic conditions such as diabetes.
 With the data visualization industry expected to nearly double by 2026, its application will further become a mainstay in fields like marketing, research, public health, and journalism [3](https://uxdesign.cc/blooming-bar-charts-the-growth-of-the-data-).

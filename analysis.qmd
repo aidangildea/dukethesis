@@ -32,7 +32,7 @@ colnames(registrar) <- c("Acad_Year", "Acad_Org", "Class_Num", "Subject","Catalo
 ```
 
 | Variable     | Description                                                             |
-|-------------------------------|----------------------------------------|
+|--------------------------------|----------------------------------------|
 | Acad_Year    | Academic year of the course.                                            |
 | Acad_Org     | Academic organization abbreviation of the course; proxy for department. |
 | Class_Num    | Unique class number for the course.                                     |
@@ -100,13 +100,15 @@ dept_plot <- ggplot(registrar |>
 dept_plot
 ```
 
-Undergraduate "Departments" with the largest class size.
+Undergraduate "Departments" with the largest class size is shown in @fig-enroll-plot.
 
 ```{r}
+#| label: fig-enroll-plot
 #| echo: false
 #| warning: false
 #| message: false
 #| fig-asp: .618
+
 high_enroll <- registrar |>
   filter(Undergraduate == TRUE) |>
   group_by(Acad_Org) |>
