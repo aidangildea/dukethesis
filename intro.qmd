@@ -1,24 +1,45 @@
 # Introduction
 
-In nearly all disciplines, there is an increasing push to promote accessibility. Data visualization should be no different. The goal of this book is to detail the motivations, development, and use of the ***duke*** package. By the end of "Promoting Accessibility in Duke Data Visualization," you should be sufficiently informed on how to create official Duke visualizations in a colorblind friendly way.
+In nearly all disciplines, there is an increasing push to promote accessibility.
+Data visualization should be no different.
+The goal of this book is to detail the motivations, development, and use of the ***duke*** package.
+By the end of "Promoting Accessibility in Duke Data Visualization," you should be sufficiently informed on how to create official Duke visualizations in a colorblind friendly way.
 
 ## Personal Motivation
 
-The typical format of an undergraduate thesis was daunting to me. I was not sure that an 80+ page paper with all the academic fixings - literature review, methodology, etc - was of interest to me. This was particularly true because a pertinent research topic did not immediately come to mind. I had previously completed research in national nutritional and food policy, but could not identify a way to translate it into a senior thesis. Therefore, when the Duke Statistics department emphasized their openness to "non-traditional" theses, I was intrigued.
+The typical format of an undergraduate thesis was daunting to me.
+I was not sure that an 80+ page paper with all the academic fixings - literature review, methodology, etc - was of interest to me.
+This was particularly true because a pertinent research topic did not immediately come to mind.
+I had previously completed research in national nutritional and food policy, but could not identify a way to translate it into a senior thesis.
+Therefore, when the Duke Statistics department emphasized their openness to "non-traditional" theses, I was intrigued.
 
-After meeting with my soon-to-be adviser, Dr. Mine Çetinkaya-Rundel, we identified a valuable intersection in data visualization and package development: colorblind accessibility. As our use of data increasingly permeates all aspects of society, it is crucial that we integrate accessibility and inclusivity into our data visualization best practices. We must continuously consider questions like: Who is our audience? How can we make our visualizations more intelligible? Who might we be leaving behind? This thesis aims to empower users right here in the Duke community to more easily answer these questions. By developing an R package that allows for the creation of Duke official visualizations in a colorblind friendly way, we can begin to make accessibility a core tenet of data visualization.
+After meeting with my soon-to-be adviser, Dr. Mine Çetinkaya-Rundel, we identified a valuable intersection in data visualization and package development: colorblind accessibility.
+As our use of data increasingly permeates all aspects of society, it is crucial that we integrate accessibility and inclusivity into our data visualization best practices.
+We must continuously consider questions like: Who is our audience?
+How can we make our visualizations more intelligible?
+Who might we be leaving behind?
+This thesis aims to empower users right here in the Duke community to more easily answer these questions.
+By developing an R package that allows for the creation of Duke official visualizations in a colorblind friendly way, we can begin to make accessibility a core tenet of data visualization.
 
 ## Background
 
-There are approximately 300 million color blind people across the globe [1](https://www.colourblindawareness.org/colour-blindness/). Approximately 1 in 12 men (8%) and 1 in 200 women (0.5%) are affected [2](https://www.colourblindawareness.org/colour-blindness/). More properly known as Color Vision Deficiency, or CVD, the condition is primarily inherited genetically but can also be acquired due to other chronic conditions such as diabetes. With the data visualization industry expected to nearly double by 2026, its application will further become a mainstay in fields like marketing, research, public health, and journalism [3](https://uxdesign.cc/blooming-bar-charts-the-growth-of-the-data-). More people will be interacting with data visualization than ever before -- both on the creator and user ends -- therefore, it is crucial that it becomes increasingly accessible to those with CVD.
+There are approximately 300 million color blind people across the globe [@aboutco].
+Approximately 1 in 12 men (8%) and 1 in 200 women (0.5%) are affected [2](https://www.colourblindawareness.org/colour-blindness/).
+More properly known as Color Vision Deficiency, or CVD, the condition is primarily inherited genetically but can also be acquired due to other chronic conditions such as diabetes.
+With the data visualization industry expected to nearly double by 2026, its application will further become a mainstay in fields like marketing, research, public health, and journalism [3](https://uxdesign.cc/blooming-bar-charts-the-growth-of-the-data-).
+More people will be interacting with data visualization than ever before -- both on the creator and user ends -- therefore, it is crucial that it becomes increasingly accessible to those with CVD.
 
-R packages that implement color blind friendly palettes already exist; however, this project aims to construct a package that makes Duke's color palette more accessible. Duke provides a detailed description of its official [color suite](https://brand.duke.edu/colors/) and stresses its commitment to meeting Web Content Accessibility Guidelines (WCAG). The WCAG are globally recognized as the standard for web accessibility best practices in all fields [4](https://www.w3.org/WAI/standards-guidelines/wcag/). Duke details which color combinations from their suite are compliant, but does not offer a simple way to integrate the information into data visualizations.
+R packages that implement color blind friendly palettes already exist; however, this project aims to construct a package that makes Duke's color palette more accessible.
+Duke provides a detailed description of its official [color suite](https://brand.duke.edu/colors/) and stresses its commitment to meeting Web Content Accessibility Guidelines (WCAG).
+The WCAG are globally recognized as the standard for web accessibility best practices in all fields [4](https://www.w3.org/WAI/standards-guidelines/wcag/).
+Duke details which color combinations from their suite are compliant, but does not offer a simple way to integrate the information into data visualizations.
 
-The *duke* package intends to fill this need. For Duke community members, the package will allow for easy integration of key aesthetic and geometric features that will make their visualizations clean, Duke branded, and accessible. Given that the Statistics curriculum as Duke primarily uses ggplot2 for visualization, **duke** will be focused on being compatible with its functionality. By establishing a package that allows users to easily integrate Duke's style guide with color blind friendly adjustments, we can improve the accessibility of Duke related visualizations. The implementation of this package will be an effective step toward accessibility in the Duke community, and hopefully, will prompt future work on making data visualization more inclusive.
+The *duke* package intends to fill this need.
+For Duke community members, the package will allow for easy integration of key aesthetic and geometric features that will make their visualizations clean, Duke branded, and accessible.
+Given that the Statistics curriculum as Duke primarily uses ggplot2 for visualization, **duke** will be focused on being compatible with its functionality.
+By establishing a package that allows users to easily integrate Duke's style guide with color blind friendly adjustments, we can improve the accessibility of Duke related visualizations.
+The implementation of this package will be an effective step toward accessibility in the Duke community, and hopefully, will prompt future work on making data visualization more inclusive.
 
 ## Thesis Goal
 
 **Empower Duke users to create color-blind friendly visualizations by constructing an R color package.**
-
-
-
