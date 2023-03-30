@@ -1,28 +1,42 @@
 # Discussion
 
-Main idea: What you should do in addition to what this package allows?
+The *duke* package allows users to transform their visualizations so that they are simultaneously colorblind friendly and representative of the Duke brand. To achieve this goal, the package incorporates a minimalist thematic design along with a high contrast color scale (both discrete and continuous) for ggplot geometric objects. As explained in the methods section, these functionalities are necessary and efficacious, but only a part of creators' toolbox for advancing accessibility in data visualization. There are several other best practices in data visualization that can make all the difference for those with color vision deficiency and low vision and should be highlighted. 
 
 ## Colorblind Accessibility Best Practices
 
--   importance of text
+*Idea 1* "Get it right in black and white"
+    - "add icons, directional arrows, labels, annotations, or other indicators that would allow a person with CVD to see that something is bad (red) vs. good (green)" [source](https://www.tableau.com/blog/examining-data-viz-rules-dont-use-red-green-together)
+    - "The best way to ensure that people will be able to fully comprehend your plot is to eliminate the need for distinguishable colors altogether, by using something else to differentiate the data series in it." [source](https://towardsdatascience.com/two-simple-steps-to-create-colorblind-friendly-data-visualizations-2ed781a167ec)
+    - "For line plots, you can use different line patterns and/or varying line widths, in addition to different colors." [source](https://towardsdatascience.com/two-simple-steps-to-create-colorblind-friendly-data-visualizations-2ed781a167ec)
+    - "bar or pie charts, I recommend applying different fill textures." -->  for maps too! 
+  [source](https://towardsdatascience.com/two-simple-steps-to-create-colorblind-friendly-data-visualizations-2ed781a167ec)
+    - "Get it right in black and white" [source](https://blog.datawrapper.de/colorblindness-part2/)
+    - if you mix light and dark, then even if viz was in black and white, users could differentiate between them
+    - "Consider using symbols in tables, shapes in scatterplots, patterns in maps, and dotted lines in line charts." [source](https://blog.datawrapper.de/colorblindness-part2/)
+    - direct labels on lines, points, pie charts, etc
+*These adaptations are more accessible for colorblind, but for older folks, those reading in low light, those with low technical/stat exposure*
+  
 
-    -   using hyperlegible font
+*Idea 2* "Play it safe"
+    - Clean minimal design is used in the package
+        - try to channel that thinking into how you design your plot
+        - what is the story you are telling? how can you most succinctly visualize it? 
+    - You can also color only the most important values to reduce colors. Ask yourself: What’s most important about your data? What are the one or two insights that your readers should take away?
+    - "make sure most important values stand out and are distinguishable by all your readers, including colorblind ones. Then tone down the other ones or group them." [source](https://blog.datawrapper.de/colorblindness-part2/)
+    - *play it safe* --> "when designing a scatter plot with different color dots, make sure the dots are either large, spaced out, or have a wide range of intensities (light green, dark red" --> spacing out seems important [source](https://insightsoftware.com/blog/visualizing-for-the-color-blind/)
+    - package allows for up to 8 discrete colors, but limiting categories is best, allows users to clearly differentiate.
 
-    -   ensuring its size is appropriate
-
-        -   scaling it to the rest of the visualization, rather than manually setting so it is appropriate per use
-
-    -   use of background colors, lines
-
-        -   clean minimal design allows for things most important to be visible
-
-    -   limiting the number of colors to 8 in discrete case
-
-        -   best practice when it comes to readable graphs
-
-    -   describe things not neccessarily addressed in thesis but other best practices to be aware of
-
-        -   categories
-
-        -   type of data
-
+*Idea 3* Adjust when necessary. Some features of this package may not be perfect for you, so adapt them!
+    - Text is scaled in package
+        - work with it, if it does not appear appopriate use theme() to adjust so all texts feautures are sufficiently large
+    - users can distinguish between lights vs. dark, even if they are similar colors [source](https://www.tableau.com/blog/examining-data-viz-rules-dont-use-red-green-together)
+        - adjust the colors of this palette to be lighter/darker
+        - if using a different palette, use the rule of light vs. dark if colors are not fully distinct
+        
+*Ideas if time*
+    - monochromacy in viz --> by using different shades of same color, it can be more straightforward to users
+    - interactive features 
+        - hover effects the highlight data that belong to certain color/group
+    - high dimensional data --> use glyphs
+        - not a quick read but can express complicated info in understandable way
+    

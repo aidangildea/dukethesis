@@ -8,7 +8,7 @@ book:
   author: "Aidan Gildea"
   cover-image: images/dukelogo.png
   date: now
-  abstract: "A detailed explanation of the creation and use of the <b><i>duke</b></i> package."
+  abstract: "A detailed explanation of the development and use of the <b><i>duke</b></i> package."
   chapters:
     - index.qmd
     - intro.qmd

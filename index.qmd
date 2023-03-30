@@ -1,5 +1,9 @@
 # Preface {.unnumbered}
 
-This is the primary documentation for the Duke Statistical Science Thesis, **"Promoting Accessibility in Duke Data Visualization: Creating a Color-Blind Friendly Duke Color Package."** It was developed and published in the Spring of 2023. A special thanks to my wonderful advisor, Dr. Mine Çetinkaya-Rundel, who carefully guided this project's creation and ensured its success. An additional thank you to the members of my thesis committee, Dr. Colin Rundel and Dr. Merlise Clyde, for offering their extensive experience in statistical computing and R package development. I hope this book successfully details the motivation, process, and results of the ***duke*** package and how it can effectively empower users to create colorblind friendly Duke visualizations.
+This is the primary documentation for the Duke Statistical Science Thesis, **"Promoting Accessibility in Duke Data Visualization: Creating a Color-Blind Friendly Duke Color Package."** It was developed and published in the Spring of 2023.
+A special thanks to my wonderful advisor, Dr. Mine Çetinkaya-Rundel, who carefully guided this project's creation and ensured its success.
+An additional thank you to the members of my thesis committee, Dr. Colin Rundel and Dr. Merlise Clyde, for offering their extensive experience in statistical computing and R package development.
+I hope this book successfully details the motivation, process, and results of the ***duke*** package and how it can effectively empower users to create colorblind friendly Duke visualizations.
 
-For questions and concerns, please reach out to me at aidan.gildea\@duke.edu. In addition, I encourage you to post any Issues on [Github](https://github.com/aidangildea/duke).
+For questions and concerns, please reach out to me at aidan.gildea\@duke.edu.
+In addition, I encourage you to post any Issues on [Github](https://github.com/aidangildea/duke).
