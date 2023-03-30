@@ -17,7 +17,6 @@ book:
     - palmers.qmd
     - analysis.qmd
     - discussion.qmd
-    - about.qmd
     - references.qmd
 
 bibliography: references.bib

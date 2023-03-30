@@ -91,6 +91,7 @@ In addition, all text is in Atkinson-Hyperlegible font. Named after the founder 
 
 **TO DO - Will know post meeting with Mine** \*\* Explain font implementation, as well as what happens when users don't have text
 
+
 ### scale_duke_continuous()
 
 This function integrates Duke's official color palette into geometric objects (geom) that use a continuous scale. Examples of commonly used plots implementing continuous geom objects include scatter plots, heat maps, and jitter plots. The primary challenge of adopting a continuous color scale in a color blind friendly way is the lack of color distinction that naturally occurs. Continuous color scales are defined by a low and high end of a two color gradient, where the data assumes colors within this range based on its respective value. However, continuous plots do not need complete distinction to be successful. It is often most important that readers can identify overall trends in continuous plots.

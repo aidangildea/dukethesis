@@ -2,7 +2,7 @@
 formal: html
 ---
 
-# Applied Data Analysis
+# Case Study
 
 ```{r}
 #| include: false
