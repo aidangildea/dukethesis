@@ -81,11 +81,11 @@ Euclidean distance is a commonly used measure that calculates the difference in 
 However, Euclidean distance can be a flawed metric because the standard RGB (sRGB) color space is perceptually uniform.
 This is because of irregularity in the sRGB color space, which causes evenly spaced hues to range in their perceptual similarity or difference \[6\].
 In turn, color pairings that appear similar can have a greater Euclidean distance than those that appear different\[6\].
-The CIE chromaticity diagram (see Figure X) exhibits the color spectrum according to human vision.
+The CIE chromaticity diagram (see @fig-chromaticity) exhibits the color spectrum according to human vision.
 Its parabolic nature leads to irregularities in linearly scaled color scales (ie. sRGB) and therefore weakens its efficacy in this context.
 <br>
 
-![Figure X: CIE chromaticity diagram.](images/chromaticity-diagram.jpg){width="300"}
+![CIE chromaticity diagram.](images/chromaticity-diagram.jpg){#fig-chromaticity width="300"}
 
 To accommodate these irregularities and center our color selection on human perception, we use the color contrast ratio as our primary metric.
 Color contrast is computed using "relative luminance" \[7\].
