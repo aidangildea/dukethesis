@@ -8,9 +8,10 @@ formal: html
 #| include: false
 
 library(tidyverse)
-library(cowplot) # use patchwork package instead
-library(colorblindr) # devtools::install_github("___/___")
-library(duke)        # devtools::install_github("___/___")
+library(patchwork)
+library(cowplot)
+library(colorblindr) # remotes::install_github("clauswilke/colorblindr")
+library(duke)        # devtools::install_github("aidangildea/duke")
 ```
 
 ## Introduction
@@ -49,14 +50,15 @@ colnames(registrar) <- c("Acad_Year", "Acad_Org", "Class_Num", "Subject","Catalo
 ## Analysis
 
 The Duke Office of the University Registrar facilitates the academic processes of the University by supporting students, faculty and staff in enrollment, academic records, and course scheduling - among many other tasks.
-It is crucial that the Office continuously explores the academic data they collect to identify the most successful policies for Duke's educational environment.
+It is crucial that the Office continuously explores the academic data they collect to identify the most successful policies for Duke's educational environment. Their work is critical to the function of the University, making it all the more important that they communicate with the Duke community in an accessible way. Thus, communications, reports, and announcements from the University Registrar offer a tangible use case for the **duke** package.  
 
-The following tabs allows users without color blindess to see **duke** from their perspective and from the perspective of those who are deuteronamolous.
+The following tabs allows users without color blindness to see **duke** from their perspective and from the perspective of those who are deuteronamolous.
 This allows for a better understanding of how the package improves accessibility in Duke data visualizations.
 
 TO DO: See https://quarto.org/docs/authoring/conditional.html#content-visible for conditional content.
 
 ::: panel-tabset
+
 ### Non-Deuteronamolous Perspective
 
 ```{r}
@@ -77,9 +79,10 @@ registrar <- registrar |>
   filter(!endsWith(Catalog_Num, 'A'))
 ```
 
-Identifying "departments" that have offered the highest number of classes in past 10 years.
+The Registrar is interested in understanding the breadth of academic offerings available for students. As we can see in @fig-depts, the academic organizations (proxy for department) that have offered the largest number of undergraduate courses from 2013-2022 are the Asian and Middle Eastern Studies (AMES), Chemistry, Math, Public Policy (PPS), and Romance Studies departments. With this information, the Registrar can better make decisions about the distribution of University resources and/or understand potential dapartment popularity.
 
 ```{r}
+#| label: fig-depts
 #| echo: false
 #| warning: false
 #| fig-asp: .618
@@ -99,8 +102,7 @@ dept_plot <- ggplot(registrar |>
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
 dept_plot
 ```
-
-Undergraduate "Departments" with the largest class size is shown in @fig-enroll-plot.
+Average class size is a staple concern of major universities, as prospective students and their families are attracted to small faculty to student ratios. In @fig-enroll-plot, we find that the Computer Science, Economics, Engineering, Environmental Sciences, and Earth and Ocean Sciences departments have the highest average undergraduate sciences. This is understandable given that they are majorly STEM departments, which tend to have more lecture-based courses. This visualization is a helpful resource for the Registrar to pinpoint departments that would benefit from reducing class size. 
 
 ```{r}
 #| label: fig-enroll-plot
@@ -130,10 +132,10 @@ enroll_plot <- ggplot(registrar |>
 
 enroll_plot
 ```
-
-Computer Science has high capacity, do students enroll at same degree?
+Now that we have identified Computer Science as a department with larger class capacities, let's see if there is enough student demand to fill them. @fig-comp-enroll exhibits both the distribution of student enrollment in Computer Science course and of class capacities in the department. While they share a right skew, the center of student enrollment appears less than that of course capacity. The Registrar would certainly want to investigate the data further, but the visualization suggests that students do not enroll at a high enough rate to fill the courses. 
 
 ```{r}
+#| label: fig-comp-enroll
 #| echo: false
 #| warning: false
 #| message: false
@@ -159,13 +161,13 @@ hist2 <- registrar |>
   scale_duke_fill_discrete() +
   theme(legend.position = "none")
 
-cowplot::plot_grid(hist1, hist2, ncol = 1)
+hist1 / hist2
 ```
 
-Introductory courses with the most successful enrollment rates.
-May guide which cources to expand or add additional sections.
+The University often highlights their wide selection of introductory courses that allow new students to explore their interests. @fig-intro-course-success explores the intro courses with the most successful enrollment rates. This is beneficial because it informs the Registrar's process of 1) adding sections to these courses and/or 2) identifying reasons for these courses' success and integrating them into others. 
 
 ```{r}
+#| label: fig-intro-course-success
 #| warning: false
 #| echo: false
 #| message: false
@@ -195,11 +197,10 @@ high_succ <- registrar |>
 
 high_succ
 ```
-
-Introductory courses with the least successful enrollment rates.
-May guide which courses to decrease size or remove.
+Conversely, the Registrar may want to identify intro courses with lower enrollment rates so that they can 1) adjust their structure/implementation and/or 2) remove them from the course catalog. @fig-intro-course-least visualizes the eight intro courses with the least successful enrollment rates. 
 
 ```{r}
+#| label: fig-intro-course-least
 #| warning: false
 #| echo: false
 #| message: false
@@ -228,10 +229,11 @@ low_succ <- registrar |>
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
 low_succ
 ```
+Again, the University is continuously interested in increasing the amount of face-to-face time students have with their professors. Seminar courses are a great course format for doing so. @fig-sem-best demonstrates the five departments with the highest proportion of seminar courses in their catalog. If the Registrar wants to tout their seminar offerings, they can highlight the Documentary Studies, English, Gender, Sexuality Feminist Studies, Policy and Journalism, and Theater Studies departments. 
 
-Departments with the highest proportion of seminar courses.
 
 ```{r}
+#| label: fig-sem-best
 #| warning: false
 #| echo: false
 #| message: false
@@ -241,6 +243,7 @@ sem_rates <- registrar |>
   filter(Undergraduate == TRUE) |>
   group_by(Acad_Org) |>
   count(Acad_Org, Seminar) |>
+  filter(n > 50) |>
   summarise(Acad_Org, Seminar, Count = n, Total = sum(n)) |>
   filter(Seminar == TRUE, Acad_Org != "FOCUS") |>
   summarise(Acad_Org, Rate = Count/Total) |>
@@ -267,9 +270,10 @@ sem_rates_low <- registrar |>
   pull(Acad_Org)
 ```
 
-Departments with the lowest proportion of seminar courses.
+On the other hand, if the University aims to improve their overall seminar offerings, it is important that they identify departments with lowest proportions. The Registrar may be interested in adding additional seminar courses to the departments in @fig-sem-worst. 
 
 ```{r}
+#| label: fig-sem-worst
 #| warning: false
 #| echo: false
 #| message: false
@@ -285,9 +289,14 @@ scale_duke_fill_discrete() +
 sem_plot2
 ```
 
+These data insights are critical for both the Registrar and members of the Duke community to make informed educational decisions. To ensure that those who are colorblind have the same level of access, the Registrar should use the **duke** package as part of their visualization best practices. 
+
 ### Deuteronamolous Perspective
 
+The Registrar is interested in understanding the breadth of academic offerings available for students. As we can see in @fig-depts2, the academic organizations (proxy for department) that have offered the largest number of undergraduate courses from 2013-2022 are the Asian and Middle Eastern Studies (AMES), Chemistry, Math, Public Policy (PPS), and Romance Studies departments. With this information, the Registrar can better make decisions about the distribution of University resources and/or understand potential dapartment popularity.
+
 ```{r}
+#| label: fig-depts2
 #| warning: false
 #| echo: false
 #| message: false
@@ -296,8 +305,10 @@ sem_plot2
 dept_plot2 <- edit_colors(dept_plot, deutan, sev = 0.7)
 cowplot::plot_grid(dept_plot2, ncol = 1)
 ```
+Average class size is a staple concern of major universities, as prospective students and their families are attracted to small faculty to student ratios. In @fig-enroll-plot2, we find that the Computer Science, Economics, Engineering, Environmental Sciences, and Earth and Ocean Sciences departments have the highest average undergraduate sciences. This is understandable given that they are majorly STEM departments, which tend to have more lecture-based courses. This visualization is a helpful resource for the Registrar to pinpoint departments that would benefit from reducing class size. 
 
 ```{r}
+#| label: fig-enroll-plot2
 #| warning: false
 #| echo: false
 #| message: false
@@ -307,7 +318,10 @@ enroll_plot2 <- edit_colors(enroll_plot, deutan, sev = 0.7)
 cowplot::plot_grid(enroll_plot2, ncol = 1)
 ```
 
+Now that we have identified Computer Science as a department with larger class capacities, let's see if there is enough student demand to fill them. @fig-comp-enroll2 exhibits both the distribution of student enrollment in Computer Science course and of class capacities in the department. While they share a right skew, the center of student enrollment appears less than that of course capacity. The Registrar would certainly want to investigate the data further, but the visualization suggests that students do not enroll at a high enough rate to fill the courses. 
+
 ```{r}
+#| label: fig-comp-enroll2
 #| warning: false
 #| echo: false
 #| message: false
@@ -318,7 +332,10 @@ hist4 <- edit_colors(hist2, deutan, sev = 0.7)
 cowplot::plot_grid(hist3, hist4, ncol = 1)
 ```
 
+The University often highlights their wide selection of introductory courses that allow new students to explore their interests. @fig-intro-course-success2 explores the intro courses with the most successful enrollment rates. This is beneficial because it informs the Registrar's process of 1) adding sections to these courses and/or 2) identifying reasons for these courses' success and integrating them into others. 
+
 ```{r}
+#| label: fig-intro-course-success2
 #| warning: false
 #| echo: false
 #| message: false
@@ -328,7 +345,10 @@ high_succ2 <- edit_colors(high_succ, deutan, sev = 0.7)
 cowplot::plot_grid(high_succ2, ncol = 1)
 ```
 
+Conversely, the Registrar may want to identify intro courses with lower enrollment rates so that they can 1) adjust their structure/implementation and/or 2) remove them from the course catalog. @fig-intro-course-least2 visualizes the eight intro courses with the least successful enrollment rates. 
+
 ```{r}
+#| label: fig-intro-course-least2
 #| warning: false
 #| echo: false
 #| message: false
@@ -338,7 +358,10 @@ low_succ2 <- edit_colors(low_succ, deutan, sev = 0.7)
 cowplot::plot_grid(low_succ2, ncol = 1)
 ```
 
+Again, the University is continuously interested in increasing the amount of face-to-face time students have with their professors. Seminar courses are a great course format for doing so. @fig-sem-best2 demonstrates the five departments with the highest proportion of seminar courses in their catalog. If the Registrar wants to tout their seminar offerings, they can highlight the Documentary Studies, English, Gender, Sexuality Feminist Studies, Policy and Journalism, and Theater Studies departments. 
+
 ```{r}
+#| label: fig-sem-best2
 #| warning: false
 #| echo: false
 #| message: false
@@ -348,7 +371,10 @@ sem_plot3 <- edit_colors(sem_plot, deutan, sev = 0.7)
 cowplot::plot_grid(sem_plot3, ncol = 1)
 ```
 
+On the other hand, if the University aims to improve their overall seminar offerings, it is important that they identify departments with lowest proportions. The Registrar may be interested in adding additional seminar courses to the departments in @fig-sem-worst2. 
+
 ```{r}
+#| label: fig-sem-worst2
 #| warning: false
 #| echo: false
 #| message: false
@@ -357,4 +383,7 @@ cowplot::plot_grid(sem_plot3, ncol = 1)
 sem_plot4 <- edit_colors(sem_plot2, deutan, sev = 0.7)
 cowplot::plot_grid(sem_plot4, ncol = 1)
 ```
+
+These data insights are critical for both the Registrar and members of the Duke community to make informed educational decisions. To ensure that those who are colorblind have the same level of access, the Registrar should use the **duke** package as part of their visualization best practices. 
+
 :::

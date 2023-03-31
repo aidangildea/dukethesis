@@ -197,13 +197,13 @@ Thus, we proceed under the assumption that an AA18 categorization is sufficient.
 #| echo: false
 
 library(kableExtra)
-ratios <- readRDS("saved/contrastratios.rds.gzip") 
+ratios <- readRDS("saved/contrastratios.rds.gzip")
 
 ratios %>%
   kbl() %>%
-  kable_styling("striped", position = "center", fixed_thead = T) %>% 
-  #row_spec(1:14, bold = T, color = "white", background = "#00539B") %>%
-  scroll_box(height = "275px") 
+  kable_styling("striped", position = "center", fixed_thead = T) %>%
+  # row_spec(1:14, bold = T, color = "white", background = "#00539B") %>%
+  scroll_box(height = "275px")
 ```
 
 <br> To ensure that this palette is accessible, we use the `colorblindr` package to visualize sample plots from the perspective of individuals with different types of color vision deficiency.
