@@ -139,7 +139,6 @@ However, the process necessitates careful thought when building a package for co
 
 **TO DO - Will know post meeting with Mine** \*\* Explain font implementation, as well as what happens when users don't have text
 
-
 ### scale_duke_continuous()
 
 This function integrates Duke's official color palette into geometric objects (geom) that use a continuous scale.
@@ -184,7 +183,7 @@ The result is the following palette:
 While not perfectly compliant with WCAG guidelines, the palette achieves our goal of optimizing colorblind accessibility and representing the Duke brand.
 As seen in Figure X, a majority of our color pairings meet at minimum the AA18 rating, as indicated by lighter tiles.
 
-![Figure X: Heatmap of color contrast ratio between final color pairings.](images/heatmap.png){width="500"} 
+![Figure X: Heatmap of color contrast ratio between final color pairings.](images/heatmap.png){width="500"}
 
 The final palette includes the following colors: Duke Navy Blue, Piedmont, Copper, Duke Royal Blue, Eno, Persimmon, Dandelion and Cast Iron.
 Out the 28 distinct colors pairings that exist from this palette (excluding pairings of identical colors), 14 have a color contrast ratio of 3 or greater.This is compliant with WCAG's AA18 rating, which specifies the use of larger text to be accessible.
@@ -249,19 +248,17 @@ I recommend you explore existing packages on [Github](https://github.com), troub
 
 ## References
 
-```         
-1.  https://brand.duke.edu/colors/
-2.  Ibid
-3.  https://www.techopedia.com/definition/29788/color-hex-code
-4.  https://www.sciencedirect.com/topics/engineering/hexadecimal
-5.  https://www.w3.org/TR/UNDERSTANDING-WCAG20/intro.html#introduction-fourprincs-head
-6. <https://programmingdesignsystems.com/color/perceptually-uniform-color-spaces/>
-7. https://www.accessibility-developer-guide.com/knowledge/colours-and-contrast/how-to-calculate/
-8. https://www.w3.org/TR/WCAG20/#relativeluminancedef
-9. ibid
-9. https://fonts.google.com/specimen/Atkinson+Hyperlegible/about
-10. https://clauswilke.com/dataviz/color-pitfalls.html
-11. https://www.ppgpaints.com/color/color-families/neutrals/hatteras-gray
-12. https://www.allaboutvision.com/conditions/color-blindness/types-of-color-blindness/
-13. ibid
-```
+    1.  https://brand.duke.edu/colors/
+    2.  Ibid
+    3.  https://www.techopedia.com/definition/29788/color-hex-code
+    4.  https://www.sciencedirect.com/topics/engineering/hexadecimal
+    5.  https://www.w3.org/TR/UNDERSTANDING-WCAG20/intro.html#introduction-fourprincs-head
+    6. <https://programmingdesignsystems.com/color/perceptually-uniform-color-spaces/>
+    7. https://www.accessibility-developer-guide.com/knowledge/colours-and-contrast/how-to-calculate/
+    8. https://www.w3.org/TR/WCAG20/#relativeluminancedef
+    9. ibid
+    9. https://fonts.google.com/specimen/Atkinson+Hyperlegible/about
+    10. https://clauswilke.com/dataviz/color-pitfalls.html
+    11. https://www.ppgpaints.com/color/color-families/neutrals/hatteras-gray
+    12. https://www.allaboutvision.com/conditions/color-blindness/types-of-color-blindness/
+    13. ibid

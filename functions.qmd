@@ -1,9 +1,16 @@
 # Function Descriptions
 
 ## theme_duke()
+Implements the overall aesthetic and thematic features of the plot. Striving for a minimalist design, it defines the background, grid line, text, and legend arguments of the visualization. 
 
 ## scale_duke_continuous()
+Integrates a Duke branded and accessible continuous color scale to ggplot geometric objects. It is applicable for both fill and color arguments. Defines gradient scale from dark to light to improve visibility and contrast for readers.
 
 ## scale_duke_fill_discrete()
+Introduces a Duke branded and accessible discrete color palette to ggplot geometric objects using fill argument. It prioritizes high contrast colors aligned with Web Content Accessibility Guidelines (WCAG).
 
 ## scale_duke_color_discrete()
+Introduces a Duke branded and accessible discrete color palette to ggplot geometric objects using color argument. It prioritizes high contrast colors aligned with Web Content Accessibility Guidelines (WCAG).
+
+## duke_pal()
+Defines 8-color palette to be used by discrete scale function. It is intended for internal package use and not to be directly called. 

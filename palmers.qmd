@@ -23,7 +23,8 @@ library(dplyr)
 attach(penguins)
 ```
 
-This vignette aims to comprehensively demonstrate the use and functionality of the package ***duke***. ***duke*** is fully integrated with the ***ggplot2*** and allows for the creation of Duke official branded visualizations that are color blind friendly.
+This vignette aims to comprehensively demonstrate the use and functionality of the package ***duke***.
+***duke*** is fully integrated with the ***ggplot2*** and allows for the creation of Duke official branded visualizations that are color blind friendly.
 
 ```{r}
 #| include: false
@@ -34,7 +35,8 @@ Grade <- c("A+", "B", "A+", "C", "D", "A+", "E", "C", "B-", "B-", "D", "A-", "B+
 dumby_df <- data.frame(Student, Grade)
 ```
 
-For this purposes of this vignette, we will use the palmerspenguins package, which provides a simple dataset on Antarctic penguins and their characteristics. The data has 8 variables - both numeric and categorical - and 344 observations, each representing a unique penguin. 
+For this purposes of this vignette, we will use the palmerspenguins package, which provides a simple dataset on Antarctic penguins and their characteristics.
+The data has 8 variables - both numeric and categorical - and 344 observations, each representing a unique penguin.
 
 ## Scatter Plot - Continuous Color
 

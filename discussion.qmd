@@ -1,6 +1,6 @@
 # Discussion
 
-The *duke* package allows users to transform their visualizations so that they are simultaneously colorblind friendly and representative of the Duke brand. To achieve this goal, the package incorporates a minimalist thematic design along with a high contrast color scale (both discrete and continuous) for ggplot geometric objects. As explained in the methods section, these functionalities are necessary and efficacious, but only a part of creators' toolbox for advancing accessibility in data visualization. There are several other best practices in data visualization that can make all the difference for those with color vision deficiency and low vision and should be highlighted. 
+The **duke** package allows users to transform their visualizations so that they are simultaneously colorblind friendly and representative of the Duke brand. To achieve this goal, the package incorporates a minimalist thematic design along with a high contrast color scale (both discrete and continuous) for ggplot geometric objects. As explained in the methods section, these functionalities are necessary and efficacious, but only a part of creators' toolbox for advancing accessibility in data visualization. There are several other best practices in data visualization that can make all the difference for those with color vision deficiency and low vision and should be highlighted. 
 
 ## Colorblind Accessibility Best Practices
 
@@ -18,30 +18,32 @@ Here are a few examples of how these supplementary features can improve the acce
 
 Scatterplots can quickly become difficult to read when there a several distinct categories in the data. To improve your plot's readability, consider adding shapes to your data points.
 
-[insert scatterplot with shapes] 
+![Scatter plot with shape distinctions](images/pointshape.png){#fig-pointshape}
 
-For geometric objects with large fill spaces (ie. bar plot, pie chart), the use of the colorblind friendly palettes can be effective on its own. Nevertheless, adding fill textures to your visualization is an effective way to increase plot clarity.
+For geometric objects with large fill spaces (ie. bar plot, pie chart), the use of the colorblind friendly palettes can be effective on its own. Nevertheless, adding fill textures to your visualization is an effective way to increase plot clarity. To do so, I used the [**ggpattern**](https://github.com/coolbutuseless/ggpattern) package.
 
-[insert bar plot with fill texture]
+![Bar plot with fill texture](images/fillbar.png){#fig-fillbar}
 
 Finally, the efficacy of color in line plots deteriorates as the number of categories increases and/or the lines are intersecting. By varying the patterns and widths of the lines in your plot, your visualization can more effectively convey trend differences. 
 
-[insert line plot with line patterns]
+![Line plot with line pattern and point shapes.](images/lineplot.png){#fig-lineplot}
 
 The use of these complimentary features - among many others - are easy and effective. By integrating them alongside the **duke** package, you can promote accessibility for not only colorblind individuals, but older readers, audiences with lower technical exposure, and people reading in low light. 
 
+**Adjust When Necessary**
 
-*Idea 3* Adjust when necessary. Some features of this package may not be perfect for you, so adapt them!
-    - Text is scaled in package
-        - work with it, if it does not appear appopriate use theme() to adjust so all texts feautures are sufficiently large
-    - users can distinguish between lights vs. dark, even if they are similar colors [source](https://www.tableau.com/blog/examining-data-viz-rules-dont-use-red-green-together)
-        - adjust the colors of this palette to be lighter/darker
-        - if using a different palette, use the rule of light vs. dark if colors are not fully distinct
-        
-*Ideas if time*
-    - monochromacy in viz --> by using different shades of same color, it can be more straightforward to users
-    - interactive features 
-        - hover effects the highlight data that belong to certain color/group
-    - high dimensional data --> use glyphs
-        - not a quick read but can express complicated info in understandable way
-    
+The colorblind community is not a monolith, therefore, it is understandable that you may need to adjust your visualizations given the context. The development of the **duke** package was intended to promote accessibility for the largest possible audience, which is why red-green colorblindness was the primary focus. Some features of **duke** may not be fitting for you, so adapt them when necessary. For example, text sizing is scaled relative to the plot dimensions in `theme_duke()`, but it is reasonable that even larger text may be required for audience readability. In this case, engage with the specifications of the [`theme()`](https://github.com/tidyverse/ggplot2/blob/main/R/theme.R) function to make sure the text is sufficiently large. 
+
+The **duke** palette offers the most accessible colors within Duke's official branding guide, but modifying these colors may be needed to perfectly meet WCAG guidelines. If your visualization does not fall within the purview of the Duke official brand, using the the rule light vs. dark can be an effective strategy. Even when colors are similar, readers can typically distinguish between lighter and darker shades. This also to applies the monochromatic palettes which only use different shades of the same color. The Duke brand does not permit color adjustments and therefore the **duke** package cannot manually incorporate the light vs. dark strategy. However, if colorblind accessibility is your primary emphasis over representing Duke, this can be a successful tool for creating intelligible visualizations.
+
+## Summary
+
+**duke** empowers users to develop Duke branded and colorblind friendly visualizations and should be used in University communications. By implementing a minimalist thematic design and a high contrast color palette in both continuous and discrete geometric objects, the package is an efficacious tool for data visualization in the Duke community. Nevertheless, it is not the only tool. To further enhance the accessibility of visualizations, users can engage with several complimentary strategies:
+
+**Keep It Simple**: Identify the most important features of your data and remove those that are unneccessay. Reducing the complexity of the plot will more succintly convey your data insights.
+
+**De-Emphasize Color**: Integrate additional indicators in your visualizations (labels, shapes, patterns) to clearly direct the attention of readers. When used effectively, these features can eliminate the need for color differentiation at all.
+
+**Adjust When Necessary**: Be creative and craft a unique visualization fitting to your needs. By manually adjusting text sizing and color shades, you can ensure the visualization is appropriate for your audience. 
+
+The use of the **duke** package, in tandem with these best practices, will foster a more accessible and inclusive approach to data visualization in the Duke community.  
