@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.208">
+<meta name="generator" content="quarto-1.2.269">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,6 +19,25 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
+}
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
 }
 </style>
 
@@ -61,6 +80,9 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
@@ -69,16 +91,11 @@ ul.task-list li input[type="checkbox"] {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./methods.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Methods</span></a></li></ol></nav>
-      <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Methods</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
       </button>
     </div>
   </nav>
@@ -86,17 +103,17 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Promoting Accessibility in Duke Data Visualization</a> 
     </div>
       </div>
-        <div class="mt-2 flex-shrink-0 align-items-center">
+      <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-        </div>
+      </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
@@ -121,12 +138,17 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./discussion.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Discussion</span></a>
+  <a href="./palmers.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Package Use</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./about.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">About</span></a>
+  <a href="./analysis.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Case Study</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./discussion.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Discussion</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -137,7 +159,6 @@ ul.task-list li input[type="checkbox"] {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -153,7 +174,6 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#scale_duke_color_discrete-and-scale_duke_fill_discrete" id="toc-scale_duke_color_discrete-and-scale_duke_fill_discrete" class="nav-link" data-scroll-target="#scale_duke_color_discrete-and-scale_duke_fill_discrete"><span class="toc-section-number">2.3.3</span>  scale_duke_color_discrete and scale_duke_fill_discrete</a></li>
   </ul></li>
   <li><a href="#lessons-learned" id="toc-lessons-learned" class="nav-link" data-scroll-target="#lessons-learned"><span class="toc-section-number">2.4</span>  Lessons Learned</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="toc-section-number">2.5</span>  References</a></li>
   </ul>
 </nav>
     </div>
@@ -162,7 +182,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Methods</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Methods</span></h1>
 </div>
 
 
@@ -179,7 +199,7 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="color-sources" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="color-sources"><span class="header-section-number">2.1</span> Color Sources</h2>
-<p>The office of University Communications provides an official color guide for the Duke brand. The color palette is intended to both bolster the brand of the University, as well as ensure cohesion among all official content [1]. The primary colors of the official palette are Duke Royal Blue and Duke Navy Blue. It is highly encouraged that one of these colors is present in any Duke official project, as they are reflective of the Duke Brand. The color guide also details an extended palette, which includes an additional 18 secondary and tertiary colors. Colors such as Copper, Eno, Ironweed, Persimmon, and Cast Iron are in the extended palette. University Communications urges the use of this extended palette for, “graphic accents, typography, backgrounds, [and] call-to-action buttons” [2]. For each color in the palette, users can access the following information:</p>
+<p>The office of University Communications provides an official color guide for the Duke brand. The color palette is intended to both bolster the brand of the University, as well as ensure cohesion among all official content <span class="citation" data-cites="colors">(<a href="references.html#ref-colors" role="doc-biblioref"><span>“Colors,”</span> n.d.a</a>)</span>. The primary colors of the official palette are Duke Royal Blue and Duke Navy Blue. It is highly encouraged that one of these colors is present in any Duke official project, as they are reflective of the Duke brand. The color guide also details an extended palette, which includes an additional 18 secondary and tertiary colors. Colors such as Copper, Eno, Ironweed, Persimmon, and Cast Iron are in the extended palette. University Communications urges the use of this extended palette for, “graphic accents, typography, backgrounds, [and] call-to-action buttons” <span class="citation" data-cites="colorsa">(<a href="references.html#ref-colorsa" role="doc-biblioref"><span>“Colors,”</span> n.d.b</a>)</span>. For each color in the palette, users can access the following information:</p>
 <ul>
 <li><p>Color Name</p></li>
 <li><p>Pantone Matching System (PMS)</p></li>
@@ -187,214 +207,396 @@ ul.task-list li input[type="checkbox"] {
 <li><p>Cyan, Magenta, Yellow, and Key (CMYK) Color Model</p></li>
 <li><p>Red, Green, Blue Color Model</p></li>
 </ul>
-<p>We will primarily interact with the Hex codes for these colors in this project. Hex codes are a hexidecimal (base 16 numbering system) format for representing the amount of RBG in a particular shade [3] [4]. Additionally, Hex codes are recognized as the best color system for HTML and CSS formats; therefore, their use will work well for data visualization in publication and web browser contexts.</p>
+<p>We will primarily interact with the Hex codes for these colors in this project. Hex codes are a hexidecimal (base 16 numbering system) format for representing the amount of RBG in a particular shade <span class="citation" data-cites="rouse2021">(<a href="references.html#ref-rouse2021" role="doc-biblioref">Rouse 2021</a>)</span>. Additionally, Hex codes are recognized as the best color system for HTML and CSS formats; therefore, their use will be advantageous for data visualization in publication and web browser contexts.</p>
+<div id="tbl-colors" class="anchored">
 <table class="table">
-<caption><strong>Duke Color Palette</strong></caption>
+<caption>Table&nbsp;2.1: <strong>Duke Color Palette</strong></caption>
 <thead>
 <tr class="header">
-<th>Color</th>
 <th>Name</th>
 <th>Hex Code</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td></td>
 <td>Duke Royal Blue</td>
 <td>#00539B</td>
 </tr>
 <tr class="even">
-<td></td>
 <td>Duke Navy Blue</td>
 <td>#012169</td>
 </tr>
 <tr class="odd">
-<td></td>
 <td>Copper</td>
 <td>#C84E00</td>
 </tr>
 <tr class="even">
-<td></td>
 <td>Persimmon</td>
 <td>#E89923</td>
 </tr>
 <tr class="odd">
-<td></td>
 <td>Dandelion</td>
 <td>#FFD960</td>
 </tr>
 <tr class="even">
-<td></td>
 <td>Piedmont</td>
 <td>#A1B70D</td>
 </tr>
 <tr class="odd">
-<td></td>
 <td>Eno</td>
 <td>#339898</td>
 </tr>
 <tr class="even">
-<td></td>
 <td>Magnolia</td>
 <td>#1D6363</td>
 </tr>
 <tr class="odd">
-<td></td>
 <td>Prussian Blue</td>
 <td>#005587</td>
 </tr>
 <tr class="even">
-<td></td>
 <td>Shale Blue</td>
 <td>#0577B1</td>
 </tr>
 <tr class="odd">
-<td></td>
 <td>Ironweed</td>
 <td>#993399</td>
 </tr>
 <tr class="even">
-<td></td>
 <td>Hatteras</td>
 <td>#E2E6ED</td>
 </tr>
 <tr class="odd">
-<td></td>
 <td>Whisper Gray</td>
 <td>#F3F2F1</td>
 </tr>
 <tr class="even">
-<td></td>
 <td>Ginger Beer</td>
 <td>#FCF7E5</td>
 </tr>
 <tr class="odd">
-<td></td>
 <td>Dogwood</td>
 <td>#988675</td>
 </tr>
 <tr class="even">
-<td></td>
 <td>Shackleford</td>
 <td>#DAD0C6</td>
 </tr>
 <tr class="odd">
-<td></td>
 <td>Cast Iron</td>
 <td>#262626</td>
 </tr>
 <tr class="even">
-<td></td>
 <td>Graphite</td>
 <td>#666666</td>
 </tr>
 <tr class="odd">
-<td></td>
 <td>Granite</td>
 <td>#B5B5B5</td>
 </tr>
 <tr class="even">
-<td></td>
 <td>Limestone</td>
 <td>#E5E5E5</td>
 </tr>
 </tbody>
 </table>
-<p>In 2018, Duke added a color accessibility to their brand guide outlining how users could meet Web Content Accessibility Guidelines (WCAG) 2.0 AA guidelines. The WCAG are internationally recognized standards on how to make web content more accessible to people with disability - including those with color vision deficiency. Their accessibility standards are principled on four tenets: Perceivable, Operable, Understandable, and Robust [5]. Duke’s accessibility guide illustrates a grid of every text-background color pairing and its respective compliance to the WCAG. There are four compliance categories specified:</p>
+</div>
+<p>In 2018, Duke added a color accessibility guide to their branding site outlining how users could meet the Web Content Accessibility Guidelines (WCAG) 2.0 AA guidelines. The WCAG are internationally recognized standards on how to make web content more accessible to people with disabilities - including those with color vision deficiency. Their accessibility standards are principled on four tenets: Perceivable, Operable, Understandable, and Robust <span class="citation" data-cites="introduc">(<a href="references.html#ref-introduc" role="doc-biblioref"><span>“Introduction to Understanding WCAG 2.0 | Understanding WCAG 2.0,”</span> n.d.</a>)</span>. Duke’s accessibility guide illustrates a grid of every text-background color pairing in their palette and their respective compliance to the WCAG. There are four compliance categories specified:</p>
 <ul>
-<li><p>AAA: highest compliance, text-background contrast ratio of 7+</p></li>
-<li><p>AA: mid-range compliance, text-background contrast ratio of 4.5+</p></li>
-<li><p>AA18: mid-range compliance with large text only (18pt or 14pt bold), text-background contrast ratio of 3+</p></li>
-<li><p>DNP: does not pass compliance guidelines, text-background contrast ratio of less than 3</p></li>
+<li><p><strong>AAA:</strong> highest compliance, text-background contrast ratio of 7+</p></li>
+<li><p><strong>AA:</strong> mid-range compliance, text-background contrast ratio of 4.5+</p></li>
+<li><p><strong>AA18:</strong> mid-range compliance with large text only (18pt or 14pt bold), text-background contrast ratio of 3+</p></li>
+<li><p><strong>DNP:</strong> does not pass compliance guidelines, text-background contrast ratio of less than 3</p></li>
 </ul>
-<p>These compliance metrics will be an important resource for identifying color combinations that are accessible and selecting them for use in the <strong><em>duke</em></strong> package. The ratios provided by this guideline are intended for background and foreground combinations; however, they also apply to colors near and/or adjacent to one another. Duke’s inclusion of an accessibility guide on their branding website is an important step, but it would benefit from a built-in functionality that allows users to interact with its information more easily. The <strong><em>duke</em></strong> package aims to empower users to engage with these accessibility recommendations more easily when creating data visualizations.</p>
+<p>These compliance metrics will be an important resource for identifying color combinations that are accessible and selecting them for use in the <strong>duke</strong> package. The ratios provided by this guideline are intended for background and foreground combinations; however, they also apply to colors near and/or adjacent to one another. Duke’s inclusion of WCAG compliance information on their branding website is an important step towards accessibility in University content, but it would benefit from a built-in functionality that allows users to interact with it more easily. By incorporating these recommendations into the <strong>duke</strong> package, this project aims to empower users to more deftly create accessible Duke data visualizations.</p>
 </section>
 <section id="color-metrics" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="color-metrics"><span class="header-section-number">2.2</span> Color Metrics</h2>
-<p>In selecting the optimal color palette, several color difference metrics were considered. Euclidean distance is a commonly used measure; however, it is perceptually uniform, meaning that color pairings that have similar Euclidean distances can appear vastly different perceptually [6]. This is because of irregularity in the standard RGB (sRGB) color space, which causes evenly spaced hues to range in their perceptual similarity or difference [6]. The CIE chromaticity diagram (see Figure X) exhibits the color spectrum according to human vision. Its parabolic nature leads to irregularities in linearly scaled color scales and therefore weakens its efficacy in this context.</p>
-<div class="quarto-figure quarto-figure-center">
+<p>In selecting the optimal color palette, several color difference metrics were considered. Euclidean distance is a commonly used measure that calculates the difference in the RGB coordinates of two colors:</p>
+<center>
+<span class="math inline">\({\displaystyle {\text{distance}_e}={\sqrt {(R_{2}-R_{1})^{2}+(G_{2}-G_{1})^{2}+(B_{2}-B_{1})^{2}}}.}\)</span>
+</center>
+<p><span class="citation" data-cites="iyer2020a">(<a href="references.html#ref-iyer2020a" role="doc-biblioref">Iyer 2020</a>)</span></p>
+<p>However, Euclidean distance can be a flawed metric because the standard RGB (sRGB) color space is perceptually uniform. This is because of irregularity in the sRGB color space, which causes evenly spaced hues to range in their perceptual similarity or difference <span class="citation" data-cites="madsen">(<a href="references.html#ref-madsen" role="doc-biblioref">Madsen, n.d.a</a>)</span>. In turn, color pairings that appear similar can have a greater Euclidean distance than those that appear different <span class="citation" data-cites="madsena">(<a href="references.html#ref-madsena" role="doc-biblioref">Madsen, n.d.b</a>)</span>. The CIE chromaticity diagram (see <a href="#fig-chromaticity">Figure&nbsp;<span>2.1</span></a>) exhibits the color spectrum according to human vision. Its parabolic nature leads to irregularities in linearly scaled color scales (ie. sRGB) and therefore weakens its efficacy in this context. <br></p>
+<div id="fig-chromaticity" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="images/chromaticity-diagram.jpg" class="img-fluid figure-img" width="300"></p>
-<p></p><figcaption class="figure-caption">Figure X: CIE chromaticity diagram.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;2.1: CIE chromaticity diagram.</figcaption><p></p>
 </figure>
 </div>
-<p>To accommodate these irregularities and center our color selection on human perception, we use the color contrast ratio as our primary metric. Color contrast is computed using “relative luminance” [7]. According to WCAG, relative luminance is the “relative brightness of any point in a colorspace, normalized to 0 for darkest black and 1 for lightest white”[8]. The formula for the color contrast ratio is as follows:</p>
+<p>To accommodate these irregularities and center our color selection on human perception, we use the color contrast ratio as our primary metric. Color contrast is computed using “relative luminance” <span class="citation" data-cites="howtoc2019">(<a href="references.html#ref-howtoc2019" role="doc-biblioref"><span>“How to Calculate Colour Contrast”</span> 2019</a>)</span>. According to WCAG, relative luminance is the “relative brightness of any point in a color space, normalized to 0 for darkest black and 1 for lightest white” <span class="citation" data-cites="webcont">(<a href="references.html#ref-webcont" role="doc-biblioref"><span>“Web Content Accessibility Guidelines (WCAG) 2.0,”</span> n.d.a</a>)</span>. The formula for the color contrast ratio is as follows:</p>
 <p><span class="math display">\[\frac{(L1 + 0.05)} {(L2 + 0.05)}\]</span></p>
-<p>By dividing the the relative luminance of the lighter color (L1) by that of the darker color (L2), the color contrast ratio can range from a value of 1 (no contrast) to 21 (highest contrast)[9]. In line with the WCAG guidelines, we plan on only including color pairings in the package that meet a compliance level of AA18 or better.</p>
+<p>By dividing the the relative luminance of the lighter color (L1) by that of the darker color (L2), the color contrast ratio can range from a value of 1 (no contrast) to 21 (highest contrast) <span class="citation" data-cites="webconta">(<a href="references.html#ref-webconta" role="doc-biblioref"><span>“Web Content Accessibility Guidelines (WCAG) 2.0,”</span> n.d.b</a>)</span>. In line with the WCAG guidelines, we plan on only including color pairings in the package that meet a compliance level of AA18 or better.</p>
 <p>It must be noted that given a total of 22 colors in the Duke official suite, our definition of the “optimal” palette may not be fully reliant on the color contrast ratio. The package is at its core, representative of the Duke brand and should meet certain aesthetic expectations for those with and without color vision deficiency. The development of our color scales, specifically, incorporates a somewhat ad-hoc approach in order to strike a balance between accessibility and recognition of the Duke brand. In finding a color palette successful on both fronts, users can be confident that they are producing visualizations that are identifiably Duke-related and accessible to a greater audience.</p>
 </section>
 <section id="package-development" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="package-development"><span class="header-section-number">2.3</span> Package Development</h2>
-<p>As previously mentioned, package development posed a new challenge to the skill set I had learned through the Statistics curriculum. The “R Packages” text book served as an essential guide for learning, understanding, and eventually building the <strong><em>duke</em></strong> package. By clearly outlining the key structures of an R package, the functionality of the devtools package, and the importance of testing, I was well equipped to create <strong><em>duke</em></strong>.</p>
-<p>The <strong><em>duke</em></strong> package offers four functions for users to make Duke branded visualizations in a colorblind friendly way.</p>
+<p>As previously mentioned, package development posed a new challenge to the skill set I had learned through the Statistics curriculum. The <a href="https://r-pkgs.org">R Packages (2e)</a> text book served as an essential guide for learning, understanding, and eventually building the <strong>duke</strong> package. By clearly outlining the key structures of an R package, the functionality of the devtools package, and the importance of testing, I was well equipped to create <strong>duke</strong>.</p>
+<p>The <strong>duke</strong> package offers four functions for users to make Duke branded visualizations in a colorblind friendly way.</p>
 <section id="theme_duke" class="level3" data-number="2.3.1">
 <h3 data-number="2.3.1" class="anchored" data-anchor-id="theme_duke"><span class="header-section-number">2.3.1</span> theme_duke()</h3>
-<p>This function is largely inspired by the <code>theme()</code> function and its many derivatives. Its primary focus is to set the aesthetic elements for the visualization’s background and accessory features. These include the background color, grid lines, axis ticks, plot text, etc. With accessibility at the forefront of this project’s goals, it is essential that these choices lead to not only a visually pleasing result, but one that is comprehensible as well. To do so, <code>theme_duke()</code> implements a minimalist design with a White background and grid lines removed. This decision reduces excessive noise in the plot, and instead allows audiences to focus on the story the data tells. This design is complemented by uniform font text and coloring across the entirety of the visualization. Titles, axes, captions, and more, are all in Duke Navy Blue because of its strong contrast from the White background. It has a contrast ratio of 14.76 with White, which is the third highest among all colors in the Duke extended palette.</p>
-<p>In addition, all text is in Atkinson-Hyperlegible font. Named after the founder of the Braille Institute, J. Robert Atkinson, the font uses “unambiguous, distinctive elements” to improve readability for individuals with vision impairment [9]. Its use - both in the package and all complimentary documentation - is essential to promoting vision accessibility. Font implementation was one of the most difficult challenges throughout the package development process. RStudio provides a limited suite of fonts, requiring users to download and load additional font families to their own system. On the individual-level, this is not too difficult. However, the process necessitates careful thought when building a package for community use. <em>How can users integrate quickly access the package’s required fonts? What font implementation will require minimal memory? Why is being transparent with users important?</em> We must closely consider these questions, among others, when adding font specification to <strong><em>duke</em></strong>.</p>
+<p>This function is largely inspired by the <code>theme()</code> function and its many derivatives. Its primary focus is to set the aesthetic elements for the visualization’s background and accessory features. These include the background color, grid lines, axis ticks, plot text, etc. With accessibility at the forefront of this project’s goals, it is essential that these choices lead to not only a visually pleasing result, but to one that is comprehensible as well. To do so, <code>theme_duke()</code> implements a minimalist design with a White background and grid lines removed. This decision reduces excessive noise in the plot, and instead allows audiences to focus on the story the data tells.</p>
+<p>This design is complemented by deliberate text specifications that ensure plot readability. The function applies uniform coloring for text across the entirety of the visualization. All possible text features of a ggplot (title, axes, caption, legend, etc.) are in in Duke Navy Blue because of its strong contrast to the White background. It has a contrast ratio of 14.76 with White, which is the third highest among all colors in the Duke extended palette. Sizing of major text elements is also handled carefully to promote legibility. Readers with color vision impairment and/or low vision benefit from larger text settings <span class="citation" data-cites="uncschoolofmedicine">(<a href="references.html#ref-uncschoolofmedicine" role="doc-biblioref">UNC School of Medicine, n.d.</a>)</span>. Rather than manually increasing text size, <code>theme_duke()</code> encodes text sizing relative to the scale of the visualization. In turn, text adjusts according to users’ manipulations of plot dimensions, guaranteeing that text is both appropriately large and adequately fit to the visualization.</p>
+<p>In addition, all text is in Atkinson-Hyperlegible font. Named after the founder of the Braille Institute, J. Robert Atkinson, the font uses “unambiguous, distinctive elements” to improve readability for individuals with vision impairment <span class="citation" data-cites="atkinson">(<a href="references.html#ref-atkinson" role="doc-biblioref"><span>“Atkinson Hyperlegible,”</span> n.d.</a>)</span>. Its use - both in the package and all complimentary documentation - is essential to promoting vision accessibility. Font implementation was one of the most difficult challenges throughout the package development process. RStudio provides a limited suite of fonts, requiring users to download and load additional font families to their own system. On the individual-level, this is not too difficult. However, the process necessitates careful thought when building a package for community use. <em>How can users integrate quickly access the package’s required fonts? What font implementation will require minimal memory? Why is being transparent with users important?</em> We must closely consider these questions, among others, when adding font specification to <strong>duke</strong>.</p>
 <p><strong>TO DO - Will know post meeting with Mine</strong> ** Explain font implementation, as well as what happens when users don’t have text</p>
 </section>
 <section id="scale_duke_continuous" class="level3" data-number="2.3.2">
 <h3 data-number="2.3.2" class="anchored" data-anchor-id="scale_duke_continuous"><span class="header-section-number">2.3.2</span> scale_duke_continuous()</h3>
 <p>This function integrates Duke’s official color palette into geometric objects (geom) that use a continuous scale. Examples of commonly used plots implementing continuous geom objects include scatter plots, heat maps, and jitter plots. The primary challenge of adopting a continuous color scale in a color blind friendly way is the lack of color distinction that naturally occurs. Continuous color scales are defined by a low and high end of a two color gradient, where the data assumes colors within this range based on its respective value. However, continuous plots do not need complete distinction to be successful. It is often most important that readers can identify overall trends in continuous plots.</p>
-<p>To optimize <code>scale_duke_continuous()</code> for users with impaired color vision, the continuous gradient must sequence from a dark to a light color [10]. This is crucial because the data will be plotted beginning on the darker end of the scale, which has a higher contrast with our White background. Therefore, our gradient scale defines its low end as Duke Royal Blue and its high end as Hatteras. Duke Royal Blue has a color contrast ratio of 7.75 with White, making it sufficiently distinguishable. This, in tandem with Duke’s recommendation to include Duke Royal or Navy Blue in all communications, makes it the ideal choice for the low end of the scale. Hatteras is a light grey with subtle violet undertones, making it a pleasing complement to Duke Royal Blue [11]. It is not highly distinct from the White background, but this is typical for the light extreme of continuous scales.</p>
+<p>To optimize <code>scale_duke_continuous()</code> for users with impaired color vision, the continuous gradient must sequence from a dark to a light color <span class="citation" data-cites="wilke">(<a href="references.html#ref-wilke" role="doc-biblioref">Wilke, n.d.</a>)</span>. This is crucial because the data will be plotted beginning on the darker end of the scale, which has a higher contrast with our White background. Therefore, our gradient scale defines its low end as Duke Royal Blue and its high end as Hatteras. Duke Royal Blue has a color contrast ratio of 7.75 with White, making it sufficiently distinguishable. This, in tandem with Duke’s recommendation to include Duke Royal or Navy Blue in all communications, makes it the ideal choice for the low end of the scale. Hatteras is a light grey with subtle violet undertones, making it a pleasing complement to Duke Royal Blue <span class="citation" data-cites="hatteras">(<a href="references.html#ref-hatteras" role="doc-biblioref"><span>“Hatteras Gray,”</span> n.d.</a>)</span>. It is not highly distinct from the White background, but this is typical for the light extreme of continuous scales.</p>
 </section>
 <section id="scale_duke_color_discrete-and-scale_duke_fill_discrete" class="level3" data-number="2.3.3">
 <h3 data-number="2.3.3" class="anchored" data-anchor-id="scale_duke_color_discrete-and-scale_duke_fill_discrete"><span class="header-section-number">2.3.3</span> scale_duke_color_discrete and scale_duke_fill_discrete</h3>
 <p>To implement a discrete scale from Duke’s official color palette, users can add <code>scale_duke_color_discrete</code> and <code>scale_duke_fill_discrete</code> to their visualizations. These functions provide a discrete palette that can be used for the color and fill parameters of ggplot geometric objects. An appropriate discrete palette is essential to creating user-friendly visualizations because its colors indicate distinct categories that exist in the data. Whereas continuous plots typically exhibit overall trends, discrete plots must be able to delineate effectively between specific groups. A majority of geom objects can incorporate a discrete scale, including bar plots, histograms, and density plots.</p>
 <p>As previously mentioned, this project observes color contrast ratio as the primary metric for determining colorblind friendly combinations. To identify visibly distinct colors for our discrete palette, we generate the contrast ratio between all pairing from the Duke color guide, with the addition of White since it is the background color. Using this data, we can generate a heat map to visually explore the contrast of the pairings.</p>
-<div class="quarto-figure quarto-figure-center">
+<div id="fig-heatmap-all" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="images/heatmap.png" class="img-fluid figure-img" width="500"></p>
-<p></p><figcaption class="figure-caption">Figure X: Heatmap of color contrast ratio between color pairings.</figcaption><p></p>
+<p><img src="images/heatmap_all.png" class="img-fluid figure-img" width="500"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;2.2: Heatmap of color contrast ratio between color pairings.</figcaption><p></p>
 </figure>
 </div>
 <p>Lighter tiles in the heat map indicate pairings with higher contrast ratios, which are preferred. Using the heatmap and data frame of ratios, we craft a palette that promotes accessibility and the Duke aesthetic. It is quickly evident that selecting eight colors all with pairing ratios compliant with WCAG is not be possible. While this is not ideal, visualization best practices recommend users limit their number of discrete categories. This lends to less busy plots that are more easily understandable. Thus, the goal of the our discrete palette is to carefully order colors so that those most used (those at beginning of palette) are most compliant. The result is the following palette:</p>
-<div class="quarto-figure quarto-figure-center">
+<div id="fig-palette" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="images/palette.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure X: Discrete palette. Colors (from left to right): Duke Navy Blue, Piedmont, Duke Royal Blue, Eno, Copper, Ironweed, Cast Iron, Persimmon</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;2.3: Discrete palette. Colors (from left to right): Duke Navy Blue, Piedmont, Copper, Duke Royal Blue, Eno, Persimmon, Dandelion, Cast Iron</figcaption><p></p>
 </figure>
 </div>
-<p>To ensure that this palette is accessible, we use the <code>colorblindr</code> package to visualize sample plots from the perspective of individuals with different types of color vision deficiency. There are several categorizations of CVD, yet the most common is red-green color blindness. As the name suggests, it makes it difficult for individuals to distinguish between red and green. Among this population, approximately 62.5% are deuteranomalous - meaning they have green-weak vision that makes green appear more red [12]. Protonopia and deuteraonopia prevent individuals from distinguishing between red and green at all, yet are far less prevalent at only 12.5% of the red-green colorblind population each [13].</p>
-<p>Red-green color blindness is by far the most common type, accounting for approximately 99% of those with CVD. For the purpose of creating a feasible project scope, we focus primarily on accessibility for those with red-green colorblindness. Future work on this project - or one with a similar goal - should investigate the feasibility of visualization accessibility for those with blue-yellow color blindess, monochromacy, etc.</p>
-<div class="quarto-figure quarto-figure-center">
+<p>While not perfectly compliant with WCAG guidelines, the palette achieves our goal of optimizing colorblind accessibility and representing the Duke brand. As seen in <a href="#fig-heatmap">Figure&nbsp;<span>2.4</span></a>, a majority of our color pairings meet at minimum the AA18 rating, as indicated by lighter tiles.</p>
+<div id="fig-heatmap" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/heatmap.png" class="img-fluid figure-img" width="500"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;2.4: Heatmap of color contrast ratio between final color pairings.</figcaption><p></p>
+</figure>
+</div>
+<p>The final palette includes the following colors: Duke Navy Blue, Piedmont, Copper, Duke Royal Blue, Eno, Persimmon, Dandelion and Cast Iron. Out the 28 distinct colors pairings that exist from this palette (excluding pairings of identical colors), 14 have a color contrast ratio of 3 or greater.This is compliant with WCAG’s AA18 rating, which specifies the use of larger text to be accessible. The colors from this palette will primarily be used to fill or color geometric objects in ggplot - rather than text - which offers complimentary features (ie. shape, larger areas, borders) that promote accessibility. Thus, we proceed under the assumption that an AA18 categorization is sufficient.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="tbl-ratios" class="anchored">
+
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:275px; "><table class="table table-striped" style="margin-left: auto; margin-right: auto;"><caption>Table&nbsp;2.2:  Color Contrast Ratios </caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;"> Color 1 </th>
+   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;"> Color 2 </th>
+   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;"> Contrast Ratio </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Dandelion </td>
+   <td style="text-align:left;"> Cast Iron </td>
+   <td style="text-align:right;"> 11.059041 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Dandelion </td>
+   <td style="text-align:left;"> Duke Navy Blue </td>
+   <td style="text-align:right;"> 10.785676 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Cast Iron </td>
+   <td style="text-align:left;"> Piedmont </td>
+   <td style="text-align:right;"> 6.698114 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Duke Navy Blue </td>
+   <td style="text-align:left;"> Piedmont </td>
+   <td style="text-align:right;"> 6.532546 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Cast Iron </td>
+   <td style="text-align:left;"> Persimmon </td>
+   <td style="text-align:right;"> 6.494391 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Duke Navy Blue </td>
+   <td style="text-align:left;"> Persimmon </td>
+   <td style="text-align:right;"> 6.333858 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Dandelion </td>
+   <td style="text-align:left;"> Duke Royal Blue </td>
+   <td style="text-align:right;"> 5.661465 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Cast Iron </td>
+   <td style="text-align:left;"> Eno </td>
+   <td style="text-align:right;"> 4.385449 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Duke Navy Blue </td>
+   <td style="text-align:left;"> Eno </td>
+   <td style="text-align:right;"> 4.277046 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Piedmont </td>
+   <td style="text-align:left;"> Duke Royal Blue </td>
+   <td style="text-align:right;"> 3.428972 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Dandelion </td>
+   <td style="text-align:left;"> Copper </td>
+   <td style="text-align:right;"> 3.376002 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Persimmon </td>
+   <td style="text-align:left;"> Duke Royal Blue </td>
+   <td style="text-align:right;"> 3.324680 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Cast Iron </td>
+   <td style="text-align:left;"> Copper </td>
+   <td style="text-align:right;"> 3.275781 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Duke Navy Blue </td>
+   <td style="text-align:left;"> Copper </td>
+   <td style="text-align:right;"> 3.194808 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Dandelion </td>
+   <td style="text-align:left;"> Eno </td>
+   <td style="text-align:right;"> 2.521758 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Eno </td>
+   <td style="text-align:left;"> Duke Royal Blue </td>
+   <td style="text-align:right;"> 2.245047 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Piedmont </td>
+   <td style="text-align:left;"> Copper </td>
+   <td style="text-align:right;"> 2.044738 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Persimmon </td>
+   <td style="text-align:left;"> Copper </td>
+   <td style="text-align:right;"> 1.982548 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Cast Iron </td>
+   <td style="text-align:left;"> Duke Royal Blue </td>
+   <td style="text-align:right;"> 1.953388 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Duke Navy Blue </td>
+   <td style="text-align:left;"> Duke Royal Blue </td>
+   <td style="text-align:right;"> 1.905103 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Dandelion </td>
+   <td style="text-align:left;"> Persimmon </td>
+   <td style="text-align:right;"> 1.702860 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Copper </td>
+   <td style="text-align:left;"> Duke Royal Blue </td>
+   <td style="text-align:right;"> 1.676973 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Dandelion </td>
+   <td style="text-align:left;"> Piedmont </td>
+   <td style="text-align:right;"> 1.651068 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Piedmont </td>
+   <td style="text-align:left;"> Eno </td>
+   <td style="text-align:right;"> 1.527350 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Persimmon </td>
+   <td style="text-align:left;"> Eno </td>
+   <td style="text-align:right;"> 1.480895 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Copper </td>
+   <td style="text-align:left;"> Eno </td>
+   <td style="text-align:right;"> 1.338749 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Persimmon </td>
+   <td style="text-align:left;"> Piedmont </td>
+   <td style="text-align:right;"> 1.031369 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Cast Iron </td>
+   <td style="text-align:left;"> Duke Navy Blue </td>
+   <td style="text-align:right;"> 1.025345 </td>
+  </tr>
+</tbody>
+</table></div>
+
+</div>
+</div>
+</div>
+<p><br> To ensure that this palette is accessible, we use the <code>colorblindr</code> package to visualize sample plots from the perspective of individuals with different types of color vision deficiency. There are several categorizations of CVD, yet the most common is red-green color blindness. As the name suggests, it makes it difficult for individuals to distinguish between red and green. Among this population, approximately 62.5% are deuteranomalous - meaning they have green-weak vision that makes green appear more red <span class="citation" data-cites="woods2021">(<a href="references.html#ref-woods2021" role="doc-biblioref">Woods 2021a</a>)</span>. Protonopia and deuteraonopia prevent individuals from distinguishing between red and green at all, yet are far less prevalent at only 12.5% of the red-green colorblind population each <span class="citation" data-cites="woods2021a">(<a href="references.html#ref-woods2021a" role="doc-biblioref">Woods 2021b</a>)</span>.</p>
+<p>Red-green color blindness is by far the most common type, accounting for approximately 99% of those with CVD. For the purpose of creating a feasible project scope, we focus primarily on accessibility for those with red-green colorblindness. Future work on this project - or one with a similar goal - should investigate the feasibility of visualization accessibility for those with blue-yellow color blindness, monochromacy, etc.</p>
+<div id="fig-scatter" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="images/deut_comp.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure X: Sample scatter plot from true perspective (left) and deuteranomalous perspective (right) using colorblindr package.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;2.5: Sample scatter plot from true perspective (left) and deuteranomalous perspective (right) using colorblindr package.</figcaption><p></p>
 </figure>
 </div>
 </section>
 </section>
 <section id="lessons-learned" class="level2" data-number="2.4">
 <h2 data-number="2.4" class="anchored" data-anchor-id="lessons-learned"><span class="header-section-number">2.4</span> Lessons Learned</h2>
-<pre><code>-   Importance of creating test cases (testthat files)
-
-    -   Use of cover package
-
--   iterative process --\&gt; identify issues immediately and address them
-
--   engage with existing resources/packages
-
-      -   drew a lot from other theme/scale_color functionalities</code></pre>
-</section>
-<section id="references" class="level2" data-number="2.5">
-<h2 data-number="2.5" class="anchored" data-anchor-id="references"><span class="header-section-number">2.5</span> References</h2>
-<pre><code>1.  https://brand.duke.edu/colors/
-2.  Ibid
-3.  https://www.techopedia.com/definition/29788/color-hex-code
-4.  https://www.sciencedirect.com/topics/engineering/hexadecimal
-5.  https://www.w3.org/TR/UNDERSTANDING-WCAG20/intro.html#introduction-fourprincs-head
-6. &lt;https://programmingdesignsystems.com/color/perceptually-uniform-color-spaces/&gt;
-7. https://www.accessibility-developer-guide.com/knowledge/colours-and-contrast/how-to-calculate/
-8. https://www.w3.org/TR/WCAG20/#relativeluminancedef
-9. ibid
-9. https://fonts.google.com/specimen/Atkinson+Hyperlegible/about
-10. https://clauswilke.com/dataviz/color-pitfalls.html
-11. https://www.ppgpaints.com/color/color-families/neutrals/hatteras-gray
-12. https://www.allaboutvision.com/conditions/color-blindness/types-of-color-blindness/
-13. ibid</code></pre>
+<p>The package development process can be daunting; I know it was for me. The excess of package dependencies, function documentation, and test scripts quickly becomes complex and overwhelming, making it all the more important to approach the process properly informed. Here are some lessons I learned throughout the process and takeaways for success in package development:</p>
+<p><strong>1. Package development is an iterative process, take your time.</strong> It is crucial that you approach each step in building your package with care - even those that are mundane. I often found myself skipping ahead to more attractive tasks like constructing a new function, leaving tedious but important tasks like documentation behind. This typically resulted in errors when checking my package. And they were increasingly harder to address when time had passed since I last worked on it. The process is far smoother when you continuously check for issues and address them immediately, rather than put them on the back-burner. It will save you fromwasted time and frustration, so make sure to lean into the iterative style of package development.</p>
+<p><strong>2. The devtools package is your best friend.</strong> The <code>devtools</code> package is inherent to the package development process, but the way you use it can make all the difference. The <a href="https://r-pkgs.org">R Package (2e)</a> textbook was an integral resource for learning when and how to use the various functions of <code>devtools</code>. It details the order you should use its functions to load your package, create necessary documentation and vignettes, check for existing errors, and eventually build your package. While it may seem minor, memorize the shortcuts for the primary functions of <code>devtools</code> (load_all(), check(), document()). Over time, they will save you a significant amount of time and make your package development process more efficient.</p>
+<p><strong>3. Engage with existing resources online and collaborate with others.</strong> A common misconception in building new packages is that it is an entirely individual undertaking. I identified colorblind accessibility in the Duke data visualization as a unique and necessary problem to address, in turn, inspiring the <strong>duke</strong> package. At first, I thought that this meant I would and <strong><em>should</em></strong> construct the package on my own. This could not be further from the truth. As a package intended to be integrated into ggplot2 visualizations, <strong>duke</strong> shares many of the same functionalities as those in theme() and scale(). These existing resources demonstrated how to create the general structures of my functions, which then I could adapt to implement Duke’s official palette, a minimalist background aesthetic, etc. The “worth” of your package is not defined by its lack in crossover with other packages existing; therefore, make sure to engage with the resources at your disposal. I recommend you explore existing packages on <a href="https://github.com">Github</a>, troubleshoot package issues by asking questions in the <a href="https://community.rstudio.com">Posit community</a>, and find answers to difficult questions already asked on <a href="https://stackoverflow.com">StackOverflow</a>.</p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
+<div id="ref-atkinson" class="csl-entry" role="doc-biblioentry">
+<span>“Atkinson Hyperlegible.”</span> n.d. <a href="https://fonts.google.com/specimen/Atkinson+Hyperlegible">https://fonts.google.com/specimen/Atkinson+Hyperlegible</a>.
+</div>
+<div id="ref-colors" class="csl-entry" role="doc-biblioentry">
+<span>“Colors.”</span> n.d.a. <a href="https://brand.duke.edu/colors/">https://brand.duke.edu/colors/</a>.
+</div>
+<div id="ref-colorsa" class="csl-entry" role="doc-biblioentry">
+———. n.d.b. <a href="https://brand.duke.edu/colors/">https://brand.duke.edu/colors/</a>.
+</div>
+<div id="ref-hatteras" class="csl-entry" role="doc-biblioentry">
+<span>“Hatteras Gray.”</span> n.d. <a href="https://www.ppgpaints.com/color/color-families/neutrals/hatteras-gray">https://www.ppgpaints.com/color/color-families/neutrals/hatteras-gray</a>.
+</div>
+<div id="ref-howtoc2019" class="csl-entry" role="doc-biblioentry">
+<span>“How to Calculate Colour Contrast.”</span> 2019. <a href="https://www.accessibility-developer-guide.com/knowledge/colours-and-contrast/how-to-calculate">https://www.accessibility-developer-guide.com/knowledge/colours-and-contrast/how-to-calculate</a>.
+</div>
+<div id="ref-introduc" class="csl-entry" role="doc-biblioentry">
+<span>“Introduction to Understanding WCAG 2.0 | Understanding WCAG 2.0.”</span> n.d. <a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/intro.html#introduction-fourprincs-head">https://www.w3.org/TR/UNDERSTANDING-WCAG20/intro.html#introduction-fourprincs-head</a>.
+</div>
+<div id="ref-iyer2020a" class="csl-entry" role="doc-biblioentry">
+Iyer, Luc. 2020. <span>“Euclidian Distance in RGB Color / Luc Iyer | Observable.”</span> <a href="https://observablehq.com/@luciyer/euclidian-distance-in-rgb-color-space">https://observablehq.com/@luciyer/euclidian-distance-in-rgb-color-space</a>.
+</div>
+<div id="ref-madsen" class="csl-entry" role="doc-biblioentry">
+Madsen, Rune. n.d.a. <span>“Perceptually Uniform Color Spaces - Programming Design Systems.”</span> <a href="https://programmingdesignsystems.com/color/perceptually-uniform-color-spaces/">https://programmingdesignsystems.com/color/perceptually-uniform-color-spaces/</a>.
+</div>
+<div id="ref-madsena" class="csl-entry" role="doc-biblioentry">
+———. n.d.b. <span>“Perceptually Uniform Color Spaces - Programming Design Systems.”</span> <a href="https://programmingdesignsystems.com/color/perceptually-uniform-color-spaces/">https://programmingdesignsystems.com/color/perceptually-uniform-color-spaces/</a>.
+</div>
+<div id="ref-rouse2021" class="csl-entry" role="doc-biblioentry">
+Rouse, Margaret. 2021. <span>“Color Hex Code.”</span> <a href="https://www.techopedia.com/definition/29788/color-hex-code">https://www.techopedia.com/definition/29788/color-hex-code</a>.
+</div>
+<div id="ref-uncschoolofmedicine" class="csl-entry" role="doc-biblioentry">
+UNC School of Medicine. n.d. <span>“Using Accessible Web Colors.”</span> <a href="https://uncch.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=57624079-8af2-481d-be42-ace100e9b5ef">https://uncch.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=57624079-8af2-481d-be42-ace100e9b5ef</a>.
+</div>
+<div id="ref-webcont" class="csl-entry" role="doc-biblioentry">
+<span>“Web Content Accessibility Guidelines (WCAG) 2.0.”</span> n.d.a. <a href="https://www.w3.org/TR/WCAG20/#relativeluminancedef">https://www.w3.org/TR/WCAG20/#relativeluminancedef</a>.
+</div>
+<div id="ref-webconta" class="csl-entry" role="doc-biblioentry">
+———. n.d.b. <a href="https://www.w3.org/TR/WCAG20/#relativeluminancedef">https://www.w3.org/TR/WCAG20/#relativeluminancedef</a>.
+</div>
+<div id="ref-wilke" class="csl-entry" role="doc-biblioentry">
+Wilke, Claus. n.d. <span>“Fundamentals of Data Visualization.”</span> <a href="https://clauswilke.com/dataviz/color-pitfalls.html">https://clauswilke.com/dataviz/color-pitfalls.html</a>.
+</div>
+<div id="ref-woods2021" class="csl-entry" role="doc-biblioentry">
+Woods, Rob. 2021a. <span>“Types of Color Blindness.”</span> <a href="https://www.allaboutvision.com/conditions/color-blindness/types-of-color-blindness/">https://www.allaboutvision.com/conditions/color-blindness/types-of-color-blindness/</a>.
+</div>
+<div id="ref-woods2021a" class="csl-entry" role="doc-biblioentry">
+———. 2021b. <span>“Types of Color Blindness.”</span> <a href="https://www.allaboutvision.com/conditions/color-blindness/types-of-color-blindness/">https://www.allaboutvision.com/conditions/color-blindness/types-of-color-blindness/</a>.
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->
@@ -492,92 +694,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {

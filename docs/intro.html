@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.208">
+<meta name="generator" content="quarto-1.2.269">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,6 +19,25 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
+}
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
 }
 </style>
 
@@ -68,16 +87,11 @@ ul.task-list li input[type="checkbox"] {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a></li></ol></nav>
-      <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
       </button>
     </div>
   </nav>
@@ -85,17 +99,17 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Promoting Accessibility in Duke Data Visualization</a> 
     </div>
       </div>
-        <div class="mt-2 flex-shrink-0 align-items-center">
+      <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-        </div>
+      </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
@@ -120,12 +134,17 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./discussion.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Discussion</span></a>
+  <a href="./palmers.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Package Use</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./about.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">About</span></a>
+  <a href="./analysis.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Case Study</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./discussion.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Discussion</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -136,14 +155,13 @@ ul.task-list li input[type="checkbox"] {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#personal-motivation" id="toc-personal-motivation" class="nav-link active" data-scroll-target="#personal-motivation"><span class="toc-section-number">1.1</span>  Personal Motivation</a></li>
+  <li><a href="#motivation" id="toc-motivation" class="nav-link active" data-scroll-target="#motivation"><span class="toc-section-number">1.1</span>  Motivation</a></li>
   <li><a href="#background" id="toc-background" class="nav-link" data-scroll-target="#background"><span class="toc-section-number">1.2</span>  Background</a></li>
   <li><a href="#thesis-goal" id="toc-thesis-goal" class="nav-link" data-scroll-target="#thesis-goal"><span class="toc-section-number">1.3</span>  Thesis Goal</a></li>
   </ul>
@@ -154,7 +172,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></h1>
 </div>
 
 
@@ -169,25 +187,41 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>In nearly all disciplines, there is an increasing push to promote accessibility. Data visualization should be no different. The goal of this book is to detail the motivations, development, and use of the <strong><em>duke</em></strong> package. By the end of “Promoting Accessibility in Duke Data Visualization,” you should be sufficiently informed on how to create official Duke visualizations in a colorblind friendly way.</p>
-<section id="personal-motivation" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="personal-motivation"><span class="header-section-number">1.1</span> Personal Motivation</h2>
-<p>The typical format of an undergraduate thesis was daunting to me. I was not sure that an 80+ page paper with all the academic fixings - literature review, methodology, etc - was of interest to me. This was particularly true because a pertinent research topic did not come to mind. I had previously completed research in national nutritional and food policy, but could not identify a way to translate it into a senior thesis. Therefore, when the Duke Statistics department emphasized their openness to “non-traditional” theses, I was intrigued.</p>
-<p>After meeting with my soon-to-be adviser, Dr.&nbsp;Mine Çetinkaya-Rundel, we identified a valuable intersection in data visualization and package development: colorblind accessibility. As our use of data increasingly permeates all aspects of society, it is crucial that we integrate accessibility and inclusivity into our data visualization best practices. We must continuously consider questions like: Who is our audience? How can we make our visualizations more intelligible? Who might we be leaving behind? This thesis aims to empower users right here in the Duke community to more easily answer these questions. By developing an R package that allows for the creation of Duke official visualizations in a colorblind friendly way, we can begin to make accessibility a core tenet of data visualization.</p>
+<p>In nearly all disciplines, there is an increasing push to promote accessibility. Data visualization should be no different. The goal of this book is to detail the motivations, development, and use of the <strong>duke</strong> package. By the end of “Promoting Accessibility in Duke Data Visualization,” you should be sufficiently informed on how to create official Duke visualizations in a colorblind friendly way.</p>
+<section id="motivation" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="motivation"><span class="header-section-number">1.1</span> Motivation</h2>
+<p>My interest in writing an undergraduate thesis is centered on two goals: 1) identifying a material issue and 2) addressing it with a tangible solution. The Duke Statistics Department’s openness to “non-traditional” theses made achieving both a possibility. R packages tailored towards organization or company branding are quite common. The <a href="https://github.com/ricardo-bion/ggtech"><strong>ggtech</strong></a> package allows users to incorporate colors representative of the Airbnb, Facebook, and Google brands, among many others, in their visualizations. Users can also transform their visualizations to have aesthetic features aligned with The Economist and The Wall Street Journal brands via the <a href="https://github.com/jrnold/ggthemes"><strong>ggthemes</strong></a> package. These are just a few examples of how an R package can auto-theme ggplot visualizations to meet the branding requirements of a company. Only requiring a few functions, brand styling functions are easy-to-use yet very effective, making it an advantageous resource for companies to promote their brand.</p>
+<p>With over 17,000 students, 38,000 employees, $1 billion annually in research expenditures, and six campuses, Duke University’s identity literally spans the globe <span class="citation" data-cites="dukeresearchinnovation">(<a href="references.html#ref-dukeresearchinnovation" role="doc-biblioref">Duke Research &amp; Innovation, n.d.</a>)</span>. And still, there exists no package to automate the process of making ggplot visualizations representative of the Duke brand. It is an important need that has yet to be met and can only be in addressed via package development. By learning the skill of package development to create a new Duke branding package, <strong>duke</strong>, I successfully meet my thesis criterion of 1) identifying a significant issue and 2) solving it with a real solution.</p>
+<p>To best represent and communicate the Duke brand; however, the <strong>duke</strong> package must cater to the largest possible audience. Thus, this project also centers on an important consideration in data visualization and branding package development: colorblind accessibility. As our use of data increasingly permeates all aspects of society, it is crucial that we integrate accessibility and inclusivity into our data visualization best practices. We must continuously consider questions like: Who is our audience? How can we make our visualizations more intelligible? Who might we be leaving behind? This thesis aims to empower users right here in the Duke community to more easily answer these questions. By developing an R package that allows for the creation of Duke official visualizations in a colorblind friendly way, we can begin to make accessibility a core tenet of data visualization.</p>
 </section>
 <section id="background" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="background"><span class="header-section-number">1.2</span> Background</h2>
-<p>There are approximately 300 million color blind people across the globe. Approximately 1 in 12 men (8%) and 1 in 200 women (0.5%) are affected. More properly known as Color Vision Deficiency, or CVD, the condition is primarily inherited genetically but can also be acquired due to other chronic conditions such as diabetes. With the data visualization industry expected to nearly double by 2026, its application will further become a mainstay in fields like marketing, research, public health, and journalism. More people will be interacting with data visualization than ever before – both on the creator and user ends – therefore, it is crucial that it becomes increasingly accessible to those with CVD.</p>
-<p>R packages that implement color blind friendly palettes already exist; however, this project aims to construct a package that makes Duke’s color palette more accessible. Duke provides a detailed description of its official [color suite] (https://brand.duke.edu/colors/) and stresses its commitment to meeting Web Content Accessibility Guidelines (WCAG). The WCAG are globally recognized as the standard for web accessibility best practices in all fields. Duke details their color combinations that are compliant, but does not offer a simple way to integrate the information into data visualizations.</p>
-<p>By establishing a package that allows users to easily integrate Duke’s style guide with color blind friendly adjustments, we can improve the accessibility of Duke related visualizations. The implementation of this package will be an effective step toward accessibility in the Duke community, and hopefully, will prompt future work on making data visualization more inclusive.</p>
+<p>There are approximately 300 million color blind people across the globe <span class="citation" data-cites="aboutcoa">(<a href="references.html#ref-aboutcoa" role="doc-biblioref"><span>“About Colour Blindness,”</span> n.d.a</a>)</span>. Approximately 1 in 12 men (8%) and 1 in 200 women (0.5%) are affected <span class="citation" data-cites="aboutcob">(<a href="references.html#ref-aboutcob" role="doc-biblioref"><span>“About Colour Blindness,”</span> n.d.b</a>)</span>. More properly known as Color Vision Deficiency, or CVD, the condition is primarily inherited genetically but can also be acquired due to other chronic conditions such as diabetes. With the data visualization industry expected to nearly double by 2026, its application will further become a mainstay in fields like marketing, research, public health, and journalism <span class="citation" data-cites="vissichelli2022">(<a href="references.html#ref-vissichelli2022" role="doc-biblioref">Vissichelli 2022</a>)</span>. More people will be interacting with data visualization than ever before – both on the creator and reader ends – therefore, it is crucial that it is increasingly accessible to those with CVD.</p>
+<p>R packages that implement color blind friendly palettes already exist, but this project is unique in its aim to construct a package that makes Duke’s color palette more accessible. Duke provides a detailed description of its official <a href="https://brand.duke.edu/colors/">color suite</a> and stresses its commitment to meeting the Web Content Accessibility Guidelines (WCAG). The WCAG are globally recognized as the standard for web accessibility best practices in all fields <span class="citation" data-cites="initiative">(<a href="references.html#ref-initiative" role="doc-biblioref">Initiative, n.d.</a>)</span>. Duke details which color combinations from their suite are compliant, but does not offer a simple way to integrate the information into data visualizations.</p>
+<p>The <strong>duke</strong> package intends to fill this need. For Duke community members, the package will allow for easy integration of key aesthetic and geometric features that will make their visualizations clean, Duke branded, and accessible. Given that the Statistics curriculum at Duke primarily uses <a href="https://github.com/tidyverse/ggplot2"><strong>ggplot2</strong></a> for visualization, <strong>duke</strong> will be focused on being compatible with its functionality. By establishing a package that allows users to easily integrate Duke’s style guide with color blind friendly adjustments, we can improve the accessibility of Duke related visualizations. The implementation of this package will be an effective step toward accessibility in the Duke community, and hopefully, will prompt future work on making data visualization more inclusive.</p>
 </section>
 <section id="thesis-goal" class="level2" data-number="1.3">
 <h2 data-number="1.3" class="anchored" data-anchor-id="thesis-goal"><span class="header-section-number">1.3</span> Thesis Goal</h2>
-<p><strong>Empower Duke users to create color-blind friendly visualizations by constructing an R color package.</strong></p>
-<p>Reference</p>
-<p>https://www.w3.org/WAI/standards-guidelines/wcag/</p>
+<p><strong>Empower users to create Duke branded and color-blind friendly visualizations by constructing an R color package.</strong></p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
+<div id="ref-aboutcoa" class="csl-entry" role="doc-biblioentry">
+<span>“About Colour Blindness.”</span> n.d.a. <a href="https://www.colourblindawareness.org/colour-blindness/">https://www.colourblindawareness.org/colour-blindness/</a>.
+</div>
+<div id="ref-aboutcob" class="csl-entry" role="doc-biblioentry">
+———. n.d.b. <a href="https://www.colourblindawareness.org/colour-blindness/">https://www.colourblindawareness.org/colour-blindness/</a>.
+</div>
+<div id="ref-dukeresearchinnovation" class="csl-entry" role="doc-biblioentry">
+Duke Research &amp; Innovation. n.d. <span>“Annual Report 21<span></span>22.”</span> <a href="https://report.research.duke.edu/">https://report.research.duke.edu/</a>.
+</div>
+<div id="ref-initiative" class="csl-entry" role="doc-biblioentry">
+Initiative, W3C Web Accessibility. n.d. <span>“WCAG 2 Overview.”</span> <a href="https://www.w3.org/WAI/standards-guidelines/wcag/">https://www.w3.org/WAI/standards-guidelines/wcag/</a>.
+</div>
+<div id="ref-vissichelli2022" class="csl-entry" role="doc-biblioentry">
+Vissichelli, Lisa. 2022. <span>“Blooming Bar Charts: The Growth of the Data Visualization Industry.”</span> <a href="https://uxdesign.cc/blooming-bar-charts-the-growth-of-the-data-visualization-industry-5095c59a17fb">https://uxdesign.cc/blooming-bar-charts-the-growth-of-the-data-visualization-industry-5095c59a17fb</a>.
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->
@@ -285,92 +319,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
