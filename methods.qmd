@@ -184,7 +184,9 @@ The result is the following palette:
 While not perfectly compliant with WCAG guidelines, the palette achieves our goal of optimizing colorblind accessibility and representing the Duke brand.
 As seen in Figure X, a majority of our color pairings meet at minimum the AA18 rating, as indicated by lighter tiles.
 
-![Figure X: Heatmap of color contrast ratio between final color pairings.](images/heatmap.png){width="500"} The final palette includes the following colors: Duke Navy Blue, Piedmont, Copper, Duke Royal Blue, Eno, Persimmon, Dandelion and Cast Iron.
+![Figure X: Heatmap of color contrast ratio between final color pairings.](images/heatmap.png){width="500"} 
+
+The final palette includes the following colors: Duke Navy Blue, Piedmont, Copper, Duke Royal Blue, Eno, Persimmon, Dandelion and Cast Iron.
 Out the 28 distinct colors pairings that exist from this palette (excluding pairings of identical colors), 14 have a color contrast ratio of 3 or greater.This is compliant with WCAG's AA18 rating, which specifies the use of larger text to be accessible.
 The colors from this palette will primarily be used to fill or color geometric objects in ggplot - rather than text - which offers complimentary features (ie. shape, larger areas, borders) that promote accessibility.
 Thus, we proceed under the assumption that an AA18 categorization is sufficient.

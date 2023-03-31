@@ -2,19 +2,21 @@
 
 In nearly all disciplines, there is an increasing push to promote accessibility.
 Data visualization should be no different.
-The goal of this book is to detail the motivations, development, and use of the ***duke*** package.
+The goal of this book is to detail the motivations, development, and use of the **duke** package.
 By the end of "Promoting Accessibility in Duke Data Visualization," you should be sufficiently informed on how to create official Duke visualizations in a colorblind friendly way.
 
-## Personal Motivation
+## Motivation
 
+My interest in writing an undergraduate thesis is centered on two goals: 1) identifying a material issue and 2) addressing it with a tangible solution.
+The Duke Statistics Departments openness to "non-traditional" theses made achieving both a possibility.
+R packages tailored towards organization or company branding are quite common.
+The [**ggtech**](https://github.com/ricardo-bion/ggtech) package allows users to incorporate colors representative of the Airbnb, Facebook, and Google brands, among many others.
+Users can also convert their visualizations to have aesthetic features aligned with The Economist and The Wall Street Journal brands via the [**ggthemes**](https://github.com/jrnold/ggthemes) package.
+These are just a few examples of how an R package can auto-theme ggplot visualizations to meet the branding requirements of a company. Only requiring a few functions, brand styling functions are easy-to-use yet very effective, making it an advantageous resource for companies to promote their brand. 
 
-(CHANGE WORDING)When first considering an undergraduate thesis, I found the typical format of an undergraduate thesis was daunting to me.
-I was not sure that an 80+ page paper with all the academic fixings - literature review, methodology, etc - was of interest to me.
-This was particularly true because a pertinent research topic did not immediately come to mind.
-I had previously completed research in national nutritional and food policy, but could not identify a way to translate it into a senior thesis.
-Therefore, when the Duke Statistics department emphasized their openness to "non-traditional" theses, I was intrigued.
+With over 17,000 students, 38,000 employees, $1 billion annually in research expenditures, and six campuses, Duke University's identity literally spans the globe [source](https://report.research.duke.edu). And still, there exists no package to automate the process of making ggplot visualizations representative of the Duke is brand. It is an important need that has yet to be met and can only be in addressed via package development. By learning the skill of package development to create a new Duke branding package, **duke**, I successfully meet my thesis criterion of 1) identifying a significant issue and 2) solving it with a real solution. 
 
-After meeting with my soon-to-be adviser, Dr. Mine Çetinkaya-Rundel, we identified a valuable intersection in data visualization and package development: colorblind accessibility.
+To best represent and communicate the Duke brand; however, the **duke** package must cater to the largest possible audience. Thus, this project also centers on an important consideration in data visualization and branding package development: colorblind accessibility.
 As our use of data increasingly permeates all aspects of society, it is crucial that we integrate accessibility and inclusivity into our data visualization best practices.
 We must continuously consider questions like: Who is our audience?
 How can we make our visualizations more intelligible?
@@ -23,7 +25,6 @@ This thesis aims to empower users right here in the Duke community to more easil
 By developing an R package that allows for the creation of Duke official visualizations in a colorblind friendly way, we can begin to make accessibility a core tenet of data visualization.
 
 ## Background
-
 
 There are approximately 300 million color blind people across the globe [@aboutco].
 Approximately 1 in 12 men (8%) and 1 in 200 women (0.5%) are affected [2](https://www.colourblindawareness.org/colour-blindness/).

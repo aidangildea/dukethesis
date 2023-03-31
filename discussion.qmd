@@ -4,27 +4,32 @@ The *duke* package allows users to transform their visualizations so that they a
 
 ## Colorblind Accessibility Best Practices
 
-*Idea 1* "Get it right in black and white"
-    - "add icons, directional arrows, labels, annotations, or other indicators that would allow a person with CVD to see that something is bad (red) vs. good (green)" [source](https://www.tableau.com/blog/examining-data-viz-rules-dont-use-red-green-together)
-    - "The best way to ensure that people will be able to fully comprehend your plot is to eliminate the need for distinguishable colors altogether, by using something else to differentiate the data series in it." [source](https://towardsdatascience.com/two-simple-steps-to-create-colorblind-friendly-data-visualizations-2ed781a167ec)
-    - "For line plots, you can use different line patterns and/or varying line widths, in addition to different colors." [source](https://towardsdatascience.com/two-simple-steps-to-create-colorblind-friendly-data-visualizations-2ed781a167ec)
-    - "bar or pie charts, I recommend applying different fill textures." -->  for maps too! 
-  [source](https://towardsdatascience.com/two-simple-steps-to-create-colorblind-friendly-data-visualizations-2ed781a167ec)
-    - "Get it right in black and white" [source](https://blog.datawrapper.de/colorblindness-part2/)
-    - if you mix light and dark, then even if viz was in black and white, users could differentiate between them
-    - "Consider using symbols in tables, shapes in scatterplots, patterns in maps, and dotted lines in line charts." [source](https://blog.datawrapper.de/colorblindness-part2/)
-    - direct labels on lines, points, pie charts, etc
-*These adaptations are more accessible for colorblind, but for older folks, those reading in low light, those with low technical/stat exposure*
-  
+**Keep It Simple**
 
-*Idea 2* "Play it safe"
-    - Clean minimal design is used in the package
-        - try to channel that thinking into how you design your plot
-        - what is the story you are telling? how can you most succinctly visualize it? 
-    - You can also color only the most important values to reduce colors. Ask yourself: What’s most important about your data? What are the one or two insights that your readers should take away?
-    - "make sure most important values stand out and are distinguishable by all your readers, including colorblind ones. Then tone down the other ones or group them." [source](https://blog.datawrapper.de/colorblindness-part2/)
-    - *play it safe* --> "when designing a scatter plot with different color dots, make sure the dots are either large, spaced out, or have a wide range of intensities (light green, dark red" --> spacing out seems important [source](https://insightsoftware.com/blog/visualizing-for-the-color-blind/)
-    - package allows for up to 8 discrete colors, but limiting categories is best, allows users to clearly differentiate.
+The **duke** package selects a simple thematic design as to not distract from the key takeaways of the data visualization. It is in this vein that you should constantly consider how you can more succinctly convey the insights from your data. While the **duke** discrete palette allows for up to eight distinct colors, you should always strive to minimize the number of dimensions in your plots. Reducing the number of categories present in your visualizations is not only a best practice for colorblind accessibility. It also allows all users to more effectively differentiate between  distinctions in the data and quickly comprehend the primary takeaways. 
+
+To reduce plot complexity, ask questions like: What do I need to highlight in the data? What are the primary insights readers should understand? This thought process will reveal what characteristics and/or categories must stand out and allow you to direct your attention on making them clear - especially for colorblind readers. Inversely, you can identify data groups that are insignificant to your goal and combine them into a single category, in turn, eliminating the need for excess colors. By keeping it simple in data visualization, you can be more confident that your audience will both comprehend and appreciate the story of your data visualization. 
+
+**De-Emphasize the Need for Color**
+
+The **duke** package allows users to integrate a more colorblind friendly palette into their visualizations; however, this is not the end-all solution. There are several other plot features present in **ggplot** that alleviate the need for the color palette to be perfectly distinguishable - or in some cases - be used at all. Essentially, if you "get it right in black and white", you no longer have to worry about access issues for colorblind readers [source](https://blog.datawrapper.de/colorblindness-part2/). This can be done by adding, "icons, directional arrows, labels, annotations, or other indicators" that differentiate between different categories [source](https://www.tableau.com/blog/examining-data-viz-rules-dont-use-red-green-together). 
+
+Here are a few examples of how these supplementary features can improve the accessibility of visualizations using the **duke** package. 
+
+Scatterplots can quickly become difficult to read when there a several distinct categories in the data. To improve your plot's readability, consider adding shapes to your data points.
+
+[insert scatterplot with shapes] 
+
+For geometric objects with large fill spaces (ie. bar plot, pie chart), the use of the colorblind friendly palettes can be effective on its own. Nevertheless, adding fill textures to your visualization is an effective way to increase plot clarity.
+
+[insert bar plot with fill texture]
+
+Finally, the efficacy of color in line plots deteriorates as the number of categories increases and/or the lines are intersecting. By varying the patterns and widths of the lines in your plot, your visualization can more effectively convey trend differences. 
+
+[insert line plot with line patterns]
+
+The use of these complimentary features - among many others - are easy and effective. By integrating them alongside the **duke** package, you can promote accessibility for not only colorblind individuals, but older readers, audiences with lower technical exposure, and people reading in low light. 
+
 
 *Idea 3* Adjust when necessary. Some features of this package may not be perfect for you, so adapt them!
     - Text is scaled in package
