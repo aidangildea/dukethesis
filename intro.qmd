@@ -1,18 +1,22 @@
 # Introduction
 
+> Accessible design is good design -- it benefits people who don\'t have disabilities as well as people who do.
+> Accessibility is all about removing barriers and providing the benefits for everyone.
+>
+> Steve Ballmer, former Microsoft CEO (2000-2014)
+
 In nearly all disciplines, there is an increasing push to promote accessibility.
 Data visualization should be no different.
-The goal of this book is to detail the motivations, development, and use of the **duke** package.
-By the end of "Promoting Accessibility in Duke Data Visualization," you should be sufficiently informed on how to create official Duke visualizations in a colorblind friendly way.
+The goal of this thesis is to detail the motivations, development, and use of the [**duke**](https://aidangildea.github.io/duke/) package.
+By the end of "Promoting Accessibility in Duke Data Visualization," you should be sufficiently informed on how to create colorblind-friendly visualizations with colors that conform to Duke branding guidelines.
 
 ## Motivation
 
 My interest in writing an undergraduate thesis is centered on two goals: 1) identifying a material issue and 2) addressing it with a tangible solution.
-The Duke Statistics Department's openness to "non-traditional" theses made achieving both a possibility.
 R packages tailored towards organization or company branding are quite common.
 The [**ggtech**](https://github.com/ricardo-bion/ggtech) package allows users to incorporate colors representative of the Airbnb, Facebook, and Google brands, among many others, in their visualizations.
 Users can also transform their visualizations to have aesthetic features aligned with The Economist and The Wall Street Journal brands via the [**ggthemes**](https://github.com/jrnold/ggthemes) package.
-These are just a few examples of how an R package can auto-theme ggplot visualizations to meet the branding requirements of a company.
+These are just a couple of examples of how an R package can auto-theme ggplot visualizations to meet the branding requirements of a company.
 Only requiring a few functions, brand styling functions are easy-to-use yet very effective, making it an advantageous resource for companies to promote their brand.
 
 With over 17,000 students, 38,000 employees, \$1 billion annually in research expenditures, and six campuses, Duke University's identity literally spans the globe [@dukeresearchinnovation].
@@ -47,7 +51,3 @@ For Duke community members, the package will allow for easy integration of key a
 Given that the Statistics curriculum at Duke primarily uses [**ggplot2**](https://github.com/tidyverse/ggplot2) for visualization, **duke** will be focused on being compatible with its functionality.
 By establishing a package that allows users to easily integrate Duke's style guide with color blind friendly adjustments, we can improve the accessibility of Duke related visualizations.
 The implementation of this package will be an effective step toward accessibility in the Duke community, and hopefully, will prompt future work on making data visualization more inclusive.
-
-## Thesis Goal
-
-**Empower users to create Duke branded and color-blind friendly visualizations by constructing an R color package.**
