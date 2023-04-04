@@ -2,18 +2,20 @@
 
 ```{r}
 #| include: FALSE
+
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.width = 8,
-  fig.asp = .618
+  fig.asp = 0.618,
+  warning = FALSE,
+  messahe = FALSE
 )
 ```
 
 ```{r}
 #| label: setup
-#| warning: FALSE
-#| message: FALSE
+
 library(duke)
 library(palmerpenguins)
 library(ggmosaic)
@@ -28,6 +30,7 @@ This vignette aims to comprehensively demonstrate the use and functionality of t
 
 ```{r}
 #| include: false
+
 # Dumby Dataset for Increased Categories
 Student <- c("Jack", "Annie", "Paul", "Aidan", "Jake", "Josh", "Grace", "Suzy", "Beth", "Taylor", "Tanner", "Lisa", "Jimmy", "Larry", "Patricia", "Laura", "Yasmin", "Tim")
 Grade <- c("A+", "B", "A+", "C", "D", "A+", "E", "C", "B-", "B-", "D", "A-", "B+", "A-", "A-", "D", "B", "E")
@@ -35,20 +38,23 @@ Grade <- c("A+", "B", "A+", "C", "D", "A+", "E", "C", "B-", "B-", "D", "A-", "B+
 dumby_df <- data.frame(Student, Grade)
 ```
 
-For this purposes of this vignette, we will use the palmerspenguins package, which provides a simple dataset on Antarctic penguins and their characteristics [@horstb].
-The data has 8 variables - both numeric and categorical - and 344 observations, each representing a unique penguin.
+For this purposes of this vignette, we will use the palmerspenguins package, which provides a simple dataset on Antarctic penguins and their characteristics: `penguins` [@horstb].
+The dataset has eight variables - some numeric and some categorical - and 344 observations, each representing a unique penguin.
 
 ## Scatter Plot - Continuous Color
 
 ```{r}
-#| label: scatter c
-#| warning: FALSE
-#| message: FALSE
-scatterplot_c <- ggplot(palmerpenguins::penguins, 
-                        aes(x = bill_length_mm, y = bill_depth_mm)) +
-                  geom_point(aes(color = body_mass_g)) +
-                  labs(title = "Bill Length vs. Bill Depth", 
-                       x = "Bill Length (mm)", y = "Bill Depth (mm)")
+#| label: scatter-c
+
+scatterplot_c <- ggplot(
+  penguins,
+  aes(x = bill_length_mm, y = bill_depth_mm)
+) +
+  geom_point(aes(color = body_mass_g)) +
+  labs(
+    title = "Bill Length vs. Bill Depth",
+    x = "Bill Length (mm)", y = "Bill Depth (mm)"
+  )
 
 scatterplot_c +
   scale_duke_continuous() +
@@ -62,12 +68,12 @@ scatterplot_c +
 ## Scatter Plot - Discrete Color
 
 ```{r}
-#| label: scatter d
-#| warning: FALSE
-#| message: FALSE
-scatterplot_d <-
-  ggplot(palmerpenguins::penguins,
-         aes(x = bill_length_mm, y = bill_depth_mm, color = species)) +
+#| label: scatter-d
+
+scatterplot_d <- ggplot(
+  penguins,
+  aes(x = bill_length_mm, y = bill_depth_mm, color = species)
+) +
   geom_point(size = 3) +
   labs(
     title = "Bill Length vs. Bill Depth",
@@ -80,7 +86,7 @@ scatterplot_d +
   theme_duke() +
   scale_duke_color_discrete()
 scatterplot_d +
-  facet_wrap( ~ species) +
+  facet_wrap(~species) +
   theme_duke() +
   scale_duke_color_discrete()
 ```
@@ -89,10 +95,9 @@ scatterplot_d +
 
 ```{r}
 #| label: bar
-#| warning: FALSE
-#| message: FALSE
+
 barplot <-
-  ggplot(palmerpenguins::penguins, aes(x = species, fill = species)) +
+  ggplot(penguins, aes(x = species, fill = species)) +
   geom_bar() +
   labs(
     title = "Distribution of Penguin Species",
@@ -113,6 +118,7 @@ barplot2 <- ggplot(m_penguins, aes(x = sex, fill = sex)) +
 barplot2 +
   scale_duke_fill_discrete() +
   theme_duke()
+
 # 8-category plot
 barplot8 <- ggplot(dumby_df, aes(x = Grade, fill = Grade)) +
   geom_bar()
@@ -120,6 +126,7 @@ barplot8 <- ggplot(dumby_df, aes(x = Grade, fill = Grade)) +
 barplot8 +
   scale_duke_fill_discrete() +
   theme_duke()
+
 # 7-category plot
 barplot7 <- dumby_df %>%
   slice(-13) %>%
@@ -127,6 +134,7 @@ barplot7 <- dumby_df %>%
   geom_bar() +
   scale_duke_fill_discrete() +
   theme_duke()
+
 # 6-category plot
 barplot6 <- dumby_df %>%
   slice(-c(9, 10, 13)) %>%
@@ -134,6 +142,7 @@ barplot6 <- dumby_df %>%
   geom_bar() +
   scale_duke_fill_discrete() +
   theme_duke()
+
 # 5-category plot
 barplot5 <- dumby_df %>%
   slice(-c(9, 10, 13, 7, 18)) %>%
@@ -141,6 +150,7 @@ barplot5 <- dumby_df %>%
   geom_bar() +
   scale_duke_fill_discrete() +
   theme_duke()
+
 # 4-category plot
 barplot4 <- dumby_df %>%
   slice(-c(9, 10, 13, 7, 18, 4, 8)) %>%
@@ -154,9 +164,9 @@ barplot4 <- dumby_df %>%
 
 ```{r}
 #| label: hist
-#| warning: FALSE
-histplot <- ggplot2::ggplot(palmerpenguins::penguins, aes(body_mass_g)) +
-  geom_histogram(ggplot2::aes(fill = species), alpha = 0.8) +
+
+histplot <- ggplot(penguins, aes(body_mass_g)) +
+  geom_histogram(aes(fill = species), alpha = 0.8) +
   labs(title = "Distribution of Penguin Body Mass", 
        caption = "(Colors used) \n Duke Royal Blue, Duke Navy Blue, Copper", 
        x = "Body Mass (g)", 
@@ -171,13 +181,14 @@ histplot +
 
 ```{r}
 #| label: box
-#| warning: FALSE
-#| message: FALSE
-boxplot <- ggplot2::ggplot(palmerpenguins::penguins, ggplot2::aes(sex, body_mass_g)) +
-  ggplot2::geom_boxplot() +
-  ggplot2::labs(title = "Comparison of Body Mass By Sex", 
-                x = "Sex", 
-                y = "Body Mass (g)")
+
+boxplot <- ggplot(penguins, aes(sex, body_mass_g)) +
+  geom_boxplot() +
+  labs(
+    title = "Comparison of Body Mass By Sex", 
+    x = "Sex", 
+    y = "Body Mass (g)"
+  )
 
 boxplot +
   theme_duke()
@@ -187,12 +198,14 @@ boxplot +
 
 ```{r}
 #| label: density
-#| warning: FALSE
-densityplot <- ggplot2::ggplot(palmerpenguins::penguins, ggplot2::aes(bill_depth_mm)) +
-  ggplot2::geom_density(ggplot2::aes(fill = species)) +
-  ggplot2::labs(title = "Density of Penguin Bill Depth", 
-                x = "Bill Depth (mm)", 
-                y = "Densiy")
+
+densityplot <- ggplot(penguins, aes(bill_depth_mm)) +
+  geom_density(aes(fill = species)) +
+  labs(
+    title = "Density of Penguin Bill Depth",
+    x = "Bill Depth (mm)",
+    y = "Densiy"
+  )
 
 densityplot +
   scale_duke_fill_discrete() +
@@ -202,14 +215,15 @@ densityplot +
 ## Jitter Plot - Discrete Color
 
 ```{r}
-#| label: jitter d
-#| warning: FALSE
-#| message: FALSE
-jitterplot_d <- ggplot2::ggplot(palmerpenguins::penguins, ggplot2::aes(as.factor(year), body_mass_g)) +
-  ggplot2::geom_jitter(ggplot2::aes(color = species)) +
-  ggplot2::labs(title = "Comparison of Body Mass By Year", 
-                x = "Year", 
-                y = "Body Mass (g)")
+#| label: jitter=d
+
+jitterplot_d <- ggplot(penguins, aes(as.factor(year), body_mass_g)) +
+  geom_jitter(aes(color = species)) +
+  labs(
+    title = "Comparison of Body Mass By Year", 
+    x = "Year", 
+    y = "Body Mass (g)"
+  )
 
 jitterplot_d +
   scale_duke_color_discrete() +
@@ -219,14 +233,15 @@ jitterplot_d +
 ## Jitter Plot - Continuous Color
 
 ```{r}
-#| label: jitter c
-#| warning: FALSE
-#| message: FALSE
-jitterplot_c <- ggplot2::ggplot(palmerpenguins::penguins, ggplot2::aes(as.factor(year), body_mass_g)) +
-  ggplot2::geom_jitter(ggplot2::aes(color = bill_length_mm)) +
-  ggplot2::labs(title = "Comparison of Body Mass By Year", 
-                x = "Year", 
-                y = "Body Mass (g)")
+#| label: jitter-c
+
+jitterplot_c <- ggplot(penguins, aes(as.factor(year), body_mass_g)) +
+  geom_jitter(aes(color = bill_length_mm)) +
+  labs(
+    title = "Comparison of Body Mass By Year", 
+    x = "Year", 
+    y = "Body Mass (g)"
+  )
 
 jitterplot_c +
   scale_duke_continuous() +
@@ -237,14 +252,15 @@ jitterplot_c +
 
 ```{r}
 #| label: mosaic plot
-#| warning: FALSE
-#| message: FALSE
-mosaicplot <- ggplot(data = palmerpenguins::penguins) +
+
+mosaicplot <- ggplot(data = penguins) +
   ggmosaic::geom_mosaic(aes(x = ggmosaic::product(sex, island), fill = sex)) +
-  labs(title = "Penguin Sex vs. Island", 
-       x = "Island", 
-       y = "Penguin Sex", 
-       caption = "(Color from top to bottom) \n Granite, Duke Navy Blue, Duke Royal Blue")
+  labs(
+    title = "Penguin Sex vs. Island",
+    x = "Island",
+    y = "Penguin Sex",
+    caption = "(Color from top to bottom) \n Granite, Duke Navy Blue, Duke Royal Blue"
+  )
 
 mosaicplot +
   scale_duke_fill_discrete() +
@@ -255,18 +271,19 @@ mosaicplot +
 
 ```{r}
 #| label: label
-#| warning: FALSE
-#| message: FALSE
-labelplot <-
-  ggplot2::ggplot(
-    palmerpenguins::penguins,
-    ggplot2::aes(bill_length_mm, bill_depth_mm, 
-                 fill = island)
+
+labelplot <- ggplot(
+    penguins,
+    aes(bill_length_mm, bill_depth_mm,
+      fill = island
+    )
   ) +
-  ggplot2::geom_label(aes(label = island)) +
-  ggplot2::labs(title = "Bill Length/Depth by Island", 
-                x = "Bill Length (mm)", 
-                y = "Bill Depth (mm)")
+  geom_label(aes(label = island)) +
+  labs(
+    title = "Bill Length/Depth by Island",
+    x = "Bill Length (mm)",
+    y = "Bill Depth (mm)"
+  )
 
 labelplot +
   scale_duke_fill_discrete() +
@@ -280,12 +297,12 @@ labelplot +
 #| warning: FALSE
 #| message: FALSE
 quantileplot <-
-  ggplot2::ggplot(
-    palmerpenguins::penguins,
-    ggplot2::aes(bill_length_mm, bill_depth_mm, color = species)
+  ggplot(
+    penguins,
+    aes(bill_length_mm, bill_depth_mm, color = species)
   ) +
-  ggplot2::geom_quantile() +
-  ggplot2::labs(title = "Bill Length/Depth Quantiles", 
+  geom_quantile() +
+  labs(title = "Bill Length/Depth Quantiles", 
                 x = "Bill Length (mm)", 
                 y = "Bill Depth (mm)")
 
@@ -298,14 +315,13 @@ quantileplot +
 
 ```{r}
 #| label: area
-#| warning: FALSE
-#| message: FALSE
-areaplot <-
-  ggplot2::ggplot(palmerpenguins::penguins,
-                  ggplot2::aes(body_mass_g, fill = species)) +
-  ggplot2::geom_area(stat = "bin") +
-  ggplot2::labs(title = "Area of Body Mass Index", 
-                x = "BMI")
+
+areaplot <- ggplot(penguins, aes(body_mass_g, fill = species)) +
+  geom_area(stat = "bin") +
+  labs(
+    title = "Area of Body Mass Index", 
+    x = "Body Mass (g)"
+  )
 
 areaplot +
   scale_duke_fill_discrete() +
@@ -316,13 +332,13 @@ areaplot +
 
 ```{r}
 #| label: dotplot
-#| warning: FALSE
-#| message: FALSE
-dotplot <-
-  ggplot2::ggplot(palmerpenguins::penguins, ggplot2::aes(body_mass_g)) +
-  ggplot2::geom_dotplot(aes(fill = species)) +
-  ggplot2::labs(title = "Dotplot of BMI", 
-                x = "BMI")
+
+dotplot <- ggplot(penguins, aes(body_mass_g)) +
+  geom_dotplot(aes(fill = species)) +
+  labs(
+    title = "Dotplot of Body Mass (g)", 
+    x = "Body Mass (g)"
+  )
 
 dotplot +
   scale_duke_fill_discrete() +
@@ -333,13 +349,12 @@ dotplot +
 
 ```{r}
 #| label: freqplot
-#| warning: FALSE
-#| message: FALSE
+
 freqplot <-
-  ggplot2::ggplot(palmerpenguins::penguins, ggplot2::aes(body_mass_g)) +
-  ggplot2::geom_freqpoly(aes(color = species)) +
-  ggplot2::labs(title = "Frequency Polynomial Plot of BMI", 
-                x = "BMI")
+  ggplot(penguins, aes(body_mass_g)) +
+  geom_freqpoly(aes(color = species)) +
+  labs(title = "Frequency Polynomial Plot of Body Mass (g)", 
+                x = "Body Mass (g)")
 
 freqplot +
   scale_duke_color_discrete() +
@@ -350,15 +365,14 @@ freqplot +
 
 ```{r}
 #| label: colplot
-#| warning: FALSE
-#| message: FALSE
-colplot <-
-  ggplot2::ggplot(palmerpenguins::penguins,
-                  ggplot2::aes(species, body_mass_g, color = species)) +
-  ggplot2::geom_col() +
-  ggplot2::labs(title = "BMI By Species", 
-                x = "Species", 
-                y = "BMI")
+
+colplot <- ggplot(penguins, aes(species, body_mass_g, color = species)) +
+  geom_col() +
+  labs(
+    title = "Body Mass (g) By Species", 
+    x = "Species", 
+    y = "Body Mass (g)"
+  )
 
 colplot +
   scale_duke_color_discrete() +
@@ -369,15 +383,14 @@ colplot +
 
 ```{r}
 #| label: violin plot
-#| warning: FALSE
-#| message: FALSE
-violinplot <-
-  ggplot2::ggplot(palmerpenguins::penguins,
-                  ggplot2::aes(species, body_mass_g, fill = species)) +
+
+violinplot <- ggplot(penguins, aes(species, body_mass_g, fill = species)) +
   geom_violin(scale = "area") +
-  ggplot2::labs(title = "BMI By Species", 
-                x = "Species", 
-                y = "BMI")
+  labs(
+    title = "Body Mass (g) By Species", 
+    x = "Species", 
+    y = "Body Mass (g)"
+  )
 
 violinplot +
   scale_duke_fill_discrete() +
@@ -388,15 +401,14 @@ violinplot +
 
 ```{r}
 #| label: count plot
-#| warning: FALSE
-#| message: FALSE
-countplot <-
-  ggplot2::ggplot(palmerpenguins::penguins,
-                  ggplot2::aes(species, island, color = species)) +
+
+countplot <- ggplot(penguins, aes(species, island, color = species)) +
   geom_count() +
-  ggplot2::labs(title = "Species Count by Island", 
-                x = "Species", 
-                y = "Island")
+  labs(
+    title = "Species Count by Island",
+    x = "Species", 
+    y = "Island"
+  )
 
 countplot +
   scale_duke_color_discrete() +
@@ -407,17 +419,17 @@ countplot +
 
 ```{r}
 #| label: step plot
-#| warning: FALSE
-#| message: FALSE
-stepplot <-
-  ggplot2::ggplot(palmerpenguins::penguins,
-                  ggplot2::aes(as.factor(year), body_mass_g, 
-                               color = species)) +
+
+stepplot <- ggplot(
+  penguins, 
+  aes(as.factor(year), body_mass_g, color = species)
+  ) +
   geom_step() +
-  
-  ggplot2::labs(title = "BMI By Year", 
-                x = "Year", 
-                y = "BMI")
+  labs(
+    itle = "Body Mass (g) By Year", 
+    x = "Year", 
+    y = "Body Mass (g)"
+  )
 
 stepplot +
   scale_duke_color_discrete() +
