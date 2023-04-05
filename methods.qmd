@@ -137,7 +137,10 @@ On the individual-level, this is not too difficult.
 However, the process necessitates careful thought when building a package for community use.
 *How can users integrate quickly access the package's required fonts? What font implementation will require minimal memory? Why is being transparent with users important?* We must closely consider these questions, among others, when adding font specification to **duke**.
 
-**TO DO - Will know post meeting with Mine** \*\* Explain font implementation, as well as what happens when users don't have text
+Font specification in the **duke** package is an ongoing process and will be added soon.
+We want to ensure that our solution is stable on all systems; therefore, it is not published yet.
+In its current version, **duke** uses default **ggplot2** fonts.
+We aim to have this feature complete prior to the defense.
 
 ### `scale_duke_continuous()`
 
