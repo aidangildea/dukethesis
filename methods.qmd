@@ -21,7 +21,7 @@ For each color in the palette, users can access the following information:
 
 -   Red, Green, Blue Color Model
 
-We will primarily interact with the Hex codes for these colors in this project.
+We will primarily interact with the Hex codes for these colors in this project, shown in @tbl-colors.
 Hex codes are a hexidecimal (base 16 numbering system) format for representing the amount of RBG in a particular shade [@rouse2021].
 Additionally, Hex codes are recognized as the best color system for HTML and CSS formats; therefore, their use will be advantageous for data visualization in publication and web browser contexts.
 
@@ -82,7 +82,7 @@ However, Euclidean distance can be a flawed metric because the standard RGB (sRG
 This is because of irregularity in the sRGB color space, which causes evenly spaced hues to range in their perceptual similarity or difference [@madsen].
 In turn, color pairings that appear similar can have a greater Euclidean distance than those that appear different [@madsena].
 The CIE chromaticity diagram (see @fig-chromaticity) exhibits the color spectrum according to human vision.
-Its parabolic nature leads to irregularities in linearly scaled color scales (ie. sRGB) and therefore weakens its efficacy in this context.
+Its parabolic nature leads to irregularities in linearly scaled color scales (i.e., sRGB) and therefore weakens its efficacy in this context.
 <br>
 
 ![CIE chromaticity diagram.](images/chromaticity-diagram.jpg){#fig-chromaticity width="300"}
@@ -98,19 +98,19 @@ By dividing the the relative luminance of the lighter color (L1) by that of the 
 In line with the WCAG guidelines, we plan on only including color pairings in the package that meet a compliance level of AA18 or better.
 
 It must be noted that given a total of 22 colors in the Duke official suite, our definition of the "optimal" palette may not be fully reliant on the color contrast ratio.
-The package is at its core, representative of the Duke brand and should meet certain aesthetic expectations for those with and without color vision deficiency.
+The package is, at its core, representative of the Duke brand and should meet certain aesthetic expectations for those with and without color vision deficiency.
 The development of our color scales, specifically, incorporates a somewhat ad-hoc approach in order to strike a balance between accessibility and recognition of the Duke brand.
-In finding a color palette successful on both fronts, users can be confident that they are producing visualizations that are identifiably Duke-related and accessible to a greater audience.
+In finding a color palette successful on both fronts, users can be confident that they are producing visualizations that are identifiably Duke-branded and accessible to a greater audience.
 
 ## Package Development
 
 As previously mentioned, package development posed a new challenge to the skill set I had learned through the Statistics curriculum.
 The [R Packages (2e)](https://r-pkgs.org) text book served as an essential guide for learning, understanding, and eventually building the **duke** package.
-By clearly outlining the key structures of an R package, the functionality of the devtools package, and the importance of testing, I was well equipped to create **duke**.
+By clearly outlining the key structures of an R package, the functionality of the **devtools** package, and the importance of testing, I was well equipped to create **duke**.
 
 The **duke** package offers four functions for users to make Duke branded visualizations in a colorblind friendly way.
 
-### theme_duke()
+### `theme_duke()`
 
 This function is largely inspired by the `theme()` function and its many derivatives.
 Its primary focus is to set the aesthetic elements for the visualization's background and accessory features.
@@ -132,14 +132,14 @@ In addition, all text is in Atkinson-Hyperlegible font.
 Named after the founder of the Braille Institute, J. Robert Atkinson, the font uses "unambiguous, distinctive elements" to improve readability for individuals with vision impairment [@atkinson].
 Its use - both in the package and all complimentary documentation - is essential to promoting vision accessibility.
 Font implementation was one of the most difficult challenges throughout the package development process.
-RStudio provides a limited suite of fonts, requiring users to download and load additional font families to their own system.
+R provides a limited suite of fonts, requiring users to download and load additional font families to their own system.
 On the individual-level, this is not too difficult.
 However, the process necessitates careful thought when building a package for community use.
 *How can users integrate quickly access the package's required fonts? What font implementation will require minimal memory? Why is being transparent with users important?* We must closely consider these questions, among others, when adding font specification to **duke**.
 
 **TO DO - Will know post meeting with Mine** \*\* Explain font implementation, as well as what happens when users don't have text
 
-### scale_duke_continuous()
+### `scale_duke_continuous()`
 
 This function integrates Duke's official color palette into geometric objects (geom) that use a continuous scale.
 Examples of commonly used plots implementing continuous geom objects include scatter plots, heat maps, and jitter plots.
@@ -156,9 +156,9 @@ This, in tandem with Duke's recommendation to include Duke Royal or Navy Blue in
 Hatteras is a light grey with subtle violet undertones, making it a pleasing complement to Duke Royal Blue [@hatteras].
 It is not highly distinct from the White background, but this is typical for the light extreme of continuous scales.
 
-### scale_duke_color_discrete and scale_duke_fill_discrete
+### `scale_duke_color_discrete()` and `scale_duke_fill_discrete()`
 
-To implement a discrete scale from Duke's official color palette, users can add `scale_duke_color_discrete` and `scale_duke_fill_discrete` to their visualizations.
+To implement a discrete scale from Duke's official color palette, users can add `scale_duke_color_discrete()` and `scale_duke_fill_discrete()` layers to their visualizations.
 These functions provide a discrete palette that can be used for the color and fill parameters of ggplot geometric objects.
 An appropriate discrete palette is essential to creating user-friendly visualizations because its colors indicate distinct categories that exist in the data.
 Whereas continuous plots typically exhibit overall trends, discrete plots must be able to delineate effectively between specific groups.
@@ -166,17 +166,17 @@ A majority of geom objects can incorporate a discrete scale, including bar plots
 
 As previously mentioned, this project observes color contrast ratio as the primary metric for determining colorblind friendly combinations.
 To identify visibly distinct colors for our discrete palette, we generate the contrast ratio between all pairing from the Duke color guide, with the addition of White since it is the background color.
-Using this data, we can generate a heat map to visually explore the contrast of the pairings.
+@fig-heatmap-all shows a heat map of color contrasts of all pairings.
+Lighter tiles in the heat map indicate pairings with higher contrast ratios, which are preferred.
 
 ![Heatmap of color contrast ratio between color pairings.](images/heatmap_all.png){#fig-heatmap-all width="500"}
 
-Lighter tiles in the heat map indicate pairings with higher contrast ratios, which are preferred.
-Using the heatmap and data frame of ratios, we craft a palette that promotes accessibility and the Duke aesthetic.
-It is quickly evident that selecting eight colors all with pairing ratios compliant with WCAG is not be possible.
-While this is not ideal, visualization best practices recommend users limit their number of discrete categories.
+Then, using these ratios, we craft a palette that promotes accessibility and the Duke aesthetic.
+A rule of thumb for discrete color scales is limiting to three to five colors.
+Additionally, once eight to ten categories or more are reached, matching colors to categories becomes too burdensome to be useful, even if the colors are distinguishable in principle [@wilkea].
 This lends to less busy plots that are more easily understandable.
 Thus, the goal of the our discrete palette is to carefully order colors so that those most used (those at beginning of palette) are most compliant.
-The result is the following palette:
+The result is the palette shown in @fig-palette.
 
 ![Discrete palette. Colors (from left to right): Duke Navy Blue, Piedmont, Copper, Duke Royal Blue, Eno, Persimmon, Dandelion, Cast Iron](images/palette.png){#fig-palette}
 
@@ -213,7 +213,7 @@ Protonopia and deuteraonopia prevent individuals from distinguishing between red
 
 Red-green color blindness is by far the most common type, accounting for approximately 99% of those with CVD.
 For the purpose of creating a feasible project scope, we focus primarily on accessibility for those with red-green colorblindness.
-Future work on this project - or one with a similar goal - should investigate the feasibility of visualization accessibility for those with blue-yellow color blindness, monochromacy, etc.
+Future work on this project - or one with a similar goal - should investigate the feasibility of visualization accessibility for those with blue - yellow color blindness, monochromacy, etc.
 
 ![Sample scatter plot from true perspective (left) and deuteranomalous perspective (right) using colorblindr package.](images/deut_comp.png){#fig-scatter}
 
@@ -228,7 +228,7 @@ I often found myself skipping ahead to more attractive tasks like constructing a
 This typically resulted in errors when checking my package.
 And they were increasingly harder to address when time had passed since I last worked on it.
 The process is far smoother when you continuously check for issues and address them immediately, rather than put them on the back-burner.
-It will save you fromwasted time and frustration, so make sure to lean into the iterative style of package development.
+It will save you from wasted time and frustration, so make sure to lean into the iterative style of package development.
 
 **2. The devtools package is your best friend.** The `devtools` package is inherent to the package development process, but the way you use it can make all the difference.
 The [R Package (2e)](https://r-pkgs.org) textbook was an integral resource for learning when and how to use the various functions of `devtools`.
@@ -238,9 +238,9 @@ Over time, they will save you a significant amount of time and make your package
 
 **3. Engage with existing resources online and collaborate with others.** A common misconception in building new packages is that it is an entirely individual undertaking.
 I identified colorblind accessibility in the Duke data visualization as a unique and necessary problem to address, in turn, inspiring the **duke** package.
-At first, I thought that this meant I would and ***should*** construct the package on my own.
+At first, I thought that this meant I would and *should* construct the package on my own.
 This could not be further from the truth.
-As a package intended to be integrated into ggplot2 visualizations, **duke** shares many of the same functionalities as those in theme() and scale().
+As a package intended to be integrated into ggplot2 visualizations, **duke** shares many of the same functionalities as those in `theme()` and `scale()`.
 These existing resources demonstrated how to create the general structures of my functions, which then I could adapt to implement Duke's official palette, a minimalist background aesthetic, etc.
 The "worth" of your package is not defined by its lack in crossover with other packages existing; therefore, make sure to engage with the resources at your disposal.
-I recommend you explore existing packages on [Github](https://github.com), troubleshoot package issues by asking questions in the [Posit community](https://community.rstudio.com), and find answers to difficult questions already asked on [StackOverflow](https://stackoverflow.com).
+I recommend you explore existing packages on [GitHub](https://github.com), troubleshoot package issues by asking questions in the [Posit Community](https://community.rstudio.com), and find answers to difficult questions already asked on [StackOverflow](https://stackoverflow.com).
