@@ -9,7 +9,7 @@ knitr::opts_chunk$set(
   fig.width = 8,
   fig.asp = 0.618,
   warning = FALSE,
-  messahe = FALSE
+  message = FALSE
 )
 ```
 
@@ -20,22 +20,19 @@ library(duke)
 library(palmerpenguins)
 library(ggmosaic)
 library(ggplot2)
-library(magrittr)
 library(dplyr)
-attach(penguins)
 ```
 
 This vignette aims to comprehensively demonstrate the use and functionality of the package **duke**.
-**duke**is fully integrated with the **ggplot2** and allows for the creation of Duke official branded visualizations that are color blind friendly.
+**duke** is fully integrated with the **ggplot2** and allows for the creation of Duke official branded visualizations that are color blind friendly.
 
 ```{r}
 #| include: false
 
-# Dumby Dataset for Increased Categories
-Student <- c("Jack", "Annie", "Paul", "Aidan", "Jake", "Josh", "Grace", "Suzy", "Beth", "Taylor", "Tanner", "Lisa", "Jimmy", "Larry", "Patricia", "Laura", "Yasmin", "Tim")
-Grade <- c("A+", "B", "A+", "C", "D", "A+", "E", "C", "B-", "B-", "D", "A-", "B+", "A-", "A-", "D", "B", "E")
+student_names <- c("Jack", "Annie", "Paul", "Aidan", "Jake", "Josh", "Grace", "Suzy", "Beth", "Taylor", "Tanner", "Lisa", "Jimmy", "Larry", "Patricia", "Laura", "Yasmin", "Tim")
+student_grades <- c("A+", "B", "A+", "C", "D", "A+", "E", "C", "B-", "B-", "D", "A-", "B+", "A-", "A-", "D", "B", "E")
 
-dumby_df <- data.frame(Student, Grade)
+students <- tibble(student = student_names, grade = student_grades)
 ```
 
 For this purposes of this vignette, we will use the palmerspenguins package, which provides a simple dataset on Antarctic penguins and their characteristics: `penguins` [@horstb].
@@ -60,7 +57,7 @@ scatterplot_c +
   scale_duke_continuous() +
   theme_duke()
 scatterplot_c +
-  geom_point(shape = species) +
+  geom_point(aes(shape = species)) +
   scale_duke_continuous() +
   theme_duke()
 ```
@@ -120,7 +117,7 @@ barplot2 +
   theme_duke()
 
 # 8-category plot
-barplot8 <- ggplot(dumby_df, aes(x = Grade, fill = Grade)) +
+barplot8 <- ggplot(students, aes(x = grade, fill = grade)) +
   geom_bar()
 
 barplot8 +
@@ -128,33 +125,33 @@ barplot8 +
   theme_duke()
 
 # 7-category plot
-barplot7 <- dumby_df %>%
+barplot7 <- students %>%
   slice(-13) %>%
-  ggplot(aes(x = Grade, fill = Grade)) +
+  ggplot(aes(x = grade, fill = grade)) +
   geom_bar() +
   scale_duke_fill_discrete() +
   theme_duke()
 
 # 6-category plot
-barplot6 <- dumby_df %>%
+barplot6 <- students %>%
   slice(-c(9, 10, 13)) %>%
-  ggplot(aes(x = Grade, fill = Grade)) +
+  ggplot(aes(x = grade, fill = grade)) +
   geom_bar() +
   scale_duke_fill_discrete() +
   theme_duke()
 
 # 5-category plot
-barplot5 <- dumby_df %>%
+barplot5 <- students %>%
   slice(-c(9, 10, 13, 7, 18)) %>%
-  ggplot(aes(x = Grade, fill = Grade)) +
+  ggplot(aes(x = grade, fill = grade)) +
   geom_bar() +
   scale_duke_fill_discrete() +
   theme_duke()
 
 # 4-category plot
-barplot4 <- dumby_df %>%
+barplot4 <- students %>%
   slice(-c(9, 10, 13, 7, 18, 4, 8)) %>%
-  ggplot(aes(x = Grade, fill = Grade)) +
+  ggplot(aes(x = grade, fill = grade)) +
   geom_bar() +
   scale_duke_fill_discrete() +
   theme_duke()

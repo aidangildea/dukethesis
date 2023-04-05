@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.269">
+<meta name="generator" content="quarto-1.3.208">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -91,11 +91,16 @@ div.csl-indent {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Methods</span></h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./methods.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Methods</span></a></li></ol></nav>
+      <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
@@ -103,17 +108,17 @@ div.csl-indent {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Promoting Accessibility in Duke Data Visualization</a> 
     </div>
       </div>
-      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
@@ -159,6 +164,7 @@ div.csl-indent {
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -169,9 +175,9 @@ div.csl-indent {
   <li><a href="#color-metrics" id="toc-color-metrics" class="nav-link" data-scroll-target="#color-metrics"><span class="toc-section-number">2.2</span>  Color Metrics</a></li>
   <li><a href="#package-development" id="toc-package-development" class="nav-link" data-scroll-target="#package-development"><span class="toc-section-number">2.3</span>  Package Development</a>
   <ul class="collapse">
-  <li><a href="#theme_duke" id="toc-theme_duke" class="nav-link" data-scroll-target="#theme_duke"><span class="toc-section-number">2.3.1</span>  theme_duke()</a></li>
-  <li><a href="#scale_duke_continuous" id="toc-scale_duke_continuous" class="nav-link" data-scroll-target="#scale_duke_continuous"><span class="toc-section-number">2.3.2</span>  scale_duke_continuous()</a></li>
-  <li><a href="#scale_duke_color_discrete-and-scale_duke_fill_discrete" id="toc-scale_duke_color_discrete-and-scale_duke_fill_discrete" class="nav-link" data-scroll-target="#scale_duke_color_discrete-and-scale_duke_fill_discrete"><span class="toc-section-number">2.3.3</span>  scale_duke_color_discrete and scale_duke_fill_discrete</a></li>
+  <li><a href="#theme_duke" id="toc-theme_duke" class="nav-link" data-scroll-target="#theme_duke"><span class="toc-section-number">2.3.1</span>  <code>theme_duke()</code></a></li>
+  <li><a href="#scale_duke_continuous" id="toc-scale_duke_continuous" class="nav-link" data-scroll-target="#scale_duke_continuous"><span class="toc-section-number">2.3.2</span>  <code>scale_duke_continuous()</code></a></li>
+  <li><a href="#scale_duke_color_discrete-and-scale_duke_fill_discrete" id="toc-scale_duke_color_discrete-and-scale_duke_fill_discrete" class="nav-link" data-scroll-target="#scale_duke_color_discrete-and-scale_duke_fill_discrete"><span class="toc-section-number">2.3.3</span>  <code>scale_duke_color_discrete()</code> and <code>scale_duke_fill_discrete()</code></a></li>
   </ul></li>
   <li><a href="#lessons-learned" id="toc-lessons-learned" class="nav-link" data-scroll-target="#lessons-learned"><span class="toc-section-number">2.4</span>  Lessons Learned</a></li>
   </ul>
@@ -182,7 +188,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Methods</span></h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Methods</span></h1>
 </div>
 
 
@@ -207,7 +213,7 @@ div.csl-indent {
 <li><p>Cyan, Magenta, Yellow, and Key (CMYK) Color Model</p></li>
 <li><p>Red, Green, Blue Color Model</p></li>
 </ul>
-<p>We will primarily interact with the Hex codes for these colors in this project. Hex codes are a hexidecimal (base 16 numbering system) format for representing the amount of RBG in a particular shade <span class="citation" data-cites="rouse2021">(<a href="references.html#ref-rouse2021" role="doc-biblioref">Rouse 2021</a>)</span>. Additionally, Hex codes are recognized as the best color system for HTML and CSS formats; therefore, their use will be advantageous for data visualization in publication and web browser contexts.</p>
+<p>We will primarily interact with the Hex codes for these colors in this project, shown in <a href="#tbl-colors">Table&nbsp;<span>2.1</span></a>. Hex codes are a hexidecimal (base 16 numbering system) format for representing the amount of RBG in a particular shade <span class="citation" data-cites="rouse2021">(<a href="references.html#ref-rouse2021" role="doc-biblioref">Rouse 2021</a>)</span>. Additionally, Hex codes are recognized as the best color system for HTML and CSS formats; therefore, their use will be advantageous for data visualization in publication and web browser contexts.</p>
 <div id="tbl-colors" class="anchored">
 <table class="table">
 <caption>Table&nbsp;2.1: <strong>Duke Color Palette</strong></caption>
@@ -317,7 +323,7 @@ div.csl-indent {
 <span class="math inline">\({\displaystyle {\text{distance}_e}={\sqrt {(R_{2}-R_{1})^{2}+(G_{2}-G_{1})^{2}+(B_{2}-B_{1})^{2}}}.}\)</span>
 </center>
 <p><span class="citation" data-cites="iyer2020a">(<a href="references.html#ref-iyer2020a" role="doc-biblioref">Iyer 2020</a>)</span></p>
-<p>However, Euclidean distance can be a flawed metric because the standard RGB (sRGB) color space is perceptually uniform. This is because of irregularity in the sRGB color space, which causes evenly spaced hues to range in their perceptual similarity or difference <span class="citation" data-cites="madsen">(<a href="references.html#ref-madsen" role="doc-biblioref">Madsen, n.d.a</a>)</span>. In turn, color pairings that appear similar can have a greater Euclidean distance than those that appear different <span class="citation" data-cites="madsena">(<a href="references.html#ref-madsena" role="doc-biblioref">Madsen, n.d.b</a>)</span>. The CIE chromaticity diagram (see <a href="#fig-chromaticity">Figure&nbsp;<span>2.1</span></a>) exhibits the color spectrum according to human vision. Its parabolic nature leads to irregularities in linearly scaled color scales (ie. sRGB) and therefore weakens its efficacy in this context. <br></p>
+<p>However, Euclidean distance can be a flawed metric because the standard RGB (sRGB) color space is perceptually uniform. This is because of irregularity in the sRGB color space, which causes evenly spaced hues to range in their perceptual similarity or difference <span class="citation" data-cites="madsen">(<a href="references.html#ref-madsen" role="doc-biblioref">Madsen, n.d.a</a>)</span>. In turn, color pairings that appear similar can have a greater Euclidean distance than those that appear different <span class="citation" data-cites="madsena">(<a href="references.html#ref-madsena" role="doc-biblioref">Madsen, n.d.b</a>)</span>. The CIE chromaticity diagram (see <a href="#fig-chromaticity">Figure&nbsp;<span>2.1</span></a>) exhibits the color spectrum according to human vision. Its parabolic nature leads to irregularities in linearly scaled color scales (i.e., sRGB) and therefore weakens its efficacy in this context. <br></p>
 <div id="fig-chromaticity" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="images/chromaticity-diagram.jpg" class="img-fluid figure-img" width="300"></p>
@@ -327,35 +333,35 @@ div.csl-indent {
 <p>To accommodate these irregularities and center our color selection on human perception, we use the color contrast ratio as our primary metric. Color contrast is computed using “relative luminance” <span class="citation" data-cites="howtoc2019">(<a href="references.html#ref-howtoc2019" role="doc-biblioref"><span>“How to Calculate Colour Contrast”</span> 2019</a>)</span>. According to WCAG, relative luminance is the “relative brightness of any point in a color space, normalized to 0 for darkest black and 1 for lightest white” <span class="citation" data-cites="webcont">(<a href="references.html#ref-webcont" role="doc-biblioref"><span>“Web Content Accessibility Guidelines (WCAG) 2.0,”</span> n.d.a</a>)</span>. The formula for the color contrast ratio is as follows:</p>
 <p><span class="math display">\[\frac{(L1 + 0.05)} {(L2 + 0.05)}\]</span></p>
 <p>By dividing the the relative luminance of the lighter color (L1) by that of the darker color (L2), the color contrast ratio can range from a value of 1 (no contrast) to 21 (highest contrast) <span class="citation" data-cites="webconta">(<a href="references.html#ref-webconta" role="doc-biblioref"><span>“Web Content Accessibility Guidelines (WCAG) 2.0,”</span> n.d.b</a>)</span>. In line with the WCAG guidelines, we plan on only including color pairings in the package that meet a compliance level of AA18 or better.</p>
-<p>It must be noted that given a total of 22 colors in the Duke official suite, our definition of the “optimal” palette may not be fully reliant on the color contrast ratio. The package is at its core, representative of the Duke brand and should meet certain aesthetic expectations for those with and without color vision deficiency. The development of our color scales, specifically, incorporates a somewhat ad-hoc approach in order to strike a balance between accessibility and recognition of the Duke brand. In finding a color palette successful on both fronts, users can be confident that they are producing visualizations that are identifiably Duke-related and accessible to a greater audience.</p>
+<p>It must be noted that given a total of 22 colors in the Duke official suite, our definition of the “optimal” palette may not be fully reliant on the color contrast ratio. The package is, at its core, representative of the Duke brand and should meet certain aesthetic expectations for those with and without color vision deficiency. The development of our color scales, specifically, incorporates a somewhat ad-hoc approach in order to strike a balance between accessibility and recognition of the Duke brand. In finding a color palette successful on both fronts, users can be confident that they are producing visualizations that are identifiably Duke-branded and accessible to a greater audience.</p>
 </section>
 <section id="package-development" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="package-development"><span class="header-section-number">2.3</span> Package Development</h2>
-<p>As previously mentioned, package development posed a new challenge to the skill set I had learned through the Statistics curriculum. The <a href="https://r-pkgs.org">R Packages (2e)</a> text book served as an essential guide for learning, understanding, and eventually building the <strong>duke</strong> package. By clearly outlining the key structures of an R package, the functionality of the devtools package, and the importance of testing, I was well equipped to create <strong>duke</strong>.</p>
+<p>As previously mentioned, package development posed a new challenge to the skill set I had learned through the Statistics curriculum. The <a href="https://r-pkgs.org">R Packages (2e)</a> text book served as an essential guide for learning, understanding, and eventually building the <strong>duke</strong> package. By clearly outlining the key structures of an R package, the functionality of the <strong>devtools</strong> package, and the importance of testing, I was well equipped to create <strong>duke</strong>.</p>
 <p>The <strong>duke</strong> package offers four functions for users to make Duke branded visualizations in a colorblind friendly way.</p>
 <section id="theme_duke" class="level3" data-number="2.3.1">
-<h3 data-number="2.3.1" class="anchored" data-anchor-id="theme_duke"><span class="header-section-number">2.3.1</span> theme_duke()</h3>
+<h3 data-number="2.3.1" class="anchored" data-anchor-id="theme_duke"><span class="header-section-number">2.3.1</span> <code>theme_duke()</code></h3>
 <p>This function is largely inspired by the <code>theme()</code> function and its many derivatives. Its primary focus is to set the aesthetic elements for the visualization’s background and accessory features. These include the background color, grid lines, axis ticks, plot text, etc. With accessibility at the forefront of this project’s goals, it is essential that these choices lead to not only a visually pleasing result, but to one that is comprehensible as well. To do so, <code>theme_duke()</code> implements a minimalist design with a White background and grid lines removed. This decision reduces excessive noise in the plot, and instead allows audiences to focus on the story the data tells.</p>
 <p>This design is complemented by deliberate text specifications that ensure plot readability. The function applies uniform coloring for text across the entirety of the visualization. All possible text features of a ggplot (title, axes, caption, legend, etc.) are in in Duke Navy Blue because of its strong contrast to the White background. It has a contrast ratio of 14.76 with White, which is the third highest among all colors in the Duke extended palette. Sizing of major text elements is also handled carefully to promote legibility. Readers with color vision impairment and/or low vision benefit from larger text settings <span class="citation" data-cites="uncschoolofmedicine">(<a href="references.html#ref-uncschoolofmedicine" role="doc-biblioref">UNC School of Medicine, n.d.</a>)</span>. Rather than manually increasing text size, <code>theme_duke()</code> encodes text sizing relative to the scale of the visualization. In turn, text adjusts according to users’ manipulations of plot dimensions, guaranteeing that text is both appropriately large and adequately fit to the visualization.</p>
-<p>In addition, all text is in Atkinson-Hyperlegible font. Named after the founder of the Braille Institute, J. Robert Atkinson, the font uses “unambiguous, distinctive elements” to improve readability for individuals with vision impairment <span class="citation" data-cites="atkinson">(<a href="references.html#ref-atkinson" role="doc-biblioref"><span>“Atkinson Hyperlegible,”</span> n.d.</a>)</span>. Its use - both in the package and all complimentary documentation - is essential to promoting vision accessibility. Font implementation was one of the most difficult challenges throughout the package development process. RStudio provides a limited suite of fonts, requiring users to download and load additional font families to their own system. On the individual-level, this is not too difficult. However, the process necessitates careful thought when building a package for community use. <em>How can users integrate quickly access the package’s required fonts? What font implementation will require minimal memory? Why is being transparent with users important?</em> We must closely consider these questions, among others, when adding font specification to <strong>duke</strong>.</p>
+<p>In addition, all text is in Atkinson-Hyperlegible font. Named after the founder of the Braille Institute, J. Robert Atkinson, the font uses “unambiguous, distinctive elements” to improve readability for individuals with vision impairment <span class="citation" data-cites="atkinson">(<a href="references.html#ref-atkinson" role="doc-biblioref"><span>“Atkinson Hyperlegible,”</span> n.d.</a>)</span>. Its use - both in the package and all complimentary documentation - is essential to promoting vision accessibility. Font implementation was one of the most difficult challenges throughout the package development process. R provides a limited suite of fonts, requiring users to download and load additional font families to their own system. On the individual-level, this is not too difficult. However, the process necessitates careful thought when building a package for community use. <em>How can users integrate quickly access the package’s required fonts? What font implementation will require minimal memory? Why is being transparent with users important?</em> We must closely consider these questions, among others, when adding font specification to <strong>duke</strong>.</p>
 <p><strong>TO DO - Will know post meeting with Mine</strong> ** Explain font implementation, as well as what happens when users don’t have text</p>
 </section>
 <section id="scale_duke_continuous" class="level3" data-number="2.3.2">
-<h3 data-number="2.3.2" class="anchored" data-anchor-id="scale_duke_continuous"><span class="header-section-number">2.3.2</span> scale_duke_continuous()</h3>
+<h3 data-number="2.3.2" class="anchored" data-anchor-id="scale_duke_continuous"><span class="header-section-number">2.3.2</span> <code>scale_duke_continuous()</code></h3>
 <p>This function integrates Duke’s official color palette into geometric objects (geom) that use a continuous scale. Examples of commonly used plots implementing continuous geom objects include scatter plots, heat maps, and jitter plots. The primary challenge of adopting a continuous color scale in a color blind friendly way is the lack of color distinction that naturally occurs. Continuous color scales are defined by a low and high end of a two color gradient, where the data assumes colors within this range based on its respective value. However, continuous plots do not need complete distinction to be successful. It is often most important that readers can identify overall trends in continuous plots.</p>
-<p>To optimize <code>scale_duke_continuous()</code> for users with impaired color vision, the continuous gradient must sequence from a dark to a light color <span class="citation" data-cites="wilke">(<a href="references.html#ref-wilke" role="doc-biblioref">Wilke, n.d.</a>)</span>. This is crucial because the data will be plotted beginning on the darker end of the scale, which has a higher contrast with our White background. Therefore, our gradient scale defines its low end as Duke Royal Blue and its high end as Hatteras. Duke Royal Blue has a color contrast ratio of 7.75 with White, making it sufficiently distinguishable. This, in tandem with Duke’s recommendation to include Duke Royal or Navy Blue in all communications, makes it the ideal choice for the low end of the scale. Hatteras is a light grey with subtle violet undertones, making it a pleasing complement to Duke Royal Blue <span class="citation" data-cites="hatteras">(<a href="references.html#ref-hatteras" role="doc-biblioref"><span>“Hatteras Gray,”</span> n.d.</a>)</span>. It is not highly distinct from the White background, but this is typical for the light extreme of continuous scales.</p>
+<p>To optimize <code>scale_duke_continuous()</code> for users with impaired color vision, the continuous gradient must sequence from a dark to a light color <span class="citation" data-cites="wilke">(<a href="references.html#ref-wilke" role="doc-biblioref">C. Wilke, n.d.</a>)</span>. This is crucial because the data will be plotted beginning on the darker end of the scale, which has a higher contrast with our White background. Therefore, our gradient scale defines its low end as Duke Royal Blue and its high end as Hatteras. Duke Royal Blue has a color contrast ratio of 7.75 with White, making it sufficiently distinguishable. This, in tandem with Duke’s recommendation to include Duke Royal or Navy Blue in all communications, makes it the ideal choice for the low end of the scale. Hatteras is a light grey with subtle violet undertones, making it a pleasing complement to Duke Royal Blue <span class="citation" data-cites="hatteras">(<a href="references.html#ref-hatteras" role="doc-biblioref"><span>“Hatteras Gray,”</span> n.d.</a>)</span>. It is not highly distinct from the White background, but this is typical for the light extreme of continuous scales.</p>
 </section>
 <section id="scale_duke_color_discrete-and-scale_duke_fill_discrete" class="level3" data-number="2.3.3">
-<h3 data-number="2.3.3" class="anchored" data-anchor-id="scale_duke_color_discrete-and-scale_duke_fill_discrete"><span class="header-section-number">2.3.3</span> scale_duke_color_discrete and scale_duke_fill_discrete</h3>
-<p>To implement a discrete scale from Duke’s official color palette, users can add <code>scale_duke_color_discrete</code> and <code>scale_duke_fill_discrete</code> to their visualizations. These functions provide a discrete palette that can be used for the color and fill parameters of ggplot geometric objects. An appropriate discrete palette is essential to creating user-friendly visualizations because its colors indicate distinct categories that exist in the data. Whereas continuous plots typically exhibit overall trends, discrete plots must be able to delineate effectively between specific groups. A majority of geom objects can incorporate a discrete scale, including bar plots, histograms, and density plots.</p>
-<p>As previously mentioned, this project observes color contrast ratio as the primary metric for determining colorblind friendly combinations. To identify visibly distinct colors for our discrete palette, we generate the contrast ratio between all pairing from the Duke color guide, with the addition of White since it is the background color. Using this data, we can generate a heat map to visually explore the contrast of the pairings.</p>
+<h3 data-number="2.3.3" class="anchored" data-anchor-id="scale_duke_color_discrete-and-scale_duke_fill_discrete"><span class="header-section-number">2.3.3</span> <code>scale_duke_color_discrete()</code> and <code>scale_duke_fill_discrete()</code></h3>
+<p>To implement a discrete scale from Duke’s official color palette, users can add <code>scale_duke_color_discrete()</code> and <code>scale_duke_fill_discrete()</code> layers to their visualizations. These functions provide a discrete palette that can be used for the color and fill parameters of ggplot geometric objects. An appropriate discrete palette is essential to creating user-friendly visualizations because its colors indicate distinct categories that exist in the data. Whereas continuous plots typically exhibit overall trends, discrete plots must be able to delineate effectively between specific groups. A majority of geom objects can incorporate a discrete scale, including bar plots, histograms, and density plots.</p>
+<p>As previously mentioned, this project observes color contrast ratio as the primary metric for determining colorblind friendly combinations. To identify visibly distinct colors for our discrete palette, we generate the contrast ratio between all pairing from the Duke color guide, with the addition of White since it is the background color. <a href="#fig-heatmap-all">Figure&nbsp;<span>2.2</span></a> shows a heat map of color contrasts of all pairings. Lighter tiles in the heat map indicate pairings with higher contrast ratios, which are preferred.</p>
 <div id="fig-heatmap-all" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="images/heatmap_all.png" class="img-fluid figure-img" width="500"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;2.2: Heatmap of color contrast ratio between color pairings.</figcaption><p></p>
 </figure>
 </div>
-<p>Lighter tiles in the heat map indicate pairings with higher contrast ratios, which are preferred. Using the heatmap and data frame of ratios, we craft a palette that promotes accessibility and the Duke aesthetic. It is quickly evident that selecting eight colors all with pairing ratios compliant with WCAG is not be possible. While this is not ideal, visualization best practices recommend users limit their number of discrete categories. This lends to less busy plots that are more easily understandable. Thus, the goal of the our discrete palette is to carefully order colors so that those most used (those at beginning of palette) are most compliant. The result is the following palette:</p>
+<p>Then, using these ratios, we craft a palette that promotes accessibility and the Duke aesthetic. A rule of thumb for discrete color scales is limiting to three to five colors. Additionally, once eight to ten categories or more are reached, matching colors to categories becomes too burdensome to be useful, even if the colors are distinguishable in principle <span class="citation" data-cites="wilkea">(<a href="references.html#ref-wilkea" role="doc-biblioref">C. O. Wilke, n.d.</a>)</span>. This lends to less busy plots that are more easily understandable. Thus, the goal of the our discrete palette is to carefully order colors so that those most used (those at beginning of palette) are most compliant. The result is the palette shown in <a href="#fig-palette">Figure&nbsp;<span>2.3</span></a>.</p>
 <div id="fig-palette" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="images/palette.png" class="img-fluid figure-img"></p>
@@ -372,165 +378,167 @@ div.csl-indent {
 <p>The final palette includes the following colors: Duke Navy Blue, Piedmont, Copper, Duke Royal Blue, Eno, Persimmon, Dandelion and Cast Iron. Out the 28 distinct colors pairings that exist from this palette (excluding pairings of identical colors), 14 have a color contrast ratio of 3 or greater.This is compliant with WCAG’s AA18 rating, which specifies the use of larger text to be accessible. The colors from this palette will primarily be used to fill or color geometric objects in ggplot - rather than text - which offers complimentary features (ie. shape, larger areas, borders) that promote accessibility. Thus, we proceed under the assumption that an AA18 categorization is sufficient.</p>
 <div class="cell">
 <div class="cell-output-display">
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:275px; ">
 <div id="tbl-ratios" class="anchored">
-
-<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:275px; "><table class="table table-striped" style="margin-left: auto; margin-right: auto;"><caption>Table&nbsp;2.2:  Color Contrast Ratios </caption>
- <thead>
-  <tr>
-   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;"> Color 1 </th>
-   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;"> Color 2 </th>
-   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;"> Contrast Ratio </th>
-  </tr>
- </thead>
+<table class="table table-sm table-striped">
+<caption>Table&nbsp;2.2: Color Contrast Ratios</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Color 1</th>
+<th style="text-align: left;">Color 2</th>
+<th style="text-align: right;">Contrast Ratio</th>
+</tr>
+</thead>
 <tbody>
-  <tr>
-   <td style="text-align:left;"> Dandelion </td>
-   <td style="text-align:left;"> Cast Iron </td>
-   <td style="text-align:right;"> 11.059041 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Dandelion </td>
-   <td style="text-align:left;"> Duke Navy Blue </td>
-   <td style="text-align:right;"> 10.785676 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cast Iron </td>
-   <td style="text-align:left;"> Piedmont </td>
-   <td style="text-align:right;"> 6.698114 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Duke Navy Blue </td>
-   <td style="text-align:left;"> Piedmont </td>
-   <td style="text-align:right;"> 6.532546 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cast Iron </td>
-   <td style="text-align:left;"> Persimmon </td>
-   <td style="text-align:right;"> 6.494391 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Duke Navy Blue </td>
-   <td style="text-align:left;"> Persimmon </td>
-   <td style="text-align:right;"> 6.333858 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Dandelion </td>
-   <td style="text-align:left;"> Duke Royal Blue </td>
-   <td style="text-align:right;"> 5.661465 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cast Iron </td>
-   <td style="text-align:left;"> Eno </td>
-   <td style="text-align:right;"> 4.385449 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Duke Navy Blue </td>
-   <td style="text-align:left;"> Eno </td>
-   <td style="text-align:right;"> 4.277046 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Piedmont </td>
-   <td style="text-align:left;"> Duke Royal Blue </td>
-   <td style="text-align:right;"> 3.428972 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Dandelion </td>
-   <td style="text-align:left;"> Copper </td>
-   <td style="text-align:right;"> 3.376002 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Persimmon </td>
-   <td style="text-align:left;"> Duke Royal Blue </td>
-   <td style="text-align:right;"> 3.324680 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cast Iron </td>
-   <td style="text-align:left;"> Copper </td>
-   <td style="text-align:right;"> 3.275781 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Duke Navy Blue </td>
-   <td style="text-align:left;"> Copper </td>
-   <td style="text-align:right;"> 3.194808 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Dandelion </td>
-   <td style="text-align:left;"> Eno </td>
-   <td style="text-align:right;"> 2.521758 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Eno </td>
-   <td style="text-align:left;"> Duke Royal Blue </td>
-   <td style="text-align:right;"> 2.245047 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Piedmont </td>
-   <td style="text-align:left;"> Copper </td>
-   <td style="text-align:right;"> 2.044738 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Persimmon </td>
-   <td style="text-align:left;"> Copper </td>
-   <td style="text-align:right;"> 1.982548 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cast Iron </td>
-   <td style="text-align:left;"> Duke Royal Blue </td>
-   <td style="text-align:right;"> 1.953388 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Duke Navy Blue </td>
-   <td style="text-align:left;"> Duke Royal Blue </td>
-   <td style="text-align:right;"> 1.905103 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Dandelion </td>
-   <td style="text-align:left;"> Persimmon </td>
-   <td style="text-align:right;"> 1.702860 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Copper </td>
-   <td style="text-align:left;"> Duke Royal Blue </td>
-   <td style="text-align:right;"> 1.676973 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Dandelion </td>
-   <td style="text-align:left;"> Piedmont </td>
-   <td style="text-align:right;"> 1.651068 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Piedmont </td>
-   <td style="text-align:left;"> Eno </td>
-   <td style="text-align:right;"> 1.527350 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Persimmon </td>
-   <td style="text-align:left;"> Eno </td>
-   <td style="text-align:right;"> 1.480895 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Copper </td>
-   <td style="text-align:left;"> Eno </td>
-   <td style="text-align:right;"> 1.338749 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Persimmon </td>
-   <td style="text-align:left;"> Piedmont </td>
-   <td style="text-align:right;"> 1.031369 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cast Iron </td>
-   <td style="text-align:left;"> Duke Navy Blue </td>
-   <td style="text-align:right;"> 1.025345 </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: left;">Dandelion</td>
+<td style="text-align: left;">Cast Iron</td>
+<td style="text-align: right;">11.059041</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Dandelion</td>
+<td style="text-align: left;">Duke Navy Blue</td>
+<td style="text-align: right;">10.785676</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Cast Iron</td>
+<td style="text-align: left;">Piedmont</td>
+<td style="text-align: right;">6.698114</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Duke Navy Blue</td>
+<td style="text-align: left;">Piedmont</td>
+<td style="text-align: right;">6.532546</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Cast Iron</td>
+<td style="text-align: left;">Persimmon</td>
+<td style="text-align: right;">6.494391</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Duke Navy Blue</td>
+<td style="text-align: left;">Persimmon</td>
+<td style="text-align: right;">6.333858</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Dandelion</td>
+<td style="text-align: left;">Duke Royal Blue</td>
+<td style="text-align: right;">5.661465</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Cast Iron</td>
+<td style="text-align: left;">Eno</td>
+<td style="text-align: right;">4.385449</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Duke Navy Blue</td>
+<td style="text-align: left;">Eno</td>
+<td style="text-align: right;">4.277046</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Piedmont</td>
+<td style="text-align: left;">Duke Royal Blue</td>
+<td style="text-align: right;">3.428972</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Dandelion</td>
+<td style="text-align: left;">Copper</td>
+<td style="text-align: right;">3.376002</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Persimmon</td>
+<td style="text-align: left;">Duke Royal Blue</td>
+<td style="text-align: right;">3.324680</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Cast Iron</td>
+<td style="text-align: left;">Copper</td>
+<td style="text-align: right;">3.275781</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Duke Navy Blue</td>
+<td style="text-align: left;">Copper</td>
+<td style="text-align: right;">3.194808</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Dandelion</td>
+<td style="text-align: left;">Eno</td>
+<td style="text-align: right;">2.521758</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Eno</td>
+<td style="text-align: left;">Duke Royal Blue</td>
+<td style="text-align: right;">2.245047</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Piedmont</td>
+<td style="text-align: left;">Copper</td>
+<td style="text-align: right;">2.044738</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Persimmon</td>
+<td style="text-align: left;">Copper</td>
+<td style="text-align: right;">1.982548</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Cast Iron</td>
+<td style="text-align: left;">Duke Royal Blue</td>
+<td style="text-align: right;">1.953388</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Duke Navy Blue</td>
+<td style="text-align: left;">Duke Royal Blue</td>
+<td style="text-align: right;">1.905103</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Dandelion</td>
+<td style="text-align: left;">Persimmon</td>
+<td style="text-align: right;">1.702860</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Copper</td>
+<td style="text-align: left;">Duke Royal Blue</td>
+<td style="text-align: right;">1.676973</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Dandelion</td>
+<td style="text-align: left;">Piedmont</td>
+<td style="text-align: right;">1.651068</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Piedmont</td>
+<td style="text-align: left;">Eno</td>
+<td style="text-align: right;">1.527350</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Persimmon</td>
+<td style="text-align: left;">Eno</td>
+<td style="text-align: right;">1.480895</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Copper</td>
+<td style="text-align: left;">Eno</td>
+<td style="text-align: right;">1.338749</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Persimmon</td>
+<td style="text-align: left;">Piedmont</td>
+<td style="text-align: right;">1.031369</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Cast Iron</td>
+<td style="text-align: left;">Duke Navy Blue</td>
+<td style="text-align: right;">1.025345</td>
+</tr>
 </tbody>
-</table></div>
-
+</table>
 </div>
+</div>
+
 </div>
 </div>
 <p><br> To ensure that this palette is accessible, we use the <code>colorblindr</code> package to visualize sample plots from the perspective of individuals with different types of color vision deficiency. There are several categorizations of CVD, yet the most common is red-green color blindness. As the name suggests, it makes it difficult for individuals to distinguish between red and green. Among this population, approximately 62.5% are deuteranomalous - meaning they have green-weak vision that makes green appear more red <span class="citation" data-cites="woods2021">(<a href="references.html#ref-woods2021" role="doc-biblioref">Woods 2021a</a>)</span>. Protonopia and deuteraonopia prevent individuals from distinguishing between red and green at all, yet are far less prevalent at only 12.5% of the red-green colorblind population each <span class="citation" data-cites="woods2021a">(<a href="references.html#ref-woods2021a" role="doc-biblioref">Woods 2021b</a>)</span>.</p>
-<p>Red-green color blindness is by far the most common type, accounting for approximately 99% of those with CVD. For the purpose of creating a feasible project scope, we focus primarily on accessibility for those with red-green colorblindness. Future work on this project - or one with a similar goal - should investigate the feasibility of visualization accessibility for those with blue-yellow color blindness, monochromacy, etc.</p>
+<p>Red-green color blindness is by far the most common type, accounting for approximately 99% of those with CVD. For the purpose of creating a feasible project scope, we focus primarily on accessibility for those with red-green colorblindness. Future work on this project - or one with a similar goal - should investigate the feasibility of visualization accessibility for those with blue - yellow color blindness, monochromacy, etc.</p>
 <div id="fig-scatter" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="images/deut_comp.png" class="img-fluid figure-img"></p>
@@ -542,9 +550,9 @@ div.csl-indent {
 <section id="lessons-learned" class="level2" data-number="2.4">
 <h2 data-number="2.4" class="anchored" data-anchor-id="lessons-learned"><span class="header-section-number">2.4</span> Lessons Learned</h2>
 <p>The package development process can be daunting; I know it was for me. The excess of package dependencies, function documentation, and test scripts quickly becomes complex and overwhelming, making it all the more important to approach the process properly informed. Here are some lessons I learned throughout the process and takeaways for success in package development:</p>
-<p><strong>1. Package development is an iterative process, take your time.</strong> It is crucial that you approach each step in building your package with care - even those that are mundane. I often found myself skipping ahead to more attractive tasks like constructing a new function, leaving tedious but important tasks like documentation behind. This typically resulted in errors when checking my package. And they were increasingly harder to address when time had passed since I last worked on it. The process is far smoother when you continuously check for issues and address them immediately, rather than put them on the back-burner. It will save you fromwasted time and frustration, so make sure to lean into the iterative style of package development.</p>
+<p><strong>1. Package development is an iterative process, take your time.</strong> It is crucial that you approach each step in building your package with care - even those that are mundane. I often found myself skipping ahead to more attractive tasks like constructing a new function, leaving tedious but important tasks like documentation behind. This typically resulted in errors when checking my package. And they were increasingly harder to address when time had passed since I last worked on it. The process is far smoother when you continuously check for issues and address them immediately, rather than put them on the back-burner. It will save you from wasted time and frustration, so make sure to lean into the iterative style of package development.</p>
 <p><strong>2. The devtools package is your best friend.</strong> The <code>devtools</code> package is inherent to the package development process, but the way you use it can make all the difference. The <a href="https://r-pkgs.org">R Package (2e)</a> textbook was an integral resource for learning when and how to use the various functions of <code>devtools</code>. It details the order you should use its functions to load your package, create necessary documentation and vignettes, check for existing errors, and eventually build your package. While it may seem minor, memorize the shortcuts for the primary functions of <code>devtools</code> (load_all(), check(), document()). Over time, they will save you a significant amount of time and make your package development process more efficient.</p>
-<p><strong>3. Engage with existing resources online and collaborate with others.</strong> A common misconception in building new packages is that it is an entirely individual undertaking. I identified colorblind accessibility in the Duke data visualization as a unique and necessary problem to address, in turn, inspiring the <strong>duke</strong> package. At first, I thought that this meant I would and <strong><em>should</em></strong> construct the package on my own. This could not be further from the truth. As a package intended to be integrated into ggplot2 visualizations, <strong>duke</strong> shares many of the same functionalities as those in theme() and scale(). These existing resources demonstrated how to create the general structures of my functions, which then I could adapt to implement Duke’s official palette, a minimalist background aesthetic, etc. The “worth” of your package is not defined by its lack in crossover with other packages existing; therefore, make sure to engage with the resources at your disposal. I recommend you explore existing packages on <a href="https://github.com">Github</a>, troubleshoot package issues by asking questions in the <a href="https://community.rstudio.com">Posit community</a>, and find answers to difficult questions already asked on <a href="https://stackoverflow.com">StackOverflow</a>.</p>
+<p><strong>3. Engage with existing resources online and collaborate with others.</strong> A common misconception in building new packages is that it is an entirely individual undertaking. I identified colorblind accessibility in the Duke data visualization as a unique and necessary problem to address, in turn, inspiring the <strong>duke</strong> package. At first, I thought that this meant I would and <em>should</em> construct the package on my own. This could not be further from the truth. As a package intended to be integrated into ggplot2 visualizations, <strong>duke</strong> shares many of the same functionalities as those in <code>theme()</code> and <code>scale()</code>. These existing resources demonstrated how to create the general structures of my functions, which then I could adapt to implement Duke’s official palette, a minimalist background aesthetic, etc. The “worth” of your package is not defined by its lack in crossover with other packages existing; therefore, make sure to engage with the resources at your disposal. I recommend you explore existing packages on <a href="https://github.com">GitHub</a>, troubleshoot package issues by asking questions in the <a href="https://community.rstudio.com">Posit Community</a>, and find answers to difficult questions already asked on <a href="https://stackoverflow.com">StackOverflow</a>.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
@@ -589,6 +597,9 @@ UNC School of Medicine. n.d. <span>“Using Accessible Web Colors.”</span> <a 
 </div>
 <div id="ref-wilke" class="csl-entry" role="doc-biblioentry">
 Wilke, Claus. n.d. <span>“Fundamentals of Data Visualization.”</span> <a href="https://clauswilke.com/dataviz/color-pitfalls.html">https://clauswilke.com/dataviz/color-pitfalls.html</a>.
+</div>
+<div id="ref-wilkea" class="csl-entry" role="doc-biblioentry">
+Wilke, Claus O. n.d. <em>Fundamentals of Data Visualization</em>. <a href="https://clauswilke.com/dataviz/color-pitfalls.html">https://clauswilke.com/dataviz/color-pitfalls.html</a>.
 </div>
 <div id="ref-woods2021" class="csl-entry" role="doc-biblioentry">
 Woods, Rob. 2021a. <span>“Types of Color Blindness.”</span> <a href="https://www.allaboutvision.com/conditions/color-blindness/types-of-color-blindness/">https://www.allaboutvision.com/conditions/color-blindness/types-of-color-blindness/</a>.
@@ -694,6 +705,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {

@@ -1,17 +1,23 @@
 ---
 formal: html
+execute:
+  echo: false
 ---
 
 # Case Study
 
 ```{r}
-#| include: false
+#| label: setup
+#| include: FALSE
 
-library(tidyverse)
-library(patchwork)
-library(cowplot)
-library(colorblindr) # remotes::install_github("clauswilke/colorblindr")
-library(duke)        # devtools::install_github("aidangildea/duke")
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.width = 8,
+  fig.asp = 0.618,
+  warning = FALSE,
+  message = FALSE
+)
 ```
 
 ## Introduction
@@ -19,33 +25,44 @@ library(duke)        # devtools::install_github("aidangildea/duke")
 The **duke** package is intended to promote color blind accessibility in Duke official visualizations.
 This applied analysis aims to demonstrate how, when, and why the package may be used within the Duke community.
 
+```{r}
+#| include: false
+
+library(tidyverse)
+library(patchwork)
+library(cowplot)
+library(janitor)
+library(duke)        # devtools::install_github("aidangildea/duke")
+library(colorblindr) # devtools::install_github("clauswilke/colorblindr")
+```
+
 The data for this analysis is sourced from the Office of the University Registrar and details information about all Duke courses between 2013-2022.
 The data set has 10 variables and 63,433 observations, each of which is a unique class.
 Included in the data is information on the course department, subject, enrollment numbers, and room description.
-See the table below for a full data description.
+See @tbl-data-desc for a full data dictionary.
 
 ```{r}
-#| echo: false
-#| warning: false
+#| message: false
 
-registrar <- read_csv("data/registrar.csv")
-colnames(registrar) <- c("Acad_Year", "Acad_Org", "Class_Num", "Subject","Catalog_Num", "Class_Desc",  "Total_Enroll", "Enroll_Cap", "Room_Cap", "Room_Desc")
+registrar <- read_csv("data/registrar.csv") |>
+  clean_names() |>
+  rename(acad_org = acad_org_proxy_for_department)
 ```
 
-| Variable     | Description                                                             |
+| Variable         | Description                                          |
 |--------------------------------|----------------------------------------|
-| Acad_Year    | Academic year of the course.                                            |
-| Acad_Org     | Academic organization abbreviation of the course; proxy for department. |
-| Class_Num    | Unique class number for the course.                                     |
-| Subject      | Subject abbreviation for course.                                        |
-| Catalog_Num  | Course number within academic organizations.                            |
-| Class_Desc   | Course name.                                                            |
-| Total_Enroll | Number of students enrolled in course.                                  |
-| Enroll_Cap   | Enrollment capacity for course.                                         |
-| Room_Cap     | Capacity for students permitted in course room.                         |
-| Room_Desc    | Room where course is held.                                              |
+| `acad_year`      | Academic year of the course.                         |
+| `acad_org`       | Academic organization abbreviation of the course; proxy for department. |
+| `class_nbr`      | Unique class number for the course.                  |
+| `subject`        | Subject abbreviation for course.                     |
+| `catalog_number` | Course number within academic organizations.         |
+| `class_descr`    | Course name.                                         |
+| `total_enrollment`   | Number of students enrolled in course.           |
+| `enrollment_capacity`     | Enrollment capacity for course.             |
+| `room_capacity`  | Capacity for students permitted in course room.      |
+| `room_descr`     | Room where course is held.                           |
 
-: **Registrar Data Description**{#tbl-data-desc}
+: **Registrar Data Dictionary** {#tbl-data-desc}
 
 ## Analysis
 
@@ -57,107 +74,180 @@ Thus, communications, reports, and announcements from the University Registrar o
 The following tabs allows users without color blindness to see **duke** from their perspective and from the perspective of those who are deuteronamolous.
 This allows for a better understanding of how the package improves accessibility in Duke data visualizations.
 
-**TO DO**: See https://quarto.org/docs/authoring/conditional.html#content-visible for conditional content.
-
-::: panel-tabset
-### Non-Deuteronamolous Perspective
-
 ```{r}
-#| echo: false
 #| warning: false
 
 registrar <- registrar |>
   # create undergraduate course boolean
   mutate(Undergraduate = case_when(
-    as.numeric(gsub("([0-9]+).*$", "\\1", Catalog_Num)) >= 500 | Acad_Org %in% c("FUQUA", "NURSING", "LAW") ~ FALSE,
+    as.numeric(gsub("([0-9]+).*$", "\\1", catalog_number)) >= 500 | acad_org %in% c("FUQUA", "NURSING", "LAW") ~ FALSE,
     TRUE ~ TRUE
   ),
   # create course variable
-  Course = paste(Subject, Catalog_Num, sep = ""),
-  Course = str_remove(Course, " "),
-  Seminar = if_else(str_detect(Catalog_Num, "S"), TRUE, FALSE)) |>
+  course = paste0(subject, catalog_number),
+  course = str_remove(course, " "),
+  seminar = if_else(str_detect(catalog_number, "S"), TRUE, FALSE)) |>
   # remove Abroad Classes
-  filter(!endsWith(Catalog_Num, 'A'))
+  filter(!endsWith(catalog_number, "A"))
 ```
 
+### Number of courses by department
+
 The Registrar is interested in understanding the breadth of academic offerings available for students.
-As we can see in @fig-depts, the academic organizations (proxy for department) that have offered the largest number of undergraduate courses from 2013-2022 are the Asian and Middle Eastern Studies (AMES), Chemistry, Math, Public Policy (PPS), and Romance Studies departments.
-With this information, the Registrar can better make decisions about the distribution of University resources and/or understand potential dapartment popularity.
+As we can see in @fig-depts1 and @fig-depts2, the academic organizations (proxy for department) that have offered the largest number of undergraduate courses from 2013-2022 are the Asian and Middle Eastern Studies (AMES), Chemistry, Math, Public Policy (PPS), and Romance Studies departments.
+With this information, the Registrar can better make decisions about the distribution of University resources and/or understand potential department popularity.
 
 ```{r}
-#| label: fig-depts
-#| fig-cap: "Academic Organizations with Highest Number of Undergraduate Courses"
-#| echo: false
-#| warning: false
-#| fig-asp: .618
-
 top_5 <- registrar |>
   filter(Undergraduate == TRUE) |>
-  count(Acad_Org) |>
+  count(acad_org) |>
   top_n(5, n) |> 
-  pull(Acad_Org)
+  pull(acad_org)
 
 dept_plot <- ggplot(registrar |>
-         filter(Acad_Org %in% top_5), aes(Acad_Org, fill = Acad_Org)) +
+         filter(acad_org %in% top_5), aes(acad_org, fill = acad_org)) +
   geom_bar() +
-  labs(x = "Academic Organization", y = "Count", title = "Academic Organizations with Highest \n Number of Undergraduate Courses", subtitle = "Between 2013-2022") +
+  labs(
+    x = "Academic Organization", 
+    y = "Count", 
+    title = "Academic Organizations with Highest \nNumber of Undergraduate Courses",
+    subtitle = "Between 2013 - 2022"
+  ) +
   theme_duke() +
   scale_duke_fill_discrete() +
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
+```
+
+::: {.content-visible when-format="html"}
+
+::: {.panel-tabset}
+
+### Non-Deuteronamolous Perspective
+
+```{r}
+#| label: fig-depts1
+#| fig-cap: "Academic Organizations with Highest Number of Undergraduate Courses - Non-Deuteronamolous Perspective"
+
 dept_plot
 ```
 
+### Deuteronamolous Perspective
+
+```{r}
+#| label: fig-depts2
+#| fig-cap: Academic Organizations with Highest Number of Undergraduate Courses - Deuteronamolous Perspective"
+
+dept_plot2 <- edit_colors(dept_plot, deutan, sev = 0.7)
+cowplot::plot_grid(dept_plot2, ncol = 1)
+```
+
+:::
+
+:::
+
+
+::: {.content-visible when-format="pdf"}
+
+```{r}
+#| ref.label: "fig-depts1"
+#| fig-cap: Academic Organizations with Highest Number of Undergraduate Courses - Non-Deuteronamolous Perspective"
+```
+
+```{r}
+#| ref.label: "fig-depts2"
+#| fig-cap: Academic Organizations with Highest Number of Undergraduate Courses - Deuteronamolous Perspective"
+```
+
+:::
+
+### Average class size
+
 Average class size is a staple concern of major universities, as prospective students and their families are attracted to small faculty to student ratios.
-In @fig-enroll-plot, we find that the Computer Science, Economics, Engineering, Environmental Sciences, and Earth and Ocean Sciences departments have the highest average undergraduate sciences.
+In @fig-enroll-plot1 and @fig-enroll-plot2, we find that the Computer Science, Economics, Engineering, Environmental Sciences, and Earth and Ocean Sciences departments have the highest average undergraduate sciences.
 This is understandable given that they are majorly STEM departments, which tend to have more lecture-based courses.
 This visualization is a helpful resource for the Registrar to pinpoint departments that would benefit from reducing class size.
 
 ```{r}
-#| label: fig-enroll-plot
-#| fig-cap: "Academic Organizations with Highest Enrollment Capacities"
-#| echo: false
-#| warning: false
-#| message: false
-#| fig-asp: .618
-
 high_enroll <- registrar |>
   filter(Undergraduate == TRUE) |>
-  group_by(Acad_Org) |>
-  summarise(Acad_Org, Avg_Cap = mean(Enroll_Cap), Count = n()) |>
-  ungroup(Acad_Org) |>
-  distinct(Acad_Org, Avg_Cap, .keep_all = TRUE) |>
-  filter(Count > 50) |>
-  top_n(5, Avg_Cap) |>
-  pull(Acad_Org)
+  group_by(acad_org) |>
+  summarise(acad_org, avg_cap = mean(enrollment_capacity), count = n()) |>
+  ungroup(acad_org) |>
+  distinct(acad_org, avg_cap, .keep_all = TRUE) |>
+  filter(count > 50) |>
+  top_n(5, avg_cap) |>
+  pull(acad_org)
 
-enroll_plot <- ggplot(registrar |>
-         filter(Acad_Org %in% high_enroll), aes(Acad_Org, Enroll_Cap, fill = Acad_Org)) +
+enroll_plot <- ggplot(
+  registrar |> filter(acad_org %in% high_enroll), 
+  aes(acad_org, enrollment_capacity, fill = acad_org)
+  ) +
   geom_boxplot() +
   ylim(0, 150) +
-  labs(x = "Academic Organization", y = "Enrollment Capacity", title = "Academic Organizations with Highest \n Enrollment Capacities", subtitle = "Between 2013-2022") +
+  labs(
+    x = "Academic Organization", 
+    y = "Enrollment Capacity", 
+    title = "Academic Organizations with Highest \nEnrollment Capacities",
+    subtitle = "Between 2013-2022"
+  ) +
   theme_duke() +
   scale_duke_fill_discrete() +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+```
+
+::: {.content-visible when-format="html"}
+
+::: {.panel-tabset}
+
+### Non-Deuteronamolous Perspective
+
+```{r}
+#| label: fig-enroll-plot1
+#| fig-cap: "Academic Organizations with Highest Enrollment Capacities - Non-Deuteronamolous Perspective"
 
 enroll_plot
 ```
 
+### Deuteronamolous Perspective
+
+```{r}
+#| label: fig-enroll-plot2
+#| fig-cap: "Academic Organizations with Highest Enrollment Capacities - Deuteronamolous Perspective"
+
+enroll_plot2 <- edit_colors(enroll_plot, deutan, sev = 0.7)
+cowplot::plot_grid(enroll_plot2, ncol = 1)
+```
+
+:::
+
+:::
+
+
+::: {.content-visible when-format="pdf"}
+
+```{r}
+#| ref.label: "fig-enroll-plot1"
+#| fig-cap: "Academic Organizations with Highest Enrollment Capacities - Non-Deuteronamolous Perspective"
+```
+
+```{r}
+#| ref.label: "fig-enroll-plot2"
+#| fig-cap: "Academic Organizations with Highest Enrollment Capacities - Deuteronamolous Perspective"
+```
+
+:::
+
+### Enrollment in Computer Science courses
+
 Now that we have identified Computer Science as a department with larger class capacities, let's see if there is enough student demand to fill them.
-@fig-comp-enroll exhibits both the distribution of student enrollment in Computer Science course and of class capacities in the department.
+@fig-comp-enroll1 and @fig-comp-enroll2 exhibits both the distribution of student enrollment in Computer Science course and of class capacities in the department.
 While they share a right skew, the center of student enrollment appears less than that of course capacity.
 The Registrar would certainly want to investigate the data further, but the visualization suggests that students do not enroll at a high enough rate to fill the courses.
 
 ```{r}
-#| label: fig-comp-enroll
-#| fig-cap: "COMPSCI Class Enrollment and Capacity Distributions"
-#| echo: false
-#| warning: false
-#| message: false
-#| fig-asp: .618
-
 hist1 <- registrar |>
-  filter(Acad_Org == "COMP SCI") |>
-  ggplot(aes(Total_Enroll, , fill = Acad_Org)) + # TO DO: Something is missing here?
+  filter(acad_org == "COMP SCI") |>
+  ggplot(aes(total_enrollment, fill = acad_org)) +
   geom_histogram() +
   labs(title = "COMPSCI Class Enrollment Does Not Meet Capacity", x = "Students Enrolled", y = "Count") +
   xlim(0, 150) + 
@@ -166,276 +256,351 @@ hist1 <- registrar |>
   theme(legend.position = "none")
 
 hist2 <- registrar |>
-  filter(Acad_Org == "COMP SCI") |>
-  ggplot(aes(Enroll_Cap, fill = Acad_Org)) +
+  filter(acad_org == "COMP SCI") |>
+  ggplot(aes(enrollment_capacity, fill = acad_org)) +
   geom_histogram() +
   labs(x = "Enrollment Capacity", y = "Count") +
   xlim(0, 150) +
   theme_duke() +
   scale_duke_fill_discrete() +
   theme(legend.position = "none")
+```
+
+::: {.content-visible when-format="html"}
+
+::: {.panel-tabset}
+
+### Non-Deuteronamolous Perspective
+
+```{r}
+#| label: fig-comp-enroll1
+#| fig-cap: "COMPSCI Class Enrollment and Capacity Distributions - Non-Deuteronamolous Perspective"
 
 hist1 / hist2
 ```
 
-The University often highlights their wide selection of introductory courses that allow new students to explore their interests.
-@fig-intro-course-success explores the intro courses with the most successful enrollment rates.
-This is beneficial because it informs the Registrar's process of 1) adding sections to these courses and/or 2) identifying reasons for these courses' success and integrating them into others.
-
-```{r}
-#| label: fig-intro-course-success
-#| fig-cap: "Intro Courses with Highest Enrollment Success"
-#| warning: false
-#| echo: false
-#| message: false
-#| fig-asp: .618
-
-high_succ <- registrar |>
-  filter(as.numeric(gsub("([0-9]+).*$", "\\1", Catalog_Num)) == 101) |>
-  group_by(Course) |>
-  summarise(Course, Catalog_Num, Subject, Class_Desc, Enroll_Succ = sum(Total_Enroll)/sum(Enroll_Cap), Avg_Size = mean(Enroll_Cap)) |>
-  distinct(Course, .keep_all = TRUE) |>
-  arrange(desc(Enroll_Succ)) |>
-  ungroup(Course) |>
-  top_n(8, Enroll_Succ) |>
-  ggplot(aes(Course, y = Enroll_Succ, color = Course)) +
-  geom_point() + 
-  geom_text(aes(label= round(Enroll_Succ, 3)), nudge_x=.4, nudge_y=0, 
-            size = 3, show.legend = FALSE) +
-  geom_segment(aes(x= Course, 
-                   xend= Course, 
-                   y=0, 
-                   yend=Enroll_Succ), linewidth = 1) +
-  coord_flip() +
-  labs(title = "Intro Courses with Highest\n Enrollment Success", x = "Course", y = "Enrollment Success") +
-  theme_duke() +
-  scale_duke_color_discrete() +
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
-
-high_succ
-```
-
-Conversely, the Registrar may want to identify intro courses with lower enrollment rates so that they can 1) adjust their structure/implementation and/or 2) remove them from the course catalog.
-@fig-intro-course-least visualizes the eight intro courses with the least successful enrollment rates.
-
-```{r}
-#| label: fig-intro-course-least
-#| fig-cap: "Intro Courses with Least Enrollment Success"
-#| warning: false
-#| echo: false
-#| message: false
-#| fig-asp: .618
-
-low_succ <- registrar |>
-  filter(as.numeric(gsub("([0-9]+).*$", "\\1", Catalog_Num)) == 101) |>
-  group_by(Course) |>
-  summarise(Course, Catalog_Num, Subject, Class_Desc, Enroll_Succ = sum(Total_Enroll)/sum(Enroll_Cap), Avg_Size = mean(Enroll_Cap)) |>
-  distinct(Course, .keep_all = TRUE) |>
-  arrange(Enroll_Succ) |>
-  ungroup(Course) |>
-  top_n(-8, Enroll_Succ) |>
-  ggplot(aes(Course, y = Enroll_Succ, color = Course)) +
-  geom_point() + 
-  geom_text(aes(label= round(Enroll_Succ, 3)), nudge_x=.4, nudge_y=0, 
-            size = 3, show.legend = FALSE) +
-  geom_segment(aes(x= Course, 
-                   xend= Course, 
-                   y=0, 
-                   yend=Enroll_Succ), linewidth = 1) +
-  coord_flip() +
-  labs(title = "Intro Courses with Lowest\n Enrollment Success", x = "Course", y = "Enrollment Success") +
-  theme_duke() +
-  scale_duke_color_discrete() +
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
-low_succ
-```
-
-Again, the University is continuously interested in increasing the amount of face-to-face time students have with their professors.
-Seminar courses are a great course format for doing so.
-@fig-sem-best demonstrates the five departments with the highest proportion of seminar courses in their catalog.
-If the Registrar wants to tout their seminar offerings, they can highlight the Documentary Studies, English, Gender, Sexuality Feminist Studies, Policy and Journalism, and Theater Studies departments.
-
-```{r}
-#| label: fig-sem-best
-#| fig-cap: "Academic Organizations with Highest Seminar Rates"
-#| warning: false
-#| echo: false
-#| message: false
-#| fig-asp: .618
-
-sem_rates <- registrar |>
-  filter(Undergraduate == TRUE) |>
-  group_by(Acad_Org) |>
-  count(Acad_Org, Seminar) |>
-  filter(n > 50) |>
-  summarise(Acad_Org, Seminar, Count = n, Total = sum(n)) |>
-  filter(Seminar == TRUE, Acad_Org != "FOCUS") |>
-  summarise(Acad_Org, Rate = Count/Total) |>
-  top_n(5, Rate) |>
-  pull(Acad_Org)
-
-sem_plot <- ggplot(registrar |>
-         filter(Acad_Org %in% sem_rates), aes(x = Acad_Org, fill = Seminar))+
-geom_bar(position = "fill") +
-  labs(title = "Academic Organizations with\n Highest Seminar Rates", x = "Academic Organization", y = "Proportion", subtitle = "Between 2013-2022") +
-theme_duke() +
-scale_duke_fill_discrete() +
-    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
-sem_plot
-
-sem_rates_low <- registrar |>
-  filter(Undergraduate == TRUE) |>
-  group_by(Acad_Org) |>
-  count(Acad_Org, Seminar) |>
-  summarise(Acad_Org, Seminar, Count = n, Total = sum(n)) |>
-  filter(Seminar == TRUE, Acad_Org != "FOCUS") |>
-  summarise(Acad_Org, Rate = Count/Total) |>
-  top_n(-5, Rate) |>
-  pull(Acad_Org)
-```
-
-On the other hand, if the University aims to improve their overall seminar offerings, it is important that they identify departments with lowest proportions.
-The Registrar may be interested in adding additional seminar courses to the departments in @fig-sem-worst.
-
-```{r}
-#| label: fig-sem-worst
-#| fig-cap: "Academic Organizations with Lowest Seminar Rates"
-#| warning: false
-#| echo: false
-#| message: false
-#| fig-asp: .618
-
-sem_plot2 <- ggplot(registrar |>
-         filter(Acad_Org %in% sem_rates_low), aes(x = Acad_Org, fill = Seminar))+
-geom_bar(position = "fill") +
-  labs(title = "Academic Organizations with\n Lowest Seminar Rates", x = "Academic Organization", y = "Proportion", subtitle = "Between 2013-2022") +
-theme_duke() +
-scale_duke_fill_discrete() +
-    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
-sem_plot2
-```
-
-These data insights are critical for both the Registrar and members of the Duke community to make informed educational decisions.
-To ensure that those who are colorblind have the same level of access, the Registrar should use the **duke** package as part of their visualization best practices.
-
 ### Deuteronamolous Perspective
-
-The Registrar is interested in understanding the breadth of academic offerings available for students.
-As we can see in @fig-depts2, the academic organizations (proxy for department) that have offered the largest number of undergraduate courses from 2013-2022 are the Asian and Middle Eastern Studies (AMES), Chemistry, Math, Public Policy (PPS), and Romance Studies departments.
-With this information, the Registrar can better make decisions about the distribution of University resources and/or understand potential dapartment popularity.
-
-```{r}
-#| label: fig-depts2
-#| fig-cap: Academic Organizations with Highest Number of Undergraduate Courses"
-#| warning: false
-#| echo: false
-#| message: false
-#| fig-asp: .618
-
-dept_plot2 <- edit_colors(dept_plot, deutan, sev = 0.7)
-cowplot::plot_grid(dept_plot2, ncol = 1)
-```
-
-Average class size is a staple concern of major universities, as prospective students and their families are attracted to small faculty to student ratios.
-In @fig-enroll-plot2, we find that the Computer Science, Economics, Engineering, Environmental Sciences, and Earth and Ocean Sciences departments have the highest average undergraduate sciences.
-This is understandable given that they are majorly STEM departments, which tend to have more lecture-based courses.
-This visualization is a helpful resource for the Registrar to pinpoint departments that would benefit from reducing class size.
-
-```{r}
-#| label: fig-enroll-plot2
-#| fig-cap: "Academic Organizations with Highest Enrollment Capacities"
-#| warning: false
-#| echo: false
-#| message: false
-#| fig-asp: .618
-
-enroll_plot2 <- edit_colors(enroll_plot, deutan, sev = 0.7)
-cowplot::plot_grid(enroll_plot2, ncol = 1)
-```
-
-Now that we have identified Computer Science as a department with larger class capacities, let's see if there is enough student demand to fill them.
-@fig-comp-enroll2 exhibits both the distribution of student enrollment in Computer Science course and of class capacities in the department.
-While they share a right skew, the center of student enrollment appears less than that of course capacity.
-The Registrar would certainly want to investigate the data further, but the visualization suggests that students do not enroll at a high enough rate to fill the courses.
 
 ```{r}
 #| label: fig-comp-enroll2
-#| fig-cap: "COMPSCI Class Enrollment and Capacity Distributions"
-#| warning: false
-#| echo: false
-#| message: false
-#| fig-asp: .618
+#| fig-cap: "COMPSCI Class Enrollment and Capacity Distributions - Deuteronamolous Perspective"
 
 hist3 <- edit_colors(hist1, deutan, sev = 0.7)
 hist4 <- edit_colors(hist2, deutan, sev = 0.7)
 cowplot::plot_grid(hist3, hist4, ncol = 1)
 ```
 
+:::
+
+:::
+
+
+::: {.content-visible when-format="pdf"}
+
+```{r}
+#| ref.label: "fig-comp-enroll1"
+#| fig-cap: "COMPSCI Class Enrollment and Capacity Distributions - Non-Deuteronamolous Perspective"
+```
+
+```{r}
+#| ref.label: "fig-comp-enroll2"
+#| fig-cap: "COMPSCI Class Enrollment and Capacity Distributions - Deuteronamolous Perspective"
+```
+
+:::
+
+### Enrollment in introductory courses
+
 The University often highlights their wide selection of introductory courses that allow new students to explore their interests.
-@fig-intro-course-success2 explores the intro courses with the most successful enrollment rates.
+@fig-intro-course-success1 and @fig-intro-course-success2 explore the intro courses with the most successful enrollment rates.
 This is beneficial because it informs the Registrar's process of 1) adding sections to these courses and/or 2) identifying reasons for these courses' success and integrating them into others.
 
 ```{r}
-#| label: fig-intro-course-success2
-#| fig-cap: "Intro Courses with Highest Enrollment Success"
-#| warning: false
-#| echo: false
-#| message: false
-#| fig-asp: .618
+high_succ <- registrar |>
+  filter(as.numeric(gsub("([0-9]+).*$", "\\1", catalog_number)) == 101) |>
+  group_by(course) |>
+  summarise(
+    course, catalog_number, subject, class_descr, 
+    Enroll_Succ = sum(total_enrollment)/sum(enrollment_capacity), 
+    Avg_Size = mean(enrollment_capacity)
+  ) |>
+  distinct(course, .keep_all = TRUE) |>
+  arrange(desc(Enroll_Succ)) |>
+  ungroup(course) |>
+  top_n(8, Enroll_Succ) |>
+  ggplot(aes(course, y = Enroll_Succ, color = course)) +
+  geom_point() + 
+  geom_text(aes(label= round(Enroll_Succ, 3)), nudge_x=.4, nudge_y=0, 
+            size = 3, show.legend = FALSE) +
+  geom_segment(aes(x= course, 
+                   xend= course, 
+                   y=0, 
+                   yend=Enroll_Succ), linewidth = 1) +
+  coord_flip() +
+  labs(title = "Intro Courses with Highest\nEnrollment Success", x = "Course", y = "Enrollment Success") +
+  theme_duke() +
+  scale_duke_color_discrete() +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+```
+
+::: {.content-visible when-format="html"}
+
+::: {.panel-tabset}
+
+### Non-Deuteronamolous Perspective
+
+```{r}
+#| label: fig-intro-course-succes1
+#| fig-cap: "Intro Courses with Highest Enrollment Success - Non-Deuteronamolous Perspective"
+
+high_succ
+```
+
+### Deuteronamolous Perspective
+
+```{r}
+#| label: fig-intro-course-succes2
+#| fig-cap: "Intro Courses with Highest Enrollment Success - Deuteronamolous Perspective"
 
 high_succ2 <- edit_colors(high_succ, deutan, sev = 0.7)
 cowplot::plot_grid(high_succ2, ncol = 1)
 ```
 
+:::
+
+:::
+
+
+::: {.content-visible when-format="pdf"}
+
+```{r}
+#| ref.label: "fig-intro-course-succes1"
+#| fig-cap: "Intro Courses with Highest Enrollment Success - Non-Deuteronamolous Perspective"
+```
+
+```{r}
+#| ref.label: "fig-intro-course-succes2"
+#| fig-cap: "Intro Courses with Highest Enrollment Success - Deuteronamolous Perspective"
+```
+
+:::
+
 Conversely, the Registrar may want to identify intro courses with lower enrollment rates so that they can 1) adjust their structure/implementation and/or 2) remove them from the course catalog.
-@fig-intro-course-least2 visualizes the eight intro courses with the least successful enrollment rates.
+@fig-intro-course-least1 and @fig-intro-course-least2 visualize the eight intro courses with the least successful enrollment rates.
+
+```{r}
+low_succ <- registrar |>
+  filter(as.numeric(gsub("([0-9]+).*$", "\\1", catalog_number)) == 101) |>
+  group_by(course) |>
+  summarise(
+    course, catalog_number, subject, class_descr, 
+    Enroll_Succ = sum(total_enrollment) / sum(enrollment_capacity), 
+    Avg_Size = mean(enrollment_capacity)
+  ) |>
+  distinct(course, .keep_all = TRUE) |>
+  arrange(Enroll_Succ) |>
+  ungroup(course) |>
+  top_n(-8, Enroll_Succ) |>
+  ggplot(aes(course, y = Enroll_Succ, color = course)) +
+  geom_point() + 
+  geom_text(aes(label= round(Enroll_Succ, 3)), nudge_x=.4, nudge_y=0, 
+            size = 3, show.legend = FALSE) +
+  geom_segment(aes(x= course, 
+                   xend= course, 
+                   y=0, 
+                   yend=Enroll_Succ), linewidth = 1) +
+  coord_flip() +
+  labs(title = "Intro Courses with Lowest\nEnrollment Success", x = "Course", y = "Enrollment Success") +
+  theme_duke() +
+  scale_duke_color_discrete() +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
+```
+
+::: {.content-visible when-format="html"}
+
+::: {.panel-tabset}
+
+### Non-Deuteronamolous Perspective
+
+```{r}
+#| label: fig-intro-course-least1
+#| fig-cap: "Intro Courses with Least Enrollment Success - Non-Deuteronamolous Perspective"
+
+low_succ
+```
+
+### Deuteronamolous Perspective
 
 ```{r}
 #| label: fig-intro-course-least2
-#| fig-cap: "Intro Courses with Least Enrollment Success"
-#| warning: false
-#| echo: false
-#| message: false
-#| fig-asp: .618
-#| 
+#| fig-cap: "Intro Courses with Least Enrollment Success - Deuteronamolous Perspective"
+
 low_succ2 <- edit_colors(low_succ, deutan, sev = 0.7)
 cowplot::plot_grid(low_succ2, ncol = 1)
 ```
 
-Again, the University is continuously interested in increasing the amount of face-to-face time students have with their professors.
+:::
+
+:::
+
+
+::: {.content-visible when-format="pdf"}
+
+```{r}
+#| ref.label: "fig-intro-course-least1"
+#| fig-cap: "Intro Courses with Least Enrollment Success - Non-Deuteronamolous Perspective"
+```
+
+```{r}
+#| ref.label: "fig-intro-course-least2"
+#| fig-cap: "Intro Courses with Least Enrollment Success - Deuteronamolous Perspective"
+```
+
+:::
+
+### Seminar courses
+
+The University is continuously interested in increasing the amount of face-to-face time students have with their professors.
 Seminar courses are a great course format for doing so.
-@fig-sem-best2 demonstrates the five departments with the highest proportion of seminar courses in their catalog.
+@fig-sem-best1 and @fig-sem-best2 demonstrate the five departments with the highest proportion of seminar courses in their catalog.
 If the Registrar wants to tout their seminar offerings, they can highlight the Documentary Studies, English, Gender, Sexuality Feminist Studies, Policy and Journalism, and Theater Studies departments.
 
 ```{r}
+sem_rates <- registrar |>
+  filter(Undergraduate == TRUE) |>
+  group_by(acad_org) |>
+  count(acad_org, seminar) |>
+  filter(n > 50) |>
+  summarise(acad_org, seminar, Count = n, Total = sum(n)) |>
+  filter(seminar == TRUE, acad_org != "FOCUS") |>
+  summarise(acad_org, Rate = Count / Total) |>
+  top_n(5, Rate) |>
+  pull(acad_org)
+
+sem_plot <- ggplot(registrar |>
+  filter(acad_org %in% sem_rates), aes(x = acad_org, fill = seminar)) +
+  geom_bar(position = "fill") +
+  labs(
+    title = "Academic Organizations with\nHighest Seminar Rates",
+    x = "Academic Organization",
+    y = "Proportion",
+    subtitle = "Between 2013-2022"
+  ) +
+  theme_duke() +
+  scale_duke_fill_discrete() +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
+```
+
+::: {.content-visible when-format="html"}
+
+::: {.panel-tabset}
+
+### Non-Deuteronamolous Perspective
+
+```{r}
+#| label: fig-sem-best1
+#| fig-cap: "Academic Organizations with Highest Seminar Rates - Non-Deuteronamolous Perspective"
+
+sem_plot
+```
+
+### Deuteronamolous Perspective
+
+```{r}
 #| label: fig-sem-best2
-#| fig-cap: "Academic Organizations with Highest Seminar Rates"
-#| warning: false
-#| echo: false
-#| message: false
-#| fig-asp: .618
+#| fig-cap: "Academic Organizations with Highest Seminar Rates - Deuteronamolous Perspective"
 
 sem_plot3 <- edit_colors(sem_plot, deutan, sev = 0.7)
 cowplot::plot_grid(sem_plot3, ncol = 1)
 ```
 
+:::
+
+:::
+
+
+::: {.content-visible when-format="pdf"}
+
+```{r}
+#| ref.label: "fig-sem-best1"
+#| fig-cap: "Academic Organizations with Highest Seminar Rates - Non-Deuteronamolous Perspective"
+```
+
+```{r}
+#| ref.label: "fig-sem-best2"
+#| fig-cap: "Academic Organizations with Highest Seminar Rates - Deuteronamolous Perspective"
+```
+
+:::
+
 On the other hand, if the University aims to improve their overall seminar offerings, it is important that they identify departments with lowest proportions.
-The Registrar may be interested in adding additional seminar courses to the departments in @fig-sem-worst2.
+The Registrar may be interested in adding additional seminar courses to the departments in @fig-sem-worst1 and @fig-sem-worst2.
+
+```{r}
+sem_rates_low <- registrar |>
+  filter(Undergraduate == TRUE) |>
+  group_by(acad_org) |>
+  count(acad_org, seminar) |>
+  summarise(acad_org, seminar, Count = n, Total = sum(n)) |>
+  filter(seminar == TRUE, acad_org != "FOCUS") |>
+  summarise(acad_org, Rate = Count / Total) |>
+  top_n(-5, Rate) |>
+  pull(acad_org)
+
+sem_plot2 <- ggplot(registrar |>
+  filter(acad_org %in% sem_rates_low), aes(x = acad_org, fill = seminar)) +
+  geom_bar(position = "fill") +
+  labs(title = "Academic Organizations with\nLowest Seminar Rates", x = "Academic Organization", y = "Proportion", subtitle = "Between 2013-2022") +
+  theme_duke() +
+  scale_duke_fill_discrete() +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
+```
+
+::: {.content-visible when-format="html"}
+
+::: {.panel-tabset}
+
+### Non-Deuteronamolous Perspective
+
+```{r}
+#| label: fig-sem-worst1
+#| fig-cap: "Academic Organizations with Lowest Seminar Rates - Non-Deuteronamolous Perspective"
+
+sem_plot2
+```
+
+### Deuteronamolous Perspective
 
 ```{r}
 #| label: fig-sem-worst2
-#| fig-cap: "Academic Organizations with Lowest Seminar Rates"
-#| warning: false
-#| echo: false
-#| message: false
-#| fig-asp: .618
+#| fig-cap: "Academic Organizations with Lowest Seminar Rates - Deuteronamolous Perspective"
 
 sem_plot4 <- edit_colors(sem_plot2, deutan, sev = 0.7)
 cowplot::plot_grid(sem_plot4, ncol = 1)
 ```
 
-These data insights are critical for both the Registrar and members of the Duke community to make informed educational decisions.
-To ensure that those who are colorblind have the same level of access, the Registrar should use the **duke** package as part of their visualization best practices.
 :::
 
-A special thanks to Frank Blalark from the Office of the University Registrar for accomodating my request for Duke course data.
+:::
+
+
+::: {.content-visible when-format="pdf"}
+
+```{r}
+#| ref.label: "fig-sem-best1"
+#| fig-cap: "Academic Organizations with Highest Seminar Rates - Non-Deuteronamolous Perspective"
+```
+
+```{r}
+#| ref.label: "fig-sem-best2"
+#| fig-cap: "Academic Organizations with Highest Seminar Rates - Deuteronamolous Perspective"
+```
+
+:::
+
+These data insights are critical for both the Registrar and members of the Duke community to make informed educational decisions.
+To ensure that those who are colorblind have the same level of access, the Registrar should use the **duke** package as part of their visualization best practices.
+
+## Acknowledgement
+
+A special thanks to Frank Blalark from the Office of the University Registrar for accommodating my request for Duke course data.

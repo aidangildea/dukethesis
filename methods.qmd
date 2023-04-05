@@ -21,7 +21,8 @@ For each color in the palette, users can access the following information:
 
 -   Red, Green, Blue Color Model
 
-We will primarily interact with the Hex codes for these colors in this project, shown in @tbl-colors. Hex codes are a hexidecimal (base 16 numbering system) format for representing the amount of RBG in a particular shade [@rouse2021].
+We will primarily interact with the Hex codes for these colors in this project, shown in @tbl-colors.
+Hex codes are a hexidecimal (base 16 numbering system) format for representing the amount of RBG in a particular shade [@rouse2021].
 Additionally, Hex codes are recognized as the best color system for HTML and CSS formats; therefore, their use will be advantageous for data visualization in publication and web browser contexts.
 
 | Name            | Hex Code |
