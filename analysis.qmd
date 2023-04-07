@@ -144,11 +144,13 @@ cowplot::plot_grid(dept_plot2, ncol = 1)
 ::: {.content-visible when-format="pdf"}
 ```{r}
 #| ref.label: "fig-depts1"
+#| label: fig-depts1
 #| fig-cap: Academic Organizations with Highest Number of Undergraduate Courses - Non-Deuteronamolous Perspective"
 ```
 
 ```{r}
 #| ref.label: "fig-depts2"
+#| label: fig-depts2
 #| fig-cap: Academic Organizations with Highest Number of Undergraduate Courses - Deuteronamolous Perspective"
 ```
 :::
