@@ -199,7 +199,7 @@ Thus, we proceed under the assumption that an AA18 categorization is sufficient.
 #| echo: false
 
 library(kableExtra)
-ratios <- readRDS("saved/contrastratios.rds.gzip")
+ratios <- readRDS("data/contrastratios.rds.gzip")
 
 ratios %>%
   kbl() %>%
