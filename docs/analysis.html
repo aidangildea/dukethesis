@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.208">
+<meta name="generator" content="quarto-1.2.269">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -68,16 +68,11 @@ ul.task-list li input[type="checkbox"] {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./analysis.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Case Study</span></a></li></ol></nav>
-      <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Case Study</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
       </button>
     </div>
   </nav>
@@ -85,17 +80,17 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Promoting Accessibility in Duke Data Visualization</a> 
     </div>
       </div>
-        <div class="mt-2 flex-shrink-0 align-items-center">
+      <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-        </div>
+      </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
@@ -141,7 +136,6 @@ ul.task-list li input[type="checkbox"] {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -166,7 +160,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Case Study</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Case Study</span></h1>
 </div>
 
 
@@ -185,6 +179,9 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="5.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">5.1</span> Introduction</h2>
 <p>The <strong>duke</strong> package is intended to promote color blind accessibility in Duke official visualizations. This applied analysis aims to demonstrate how, when, and why the package may be used within the Duke community.</p>
 <p>The data for this analysis is sourced from the Office of the University Registrar and details information about all Duke courses between 2013-2022. The data set has 10 variables and 63,433 observations, each of which is a unique class. Included in the data is information on the course department, subject, enrollment numbers, and room description. See <a href="#tbl-data-desc">Table&nbsp;<span>5.1</span></a> for a full data dictionary.</p>
+<div class="cell">
+
+</div>
 <div id="tbl-data-desc" class="anchored">
 <table class="table">
 <caption>Table&nbsp;5.1: <strong>Registrar Data Dictionary</strong></caption>
@@ -247,9 +244,16 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="5.2" class="anchored" data-anchor-id="analysis"><span class="header-section-number">5.2</span> Analysis</h2>
 <p>The Duke Office of the University Registrar facilitates the academic processes of the University by supporting students, faculty and staff in enrollment, academic records, and course scheduling - among many other tasks. It is crucial that the Office continuously explores the academic data they collect to identify the most successful policies for Duke’s educational environment. Their work is critical to the function of the University, making it all the more important that they communicate with the Duke community in an accessible way. Thus, communications, reports, and announcements from the University Registrar offer a tangible use case for the <strong>duke</strong> package.</p>
 <p>The following tabs allows users without color blindness to see <strong>duke</strong> from their perspective and from the perspective of those who are deuteronamolous. This allows for a better understanding of how the package improves accessibility in Duke data visualizations.</p>
+<div class="cell">
+
+</div>
 <section id="number-of-courses-by-department" class="level3" data-number="5.2.1">
 <h3 data-number="5.2.1" class="anchored" data-anchor-id="number-of-courses-by-department"><span class="header-section-number">5.2.1</span> Number of courses by department</h3>
 <p>The Registrar is interested in understanding the breadth of academic offerings available for students. As we can see in <a href="#fig-depts1">Figure&nbsp;<span>5.1</span></a> and <a href="#fig-depts2">Figure&nbsp;<span>5.2</span></a>, the academic organizations (proxy for department) that have offered the largest number of undergraduate courses from 2013-2022 are the Asian and Middle Eastern Studies (AMES), Chemistry, Math, Public Policy (PPS), and Romance Studies departments. With this information, the Registrar can better make decisions about the distribution of University resources and/or understand potential department popularity.</p>
+<div class="cell">
+
+</div>
+<div>
 <div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Non-Deuteronamolous Perspective</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Deuteronamolous Perspective</a></li></ul>
 <div class="tab-content">
@@ -279,10 +283,15 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="average-class-size" class="level3" data-number="5.2.2">
 <h3 data-number="5.2.2" class="anchored" data-anchor-id="average-class-size"><span class="header-section-number">5.2.2</span> Average class size</h3>
 <p>Average class size is a staple concern of major universities, as prospective students and their families are attracted to small faculty to student ratios. In <a href="#fig-enroll-plot1">Figure&nbsp;<span>5.3</span></a> and <a href="#fig-enroll-plot2">Figure&nbsp;<span>5.4</span></a>, we find that the Computer Science, Economics, Engineering, Environmental Sciences, and Earth and Ocean Sciences departments have the highest average undergraduate sciences. This is understandable given that they are majorly STEM departments, which tend to have more lecture-based courses. This visualization is a helpful resource for the Registrar to pinpoint departments that would benefit from reducing class size.</p>
+<div class="cell">
+
+</div>
+<div>
 <div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Non-Deuteronamolous Perspective</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Deuteronamolous Perspective</a></li></ul>
 <div class="tab-content">
@@ -312,10 +321,15 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="enrollment-in-computer-science-courses" class="level3" data-number="5.2.3">
 <h3 data-number="5.2.3" class="anchored" data-anchor-id="enrollment-in-computer-science-courses"><span class="header-section-number">5.2.3</span> Enrollment in Computer Science courses</h3>
 <p>Now that we have identified Computer Science as a department with larger class capacities, let’s see if there is enough student demand to fill them. <a href="#fig-comp-enroll1">Figure&nbsp;<span>5.5</span></a> and <a href="#fig-comp-enroll2">Figure&nbsp;<span>5.6</span></a> exhibits both the distribution of student enrollment in Computer Science course and of class capacities in the department. While they share a right skew, the center of student enrollment appears less than that of course capacity. The Registrar would certainly want to investigate the data further, but the visualization suggests that students do not enroll at a high enough rate to fill the courses.</p>
+<div class="cell">
+
+</div>
+<div>
 <div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">Non-Deuteronamolous Perspective</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Deuteronamolous Perspective</a></li></ul>
 <div class="tab-content">
@@ -345,10 +359,15 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="enrollment-in-introductory-courses" class="level3" data-number="5.2.4">
 <h3 data-number="5.2.4" class="anchored" data-anchor-id="enrollment-in-introductory-courses"><span class="header-section-number">5.2.4</span> Enrollment in introductory courses</h3>
 <p>The University often highlights their wide selection of introductory courses that allow new students to explore their interests. <span class="quarto-unresolved-ref">?fig-intro-course-success1</span> and <span class="quarto-unresolved-ref">?fig-intro-course-success2</span> explore the intro courses with the most successful enrollment rates. This is beneficial because it informs the Registrar’s process of 1) adding sections to these courses and/or 2) identifying reasons for these courses’ success and integrating them into others.</p>
+<div class="cell">
+
+</div>
+<div>
 <div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">Non-Deuteronamolous Perspective</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">Deuteronamolous Perspective</a></li></ul>
 <div class="tab-content">
@@ -378,7 +397,12 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+</div>
 <p>Conversely, the Registrar may want to identify intro courses with lower enrollment rates so that they can 1) adjust their structure/implementation and/or 2) remove them from the course catalog. <a href="#fig-intro-course-least1">Figure&nbsp;<span>5.9</span></a> and <a href="#fig-intro-course-least2">Figure&nbsp;<span>5.10</span></a> visualize the eight intro courses with the least successful enrollment rates.</p>
+<div class="cell">
+
+</div>
+<div>
 <div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true">Non-Deuteronamolous Perspective</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false">Deuteronamolous Perspective</a></li></ul>
 <div class="tab-content">
@@ -408,10 +432,15 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="seminar-courses" class="level3" data-number="5.2.5">
 <h3 data-number="5.2.5" class="anchored" data-anchor-id="seminar-courses"><span class="header-section-number">5.2.5</span> Seminar courses</h3>
 <p>The University is continuously interested in increasing the amount of face-to-face time students have with their professors. Seminar courses are a great course format for doing so. <a href="#fig-sem-best1">Figure&nbsp;<span>5.11</span></a> and <a href="#fig-sem-best2">Figure&nbsp;<span>5.12</span></a> demonstrate the five departments with the highest proportion of seminar courses in their catalog. If the Registrar wants to tout their seminar offerings, they can highlight the Documentary Studies, English, Gender, Sexuality Feminist Studies, Policy and Journalism, and Theater Studies departments.</p>
+<div class="cell">
+
+</div>
+<div>
 <div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true">Non-Deuteronamolous Perspective</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false">Deuteronamolous Perspective</a></li></ul>
 <div class="tab-content">
@@ -441,7 +470,12 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+</div>
 <p>On the other hand, if the University aims to improve their overall seminar offerings, it is important that they identify departments with lowest proportions. The Registrar may be interested in adding additional seminar courses to the departments in <a href="#fig-sem-worst1">Figure&nbsp;<span>5.13</span></a> and <a href="#fig-sem-worst2">Figure&nbsp;<span>5.14</span></a>.</p>
+<div class="cell">
+
+</div>
+<div>
 <div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true">Non-Deuteronamolous Perspective</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false">Deuteronamolous Perspective</a></li></ul>
 <div class="tab-content">
@@ -465,6 +499,7 @@ ul.task-list li input[type="checkbox"] {
 <p><img src="analysis_files/figure-html/fig-sem-worst2-1.png" class="img-fluid figure-img" width="768"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;5.14: Academic Organizations with Lowest Seminar Rates - Deuteronamolous Perspective</figcaption><p></p>
 </figure>
+</div>
 </div>
 </div>
 </div>
@@ -576,92 +611,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
