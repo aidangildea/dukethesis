@@ -172,6 +172,13 @@ To identify visibly distinct colors for our discrete palette, we generate the co
 @fig-heatmap-all shows a heat map of color contrasts of all pairings.
 Lighter tiles in the heat map indicate pairings with higher contrast ratios, which are preferred.
 
+```{r}
+#| label: fig-heatmap-all
+#| tbl-cap: "Color Contrast Ratios"
+#| echo: false
+
+```
+
 ![Heatmap of color contrast ratio between color pairings.](images/heatmap_all.png){#fig-heatmap-all width="500"}
 
 Then, using these ratios, we craft a palette that promotes accessibility and the Duke aesthetic.
@@ -185,6 +192,28 @@ The result is the palette shown in @fig-palette.
 
 While not perfectly compliant with WCAG guidelines, the palette achieves our goal of optimizing colorblind accessibility and representing the Duke brand.
 As seen in @fig-heatmap, a majority of our color pairings meet at minimum the AA18 rating, as indicated by lighter tiles.
+
+```{r}
+
+mat_melt <- readRDS("~/Desktop/dukethesis/data/mat_melt.rds.gzip")
+final_vals <- c("#012169", "#C84E00", "#00539B", "#339898", "#E89923", "#FFD960" ,"#A1B70D", "#262626")
+final_names <- c("Duke Navy Blue", "Copper", "Duke Royal Blue", "Eno", "Persimmon", "Dandelion", "Piedmont", "Cast Iron")
+
+final_melt <- mat_melt %>%
+  dplyr::filter(Var1 %in% final_names & Var2 %in% final_names)
+
+ ggp_final <- ggplot(final_melt, aes(Var1, Var2, fill = value)) +      
+# Create heatmap with ggplot2
+  geom_tile(#aes(fill = value)
+    ) +
+  labs(title = "Color-Contrast Ratios Between Final Color Pairings", x = "Color 1", 
+       y = "Color 2") +
+  theme_duke() +
+  scale_duke_continuous() +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+ggp_final
+
+```
 
 ![Heatmap of color contrast ratio between final color pairings.](images/heatmap.png){#fig-heatmap width="500"}
 
@@ -217,6 +246,22 @@ Protonopia and deuteraonopia prevent individuals from distinguishing between red
 Red-green color blindness is by far the most common type, accounting for approximately 99% of those with CVD.
 For the purpose of creating a feasible project scope, we focus primarily on accessibility for those with red-green colorblindness.
 Future work on this project - or one with a similar goal - should investigate the feasibility of visualization accessibility for those with blue - yellow color blindness, monochromacy, etc.
+
+```{r}
+
+library(palmerspenguins)
+
+splot <- ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm, 
+                              color = species)) +
+  geom_point() +
+  labs(title = "Flipper Length v. Depth") +
+    theme_duke()
+
+b5 <- edit_colors(splot +
+                    scale_duke_fill_discrete(), deutan, sev = 0.7)
+cowplot::plot_grid(splot +
+                     scale_duke_fill_discrete(), b5)
+```
 
 ![Sample scatter plot from true perspective (left) and deuteranomalous perspective (right) using colorblindr package.](images/deut_comp.png){#fig-scatter}
 
