@@ -71,7 +71,7 @@ By implementing a minimalist thematic design and a high contrast color palette i
 Nevertheless, it is not the only tool.
 To further enhance the accessibility of visualizations, users can engage with several complimentary strategies:
 
-**Keep It Simple**: Identify the most important features of your data and remove those that are unneccessary.
+**Keep It Simple**: Identify the most important features of your data and remove those that are unnecessary.
 Reducing the complexity of the plot will more succinctly convey your data insights.
 
 **De-Emphasize Color**: Integrate additional indicators into your visualizations (labels, shapes, patterns) to clearly direct the attention of readers.

@@ -2,30 +2,41 @@
 
 ## `theme_duke()`
 
-Implements the overall aesthetic and thematic features of the plot.
-Striving for a minimalist design, it defines the background, grid line, text, and legend arguments of the visualization.
+***Implements theme components.***
+
+Defines the overall aesthetic and thematic features of the plot.
+This function specifies simple background, grid line, text, and legend arguments to create minimalist design.
+Its use is intended for ggplot objects.
 See <https://aidangildea.github.io/duke/reference/theme_duke.html> for more information and examples.
 
 ## `scale_duke_continuous()`
 
-Integrates a Duke branded and accessible continuous color scale to ggplot geometric objects.
+***Continuous scale constructor*****.**
+
+Applies a Duke branded and accessible continuous color scale to ggplot geometric objects.
 It is applicable for both fill and color arguments.
 Defines gradient scale from dark to light to improve visibility and contrast for readers.
 See <https://aidangildea.github.io/duke/reference/scale_duke_continuous.html> for more information and examples.
 
 ## `scale_duke_fill_discrete()`
 
-Introduces a Duke branded and accessible discrete color palette to ggplot geometric objects using fill argument.
+***Discrete scale constructor*** ***for fill argument.***
+
+Applies a Duke branded and accessible discrete color palette to ggplot geometric objects using fill argument.
 It prioritizes high contrast colors aligned with Web Content Accessibility Guidelines (WCAG).
 See <https://aidangildea.github.io/duke/reference/scale_duke_fill_discrete.html> for more information and examples.
 
 ## `scale_duke_color_discrete()`
 
-Introduces a Duke branded and accessible discrete color palette to ggplot geometric objects using color argument.
+***Discrete scale constructor*** ***for color argument.***
+
+Applies a Duke branded and accessible discrete color palette to ggplot geometric objects using color argument.
 It prioritizes high contrast colors aligned with Web Content Accessibility Guidelines (WCAG).
 See <https://aidangildea.github.io/duke/reference/scale_duke_color_discrete.html> for more information and examples.
 
 ## `duke_pal()`
+
+***Discrete palette constructor*****.**
 
 Defines 8-color palette to be used by discrete scale function.
 It is intended for internal package use and not to be directly called.

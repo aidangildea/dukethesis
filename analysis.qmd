@@ -50,7 +50,7 @@ registrar <- read_csv("data/registrar.csv") |>
 ```
 
 | Variable              | Description                                                             |
-|--------------------------------|----------------------------------------|
+|-----------------------|-------------------------------------------------------------------------|
 | `acad_year`           | Academic year of the course.                                            |
 | `acad_org`            | Academic organization abbreviation of the course; proxy for department. |
 | `class_nbr`           | Unique class number for the course.                                     |

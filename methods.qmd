@@ -1,6 +1,7 @@
 ---
 output: html_document
 ---
+
 # Methods
 
 ```{r}
@@ -142,7 +143,8 @@ Readers with color vision impairment and/or low vision benefit from larger text 
 Rather than manually increasing text size, `theme_duke()` encodes text sizing relative to the scale of the visualization.
 In turn, text adjusts according to users' manipulations of plot dimensions, guaranteeing that text is both appropriately large and adequately fit to the visualization.
 
-In addition, all text is in Atkinson-Hyperlegible font.
+In addition, `theme_duke()` allows for the simple integration of specific fonts in visualizations.
+We recommend that all text is in Atkinson-Hyperlegible font.
 Named after the founder of the Braille Institute, J. Robert Atkinson, the font uses "unambiguous, distinctive elements" to improve readability for individuals with vision impairment [@atkinson].
 Its use - both in the package and all complimentary documentation - is essential to promoting vision accessibility.
 Font implementation was one of the most difficult challenges throughout the package development process.
@@ -151,10 +153,13 @@ On the individual-level, this is not too difficult.
 However, the process necessitates careful thought when building a package for community use.
 *How can users integrate quickly access the package's required fonts? What font implementation will require minimal memory? Why is being transparent with users important?* We must closely consider these questions, among others, when adding font specification to **duke**.
 
-Font specification in the **duke** package is an ongoing process and will be added soon.
-We want to ensure that our solution is stable on all systems; therefore, it is not published yet.
-In its current version, **duke** uses default **ggplot2** fonts.
-We aim to have this feature complete prior to the defense.
+The ongoing aim of the **duke** package is to implement Atkinson-Hyperlegible font across all text features of visualizations.
+This requires that users have the font files locally installed to their systems.
+We have constructed a single-use function that downloads the necessary Atkinson-Hyperlegible files; however, it is not stable across all systems.
+As we continue to craft an optimal solution, we recommend that users download [Atkinson-Hyperlegible](https://brailleinstitute.org/freefont) and then specify its use in the base family argument of `theme_duke()`.
+This is not a fully streamlined solution, yet it ensures that users on all systems can implement **duke** without encountering errors.
+If font in not specified, the function uses the **ggplot2** default font, sans.
+The application of Atkinson Hyperlegible font is key to improving accessibility in data visualization and is of high priority in **duke**'s ongoing development.
 
 ### `scale_duke_continuous()`
 
@@ -193,15 +198,17 @@ Lighter tiles in the heat map indicate pairings with higher contrast ratios, whi
 
 mat_melt <- readRDS("~/Desktop/dukethesis/data/mat_melt.rds.gzip")
 
-ggp <- ggplot(mat_melt, aes(Var1, Var2, fill = value)) +                          
-# Create heatmap with ggplot2
-  geom_tile(#aes(fill = value)
-    ) +
-  labs(title = "Color-Contrast Ratios Between Color Pairings", x = "Color 1", 
-       y = "Color 2") +
+ggp <- ggplot(mat_melt, aes(Var1, Var2, fill = value)) +
+  # Create heatmap with ggplot2
+  geom_tile( # aes(fill = value)
+  ) +
+  labs(
+    title = "Color-Contrast Ratios Between Color Pairings", x = "Color 1",
+    y = "Color 2"
+  ) +
   theme_duke() +
   scale_duke_continuous() +
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
 
 ggp
 ```
@@ -223,7 +230,7 @@ The result is the palette shown in @fig-palette.
 #| fig-width: 10
 #| out-width: "100%"
 
-final_vals <- c("#012169", "#C84E00", "#00539B", "#339898", "#E89923", "#FFD960" ,"#A1B70D", "#262626")
+final_vals <- c("#012169", "#C84E00", "#00539B", "#339898", "#E89923", "#FFD960", "#A1B70D", "#262626")
 final_names <- c("Duke Navy Blue", "Copper", "Duke Royal Blue", "Eno", "Persimmon", "Dandelion", "Piedmont", "Cast Iron")
 
 final_colors <- tibble(
@@ -253,17 +260,18 @@ As seen in @fig-heatmap, a majority of our color pairings meet at minimum the AA
 final_melt <- mat_melt %>%
   dplyr::filter(Var1 %in% final_names & Var2 %in% final_names)
 
- ggp_final <- ggplot(final_melt, aes(Var1, Var2, fill = value)) +      
-# Create heatmap with ggplot2
-  geom_tile(#aes(fill = value)
-    ) +
-  labs(title = "Color-Contrast Ratios Between Final Color Pairings", x = "Color 1", 
-       y = "Color 2") +
+ggp_final <- ggplot(final_melt, aes(Var1, Var2, fill = value)) +
+  # Create heatmap with ggplot2
+  geom_tile( # aes(fill = value)
+  ) +
+  labs(
+    title = "Color-Contrast Ratios Between Final Color Pairings", x = "Color 1",
+    y = "Color 2"
+  ) +
   theme_duke() +
   scale_duke_continuous() +
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
 ggp_final
-
 ```
 
 The final palette includes the following colors: Duke Navy Blue, Piedmont, Copper, Duke Royal Blue, Eno, Persimmon, Dandelion and Cast Iron.
@@ -306,13 +314,15 @@ Future work on this project - or one with a similar goal - should investigate th
 #| warning: false
 #| fig-asp: .618
 
-splot <- ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm, 
-                              color = species)) +
+splot <- ggplot(penguins, aes(
+  x = bill_length_mm, y = bill_depth_mm,
+  color = species
+)) +
   geom_point() +
   labs(title = "Flipper Length v. Depth", x = "Bill Length (mm)", y = "Bill Depth (mm)") +
   theme_duke() +
   scale_duke_color_discrete()
-splot 
+splot
 ```
 
 ### Deuteronamolous Perspective
@@ -323,7 +333,7 @@ splot
 #| echo: false
 #| warning: false
 #| fig-asp: .618
-#| 
+#|
 comp <- readRDS("~/Desktop/dukethesis/data/deutan.rds.gzip")
 comp
 ```
