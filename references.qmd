@@ -1,5 +1,8 @@
 # References {.unnumbered}
 
 ::: {#refs}
-[logo](https://dribbble.com/shots/3937382-Duke-University-Chapel)
+---
+nocite: |
+  @dukeuni
+---
 :::

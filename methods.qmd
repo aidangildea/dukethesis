@@ -224,7 +224,7 @@ The result is the palette shown in @fig-palette.
 #| out-width: "100%"
 
 final_vals <- c("#012169", "#C84E00", "#00539B", "#339898", "#E89923", "#FFD960" ,"#A1B70D", "#262626")
-final_names <- c("Duke Navy Blue", "Copper", "Duke Royal Blue", "Eno", "Persimnmon", "Dandelion", "Piedmont", "Cast Iron")
+final_names <- c("Duke Navy Blue", "Copper", "Duke Royal Blue", "Eno", "Persimmon", "Dandelion", "Piedmont", "Cast Iron")
 
 final_colors <- tibble(
   x = 1:length(final_vals),

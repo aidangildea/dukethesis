@@ -74,7 +74,7 @@ To further enhance the accessibility of visualizations, users can engage with se
 **Keep It Simple**: Identify the most important features of your data and remove those that are unneccessary.
 Reducing the complexity of the plot will more succinctly convey your data insights.
 
-**De-Emphasize Color**: Integrate additional indicators in your visualizations (labels, shapes, patterns) to clearly direct the attention of readers.
+**De-Emphasize Color**: Integrate additional indicators into your visualizations (labels, shapes, patterns) to clearly direct the attention of readers.
 When used effectively, these features can eliminate the need for color differentiation at all.
 
 **Adjust When Necessary**: Be creative and craft a unique visualization fitting to your needs.

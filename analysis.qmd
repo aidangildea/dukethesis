@@ -216,11 +216,13 @@ cowplot::plot_grid(enroll_plot2, ncol = 1)
 ::: {.content-visible when-format="pdf"}
 ```{r}
 #| ref.label: "fig-enroll-plot1"
+#| label: fig-enroll-plot1
 #| fig-cap: "Academic Organizations with Highest Enrollment Capacities - Non-Deuteronamolous Perspective"
 ```
 
 ```{r}
 #| ref.label: "fig-enroll-plot2"
+#| label: fig-enroll-plot2
 #| fig-cap: "Academic Organizations with Highest Enrollment Capacities - Deuteronamolous Perspective"
 ```
 :::
@@ -281,11 +283,13 @@ cowplot::plot_grid(hist3, hist4, ncol = 1)
 ::: {.content-visible when-format="pdf"}
 ```{r}
 #| ref.label: "fig-comp-enroll1"
+#| label: fig-comp-enroll1
 #| fig-cap: "COMPSCI Class Enrollment and Capacity Distributions - Non-Deuteronamolous Perspective"
 ```
 
 ```{r}
 #| ref.label: "fig-comp-enroll2"
+#| label: fig-comp-enroll2
 #| fig-cap: "COMPSCI Class Enrollment and Capacity Distributions - Deuteronamolous Perspective"
 ```
 :::
@@ -329,7 +333,7 @@ high_succ <- registrar |>
 ### Non-Deuteronamolous Perspective
 
 ```{r}
-#| label: fig-intro-course-succes1
+#| label: fig-intro-course-success1
 #| fig-cap: "Intro Courses with Highest Enrollment Success - Non-Deuteronamolous Perspective"
 
 high_succ
@@ -338,7 +342,7 @@ high_succ
 ### Deuteronamolous Perspective
 
 ```{r}
-#| label: fig-intro-course-succes2
+#| label: fig-intro-course-success2
 #| fig-cap: "Intro Courses with Highest Enrollment Success - Deuteronamolous Perspective"
 
 high_succ2 <- edit_colors(high_succ, deutan, sev = 0.7)
@@ -349,12 +353,14 @@ cowplot::plot_grid(high_succ2, ncol = 1)
 
 ::: {.content-visible when-format="pdf"}
 ```{r}
-#| ref.label: "fig-intro-course-succes1"
+#| ref.label: "fig-intro-course-success1"
+#| label: fig-intro-course-success1
 #| fig-cap: "Intro Courses with Highest Enrollment Success - Non-Deuteronamolous Perspective"
 ```
 
 ```{r}
-#| ref.label: "fig-intro-course-succes2"
+#| ref.label: "fig-intro-course-success2"
+#| label: fig-intro-course-success2
 #| fig-cap: "Intro Courses with Highest Enrollment Success - Deuteronamolous Perspective"
 ```
 :::
@@ -416,11 +422,13 @@ cowplot::plot_grid(low_succ2, ncol = 1)
 ::: {.content-visible when-format="pdf"}
 ```{r}
 #| ref.label: "fig-intro-course-least1"
+#| label: fig-intro-course-least1
 #| fig-cap: "Intro Courses with Least Enrollment Success - Non-Deuteronamolous Perspective"
 ```
 
 ```{r}
 #| ref.label: "fig-intro-course-least2"
+#| label: fig-intro-course-least2
 #| fig-cap: "Intro Courses with Least Enrollment Success - Deuteronamolous Perspective"
 ```
 :::
@@ -484,11 +492,13 @@ cowplot::plot_grid(sem_plot3, ncol = 1)
 ::: {.content-visible when-format="pdf"}
 ```{r}
 #| ref.label: "fig-sem-best1"
+#| label: fig-sem-best1
 #| fig-cap: "Academic Organizations with Highest Seminar Rates - Non-Deuteronamolous Perspective"
 ```
 
 ```{r}
 #| ref.label: "fig-sem-best2"
+#| label: fig-sem-best2
 #| fig-cap: "Academic Organizations with Highest Seminar Rates - Deuteronamolous Perspective"
 ```
 :::
@@ -541,12 +551,14 @@ cowplot::plot_grid(sem_plot4, ncol = 1)
 
 ::: {.content-visible when-format="pdf"}
 ```{r}
-#| ref.label: "fig-sem-best1"
+#| ref.label: "fig-sem-worst1"
+#| label: fig-sem-worst1
 #| fig-cap: "Academic Organizations with Highest Seminar Rates - Non-Deuteronamolous Perspective"
 ```
 
 ```{r}
-#| ref.label: "fig-sem-best2"
+#| ref.label: "fig-sem-worst2"
+#| label: fig-sem-worst2
 #| fig-cap: "Academic Organizations with Highest Seminar Rates - Deuteronamolous Perspective"
 ```
 :::
