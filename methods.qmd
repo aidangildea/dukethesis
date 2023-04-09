@@ -1,12 +1,14 @@
+---
+output: html_document
+---
 # Methods
 
 ```{r}
 #| include: false
 #| message: false
 
-library(ggplot2)
+library(tidyverse)
 library(duke)
-library(magrittr)
 library(kableExtra)
 library(palmerpenguins)
 library(colorBlindness)
@@ -212,28 +214,33 @@ Thus, the goal of the our discrete palette is to carefully order colors so that 
 The result is the palette shown in @fig-palette.
 
 ```{r}
-#| label: fig-pal
-#| fig-cap: "Discrete palette. Colors (from left to right): Duke Navy Blue, Piedmont, Copper, Duke Royal Blue, Eno, Persimmon, Dandelion, Cast Iron"
+#| label: fig-palette
+#| fig-cap: "Discrete palette. Colors (from left to right): Duke Navy Blue, Piedmont, Copper, Duke Royal Blue, Eno, Persimmon, Dandelion, Cast Iron."
 #| echo: false
 #| message: false
 #| warning: false
+#| fig-asp: 0.125
+#| fig-width: 10
+#| out-width: "100%"
 
 final_vals <- c("#012169", "#C84E00", "#00539B", "#339898", "#E89923", "#FFD960" ,"#A1B70D", "#262626")
-final_names <- c("Duke Navy Blue", "Copper", "Duke Royal Blue", "Eno", "Persimmon", "Dandelion", "Piedmont", "Cast Iron")
+final_names <- c("Duke Navy Blue", "Copper", "Duke Royal Blue", "Eno", "Persimnmon", "Dandelion", "Piedmont", "Cast Iron")
 
-p <- displayColors(final_vals)
-p +
-  geom_text(aes(label = "")) +
-  annotate(
-    "text", label = "Duke Navy Blue Copper Duke Royal Blue Eno Persimmon Dandelion Piedmont Cast Iron",
-    x = 4,
-    y = .5, size = 5
-  ) +
-  theme(plot.margin = margin(.5,.5,1,1, "cm"))
+final_colors <- tibble(
+  x = 1:length(final_vals),
+  y = rep(1, length(final_vals)),
+  hex = final_vals,
+  name = final_names
+) |>
+  mutate(name = paste0(name, "\n", hex))
+
+ggplot(final_colors, aes(x = x, y = y)) +
+  geom_tile(aes(fill = final_vals)) +
+  scale_fill_identity() +
+  geom_text(aes(label = str_wrap(name, 5)), color = "white", fontface = "bold") +
+  theme_void() +
+  theme(plot.margin = unit(c(0, 0, 0, 0), "cm"))
 ```
-
-
-![Discrete palette. Colors (from left to right): Duke Navy Blue, Piedmont, Copper, Duke Royal Blue, Eno, Persimmon, Dandelion, Cast Iron](images/palette.png){#fig-palette}
 
 While not perfectly compliant with WCAG guidelines, the palette achieves our goal of optimizing colorblind accessibility and representing the Duke brand.
 As seen in @fig-heatmap, a majority of our color pairings meet at minimum the AA18 rating, as indicated by lighter tiles.
@@ -290,7 +297,6 @@ Future work on this project - or one with a similar goal - should investigate th
 
 ::: {.content-visible when-format="html"}
 ::: panel-tabset
-
 ### Non-Deuteronamolous Perspective
 
 ```{r}
