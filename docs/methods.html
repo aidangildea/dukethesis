@@ -349,25 +349,43 @@ div.csl-indent {
 <h3 data-number="2.3.3" class="anchored" data-anchor-id="scale_duke_color_discrete-and-scale_duke_fill_discrete"><span class="header-section-number">2.3.3</span> <code>scale_duke_color_discrete()</code> and <code>scale_duke_fill_discrete()</code></h3>
 <p>To implement a discrete scale from Duke’s official color palette, users can add <code>scale_duke_color_discrete()</code> and <code>scale_duke_fill_discrete()</code> layers to their visualizations. These functions provide a discrete palette that can be used for the color and fill parameters of ggplot geometric objects. An appropriate discrete palette is essential to creating user-friendly visualizations because its colors indicate distinct categories that exist in the data. Whereas continuous plots typically exhibit overall trends, discrete plots must be able to delineate effectively between specific groups. A majority of geom objects can incorporate a discrete scale, including bar plots, histograms, and density plots.</p>
 <p>As previously mentioned, this project observes color contrast ratio as the primary metric for determining colorblind friendly combinations. To identify visibly distinct colors for our discrete palette, we generate the contrast ratio between all pairing from the Duke color guide, with the addition of White since it is the background color. <a href="#fig-heatmap-all">Figure&nbsp;<span>2.2</span></a> shows a heat map of color contrasts of all pairings. Lighter tiles in the heat map indicate pairings with higher contrast ratios, which are preferred.</p>
+<div class="cell">
+<div class="cell-output-display">
 <div id="fig-heatmap-all" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="images/heatmap_all.png" class="img-fluid figure-img" width="500"></p>
+<p><img src="methods_files/figure-html/fig-heatmap-all-1.png" class="img-fluid figure-img" width="672"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;2.2: Heatmap of color contrast ratio between color pairings.</figcaption><p></p>
 </figure>
 </div>
-<p>Then, using these ratios, we craft a palette that promotes accessibility and the Duke aesthetic. A rule of thumb for discrete color scales is limiting to three to five colors. Additionally, once eight to ten categories or more are reached, matching colors to categories becomes too burdensome to be useful, even if the colors are distinguishable in principle <span class="citation" data-cites="wilkea">(<a href="references.html#ref-wilkea" role="doc-biblioref">C. O. Wilke, n.d.</a>)</span>. This lends to less busy plots that are more easily understandable. Thus, the goal of the our discrete palette is to carefully order colors so that those most used (those at beginning of palette) are most compliant. The result is the palette shown in <a href="#fig-palette">Figure&nbsp;<span>2.3</span></a>.</p>
-<div id="fig-palette" class="quarto-figure quarto-figure-center anchored">
+</div>
+</div>
+<p>Then, using these ratios, we craft a palette that promotes accessibility and the Duke aesthetic. A rule of thumb for discrete color scales is limiting to three to five colors. Additionally, once eight to ten categories or more are reached, matching colors to categories becomes too burdensome to be useful, even if the colors are distinguishable in principle <span class="citation" data-cites="wilkea">(<a href="references.html#ref-wilkea" role="doc-biblioref">C. O. Wilke, n.d.</a>)</span>. This lends to less busy plots that are more easily understandable. Thus, the goal of the our discrete palette is to carefully order colors so that those most used (those at beginning of palette) are most compliant. The result is the palette shown in <a href="#fig-palette">Figure&nbsp;<span>2.4</span></a>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-pal" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="images/palette.png" class="img-fluid figure-img"></p>
+<p><img src="methods_files/figure-html/fig-pal-1.png" class="img-fluid figure-img" width="672"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;2.3: Discrete palette. Colors (from left to right): Duke Navy Blue, Piedmont, Copper, Duke Royal Blue, Eno, Persimmon, Dandelion, Cast Iron</figcaption><p></p>
 </figure>
 </div>
-<p>While not perfectly compliant with WCAG guidelines, the palette achieves our goal of optimizing colorblind accessibility and representing the Duke brand. As seen in <a href="#fig-heatmap">Figure&nbsp;<span>2.4</span></a>, a majority of our color pairings meet at minimum the AA18 rating, as indicated by lighter tiles.</p>
+</div>
+</div>
+<div id="fig-palette" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/palette.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;2.4: Discrete palette. Colors (from left to right): Duke Navy Blue, Piedmont, Copper, Duke Royal Blue, Eno, Persimmon, Dandelion, Cast Iron</figcaption><p></p>
+</figure>
+</div>
+<p>While not perfectly compliant with WCAG guidelines, the palette achieves our goal of optimizing colorblind accessibility and representing the Duke brand. As seen in <a href="#fig-heatmap">Figure&nbsp;<span>2.5</span></a>, a majority of our color pairings meet at minimum the AA18 rating, as indicated by lighter tiles.</p>
+<div class="cell">
+<div class="cell-output-display">
 <div id="fig-heatmap" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="images/heatmap.png" class="img-fluid figure-img" width="500"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2.4: Heatmap of color contrast ratio between final color pairings.</figcaption><p></p>
+<p><img src="methods_files/figure-html/fig-heatmap-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;2.5: Heatmap of color contrast ratio between final color pairings.</figcaption><p></p>
 </figure>
+</div>
+</div>
 </div>
 <p>The final palette includes the following colors: Duke Navy Blue, Piedmont, Copper, Duke Royal Blue, Eno, Persimmon, Dandelion and Cast Iron. Out the 28 distinct colors pairings that exist from this palette (excluding pairings of identical colors), 14 have a color contrast ratio of 3 or greater.This is compliant with WCAG’s AA18 rating, which specifies the use of larger text to be accessible. The colors from this palette will primarily be used to fill or color geometric objects in ggplot - rather than text - which offers complimentary features (ie. shape, larger areas, borders) that promote accessibility. Thus, we proceed under the assumption that an AA18 categorization is sufficient.</p>
 <div class="cell">
@@ -531,11 +549,36 @@ div.csl-indent {
 </div>
 <p><br> To ensure that this palette is accessible, we use the <code>colorblindr</code> package to visualize sample plots from the perspective of individuals with different types of color vision deficiency. There are several categorizations of CVD, yet the most common is red-green color blindness. As the name suggests, it makes it difficult for individuals to distinguish between red and green. Among this population, approximately 62.5% are deuteranomalous - meaning they have green-weak vision that makes green appear more red <span class="citation" data-cites="woods2021">(<a href="references.html#ref-woods2021" role="doc-biblioref">Woods 2021a</a>)</span>. Protonopia and deuteraonopia prevent individuals from distinguishing between red and green at all, yet are far less prevalent at only 12.5% of the red-green colorblind population each <span class="citation" data-cites="woods2021a">(<a href="references.html#ref-woods2021a" role="doc-biblioref">Woods 2021b</a>)</span>.</p>
 <p>Red-green color blindness is by far the most common type, accounting for approximately 99% of those with CVD. For the purpose of creating a feasible project scope, we focus primarily on accessibility for those with red-green colorblindness. Future work on this project - or one with a similar goal - should investigate the feasibility of visualization accessibility for those with blue - yellow color blindness, monochromacy, etc.</p>
-<div id="fig-scatter" class="quarto-figure quarto-figure-center anchored">
+<div>
+<div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Non-Deuteronamolous Perspective</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Deuteronamolous Perspective</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="cell" data-fig.asp="0.618">
+<div class="cell-output-display">
+<div id="fig-scatter-comp1" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="images/deut_comp.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2.5: Sample scatter plot from true perspective (left) and deuteranomalous perspective (right) using colorblindr package.</figcaption><p></p>
+<p><img src="methods_files/figure-html/fig-scatter-comp1-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;2.6: Sample scatter plot from non-deuteronamolous perspective.</figcaption><p></p>
 </figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="cell" data-fig.asp="0.618">
+<div class="cell-output-display">
+<div id="fig-scatter-comp2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="methods_files/figure-html/fig-scatter-comp2-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;2.7: Sample scatter plot from deuteranomalous perspective.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 </section>
 </section>

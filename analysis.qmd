@@ -49,18 +49,18 @@ registrar <- read_csv("data/registrar.csv") |>
   rename(acad_org = acad_org_proxy_for_department)
 ```
 
-| Variable         | Description                                          |
+| Variable              | Description                                                             |
 |--------------------------------|----------------------------------------|
-| `acad_year`      | Academic year of the course.                         |
-| `acad_org`       | Academic organization abbreviation of the course; proxy for department. |
-| `class_nbr`      | Unique class number for the course.                  |
-| `subject`        | Subject abbreviation for course.                     |
-| `catalog_number` | Course number within academic organizations.         |
-| `class_descr`    | Course name.                                         |
-| `total_enrollment`   | Number of students enrolled in course.           |
-| `enrollment_capacity`     | Enrollment capacity for course.             |
-| `room_capacity`  | Capacity for students permitted in course room.      |
-| `room_descr`     | Room where course is held.                           |
+| `acad_year`           | Academic year of the course.                                            |
+| `acad_org`            | Academic organization abbreviation of the course; proxy for department. |
+| `class_nbr`           | Unique class number for the course.                                     |
+| `subject`             | Subject abbreviation for course.                                        |
+| `catalog_number`      | Course number within academic organizations.                            |
+| `class_descr`         | Course name.                                                            |
+| `total_enrollment`    | Number of students enrolled in course.                                  |
+| `enrollment_capacity` | Enrollment capacity for course.                                         |
+| `room_capacity`       | Capacity for students permitted in course room.                         |
+| `room_descr`          | Room where course is held.                                              |
 
 : **Registrar Data Dictionary** {#tbl-data-desc}
 
@@ -119,9 +119,7 @@ dept_plot <- ggplot(registrar |>
 ```
 
 ::: {.content-visible when-format="html"}
-
-::: {.panel-tabset}
-
+::: panel-tabset
 ### Non-Deuteronamolous Perspective
 
 ```{r}
@@ -140,24 +138,21 @@ dept_plot
 dept_plot2 <- edit_colors(dept_plot, deutan, sev = 0.7)
 cowplot::plot_grid(dept_plot2, ncol = 1)
 ```
-
 :::
-
 :::
-
 
 ::: {.content-visible when-format="pdf"}
-
 ```{r}
 #| ref.label: "fig-depts1"
+#| label: fig-depts1
 #| fig-cap: Academic Organizations with Highest Number of Undergraduate Courses - Non-Deuteronamolous Perspective"
 ```
 
 ```{r}
 #| ref.label: "fig-depts2"
+#| label: fig-depts2
 #| fig-cap: Academic Organizations with Highest Number of Undergraduate Courses - Deuteronamolous Perspective"
 ```
-
 :::
 
 ### Average class size
@@ -196,9 +191,7 @@ enroll_plot <- ggplot(
 ```
 
 ::: {.content-visible when-format="html"}
-
-::: {.panel-tabset}
-
+::: panel-tabset
 ### Non-Deuteronamolous Perspective
 
 ```{r}
@@ -217,14 +210,10 @@ enroll_plot
 enroll_plot2 <- edit_colors(enroll_plot, deutan, sev = 0.7)
 cowplot::plot_grid(enroll_plot2, ncol = 1)
 ```
-
 :::
-
 :::
-
 
 ::: {.content-visible when-format="pdf"}
-
 ```{r}
 #| ref.label: "fig-enroll-plot1"
 #| fig-cap: "Academic Organizations with Highest Enrollment Capacities - Non-Deuteronamolous Perspective"
@@ -234,7 +223,6 @@ cowplot::plot_grid(enroll_plot2, ncol = 1)
 #| ref.label: "fig-enroll-plot2"
 #| fig-cap: "Academic Organizations with Highest Enrollment Capacities - Deuteronamolous Perspective"
 ```
-
 :::
 
 ### Enrollment in Computer Science courses
@@ -267,9 +255,7 @@ hist2 <- registrar |>
 ```
 
 ::: {.content-visible when-format="html"}
-
-::: {.panel-tabset}
-
+::: panel-tabset
 ### Non-Deuteronamolous Perspective
 
 ```{r}
@@ -289,14 +275,10 @@ hist3 <- edit_colors(hist1, deutan, sev = 0.7)
 hist4 <- edit_colors(hist2, deutan, sev = 0.7)
 cowplot::plot_grid(hist3, hist4, ncol = 1)
 ```
-
 :::
-
 :::
-
 
 ::: {.content-visible when-format="pdf"}
-
 ```{r}
 #| ref.label: "fig-comp-enroll1"
 #| fig-cap: "COMPSCI Class Enrollment and Capacity Distributions - Non-Deuteronamolous Perspective"
@@ -306,7 +288,6 @@ cowplot::plot_grid(hist3, hist4, ncol = 1)
 #| ref.label: "fig-comp-enroll2"
 #| fig-cap: "COMPSCI Class Enrollment and Capacity Distributions - Deuteronamolous Perspective"
 ```
-
 :::
 
 ### Enrollment in introductory courses
@@ -344,9 +325,7 @@ high_succ <- registrar |>
 ```
 
 ::: {.content-visible when-format="html"}
-
-::: {.panel-tabset}
-
+::: panel-tabset
 ### Non-Deuteronamolous Perspective
 
 ```{r}
@@ -365,14 +344,10 @@ high_succ
 high_succ2 <- edit_colors(high_succ, deutan, sev = 0.7)
 cowplot::plot_grid(high_succ2, ncol = 1)
 ```
-
 :::
-
 :::
-
 
 ::: {.content-visible when-format="pdf"}
-
 ```{r}
 #| ref.label: "fig-intro-course-succes1"
 #| fig-cap: "Intro Courses with Highest Enrollment Success - Non-Deuteronamolous Perspective"
@@ -382,7 +357,6 @@ cowplot::plot_grid(high_succ2, ncol = 1)
 #| ref.label: "fig-intro-course-succes2"
 #| fig-cap: "Intro Courses with Highest Enrollment Success - Deuteronamolous Perspective"
 ```
-
 :::
 
 Conversely, the Registrar may want to identify intro courses with lower enrollment rates so that they can 1) adjust their structure/implementation and/or 2) remove them from the course catalog.
@@ -417,9 +391,7 @@ low_succ <- registrar |>
 ```
 
 ::: {.content-visible when-format="html"}
-
-::: {.panel-tabset}
-
+::: panel-tabset
 ### Non-Deuteronamolous Perspective
 
 ```{r}
@@ -438,14 +410,10 @@ low_succ
 low_succ2 <- edit_colors(low_succ, deutan, sev = 0.7)
 cowplot::plot_grid(low_succ2, ncol = 1)
 ```
-
 :::
-
 :::
-
 
 ::: {.content-visible when-format="pdf"}
-
 ```{r}
 #| ref.label: "fig-intro-course-least1"
 #| fig-cap: "Intro Courses with Least Enrollment Success - Non-Deuteronamolous Perspective"
@@ -455,7 +423,6 @@ cowplot::plot_grid(low_succ2, ncol = 1)
 #| ref.label: "fig-intro-course-least2"
 #| fig-cap: "Intro Courses with Least Enrollment Success - Deuteronamolous Perspective"
 ```
-
 :::
 
 ### Seminar courses
@@ -492,9 +459,7 @@ sem_plot <- ggplot(registrar |>
 ```
 
 ::: {.content-visible when-format="html"}
-
-::: {.panel-tabset}
-
+::: panel-tabset
 ### Non-Deuteronamolous Perspective
 
 ```{r}
@@ -513,14 +478,10 @@ sem_plot
 sem_plot3 <- edit_colors(sem_plot, deutan, sev = 0.7)
 cowplot::plot_grid(sem_plot3, ncol = 1)
 ```
-
 :::
-
 :::
-
 
 ::: {.content-visible when-format="pdf"}
-
 ```{r}
 #| ref.label: "fig-sem-best1"
 #| fig-cap: "Academic Organizations with Highest Seminar Rates - Non-Deuteronamolous Perspective"
@@ -530,7 +491,6 @@ cowplot::plot_grid(sem_plot3, ncol = 1)
 #| ref.label: "fig-sem-best2"
 #| fig-cap: "Academic Organizations with Highest Seminar Rates - Deuteronamolous Perspective"
 ```
-
 :::
 
 On the other hand, if the University aims to improve their overall seminar offerings, it is important that they identify departments with lowest proportions.
@@ -557,9 +517,7 @@ sem_plot2 <- ggplot(registrar |>
 ```
 
 ::: {.content-visible when-format="html"}
-
-::: {.panel-tabset}
-
+::: panel-tabset
 ### Non-Deuteronamolous Perspective
 
 ```{r}
@@ -578,14 +536,10 @@ sem_plot2
 sem_plot4 <- edit_colors(sem_plot2, deutan, sev = 0.7)
 cowplot::plot_grid(sem_plot4, ncol = 1)
 ```
-
 :::
-
 :::
-
 
 ::: {.content-visible when-format="pdf"}
-
 ```{r}
 #| ref.label: "fig-sem-best1"
 #| fig-cap: "Academic Organizations with Highest Seminar Rates - Non-Deuteronamolous Perspective"
@@ -595,7 +549,6 @@ cowplot::plot_grid(sem_plot4, ncol = 1)
 #| ref.label: "fig-sem-best2"
 #| fig-cap: "Academic Organizations with Highest Seminar Rates - Deuteronamolous Perspective"
 ```
-
 :::
 
 These data insights are critical for both the Registrar and members of the Duke community to make informed educational decisions.

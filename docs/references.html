@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.269">
+
+<meta name="generator" content="quarto-1.3.310">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -17,14 +18,15 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
 }
-.hanging div.csl-entry {
+.hanging-indent div.csl-entry {
   margin-left:2em;
   text-indent:-2em;
 }
@@ -38,8 +40,7 @@ div.csl-right-inline {
 }
 div.csl-indent {
   margin-left: 2em;
-}
-</style>
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -86,11 +87,16 @@ div.csl-indent {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">References</h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./references.html">References</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
@@ -113,42 +119,50 @@ div.csl-indent {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a>
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./methods.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Methods</span></a>
+  <a href="./methods.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Methods</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./functions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Function Descriptions</span></a>
+  <a href="./functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Function Descriptions</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./palmers.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Package Use</span></a>
+  <a href="./palmers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Package Use</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./analysis.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Case Study</span></a>
+  <a href="./analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Case Study</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./discussion.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Discussion</span></a>
+  <a href="./discussion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Discussion</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link active">References</a>
+  <a href="./references.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">References</span></a>
   </div>
 </li>
     </ul>
@@ -178,93 +192,93 @@ div.csl-indent {
 
 </header>
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
-<div id="ref-aboutcoa" class="csl-entry" role="doc-biblioentry">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-aboutcoa" class="csl-entry" role="listitem">
 <span>“About Colour Blindness.”</span> n.d.a. <a href="https://www.colourblindawareness.org/colour-blindness/">https://www.colourblindawareness.org/colour-blindness/</a>.
 </div>
-<div id="ref-aboutcob" class="csl-entry" role="doc-biblioentry">
+<div id="ref-aboutcob" class="csl-entry" role="listitem">
 ———. n.d.b. <a href="https://www.colourblindawareness.org/colour-blindness/">https://www.colourblindawareness.org/colour-blindness/</a>.
 </div>
-<div id="ref-atkinson" class="csl-entry" role="doc-biblioentry">
+<div id="ref-atkinson" class="csl-entry" role="listitem">
 <span>“Atkinson Hyperlegible.”</span> n.d. <a href="https://fonts.google.com/specimen/Atkinson+Hyperlegible">https://fonts.google.com/specimen/Atkinson+Hyperlegible</a>.
 </div>
-<div id="ref-colors" class="csl-entry" role="doc-biblioentry">
+<div id="ref-colors" class="csl-entry" role="listitem">
 <span>“Colors.”</span> n.d.a. <a href="https://brand.duke.edu/colors/">https://brand.duke.edu/colors/</a>.
 </div>
-<div id="ref-colorsa" class="csl-entry" role="doc-biblioentry">
+<div id="ref-colorsa" class="csl-entry" role="listitem">
 ———. n.d.b. <a href="https://brand.duke.edu/colors/">https://brand.duke.edu/colors/</a>.
 </div>
-<div id="ref-dukeresearchinnovation" class="csl-entry" role="doc-biblioentry">
+<div id="ref-dukeresearchinnovation" class="csl-entry" role="listitem">
 Duke Research &amp; Innovation. n.d. <span>“Annual Report
 21<span></span>22.”</span> <a href="https://report.research.duke.edu/">https://report.research.duke.edu/</a>.
 </div>
-<div id="ref-hatteras" class="csl-entry" role="doc-biblioentry">
+<div id="ref-hatteras" class="csl-entry" role="listitem">
 <span>“Hatteras Gray.”</span> n.d. <a href="https://www.ppgpaints.com/color/color-families/neutrals/hatteras-gray">https://www.ppgpaints.com/color/color-families/neutrals/hatteras-gray</a>.
 </div>
-<div id="ref-horstb" class="csl-entry" role="doc-biblioentry">
+<div id="ref-horstb" class="csl-entry" role="listitem">
 Horst, Allison, Alison Hill, and Kristen Gorman. n.d.
 <span>“Palmerpenguins r Data Package <span></span>
 Palmerpenguins.”</span> <a href="https://allisonhorst.github.io/palmerpenguins/">https://allisonhorst.github.io/palmerpenguins/</a>.
 </div>
-<div id="ref-howtoc2019" class="csl-entry" role="doc-biblioentry">
+<div id="ref-howtoc2019" class="csl-entry" role="listitem">
 <span>“How to Calculate Colour Contrast.”</span> 2019. <a href="https://www.accessibility-developer-guide.com/knowledge/colours-and-contrast/how-to-calculate">https://www.accessibility-developer-guide.com/knowledge/colours-and-contrast/how-to-calculate</a>.
 </div>
-<div id="ref-initiative" class="csl-entry" role="doc-biblioentry">
+<div id="ref-initiative" class="csl-entry" role="listitem">
 Initiative, W3C Web Accessibility. n.d. <span>“WCAG 2 Overview.”</span>
 <a href="https://www.w3.org/WAI/standards-guidelines/wcag/">https://www.w3.org/WAI/standards-guidelines/wcag/</a>.
 </div>
-<div id="ref-introduc" class="csl-entry" role="doc-biblioentry">
+<div id="ref-introduc" class="csl-entry" role="listitem">
 <span>“Introduction to Understanding WCAG 2.0 | Understanding WCAG
 2.0.”</span> n.d. <a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/intro.html#introduction-fourprincs-head">https://www.w3.org/TR/UNDERSTANDING-WCAG20/intro.html#introduction-fourprincs-head</a>.
 </div>
-<div id="ref-iyer2020a" class="csl-entry" role="doc-biblioentry">
+<div id="ref-iyer2020a" class="csl-entry" role="listitem">
 Iyer, Luc. 2020. <span>“Euclidian Distance in RGB Color / Luc Iyer |
 Observable.”</span> <a href="https://observablehq.com/@luciyer/euclidian-distance-in-rgb-color-space">https://observablehq.com/@luciyer/euclidian-distance-in-rgb-color-space</a>.
 </div>
-<div id="ref-madsen" class="csl-entry" role="doc-biblioentry">
+<div id="ref-madsen" class="csl-entry" role="listitem">
 Madsen, Rune. n.d.a. <span>“Perceptually Uniform Color Spaces -
 Programming Design Systems.”</span> <a href="https://programmingdesignsystems.com/color/perceptually-uniform-color-spaces/">https://programmingdesignsystems.com/color/perceptually-uniform-color-spaces/</a>.
 </div>
-<div id="ref-madsena" class="csl-entry" role="doc-biblioentry">
+<div id="ref-madsena" class="csl-entry" role="listitem">
 ———. n.d.b. <span>“Perceptually Uniform Color Spaces - Programming
 Design Systems.”</span> <a href="https://programmingdesignsystems.com/color/perceptually-uniform-color-spaces/">https://programmingdesignsystems.com/color/perceptually-uniform-color-spaces/</a>.
 </div>
-<div id="ref-muth2020" class="csl-entry" role="doc-biblioentry">
+<div id="ref-muth2020" class="csl-entry" role="listitem">
 Muth, Lisa Charlotte. 2020. <span>“What to Consider When Visualizing
 Data for Colorblind Readers - Datawrapper Blog.”</span> <a href="https://blog.datawrapper.de/colorblindness-part2/">https://blog.datawrapper.de/colorblindness-part2/</a>.
 </div>
-<div id="ref-rouse2021" class="csl-entry" role="doc-biblioentry">
+<div id="ref-rouse2021" class="csl-entry" role="listitem">
 Rouse, Margaret. 2021. <span>“Color Hex Code.”</span> <a href="https://www.techopedia.com/definition/29788/color-hex-code">https://www.techopedia.com/definition/29788/color-hex-code</a>.
 </div>
-<div id="ref-shaffer2020" class="csl-entry" role="doc-biblioentry">
+<div id="ref-shaffer2020" class="csl-entry" role="listitem">
 Shaffer, Jeffrey. 2020. <span>“5 Tips on Designing Colorblind-Friendly
 Visualizations.”</span> <a href="https://www.tableau.com/blog/examining-data-viz-rules-dont-use-red-green-together">https://www.tableau.com/blog/examining-data-viz-rules-dont-use-red-green-together</a>.
 </div>
-<div id="ref-uncschoolofmedicine" class="csl-entry" role="doc-biblioentry">
+<div id="ref-uncschoolofmedicine" class="csl-entry" role="listitem">
 UNC School of Medicine. n.d. <span>“Using Accessible Web Colors.”</span>
 <a href="https://uncch.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=57624079-8af2-481d-be42-ace100e9b5ef">https://uncch.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=57624079-8af2-481d-be42-ace100e9b5ef</a>.
 </div>
-<div id="ref-vissichelli2022" class="csl-entry" role="doc-biblioentry">
+<div id="ref-vissichelli2022" class="csl-entry" role="listitem">
 Vissichelli, Lisa. 2022. <span>“Blooming Bar Charts: The Growth of the
 Data Visualization Industry.”</span> <a href="https://uxdesign.cc/blooming-bar-charts-the-growth-of-the-data-visualization-industry-5095c59a17fb">https://uxdesign.cc/blooming-bar-charts-the-growth-of-the-data-visualization-industry-5095c59a17fb</a>.
 </div>
-<div id="ref-webcont" class="csl-entry" role="doc-biblioentry">
+<div id="ref-webcont" class="csl-entry" role="listitem">
 <span>“Web Content Accessibility Guidelines (WCAG) 2.0.”</span> n.d.a.
 <a href="https://www.w3.org/TR/WCAG20/#relativeluminancedef">https://www.w3.org/TR/WCAG20/#relativeluminancedef</a>.
 </div>
-<div id="ref-webconta" class="csl-entry" role="doc-biblioentry">
+<div id="ref-webconta" class="csl-entry" role="listitem">
 ———. n.d.b. <a href="https://www.w3.org/TR/WCAG20/#relativeluminancedef">https://www.w3.org/TR/WCAG20/#relativeluminancedef</a>.
 </div>
-<div id="ref-wilke" class="csl-entry" role="doc-biblioentry">
+<div id="ref-wilke" class="csl-entry" role="listitem">
 Wilke, Claus. n.d. <span>“Fundamentals of Data Visualization.”</span> <a href="https://clauswilke.com/dataviz/color-pitfalls.html">https://clauswilke.com/dataviz/color-pitfalls.html</a>.
 </div>
-<div id="ref-wilkea" class="csl-entry" role="doc-biblioentry">
+<div id="ref-wilkea" class="csl-entry" role="listitem">
 Wilke, Claus O. n.d. <em>Fundamentals of Data Visualization</em>. <a href="https://clauswilke.com/dataviz/color-pitfalls.html">https://clauswilke.com/dataviz/color-pitfalls.html</a>.
 </div>
-<div id="ref-woods2021" class="csl-entry" role="doc-biblioentry">
+<div id="ref-woods2021" class="csl-entry" role="listitem">
 Woods, Rob. 2021a. <span>“Types of Color Blindness.”</span> <a href="https://www.allaboutvision.com/conditions/color-blindness/types-of-color-blindness/">https://www.allaboutvision.com/conditions/color-blindness/types-of-color-blindness/</a>.
 </div>
-<div id="ref-woods2021a" class="csl-entry" role="doc-biblioentry">
+<div id="ref-woods2021a" class="csl-entry" role="listitem">
 ———. 2021b. <span>“Types of Color Blindness.”</span> <a href="https://www.allaboutvision.com/conditions/color-blindness/types-of-color-blindness/">https://www.allaboutvision.com/conditions/color-blindness/types-of-color-blindness/</a>.
 </div>
 </div>
@@ -299,9 +313,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {

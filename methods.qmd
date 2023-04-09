@@ -1,5 +1,17 @@
 # Methods
 
+```{r}
+#| include: false
+#| message: false
+
+library(ggplot2)
+library(duke)
+library(magrittr)
+library(kableExtra)
+library(palmerpenguins)
+library(colorBlindness)
+```
+
 ## Color Sources
 
 The office of University Communications provides an official color guide for the Duke brand.
@@ -174,12 +186,23 @@ Lighter tiles in the heat map indicate pairings with higher contrast ratios, whi
 
 ```{r}
 #| label: fig-heatmap-all
-#| tbl-cap: "Color Contrast Ratios"
+#| fig-cap: "Heatmap of color contrast ratio between color pairings."
 #| echo: false
 
-```
+mat_melt <- readRDS("~/Desktop/dukethesis/data/mat_melt.rds.gzip")
 
-![Heatmap of color contrast ratio between color pairings.](images/heatmap_all.png){#fig-heatmap-all width="500"}
+ggp <- ggplot(mat_melt, aes(Var1, Var2, fill = value)) +                          
+# Create heatmap with ggplot2
+  geom_tile(#aes(fill = value)
+    ) +
+  labs(title = "Color-Contrast Ratios Between Color Pairings", x = "Color 1", 
+       y = "Color 2") +
+  theme_duke() +
+  scale_duke_continuous() +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+
+ggp
+```
 
 Then, using these ratios, we craft a palette that promotes accessibility and the Duke aesthetic.
 A rule of thumb for discrete color scales is limiting to three to five colors.
@@ -188,16 +211,37 @@ This lends to less busy plots that are more easily understandable.
 Thus, the goal of the our discrete palette is to carefully order colors so that those most used (those at beginning of palette) are most compliant.
 The result is the palette shown in @fig-palette.
 
+```{r}
+#| label: fig-pal
+#| fig-cap: "Discrete palette. Colors (from left to right): Duke Navy Blue, Piedmont, Copper, Duke Royal Blue, Eno, Persimmon, Dandelion, Cast Iron"
+#| echo: false
+#| message: false
+#| warning: false
+
+final_vals <- c("#012169", "#C84E00", "#00539B", "#339898", "#E89923", "#FFD960" ,"#A1B70D", "#262626")
+final_names <- c("Duke Navy Blue", "Copper", "Duke Royal Blue", "Eno", "Persimmon", "Dandelion", "Piedmont", "Cast Iron")
+
+p <- displayColors(final_vals)
+p +
+  geom_text(aes(label = "")) +
+  annotate(
+    "text", label = "Duke Navy Blue Copper Duke Royal Blue Eno Persimmon Dandelion Piedmont Cast Iron",
+    x = 4,
+    y = .5, size = 5
+  ) +
+  theme(plot.margin = margin(.5,.5,1,1, "cm"))
+```
+
+
 ![Discrete palette. Colors (from left to right): Duke Navy Blue, Piedmont, Copper, Duke Royal Blue, Eno, Persimmon, Dandelion, Cast Iron](images/palette.png){#fig-palette}
 
 While not perfectly compliant with WCAG guidelines, the palette achieves our goal of optimizing colorblind accessibility and representing the Duke brand.
 As seen in @fig-heatmap, a majority of our color pairings meet at minimum the AA18 rating, as indicated by lighter tiles.
 
 ```{r}
-
-mat_melt <- readRDS("~/Desktop/dukethesis/data/mat_melt.rds.gzip")
-final_vals <- c("#012169", "#C84E00", "#00539B", "#339898", "#E89923", "#FFD960" ,"#A1B70D", "#262626")
-final_names <- c("Duke Navy Blue", "Copper", "Duke Royal Blue", "Eno", "Persimmon", "Dandelion", "Piedmont", "Cast Iron")
+#| label: fig-heatmap
+#| fig-cap: "Heatmap of color contrast ratio between final color pairings."
+#| echo: false
 
 final_melt <- mat_melt %>%
   dplyr::filter(Var1 %in% final_names & Var2 %in% final_names)
@@ -215,8 +259,6 @@ ggp_final
 
 ```
 
-![Heatmap of color contrast ratio between final color pairings.](images/heatmap.png){#fig-heatmap width="500"}
-
 The final palette includes the following colors: Duke Navy Blue, Piedmont, Copper, Duke Royal Blue, Eno, Persimmon, Dandelion and Cast Iron.
 Out the 28 distinct colors pairings that exist from this palette (excluding pairings of identical colors), 14 have a color contrast ratio of 3 or greater.This is compliant with WCAG's AA18 rating, which specifies the use of larger text to be accessible.
 The colors from this palette will primarily be used to fill or color geometric objects in ggplot - rather than text - which offers complimentary features (ie. shape, larger areas, borders) that promote accessibility.
@@ -227,8 +269,7 @@ Thus, we proceed under the assumption that an AA18 categorization is sufficient.
 #| tbl-cap: "Color Contrast Ratios"
 #| echo: false
 
-library(kableExtra)
-ratios <- readRDS("saved/contrastratios.rds.gzip")
+ratios <- readRDS("data/contrastratios.rds.gzip")
 
 ratios %>%
   kbl() %>%
@@ -247,23 +288,55 @@ Red-green color blindness is by far the most common type, accounting for approxi
 For the purpose of creating a feasible project scope, we focus primarily on accessibility for those with red-green colorblindness.
 Future work on this project - or one with a similar goal - should investigate the feasibility of visualization accessibility for those with blue - yellow color blindness, monochromacy, etc.
 
-```{r}
+::: {.content-visible when-format="html"}
+::: panel-tabset
 
-library(palmerspenguins)
+### Non-Deuteronamolous Perspective
+
+```{r}
+#| label: fig-scatter-comp1
+#| fig-cap: "Sample scatter plot from non-deuteronamolous perspective."
+#| echo: false
+#| warning: false
+#| fig-asp: .618
 
 splot <- ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm, 
                               color = species)) +
   geom_point() +
-  labs(title = "Flipper Length v. Depth") +
-    theme_duke()
-
-b5 <- edit_colors(splot +
-                    scale_duke_fill_discrete(), deutan, sev = 0.7)
-cowplot::plot_grid(splot +
-                     scale_duke_fill_discrete(), b5)
+  labs(title = "Flipper Length v. Depth", x = "Bill Length (mm)", y = "Bill Depth (mm)") +
+  theme_duke() +
+  scale_duke_color_discrete()
+splot 
 ```
 
-![Sample scatter plot from true perspective (left) and deuteranomalous perspective (right) using colorblindr package.](images/deut_comp.png){#fig-scatter}
+### Deuteronamolous Perspective
+
+```{r}
+#| label: fig-scatter-comp2
+#| fig-cap: "Sample scatter plot from deuteranomalous perspective."
+#| echo: false
+#| warning: false
+#| fig-asp: .618
+#| 
+comp <- readRDS("~/Desktop/dukethesis/data/deutan.rds.gzip")
+comp
+```
+:::
+:::
+
+::: {.content-visible when-format="pdf"}
+```{r}
+#| ref.label: "fig-scatter-comp1"
+#| label: fig-scatter-comp1
+#| fig-cap: "Sample scatter plot from non-deuteronamolous perspective."
+```
+
+```{r}
+#| ref.label: "fig-scatter-comp2"
+#| label: fig-scatter-comp2
+#| fig-cap: "Sample scatter plot from deuteranomalous perspective."
+```
+:::
 
 ## Lessons Learned
 
