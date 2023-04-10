@@ -1,18 +1,117 @@
 ---
-title: "presentation title"
-author: "aidan"
+title: "Promoting Accessibility in Duke Data Visualization:"
+subtitle: "Creating a Color-Blind Friendly Duke Color Package"
+author: "Aidan Gildea"
+format: 
+  revealjs:
+    theme: simple
+    mainfont: Atkinson-Hyperlegible
 ---
 
-# Section heading
+## Quote
 
-## Slide title
+# Introduction
 
-ssjshjhd
+## Motivation
 
-```{r}
-library(duke)
-```
+Stuff
 
-## Slide 2 title
+## Background
 
-# Section 2 heading
+Stuff
+
+# Methods
+
+## Color Resources
+
+Stuff
+
+## Color Metrics
+
+Stuff
+
+## Package Development Process
+
+Stuff
+
+## `theme_duke()`
+
+Stuff
+
+## Plot Example
+
+Plot
+
+## `scale_duke_continuous()`
+
+Stuff
+
+## Plot Example
+
+Plot
+
+## `scale_duke_color_discrete()` and `scale_duke_fill_discrete()`
+
+## Stuff
+
+## Plot Example
+
+Plot
+
+## Plot Example
+
+Plot
+
+## Lessons Learned
+
+Lessons
+
+# Functions
+
+## Functions Overview
+
+Functions
+
+# Case Study
+
+## Data
+
+Intro to Data
+
+## Analysis
+
+Plot
+
+Desc
+
+## Analysis (cont.)
+
+Plot
+
+Desc
+
+## Analysis (cont.)
+
+Plot
+
+Desc
+
+# Discussion
+
+## Best Practices (1)
+
+Desc
+
+## Best Practices (2)
+
+Desc
+
+## Best Practices (3)
+
+Desc
+
+# Summary
+
+## Use of duke package
+
+Desc
