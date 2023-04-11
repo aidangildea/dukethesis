@@ -145,43 +145,221 @@ ggplot(final_colors, aes(x = x, y = y)) +
 ## Color Metrics
 
 -   Metrics using the standard RGB (sRGB) space can be flawed due to its perceptual uniformity
--   CIE chromaticity diagram (see @fig-chromat) exhibits the color spectrum according to human vision
+-   CIE chromaticity diagram exhibits the color spectrum according to human vision
 
-![](~/Desktop/dukethesis/images/chromaticity-diagram.jpg){#fig-chromat}
+![](imgs/chromaticity.jpg){#fig-chroma}
 
 -   To account for this irregularity, we use the color contrast ratio: $$\frac{(L1 + 0.05)} {(L2 + 0.05)}$$
 
-## Package Development Process
+## Definition of "Optimal" Pallette
+- Ad-hoc approach in order to strike a balance between accessibility and recognition of the Duke brand.
 
-Stuff
+# Package Development Process
 
 ## `theme_duke()`
 
-Stuff
+- Set the aesthetic elements for the visualization's background and accessory features (background color, grid lines, axis ticks, plot text, etc.)
+- Minimalist design with a White background and grid lines removed
+- Text features are in in Duke Navy Blue because of its strong contrast to the White background (CR of 14.76).
+- Relative text sizing ensures consistent scale
 
-## Plot Example
+## Font specification in `theme_duke()`
+- Font specification is **challenging**
+- Recommend the use of Atkinson Hyperlegible font
+  - Focuses on letterform distinction to increase character recognition, ultimately improving readability. (CITE)
+- Optimal solution would default to use of Atkinson Hyperlegible
+  - Stability across systems and **systemfonts** issues are prohibitive
+  
+## `theme_duke()` in use
 
-Plot
+```{r}
+#| label: fig-theme
+#| warning: false
+#| include: false
+
+library(palmerpenguins)
+library(duke)
+
+scatterplot <- ggplot(
+  penguins,
+  aes(x = bill_length_mm, y = bill_depth_mm)
+) +
+  geom_point() +
+  labs(
+    title = "Bill Length vs. Bill Depth",
+    x = "Bill Length (mm)", y = "Bill Depth (mm)"
+  )
+```
+
+```{r}
+#| label: fig-theme-duke
+#| layout-ncol: 2
+#| echo: true
+#| fig-align: "center"
+#| fig-cap: "Plot comparison using theme function."
+#| cap-location: bottom
+#| fig-subcap:
+#|   - "Original"
+#|   - "with theme_duke()"
+#| warning: false
+scatterplot
+
+scatterplot +
+  theme_duke()
+```
+
 
 ## `scale_duke_continuous()`
 
-Stuff
+- Applies a Duke-specific continous color scale to geometric objects (geom)
+- Continuous sequences from a dark (Duke Royal Blue) to a light color (Hatteras)
+  - Duke Royal Blue has a CCR of 7.75, Hatteras has a CCR of 1.25
+- Continuous color scales used for overall trend recognition
+
+## `scale_duke_continuous()` in use
+
+```{r}
+#| label: continous
+#| warning: false
+#| include: false
+scatterplot_c <- scatterplot +
+  geom_point(aes(color = body_mass_g))
+```
+
+```{r}
+#| label: fig-scale-cont
+#| layout-ncol: 2
+#| echo: true
+#| fig-align: "center"
+#| fig-cap: "Plot comparison using continuous color scale"
+#| cap-location: bottom
+#| fig-subcap:
+#|   - "Original"
+#|   - "with scale_duke_continuous()"
+#| warning: false
+
+scatterplot_c +
+  theme_duke()
+
+scatterplot_c +
+  theme_duke() +
+  scale_duke_continuous()
+```
+
+## `scale_duke_color_discrete()` and `scale_duke_fill_discrete()` {.smaller}
+- Applies a Duke-specific discrete color scale for the color and fill parameters of ggplot geometric objects
+- Discrete plots must be able to delineate effectively between specific groups
+
+```{r}
+#| label: ccrs
+#| warning: false
+#| include: false
+mat_melt <- readRDS("~/Desktop/dukethesis/data/mat_melt.rds.gzip")
+colnames(mat_melt) <- c("Color 1", "Color 2", "CCR")
+```
+
+```{r}
+#| label: tbl-ratios
+#| echo: false
+#| tbl-cap: "Pairing with five highest CCRs." 
+#| tbl-align: "center"
+#| cap-location: bottom
+#| warning: false
+
+library(kableExtra)
+
+mat_melt %>%
+  arrange(desc(CCR)) %>%
+  slice(1:5) %>%
+  kable()
+```
+
+## 
+
+```{r}
+#| label: fig-hmap
+#| echo: false
+#| fig-align: "center"
+#| fig-asp: .618
+#| fig-cap: "Heatmap of color contrast ratios of all pairings."
+#| cap-location: bottom
+#| warning: false
+
+ggp <- ggplot(mat_melt, aes(`Color 1`, `Color 2`, fill = CCR)) +
+  # Create heatmap with ggplot2
+  geom_tile( # aes(fill = value)
+  ) +
+  labs(
+    title = "Color-Contrast Ratios Between Color Pairings", x = "Color 1",
+    y = "Color 2"
+  ) +
+  theme_duke() +
+  scale_duke_continuous() +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
+
+ggp
+```
+##
+```{r}
+#| label: fig-hmap-final
+#| echo: false
+#| fig-align: "center"
+#| fig-asp: .618
+#| fig-cap: "Heatmap of color contrast ratios of selected pairings."
+#| cap-location: bottom
+#| warning: false
+
+final_vals <- c("#012169", "#C84E00", "#00539B", "#339898", "#E89923", "#FFD960", "#A1B70D", "#262626")
+final_names <- c("Duke Navy Blue", "Copper", "Duke Royal Blue", "Eno", "Persimmon", "Dandelion", "Piedmont", "Cast Iron")
+
+final_melt <- mat_melt %>%
+  dplyr::filter(`Color 1` %in% final_names & `Color 2` %in% final_names)
+
+ggp_final <- ggplot(final_melt, aes(`Color 1`, `Color 2`, fill = CCR)) +
+  # Create heatmap with ggplot2
+  geom_tile( # aes(fill = value)
+  ) +
+  labs(
+    title = "Color-Contrast Ratios Between Final Color Pairings", x = "Color 1",
+    y = "Color 2"
+  ) +
+  theme_duke() +
+  scale_duke_continuous() +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
+
+ggp_final
+```
+
+```{r}
+#| label: fig-palette
+#| echo: false
+#| fig-align: "center"
+#| fig-asp: .618
+#| fig-cap: "Selected discrete palette."
+#| cap-location: bottom
+#| warning: false
+
+
+final_colors <- tibble(
+  x = 1:length(final_vals),
+  y = rep(1, length(final_vals)),
+  hex = final_vals,
+  name = final_names
+) |>
+  mutate(name = paste0(name, "\n", hex))
+
+ggplot(final_colors, aes(x = x, y = y)) +
+  geom_tile(aes(fill = final_vals)) +
+  scale_fill_identity() +
+  geom_text(aes(label = str_wrap(name, 5)), color = "white", fontface = "bold") +
+  theme_void() +
+  theme(plot.margin = unit(c(0, 0, 0, 0), "cm"))
+```
+
 
 ## Plot Example
 
-Plot
-
-## `scale_duke_color_discrete()` and `scale_duke_fill_discrete()`
-
-## Stuff
-
-## Plot Example
-
-Plot
-
-## Plot Example
-
-Plot
+- Best practice to use three to five colors from discrete scale
 
 ## Lessons Learned
 
