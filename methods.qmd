@@ -200,6 +200,7 @@ Lighter tiles in the heat map indicate pairings with higher contrast ratios, whi
 #| label: fig-heatmap-all
 #| fig-cap: "Heatmap of color contrast ratio between color pairings."
 #| echo: false
+#| message: false
 
 mat_melt <- readRDS("~/Desktop/dukethesis/data/mat_melt.rds.gzip")
 
@@ -261,6 +262,7 @@ As seen in @fig-heatmap, a majority of our color pairings meet at minimum the AA
 #| label: fig-heatmap
 #| fig-cap: "Heatmap of color contrast ratio between final color pairings."
 #| echo: false
+#| message: false
 
 final_melt <- mat_melt %>%
   dplyr::filter(Var1 %in% final_names & Var2 %in% final_names)
@@ -288,6 +290,7 @@ Thus, we proceed under the assumption that an AA18 categorization is sufficient.
 #| label: tbl-ratios
 #| tbl-cap: "Color Contrast Ratios"
 #| echo: false
+#| message: false
 
 ratios <- readRDS("data/contrastratios.rds.gzip")
 
@@ -317,6 +320,7 @@ Future work on this project - or one with a similar goal - should investigate th
 #| fig-cap: "Sample scatter plot from non-deuteronamolous perspective."
 #| echo: false
 #| warning: false
+#| message: false
 #| fig-asp: .618
 
 splot <- ggplot(penguins, aes(
@@ -338,7 +342,8 @@ splot
 #| echo: false
 #| warning: false
 #| fig-asp: .618
-#|
+#| message: false
+
 comp <- readRDS("~/Desktop/dukethesis/data/deutan.rds.gzip")
 comp
 ```
@@ -350,12 +355,18 @@ comp
 #| ref.label: "fig-scatter-comp1"
 #| label: fig-scatter-comp1
 #| fig-cap: "Sample scatter plot from non-deuteronamolous perspective."
+#| message: false
+#| warning: false
+#| echo: false
 ```
 
 ```{r}
 #| ref.label: "fig-scatter-comp2"
 #| label: fig-scatter-comp2
 #| fig-cap: "Sample scatter plot from deuteranomalous perspective."
+#| message: false
+#| echo: false
+#| warning: false
 ```
 :::
 
