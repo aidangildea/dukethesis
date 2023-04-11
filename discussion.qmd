@@ -33,7 +33,39 @@ Here are a few examples of how these supplementary features can improve the acce
 Scatterplots can quickly become difficult to read when there a several distinct categories in the data.
 To improve your plot's readability, consider adding shapes to your data points.
 
-![Scatter plot with shape distinctions](images/pointshape.png){#fig-pointshape}
+```{r}
+#| label: library
+#| include: false
+#| warning: false
+#| message: false
+
+library(ggplot2)
+library(palmerpenguins)
+library(duke)
+library(magrittr)
+library(dplyr)
+```
+
+
+```{r}
+#| label: fig-pointshape
+#| echo: false
+#| fig-cap: Scatter plot with shape distinctions.
+#| warning: false
+#| message: false
+
+ggplot(
+  penguins,
+  aes(x = bill_length_mm, y = bill_depth_mm)
+) +
+  geom_point(aes(color = species, shape = species)) +
+  labs(
+    title = "Bill Length vs. Bill Depth",
+    x = "Bill Length (mm)", y = "Bill Depth (mm)"
+  ) +
+  theme_duke(base_family = "Atkinson Hyperlegible") +
+  scale_duke_color_discrete()
+```
 
 For geometric objects with large fill spaces (ie. bar plot, pie chart), the use of the colorblind friendly palettes can be effective on its own.
 Nevertheless, adding fill textures to your visualization is an effective way to increase plot clarity.
@@ -44,7 +76,25 @@ To do so, I used the [**ggpattern**](https://github.com/coolbutuseless/ggpattern
 Finally, the efficacy of color in line plots deteriorates as the number of categories increases and/or the lines are intersecting.
 By varying the patterns and widths of the lines in your plot, your visualization can more effectively convey trend differences.
 
-![Line plot with line pattern and point shapes.](images/lineplot.png){#fig-lineplot}
+```{r}
+#| label: fig-lineplot
+#| echo: false
+#| fig-cap: Line plot with line pattern and point shapes.
+#| warning: false
+#| message: false
+
+penguins %>%
+  filter(!is.na(bill_length_mm)) %>%
+  group_by(island, year) %>%
+  summarize(island, year, mean = mean(bill_length_mm)) %>%
+  distinct(island, year, .keep_all = T) %>%
+  ggplot(aes(x = as.factor(year), y = mean, color = island, group = island)) +
+           geom_point(aes(shape = island)) +
+           geom_line(aes(linetype = island)) +
+  labs(title = "Average Island Bill Length (mm) Per Year", x = "Year", y = "Bill Length (mm)") +
+  theme_duke(base_family = "Atkinson Hyperlegible") +
+  scale_duke_color_discrete()
+```
 
 The use of these complimentary features - among many others - are easy and effective.
 By integrating them alongside the **duke** package, you can promote accessibility for not only colorblind individuals, but older readers, audiences with lower technical exposure, and people reading in low light.

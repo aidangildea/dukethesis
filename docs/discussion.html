@@ -103,6 +103,9 @@ div.csl-indent {
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Promoting Accessibility in Duke Data Visualization</a> 
+        <div class="sidebar-tools-main">
+    <a href="./Promoting-Accessibility-in-Duke-Data-Visualization.pdf" title="Download PDF" class="sidebar-tool px-1"><i class="bi bi-file-pdf"></i></a>
+</div>
     </div>
       </div>
       <div class="mt-2 flex-shrink-0 align-items-center">
@@ -196,11 +199,15 @@ div.csl-indent {
 <p>The <strong>duke</strong> package allows users to integrate a more colorblind friendly palette into their visualizations; however, this is not the end-all solution. There are several other plot features present in <strong>ggplot</strong> that alleviate the need for the color palette to be perfectly distinguishable - or in some cases - be used at all. Essentially, if you “get it right in black and white”, you no longer have to worry about access issues for colorblind readers <span class="citation" data-cites="muth2020">(<a href="references.html#ref-muth2020" role="doc-biblioref">Muth 2020</a>)</span>. This can be done by adding, “icons, directional arrows, labels, annotations, or other indicators” that differentiate between different categories <span class="citation" data-cites="shaffer2020">(<a href="references.html#ref-shaffer2020" role="doc-biblioref">Shaffer 2020</a>)</span>.</p>
 <p>Here are a few examples of how these supplementary features can improve the accessibility of visualizations using the <strong>duke</strong> package.</p>
 <p>Scatterplots can quickly become difficult to read when there a several distinct categories in the data. To improve your plot’s readability, consider adding shapes to your data points.</p>
+<div class="cell">
+<div class="cell-output-display">
 <div id="fig-pointshape" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="images/pointshape.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;6.1: Scatter plot with shape distinctions</figcaption><p></p>
+<p><img src="discussion_files/figure-html/fig-pointshape-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;6.1: Scatter plot with shape distinctions.</figcaption><p></p>
 </figure>
+</div>
+</div>
 </div>
 <p>For geometric objects with large fill spaces (ie. bar plot, pie chart), the use of the colorblind friendly palettes can be effective on its own. Nevertheless, adding fill textures to your visualization is an effective way to increase plot clarity. To do so, I used the <a href="https://github.com/coolbutuseless/ggpattern"><strong>ggpattern</strong></a> package.</p>
 <div id="fig-fillbar" class="quarto-figure quarto-figure-center anchored">
@@ -210,11 +217,15 @@ div.csl-indent {
 </figure>
 </div>
 <p>Finally, the efficacy of color in line plots deteriorates as the number of categories increases and/or the lines are intersecting. By varying the patterns and widths of the lines in your plot, your visualization can more effectively convey trend differences.</p>
+<div class="cell">
+<div class="cell-output-display">
 <div id="fig-lineplot" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="images/lineplot.png" class="img-fluid figure-img"></p>
+<p><img src="discussion_files/figure-html/fig-lineplot-1.png" class="img-fluid figure-img" width="672"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;6.3: Line plot with line pattern and point shapes.</figcaption><p></p>
 </figure>
+</div>
+</div>
 </div>
 <p>The use of these complimentary features - among many others - are easy and effective. By integrating them alongside the <strong>duke</strong> package, you can promote accessibility for not only colorblind individuals, but older readers, audiences with lower technical exposure, and people reading in low light.</p>
 <p><strong>Adjust When Necessary</strong></p>
