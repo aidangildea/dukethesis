@@ -7,6 +7,7 @@ book:
   subtitle: "Creating a Color-Blind Friendly Duke Color Package"
   author: "Aidan Gildea"
   cover-image: images/dukelogo.png
+  downloads: pdf
   date: now
   abstract: "A detailed explanation of the development and use of the <b><i>duke</b></i> package."
   chapters:
