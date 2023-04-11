@@ -8,27 +8,148 @@ format:
     mainfont: Atkinson-Hyperlegible
 ---
 
-## Quote
+> ***"Accessible design is good design -- it benefits people who don't have disabilities as well as people who do. Accessibility is all about removing barriers and providing the benefits for everyone."***
+>
+> Steve Ballmer, former Microsoft CEO (2000-2014)
 
 # Introduction
 
 ## Motivation
 
-Stuff
+Principal goals of thesis:
+
+::: incremental
+-   
+
+    1)  identify a ***material issue***, and
+
+-   
+
+    2)  address it with a ***tangible solution***
+:::
+
+## Motivation
+
+-   Companies can highlight their brand via R packages i.e. **`ggtech`** (Airbnb, Facebook, Google), **`ggthemes`** (The Economist, The Wall Street Journal)
+-   Duke has over 17,000 students, 38,000 employees, six campuses and spends more than \$1 annually in research expenditures
+-   No existing R package to represent the Duke brand in data visualization
+-   Meets criterion of 1) identifying a significant issue and 2) solving it with a real solution (package development)
+
+## Motivation
+
+-   Data visualization industry expected to nearly double by 2026
+
+::: incremental
+-   We must ask questions like:
+    -   Who is our audience?
+    -   How can we make our visualizations more intelligible?
+    -   Who might we be leaving behind?
+-   To reach largest audience, Duke branding package must consider colorblind accessibility
+:::
+
+## Thesis
+
+**Empower users to create Duke branded and color-blind friendly visualizations by constructing an R color package.**
 
 ## Background
 
-Stuff
+-   Formally known as Color Vision Deficiency (CVD)
+-   Approximately 300 million color blind people across the globe
+    -   1 in 12 men (8%) and 1 in 200 women (0.5%) are affected
+-   Red-green color blindness accounts for approximately 99% of the population with CVD
+    -   62.5% are deuteronamolous (green-weak vision), 12.5% have protonopia and deuteranopia (cannot distinguish between red and green)
+
+## Background
+
+-   Duke provides resources on how their color suite meets the Web Content Accessibility Guidelines (WCAG)
+    -   WCAG: globally recognized standard for web accessibility best practices in all fields
+-   No pathway for users to integrate accessibility information into their visualizations
+-   The **duke** package aims to fill this unique branding and accessibility need
 
 # Methods
 
 ## Color Resources
 
-Stuff
+-   Duke official color palette
+    -   Intended to bolster the brand of the University and ensure cohesion among all official content
+
+```{r}
+#| include: false
+
+library(tibble)
+library(ggplot2)
+library(dplyr)
+library(stringr)
+
+blues <- c("#00539B", "#012169")
+blues_names <- c("Duke Royal Blue", "Duke Navy Blue")
+
+blues_df <- tibble(
+  x = 1:length(blues),
+  y = rep(1, length(blues)),
+  hex = blues,
+  name = blues_names
+) |>
+  mutate(name = paste0(name, "\n", hex))
+
+other_values <- c("#339898", "#C84E00", "#A1B70D", "#E89923",
+                       "#993399", "#262626", "#988675", "#FFD960", "#1D6363", "#005587", "#0577B1", "#E2E6ED", "#F3F2F1", "#FCF7E5", "#DAD0C6", "#666666", "#B5B5B5", "#E5E5E5")
+                       
+final_colors <- tibble(
+  x = 1:length(other_values),
+  y = rep(1, length(other_values)),
+)
+```
+
+-   2 primary colors
+
+<center>
+
+```{r}
+#| fig-height: .5
+ggplot(blues_df, aes(x = x, y = y)) +
+  geom_tile(aes(fill = blues)) +
+  scale_fill_identity() +
+  geom_text(aes(label = str_wrap(name, 5)), color = "white", fontface = "bold") +
+  theme_void() +
+  theme(plot.margin = unit(c(0, 0, 0, 0), "cm"))
+```
+
+</center>
+
+-   18 secondary and tertiary colors
+
+<center>
+
+```{r}
+#| echo: false
+#| fig-height: .5
+
+ggplot(final_colors, aes(x = x, y = y)) +
+  geom_tile(aes(fill = other_values)) +
+  scale_fill_identity() +
+  theme_void() +
+  theme(plot.margin = unit(c(0, 0, 0, 0), "cm"))
+```
+
+</center>
+
+## Color Sources
+
+-   Accessibility guide ranks color pairing using following categories:
+    -   ***AAA***: highest compliance, text-background contrast ratio of 7+
+    -   ***AA***: mid-range compliance, text-background contrast ratio of 4.5+
+    -   ***AA18***: mid-range compliance with large text only (18pt or 14pt bold), text-background contrast ratio of 3+
+    -   ***DNP***: does not pass compliance guidelines, text-background contrast ratio of less than 3
 
 ## Color Metrics
 
-Stuff
+-   Metrics using the standard RGB (sRGB) space can be flawed due to its perceptual uniformity
+-   CIE chromaticity diagram (see @fig-chromat) exhibits the color spectrum according to human vision
+
+![](~/Desktop/dukethesis/images/chromaticity-diagram.jpg){#fig-chromat}
+
+-   To account for this irregularity, we use the color contrast ratio: $$\frac{(L1 + 0.05)} {(L2 + 0.05)}$$
 
 ## Package Development Process
 

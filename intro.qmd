@@ -1,6 +1,6 @@
 # Introduction
 
-> Accessible design is good design -- it benefits people who don\'t have disabilities as well as people who do.
+> Accessible design is good design -- it benefits people who don't have disabilities as well as people who do.
 > Accessibility is all about removing barriers and providing the benefits for everyone.
 >
 > Steve Ballmer, former Microsoft CEO (2000-2014)

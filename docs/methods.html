@@ -337,8 +337,8 @@ div.csl-indent {
 <h3 data-number="2.3.1" class="anchored" data-anchor-id="theme_duke"><span class="header-section-number">2.3.1</span> <code>theme_duke()</code></h3>
 <p>This function is largely inspired by the <code>theme()</code> function and its many derivatives. Its primary focus is to set the aesthetic elements for the visualization’s background and accessory features. These include the background color, grid lines, axis ticks, plot text, etc. With accessibility at the forefront of this project’s goals, it is essential that these choices lead to not only a visually pleasing result, but to one that is comprehensible as well. To do so, <code>theme_duke()</code> implements a minimalist design with a White background and grid lines removed. This decision reduces excessive noise in the plot, and instead allows audiences to focus on the story the data tells.</p>
 <p>This design is complemented by deliberate text specifications that ensure plot readability. The function applies uniform coloring for text across the entirety of the visualization. All possible text features of a ggplot (title, axes, caption, legend, etc.) are in in Duke Navy Blue because of its strong contrast to the White background. It has a contrast ratio of 14.76 with White, which is the third highest among all colors in the Duke extended palette. Sizing of major text elements is also handled carefully to promote legibility. Readers with color vision impairment and/or low vision benefit from larger text settings <span class="citation" data-cites="uncschoolofmedicine">(<a href="references.html#ref-uncschoolofmedicine" role="doc-biblioref">UNC School of Medicine, n.d.</a>)</span>. Rather than manually increasing text size, <code>theme_duke()</code> encodes text sizing relative to the scale of the visualization. In turn, text adjusts according to users’ manipulations of plot dimensions, guaranteeing that text is both appropriately large and adequately fit to the visualization.</p>
-<p>In addition, all text is in Atkinson-Hyperlegible font. Named after the founder of the Braille Institute, J. Robert Atkinson, the font uses “unambiguous, distinctive elements” to improve readability for individuals with vision impairment <span class="citation" data-cites="atkinson">(<a href="references.html#ref-atkinson" role="doc-biblioref"><span>“Atkinson Hyperlegible,”</span> n.d.</a>)</span>. Its use - both in the package and all complimentary documentation - is essential to promoting vision accessibility. Font implementation was one of the most difficult challenges throughout the package development process. R provides a limited suite of fonts, requiring users to download and load additional font families to their own system. On the individual-level, this is not too difficult. However, the process necessitates careful thought when building a package for community use. <em>How can users integrate quickly access the package’s required fonts? What font implementation will require minimal memory? Why is being transparent with users important?</em> We must closely consider these questions, among others, when adding font specification to <strong>duke</strong>.</p>
-<p>Font specification in the <strong>duke</strong> package is an ongoing process and will be added soon. We want to ensure that our solution is stable on all systems; therefore, it is not published yet. In its current version, <strong>duke</strong> uses default <strong>ggplot2</strong> fonts. We aim to have this feature complete prior to the defense.</p>
+<p>In addition, <code>theme_duke()</code> allows for the simple integration of specific fonts in visualizations. We recommend that all text is in Atkinson-Hyperlegible font. Named after the founder of the Braille Institute, J. Robert Atkinson, the font uses “unambiguous, distinctive elements” to improve readability for individuals with vision impairment <span class="citation" data-cites="atkinson">(<a href="references.html#ref-atkinson" role="doc-biblioref"><span>“Atkinson Hyperlegible,”</span> n.d.</a>)</span>. Its use - both in the package and all complimentary documentation - is essential to promoting vision accessibility. Font implementation was one of the most difficult challenges throughout the package development process. R provides a limited suite of fonts, requiring users to download and load additional font families to their own system. On the individual-level, this is not too difficult. However, the process necessitates careful thought when building a package for community use. <em>How can users integrate quickly access the package’s required fonts? What font implementation will require minimal memory? Why is being transparent with users important?</em> We must closely consider these questions, among others, when adding font specification to <strong>duke</strong>.</p>
+<p>The ongoing aim of the <strong>duke</strong> package is to implement Atkinson-Hyperlegible font across all text features of visualizations. This requires that users have the font files locally installed to their systems. We have constructed a single-use function that downloads the necessary Atkinson-Hyperlegible files; however, it is not stable across all systems. As we continue to craft an optimal solution, we recommend that users download <a href="https://brailleinstitute.org/freefont">Atkinson-Hyperlegible</a> and then specify its use in the base family argument of <code>theme_duke()</code>. This is not a fully streamlined solution, yet it ensures that users on all systems can implement <strong>duke</strong> without encountering errors. If font in not specified, the function uses the <strong>ggplot2</strong> default font, sans. The application of Atkinson Hyperlegible font is key to improving accessibility in data visualization and is of high priority in <strong>duke</strong>’s ongoing development.</p>
 </section>
 <section id="scale_duke_continuous" class="level3" data-number="2.3.2">
 <h3 data-number="2.3.2" class="anchored" data-anchor-id="scale_duke_continuous"><span class="header-section-number">2.3.2</span> <code>scale_duke_continuous()</code></h3>
@@ -359,30 +359,24 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<p>Then, using these ratios, we craft a palette that promotes accessibility and the Duke aesthetic. A rule of thumb for discrete color scales is limiting to three to five colors. Additionally, once eight to ten categories or more are reached, matching colors to categories becomes too burdensome to be useful, even if the colors are distinguishable in principle <span class="citation" data-cites="wilkea">(<a href="references.html#ref-wilkea" role="doc-biblioref">C. O. Wilke, n.d.</a>)</span>. This lends to less busy plots that are more easily understandable. Thus, the goal of the our discrete palette is to carefully order colors so that those most used (those at beginning of palette) are most compliant. The result is the palette shown in <a href="#fig-palette">Figure&nbsp;<span>2.4</span></a>.</p>
-<div class="cell">
+<p>Then, using these ratios, we craft a palette that promotes accessibility and the Duke aesthetic. A rule of thumb for discrete color scales is limiting to three to five colors. Additionally, once eight to ten categories or more are reached, matching colors to categories becomes too burdensome to be useful, even if the colors are distinguishable in principle <span class="citation" data-cites="wilkea">(<a href="references.html#ref-wilkea" role="doc-biblioref">C. O. Wilke, n.d.</a>)</span>. This lends to less busy plots that are more easily understandable. Thus, the goal of the our discrete palette is to carefully order colors so that those most used (those at beginning of palette) are most compliant. The result is the palette shown in <a href="#fig-palette">Figure&nbsp;<span>2.3</span></a>.</p>
+<div class="cell" data-fig.asp="0.125">
 <div class="cell-output-display">
-<div id="fig-pal" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="methods_files/figure-html/fig-pal-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2.3: Discrete palette. Colors (from left to right): Duke Navy Blue, Piedmont, Copper, Duke Royal Blue, Eno, Persimmon, Dandelion, Cast Iron</figcaption><p></p>
-</figure>
-</div>
-</div>
-</div>
 <div id="fig-palette" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="images/palette.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2.4: Discrete palette. Colors (from left to right): Duke Navy Blue, Piedmont, Copper, Duke Royal Blue, Eno, Persimmon, Dandelion, Cast Iron</figcaption><p></p>
+<p><img src="methods_files/figure-html/fig-palette-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;2.3: Discrete palette. Colors (from left to right): Duke Navy Blue, Piedmont, Copper, Duke Royal Blue, Eno, Persimmon, Dandelion, Cast Iron.</figcaption><p></p>
 </figure>
 </div>
-<p>While not perfectly compliant with WCAG guidelines, the palette achieves our goal of optimizing colorblind accessibility and representing the Duke brand. As seen in <a href="#fig-heatmap">Figure&nbsp;<span>2.5</span></a>, a majority of our color pairings meet at minimum the AA18 rating, as indicated by lighter tiles.</p>
+</div>
+</div>
+<p>While not perfectly compliant with WCAG guidelines, the palette achieves our goal of optimizing colorblind accessibility and representing the Duke brand. As seen in <a href="#fig-heatmap">Figure&nbsp;<span>2.4</span></a>, a majority of our color pairings meet at minimum the AA18 rating, as indicated by lighter tiles.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-heatmap" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="methods_files/figure-html/fig-heatmap-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2.5: Heatmap of color contrast ratio between final color pairings.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;2.4: Heatmap of color contrast ratio between final color pairings.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -547,7 +541,7 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<p><br> To ensure that this palette is accessible, we use the <code>colorblindr</code> package to visualize sample plots from the perspective of individuals with different types of color vision deficiency. There are several categorizations of CVD, yet the most common is red-green color blindness. As the name suggests, it makes it difficult for individuals to distinguish between red and green. Among this population, approximately 62.5% are deuteranomalous - meaning they have green-weak vision that makes green appear more red <span class="citation" data-cites="woods2021">(<a href="references.html#ref-woods2021" role="doc-biblioref">Woods 2021a</a>)</span>. Protonopia and deuteraonopia prevent individuals from distinguishing between red and green at all, yet are far less prevalent at only 12.5% of the red-green colorblind population each <span class="citation" data-cites="woods2021a">(<a href="references.html#ref-woods2021a" role="doc-biblioref">Woods 2021b</a>)</span>.</p>
+<p><br> To ensure that this palette is accessible, we use the <code>colorblindr</code> package to visualize sample plots from the perspective of individuals with different types of color vision deficiency. There are several categorizations of CVD, yet the most common is red-green color blindness. As the name suggests, it makes it difficult for individuals to distinguish between red and green. Among this population, approximately 62.5% are deuteranomalous - meaning they have green-weak vision that makes green appear more red <span class="citation" data-cites="woods2021">(<a href="references.html#ref-woods2021" role="doc-biblioref">Woods 2021a</a>)</span>. Protonopia and deuteranopia prevent individuals from distinguishing between red and green at all, yet are far less prevalent at only 12.5% of the red-green colorblind population each <span class="citation" data-cites="woods2021a">(<a href="references.html#ref-woods2021a" role="doc-biblioref">Woods 2021b</a>)</span>.</p>
 <p>Red-green color blindness is by far the most common type, accounting for approximately 99% of those with CVD. For the purpose of creating a feasible project scope, we focus primarily on accessibility for those with red-green colorblindness. Future work on this project - or one with a similar goal - should investigate the feasibility of visualization accessibility for those with blue - yellow color blindness, monochromacy, etc.</p>
 <div>
 <div class="panel-tabset">
@@ -559,7 +553,7 @@ div.csl-indent {
 <div id="fig-scatter-comp1" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="methods_files/figure-html/fig-scatter-comp1-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2.6: Sample scatter plot from non-deuteronamolous perspective.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;2.5: Sample scatter plot from non-deuteronamolous perspective.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -571,7 +565,7 @@ div.csl-indent {
 <div id="fig-scatter-comp2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="methods_files/figure-html/fig-scatter-comp2-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2.7: Sample scatter plot from deuteranomalous perspective.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;2.6: Sample scatter plot from deuteranomalous perspective.</figcaption><p></p>
 </figure>
 </div>
 </div>

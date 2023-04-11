@@ -153,12 +153,17 @@ On the individual-level, this is not too difficult.
 However, the process necessitates careful thought when building a package for community use.
 *How can users integrate quickly access the package's required fonts? What font implementation will require minimal memory? Why is being transparent with users important?* We must closely consider these questions, among others, when adding font specification to **duke**.
 
-The ongoing aim of the **duke** package is to implement Atkinson-Hyperlegible font across all text features of visualizations.
-This requires that users have the font files locally installed to their systems.
-We have constructed a single-use function that downloads the necessary Atkinson-Hyperlegible files; however, it is not stable across all systems.
-As we continue to craft an optimal solution, we recommend that users download [Atkinson-Hyperlegible](https://brailleinstitute.org/freefont) and then specify its use in the base family argument of `theme_duke()`.
-This is not a fully streamlined solution, yet it ensures that users on all systems can implement **duke** without encountering errors.
-If font in not specified, the function uses the **ggplot2** default font, sans.
+The ongoing aim of this theme function is to implement Atkinson-Hyperlegible font by default across all text features of visualizations.
+This requires that users have the necessary font files locally installed to their systems.
+If already available locally, we imagine `theme_duke()` automatically using Atkinson-Hyperlegible font.
+If not, a message would be printed directing users to where the font files can downloaded and fonts used in plots would default to the **ggplot2** default font, sans.
+We have constructed a single-use function that downloads the necessary Atkinson-Hyperlegible files to be used in that instance.
+This solution has not been added yet because it is not stable across all user systems.
+There are a few minor bugs in the **systemfonts** package that have roadblocked our development process and must be addressed first before we can finish this solution.
+
+In the mean time, we recommend that users download [Atkinson-Hyperlegible](https://brailleinstitute.org/freefont) and then specify its use in the base family argument of `theme_duke()`.
+This is not a fully streamlined fix, yet it ensures that users on all systems can implement **duke** without encountering errors.
+If font in not specified, the function uses sans font.
 The application of Atkinson Hyperlegible font is key to improving accessibility in data visualization and is of high priority in **duke**'s ongoing development.
 
 ### `scale_duke_continuous()`
@@ -297,7 +302,7 @@ ratios %>%
 There are several categorizations of CVD, yet the most common is red-green color blindness.
 As the name suggests, it makes it difficult for individuals to distinguish between red and green.
 Among this population, approximately 62.5% are deuteranomalous - meaning they have green-weak vision that makes green appear more red [@woods2021].
-Protonopia and deuteraonopia prevent individuals from distinguishing between red and green at all, yet are far less prevalent at only 12.5% of the red-green colorblind population each [@woods2021a].
+Protonopia and deuteranopia prevent individuals from distinguishing between red and green at all, yet are far less prevalent at only 12.5% of the red-green colorblind population each [@woods2021a].
 
 Red-green color blindness is by far the most common type, accounting for approximately 99% of those with CVD.
 For the purpose of creating a feasible project scope, we focus primarily on accessibility for those with red-green colorblindness.
