@@ -172,18 +172,9 @@ ggplot(final_colors, aes(x = x, y = y)) +
 
 </center>
 
-## Accessibility Metrics
-
-Accessibility guide ranks color pairing using following categories:
-
--   [AAA**:**]{style="color: grey;"} highest compliance, text-background contrast ratio of 7+
--   [AA**:**]{style="color: grey;"} mid-range compliance, text-background contrast ratio of 4.5+
--   [AA18**:**]{style="color: orange;"} mid-range compliance with large text only (18pt or 14pt bold), text-background contrast ratio of 3+
--   [DNP**:**]{style="color: red;"} does not pass compliance guidelines, text-background contrast ratio of less than 3
-
 ## Color Difference Metrics
 
--   Metrics using the standard RGB (sRGB) space can be flawed due to its perceptual uniformity
+-   Metrics using the standard RGB (sRGB) space can be flawed due to its perceptual irregularity
 -   CIE chromaticity diagram exhibits the color spectrum according to human vision
 
 ![](images/chromaticity.jpg){fig-align="center" width="400"}
@@ -194,6 +185,15 @@ Accessibility guide ranks color pairing using following categories:
 -   To account for this irregularity, we use the color contrast ratio: $$CCR = \frac{(L1 + 0.05)} {(L2 + 0.05)}$$
 -   Ranges from a value of 1 (no contrast) to 21 (highest contrast)
 :::
+
+## Accessibility Metrics
+
+Accessibility guide ranks color pairing using following categories:
+
+-   [AAA**:**]{style="color: grey;"} highest compliance, text-background contrast ratio of 7+
+-   [AA**:**]{style="color: grey;"} mid-range compliance, text-background contrast ratio of 4.5+
+-   [AA18**:**]{style="color: orange;"} mid-range compliance with large text only (18pt or 14pt bold), text-background contrast ratio of 3+
+-   [DNP**:**]{style="color: red;"} does not pass compliance guidelines, text-background contrast ratio of less than 3
 
 ## Definition of Optimal Pallette
 
