@@ -5,9 +5,10 @@
 <script src="presentation_files/libs/quarto-html/popper.min.js"></script>
 <script src="presentation_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="presentation_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="presentation_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="presentation_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="presentation_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.2.269">
+  <meta name="generator" content="quarto-1.3.310">
 
   <meta name="author" content="Aidan Gildea Dr.&nbsp;Mine Çetinkaya-Rundel">
   <title>Promoting Accessibility in Duke Data Visualization:</title>
@@ -25,9 +26,10 @@
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
       width: 0.8em;
-      margin: 0 0.8em 0.2em -1.6em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
     pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -92,11 +94,12 @@
     code span.va { color: #111111; } /* Variable */
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+    /* CSS for citations */
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
     }
-    .hanging div.csl-entry {
+    .hanging-indent div.csl-entry {
       margin-left:2em;
       text-indent:-2em;
     }
@@ -110,11 +113,8 @@
     }
     div.csl-indent {
       margin-left: 2em;
-    }
-  </style>
+    }  </style>
   <link rel="stylesheet" href="presentation_files/libs/revealjs/dist/theme/quarto.css" id="theme">
-  <link rel="stylesheet" href="logo.css">
-  <link rel="stylesheet" href="style.css">
   <link href="presentation_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="presentation_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="presentation_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -157,44 +157,44 @@
     font-weight: 400;
   }
 
-  .callout.callout-captioned.callout-style-simple .callout-body {
+  .callout.callout-titled.callout-style-simple .callout-body {
     margin-top: 0.2em;
   }
 
-  .callout:not(.callout-captioned) .callout-body {
+  .callout:not(.callout-titled) .callout-body {
       display: flex;
   }
 
-  .callout:not(.no-icon).callout-captioned.callout-style-simple .callout-content {
+  .callout:not(.no-icon).callout-titled.callout-style-simple .callout-content {
     padding-left: 1.6em;
   }
 
-  .callout.callout-captioned .callout-header {
+  .callout.callout-titled .callout-header {
     padding-top: 0.2em;
     margin-bottom: -0.2em;
   }
 
-  .callout.callout-captioned .callout-caption  p {
+  .callout.callout-titled .callout-title  p {
     margin-top: 0.5em;
     margin-bottom: 0.5em;
   }
     
-  .callout.callout-captioned.callout-style-simple .callout-content  p {
+  .callout.callout-titled.callout-style-simple .callout-content  p {
     margin-top: 0;
   }
 
-  .callout.callout-captioned.callout-style-default .callout-content  p {
+  .callout.callout-titled.callout-style-default .callout-content  p {
     margin-top: 0.7em;
   }
 
-  .callout.callout-style-simple div.callout-caption {
+  .callout.callout-style-simple div.callout-title {
     border-bottom: none;
     font-size: .9rem;
     font-weight: 600;
     opacity: 75%;
   }
 
-  .callout.callout-style-default  div.callout-caption {
+  .callout.callout-style-default  div.callout-title {
     border-bottom: none;
     font-weight: 600;
     opacity: 85%;
@@ -226,7 +226,7 @@
     background-size: 0.9rem 0.9rem;
   }
 
-  .callout-caption {
+  .callout-title {
     display: flex
   }
     
@@ -239,16 +239,16 @@
     display: none !important;
   }
 
-  .callout.callout-captioned .callout-body > .callout-content > :last-child {
+  .callout.callout-titled .callout-body > .callout-content > :last-child {
     margin-bottom: 0.5rem;
   }
 
-  .callout.callout-captioned .callout-icon::before {
+  .callout.callout-titled .callout-icon::before {
     margin-top: .5rem;
     padding-right: .5rem;
   }
 
-  .callout:not(.callout-captioned) .callout-icon::before {
+  .callout:not(.callout-titled) .callout-icon::before {
     margin-top: 1rem;
     padding-right: .5rem;
   }
@@ -263,7 +263,7 @@
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
   }
 
-  div.callout-note.callout-style-default .callout-caption {
+  div.callout-note.callout-style-default .callout-title {
     background-color: #dae6fb
   }
 
@@ -275,7 +275,7 @@
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
   }
 
-  div.callout-important.callout-style-default .callout-caption {
+  div.callout-important.callout-style-default .callout-title {
     background-color: #f7dddc
   }
 
@@ -287,7 +287,7 @@
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
   }
 
-  div.callout-warning.callout-style-default .callout-caption {
+  div.callout-warning.callout-style-default .callout-title {
     background-color: #fcefdc
   }
 
@@ -299,7 +299,7 @@
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
   }
 
-  div.callout-tip.callout-style-default .callout-caption {
+  div.callout-tip.callout-style-default .callout-title {
     background-color: #ccf1e3
   }
 
@@ -311,7 +311,7 @@
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
   }
 
-  div.callout-caution.callout-style-default .callout-caption {
+  div.callout-caution.callout-style-default .callout-title {
     background-color: #ffe5d0
   }
 
@@ -425,7 +425,7 @@ Aidan Gildea<br>Dr.&nbsp;Mine Çetinkaya-Rundel
 
 <div class="v-center-container">
 <blockquote>
-<p><strong><em>“Accessible design is good design – it benefits people who don’t have disabilities as well as people who do. Accessibility is all about removing barriers and providing the benefits for everyone.”</em></strong></p>
+<p><strong>“Accessible design is good design – it benefits people who don’t have disabilities as well as people who do. Accessibility is all about removing barriers and providing the benefits for everyone.”</strong></p>
 <p>Steve Ballmer, former Microsoft CEO (2000-2014)</p>
 </blockquote>
 </div>
@@ -437,13 +437,12 @@ Aidan Gildea<br>Dr.&nbsp;Mine Çetinkaya-Rundel
 </section>
 <section id="motivation" class="slide level2">
 <h2>Motivation</h2>
-<div class="v-center-container">
+<p><br><br></p>
 <p>Principal goals of thesis:</p>
 <ol type="1">
-<li>identify a <strong><em>material issue</em></strong>, and</li>
-<li>address it with a <strong><em>tangible solution</em></strong></li>
+<li>identify a <strong>material issue</strong>, and</li>
+<li>address it with a <strong>tangible solution</strong></li>
 </ol>
-</div>
 </section>
 <section id="motivation-1" class="slide level2">
 <h2>Motivation</h2>
@@ -486,9 +485,25 @@ Aidan Gildea<br>Dr.&nbsp;Mine Çetinkaya-Rundel
 </ul>
 </div>
 </section>
-<section id="section" class="slide level2">
-<h2></h2>
-<p><img data-src="images/balloons.png" alt="Non-deuteronamolous perspective"><img data-src="images/balloons2.png" alt="Deuteronamolous perspective"></p>
+<section id="add-title" class="slide level2">
+<h2>ADD TITLE</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/balloons.png"></p>
+<p></p><figcaption>Non-deuteronamolous perspective</figcaption><p></p>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/balloons2.png"></p>
+<p></p><figcaption>Deuteronamolous perspective</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
 <section id="background-1" class="slide level2">
 <h2>Background</h2>
@@ -516,9 +531,13 @@ Aidan Gildea<br>Dr.&nbsp;Mine Çetinkaya-Rundel
 <li>2 primary colors</li>
 </ul>
 <center>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-2-1.png" width="960"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-3-1.png" width="2100"></p>
+</figure>
+</div>
 </div>
 </div>
 </center>
@@ -526,23 +545,25 @@ Aidan Gildea<br>Dr.&nbsp;Mine Çetinkaya-Rundel
 <li>18 secondary and tertiary colors</li>
 </ul>
 <center>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-4-1.png" width="2100"></p>
+</figure>
+</div>
 </div>
 </div>
 </center>
 </section>
 <section id="accessibility-metrics" class="slide level2">
 <h2>Accessibility Metrics</h2>
+<p>Accessibility guide ranks color pairing using following categories:</p>
 <ul>
-<li>Accessibility guide ranks color pairing using following categories:
-<ul>
-<li><span style="color: grey;"><strong><em>AAA:</em></strong></span> highest compliance, text-background contrast ratio of 7+</li>
-<li><span style="color: grey;"><strong><em>AA:</em></strong></span> mid-range compliance, text-background contrast ratio of 4.5+</li>
-<li><span style="color: orange;"><strong><em>AA18:</em></strong></span> mid-range compliance with large text only (18pt or 14pt bold), text-background contrast ratio of 3+</li>
-<li><span style="color: red;"><strong><em>DNP:</em></strong></span> does not pass compliance guidelines, text-background contrast ratio of less than 3</li>
-</ul></li>
+<li><span style="color: grey;">AAA<strong>:</strong></span> highest compliance, text-background contrast ratio of 7+</li>
+<li><span style="color: grey;">AA<strong>:</strong></span> mid-range compliance, text-background contrast ratio of 4.5+</li>
+<li><span style="color: orange;">AA18<strong>:</strong></span> mid-range compliance with large text only (18pt or 14pt bold), text-background contrast ratio of 3+</li>
+<li><span style="color: red;">DNP<strong>:</strong></span> does not pass compliance guidelines, text-background contrast ratio of less than 3</li>
 </ul>
 </section>
 <section id="color-difference-metrics" class="slide level2">
@@ -551,8 +572,8 @@ Aidan Gildea<br>Dr.&nbsp;Mine Çetinkaya-Rundel
 <li>Metrics using the standard RGB (sRGB) space can be flawed due to its perceptual uniformity</li>
 <li>CIE chromaticity diagram exhibits the color spectrum according to human vision</li>
 </ul>
-<p><img data-src="images/chromaticity.jpg">{fig-align = “center”}</p>
-</section>
+
+<img data-src="images/chromaticity.jpg" width="400" class="r-stretch quarto-figure-center"></section>
 <section id="color-contrast-ratio" class="slide level2">
 <h2>Color Contrast Ratio</h2>
 <div class="v-center-container">
@@ -608,7 +629,7 @@ Aidan Gildea<br>Dr.&nbsp;Mine Çetinkaya-Rundel
 <div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
 <div id="fig-theme-duke-1" class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="presentation_files/figure-revealjs/fig-theme-duke-1.png" data-ref-parent="fig-theme-duke" width="960"></p>
+<p><img data-src="presentation_files/figure-revealjs/fig-theme-duke-1.png" data-ref-parent="fig-theme-duke" width="2100"></p>
 <p></p><figcaption>(a) Original</figcaption><p></p>
 </figure>
 </div>
@@ -616,7 +637,7 @@ Aidan Gildea<br>Dr.&nbsp;Mine Çetinkaya-Rundel
 <div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
 <div id="fig-theme-duke-2" class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="presentation_files/figure-revealjs/fig-theme-duke-2.png" data-ref-parent="fig-theme-duke" width="960"></p>
+<p><img data-src="presentation_files/figure-revealjs/fig-theme-duke-2.png" data-ref-parent="fig-theme-duke" width="2100"></p>
 <p></p><figcaption>(b) with theme_duke()</figcaption><p></p>
 </figure>
 </div>
@@ -638,25 +659,22 @@ Aidan Gildea<br>Dr.&nbsp;Mine Çetinkaya-Rundel
 <li>Continuous color scales used for overall trend recognition</li>
 </ul>
 </section>
-<section id="scale_duke_continuous-1" class="slide level2">
+<section id="scale_duke_continuous-1" class="slide level2 smaller">
 <h2><code>scale_duke_continuous()</code></h2>
 <div>
-<details>
-<summary>see code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>scatterplot_c <span class="sc">+</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a>  <span class="fu">theme_duke</span>()</span>
 <span id="cb2-3"><a href="#cb2-3"></a></span>
 <span id="cb2-4"><a href="#cb2-4"></a>scatterplot_c <span class="sc">+</span></span>
 <span id="cb2-5"><a href="#cb2-5"></a>  <span class="fu">theme_duke</span>() <span class="sc">+</span></span>
 <span id="cb2-6"><a href="#cb2-6"></a>  <span class="fu">scale_duke_continuous</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div id="fig-scale-cont" class="cell caption-bottom quarto-layout-panel">
 <figure>
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
 <div id="fig-scale-cont-1" class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="presentation_files/figure-revealjs/fig-scale-cont-1.png" data-ref-parent="fig-scale-cont" width="960"></p>
+<p><img data-src="presentation_files/figure-revealjs/fig-scale-cont-1.png" data-ref-parent="fig-scale-cont" width="2100"></p>
 <p></p><figcaption>(a) Original</figcaption><p></p>
 </figure>
 </div>
@@ -664,7 +682,7 @@ Aidan Gildea<br>Dr.&nbsp;Mine Çetinkaya-Rundel
 <div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
 <div id="fig-scale-cont-2" class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="presentation_files/figure-revealjs/fig-scale-cont-2.png" data-ref-parent="fig-scale-cont" width="960"></p>
+<p><img data-src="presentation_files/figure-revealjs/fig-scale-cont-2.png" data-ref-parent="fig-scale-cont" width="2100"></p>
 <p></p><figcaption>(b) with scale_duke_continuous()</figcaption><p></p>
 </figure>
 </div>
@@ -681,94 +699,80 @@ Aidan Gildea<br>Dr.&nbsp;Mine Çetinkaya-Rundel
 <li>Applies a Duke-specific discrete color scale for the <code>color</code> and <code>fill</code> aesthetics of ggplot geoms</li>
 <li>Discrete plots must be able to delineate effectively between specific groups</li>
 </ul>
-<div class="cell caption-bottom" data-tbl-align="center">
+<div class="cell caption-bottom" data-layout-align="center" data-tbl-align="center">
 <div class="cell-output-display">
-
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> Color 1 </th>
-   <th style="text-align:left;"> Color 2 </th>
-   <th style="text-align:right;"> CCR </th>
-  </tr>
- </thead>
+<table data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Color 1</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Color 2</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">CCR</th>
+</tr>
+</thead>
 <tbody>
-  <tr>
-   <td style="text-align:left;"> White </td>
-   <td style="text-align:left;"> Cast Iron </td>
-   <td style="text-align:right;"> 15.13353 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cast Iron </td>
-   <td style="text-align:left;"> White </td>
-   <td style="text-align:right;"> 15.13353 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> White </td>
-   <td style="text-align:left;"> Duke Navy Blue </td>
-   <td style="text-align:right;"> 14.75945 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Duke Navy Blue </td>
-   <td style="text-align:left;"> White </td>
-   <td style="text-align:right;"> 14.75945 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Ginger Beer </td>
-   <td style="text-align:left;"> Cast Iron </td>
-   <td style="text-align:right;"> 14.10648 </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: left;">White</td>
+<td style="text-align: left;">Cast Iron</td>
+<td style="text-align: right;">15.13353</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Cast Iron</td>
+<td style="text-align: left;">White</td>
+<td style="text-align: right;">15.13353</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">White</td>
+<td style="text-align: left;">Duke Navy Blue</td>
+<td style="text-align: right;">14.75945</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Duke Navy Blue</td>
+<td style="text-align: left;">White</td>
+<td style="text-align: right;">14.75945</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Ginger Beer</td>
+<td style="text-align: left;">Cast Iron</td>
+<td style="text-align: right;">14.10648</td>
+</tr>
 </tbody>
 </table>
 
-</div>
-</div>
-</section>
-<section id="section-1" class="slide level2">
-<h2></h2>
 
-<img data-src="presentation_files/figure-revealjs/fig-hmap-1.png" width="960" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;3: Heatmap of color contrast ratios of all pairings.</p></section>
-<section id="section-2" class="slide level2">
-<h2></h2>
-<div class="cell caption-bottom quarto-layout-panel" data-fig.asp="0.618">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output-display quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
-<div id="fig-hmap-final" class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="presentation_files/figure-revealjs/fig-hmap-final-1.png" width="960"></p>
-<p></p><figcaption>Figure&nbsp;4: Heatmap of color contrast ratios of selected pairings.</figcaption><p></p>
-</figure>
-</div>
-</div>
 </div>
 </div>
 </section>
+<section id="all-pairings" class="slide level2">
+<h2>All pairings</h2>
+
+<img data-src="presentation_files/figure-revealjs/fig-hmap-1.png" width="2100" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;3: <strong>?(caption)</strong></p></section>
+<section id="selected-pairings" class="slide level2">
+<h2>Selected pairings</h2>
+
+<img data-src="presentation_files/figure-revealjs/hmap-final-1.png" width="1800" class="r-stretch quarto-figure-center"></section>
 <section id="discrete-palette" class="slide level2">
 <h2>Discrete Palette</h2>
 
-<img data-src="presentation_files/figure-revealjs/fig-palette-1.png" width="960" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;5: Selected discrete palette.</p><ul>
+<img data-src="presentation_files/figure-revealjs/palette-1.png" width="3600" class="r-stretch quarto-figure-center"><ul>
 <li>14 of 28 color pairings are compliant with WCAG AA18 rating.</li>
 <li>Color used for fill or color of geometric object, which offers complimentary features (ie. shape, larger areas, borders).</li>
-<li>Best practice to use three to five colors from discrete scale <span class="citation" data-cites="wilkeb">(<a href="#/thank-you-questions" role="doc-biblioref" onclick=""><strong>wilkeb?</strong></a>)</span></li>
+<li>Best practice to use three to five colors from discrete scale <span class="citation" data-cites="wilke">(<a href="#/references" role="doc-biblioref" onclick="">Wilke, n.d.</a>)</span></li>
 </ul>
 </section>
 <section id="scale_duke_color_discrete" class="slide level2">
 <h2><code>scale_duke_color_discrete()</code></h2>
-<div class="cell">
-
-</div>
 <div>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>splot <span class="sc">+</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a>  <span class="fu">theme_duke</span>() <span class="sc">+</span></span>
 <span id="cb3-3"><a href="#cb3-3"></a>  <span class="fu">scale_duke_color_discrete</span>()</span>
 <span id="cb3-4"><a href="#cb3-4"></a>comp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="fig-discrete-color" class="cell quarto-layout-panel" data-fig.asp="0.618">
+<div id="fig-discrete-color" class="cell quarto-layout-panel">
 <figure>
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
 <div id="fig-discrete-color-1" class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="presentation_files/figure-revealjs/fig-discrete-color-1.png" data-ref-parent="fig-discrete-color" width="960"></p>
+<p><img data-src="presentation_files/figure-revealjs/fig-discrete-color-1.png" data-ref-parent="fig-discrete-color" width="2100"></p>
 <p></p><figcaption>(a) Non-Deuteronamolous</figcaption><p></p>
 </figure>
 </div>
@@ -776,34 +780,31 @@ Aidan Gildea<br>Dr.&nbsp;Mine Çetinkaya-Rundel
 <div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
 <div id="fig-discrete-color-2" class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="presentation_files/figure-revealjs/fig-discrete-color-2.png" data-ref-parent="fig-discrete-color" width="960"></p>
+<p><img data-src="presentation_files/figure-revealjs/fig-discrete-color-2.png" data-ref-parent="fig-discrete-color" width="2100"></p>
 <p></p><figcaption>(b) Deuteronamolous</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-<p></p><figcaption>Figure&nbsp;6: Sample scatter plot from different perspectives.</figcaption><p></p>
+<p></p><figcaption>Figure&nbsp;4: Sample scatter plot from different perspectives.</figcaption><p></p>
 </figure>
 </div>
 </div>
 </section>
-<section id="scale_duke_fill_discrete-in-use" class="slide level2">
-<h2><code>scale_duke_fill_discrete()</code> in use</h2>
-<div class="cell">
-
-</div>
+<section id="scale_duke_fill_discrete" class="slide level2">
+<h2><code>scale_duke_fill_discrete()</code></h2>
 <div>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>bplot <span class="sc">+</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a>  <span class="fu">theme_duke</span>() <span class="sc">+</span></span>
 <span id="cb4-3"><a href="#cb4-3"></a>  <span class="fu">scale_duke_fill_discrete</span>()</span>
 <span id="cb4-4"><a href="#cb4-4"></a>bcomp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="fig-discrete-fill" class="cell quarto-layout-panel" data-fig.asp="0.618">
+<div id="fig-discrete-fill" class="cell quarto-layout-panel">
 <figure>
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
 <div id="fig-discrete-fill-1" class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="presentation_files/figure-revealjs/fig-discrete-fill-1.png" data-ref-parent="fig-discrete-fill" width="960"></p>
+<p><img data-src="presentation_files/figure-revealjs/fig-discrete-fill-1.png" data-ref-parent="fig-discrete-fill" width="2100"></p>
 <p></p><figcaption>(a) Non-Deuteronamolous</figcaption><p></p>
 </figure>
 </div>
@@ -811,13 +812,13 @@ Aidan Gildea<br>Dr.&nbsp;Mine Çetinkaya-Rundel
 <div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
 <div id="fig-discrete-fill-2" class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="presentation_files/figure-revealjs/fig-discrete-fill-2.png" data-ref-parent="fig-discrete-fill" width="960"></p>
+<p><img data-src="presentation_files/figure-revealjs/fig-discrete-fill-2.png" data-ref-parent="fig-discrete-fill" width="2100"></p>
 <p></p><figcaption>(b) Deuteronamolous</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-<p></p><figcaption>Figure&nbsp;7: Sample bar plot from different perspectives.</figcaption><p></p>
+<p></p><figcaption>Figure&nbsp;5: Sample bar plot from different perspectives.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -826,16 +827,134 @@ Aidan Gildea<br>Dr.&nbsp;Mine Çetinkaya-Rundel
 <h2>Lessons Learned</h2>
 <div class="v-center-container">
 <ol type="1">
-<li><p><strong>Package development is an iterative process, take your time.</strong></p></li>
-<li><p><strong>The devtools package is your best friend.</strong></p></li>
-<li><p><strong>Engage with existing resources online and collaborate with others.</strong></p></li>
+<li><p>Package development is an iterative process, take your time.</p></li>
+<li><p>The devtools package is your best friend.</p></li>
+<li><p>Engage with existing resources online and collaborate with others.</p></li>
 </ol>
 </div>
 </section></section>
 <section>
-<section id="colorblind-accessibility-best-practices" class="title-slide slide level1 center">
-<h1>Colorblind Accessibility Best Practices</h1>
+<section id="case-study" class="title-slide slide level1 center">
+<h1>Case Study</h1>
 
+</section>
+<section id="data" class="slide level2">
+<h2>Data</h2>
+<ul>
+<li>Sourced from the Office of the University Registrar</li>
+<li>Data on all Duke courses between 2013-2022 (10 variables, 63,433 observations)</li>
+<li>Registrar supporting students, faculty and staff in enrollment, academic records, and course scheduling</li>
+</ul>
+</section>
+<section id="number-of-courses-by-department" class="slide level2">
+<h2>Number of Courses By Department</h2>
+<div class="cell quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-20-1.png" width="2100"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-20-2.png" width="2100"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>With this information, the Registrar can better make decisions about the distribution of University resources and/or understand potential department popularity.</p>
+</section>
+<section id="average-class-size" class="slide level2">
+<h2>Average class size</h2>
+<div class="cell quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-22-1.png" width="2100"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-22-2.png" width="2100"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>Helpful resource for the Registrar to pinpoint departments that would benefit from reducing class size.</p>
+</section>
+<section id="enrollment-in-computer-science-courses" class="slide level2">
+<h2>Enrollment in Computer Science courses</h2>
+<div class="cell quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-24-1.png" width="2100"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-24-2.png" width="2100"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>Visualizations suggest that students do not enroll at a high enough rate to fill Computer Science courses.</p>
+</section>
+<section id="enrollment-in-introductory-courses" class="slide level2">
+<h2>Enrollment in introductory courses</h2>
+<div class="cell quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-26-1.png" width="2100"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-26-2.png" width="2100"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>May inform the Registrar’s process of 1) adding sections to these courses and/or 2) identifying reasons for these courses’ success.</p>
+</section>
+<section id="seminar-courses" class="slide level2">
+<h2>Seminar courses</h2>
+<div class="cell quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-28-1.png" width="2100"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-28-2.png" width="2100"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>If the University aims to improve their overall seminar offerings, it is important that they identify departments with lowest proportions. # Colorblind Accessibility Best Practices</p>
 </section>
 <section id="keep-it-simple" class="slide level2">
 <h2>Keep It Simple</h2>
@@ -853,43 +972,29 @@ Aidan Gildea<br>Dr.&nbsp;Mine Çetinkaya-Rundel
 <section id="de-emphasize-the-need-for-color" class="slide level2">
 <h2>De-Emphasize the Need for Color</h2>
 <ul>
-<li>“Get it right in black and white” <span class="citation" data-cites="muth2020">(<a href="#/thank-you-questions" role="doc-biblioref" onclick="">Muth 2020</a>)</span></li>
+<li>“Get it right in black and white” <span class="citation" data-cites="muth2020">(<a href="#/references" role="doc-biblioref" onclick="">Muth 2020</a>)</span></li>
 <li>Use labels, arrows, shapes, annotations to differentiate between categories</li>
 </ul>
-<div id="fig-best-practices" class="cell quarto-layout-panel" data-fig.asp="0.618">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
 <figure>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
-<div id="fig-best-practices-1" class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="presentation_files/figure-revealjs/fig-best-practices-1.png" data-ref-parent="fig-best-practices" width="768"></p>
-<p></p><figcaption>(a)</figcaption><p></p>
+<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-29-1.png" width="2100"></p>
 </figure>
 </div>
 </div>
-<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
-<div id="fig-best-practices-2" class="quarto-figure quarto-figure-center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="presentation_files/figure-revealjs/fig-best-practices-2.png" data-ref-parent="fig-best-practices" width="768"></p>
-<p></p><figcaption>(b)</figcaption><p></p>
+<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-29-2.png" width="2100"></p>
 </figure>
 </div>
 </div>
-</div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<ol type="a">
-<li>Scatterplot using shape. b) Line plot using different linetypes.</li>
-</ol>
-</div>
-</div>
-<p></p><figcaption>Figure&nbsp;8: <strong>?(caption)</strong></figcaption><p></p>
-</figure>
 </div>
 <div id="fig-fillbar" class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/fillbar_2.png"></p>
-<p></p><figcaption>Figure&nbsp;9: Bar plot with fill texture</figcaption><p></p>
+<p></p><figcaption>Figure&nbsp;6: Bar plot with fill texture</figcaption><p></p>
 </figure>
 </div>
 </section>
@@ -908,149 +1013,10 @@ Aidan Gildea<br>Dr.&nbsp;Mine Çetinkaya-Rundel
 <div class="v-center-container">
 <ul>
 <li>Duke brand specifies finite suite of colors</li>
-<li>Specification of Atkinson-Hyperlegible font by default</li>
-<li>Ordinal scale, diverging scale</li>
+<li>Specification of Atkinson-Hyperlegible font by default reliably working across all platforms</li>
+<li>Additional color scales: ordinal, diverging, etc.</li>
 </ul>
 </div>
-</section></section>
-<section>
-<section id="case-study" class="title-slide slide level1 center">
-<h1>Case Study</h1>
-
-</section>
-<section id="data" class="slide level2">
-<h2>Data</h2>
-<ul>
-<li>Sourced from the Office of the University Registrar</li>
-<li>Data on all Duke courses between 2013-2022 (10 variables, 63,433 observations)</li>
-<li>Registrar supporting students, faculty and staff in enrollment, academic records, and course scheduling</li>
-</ul>
-<div class="cell">
-<div class="cell-output-display">
-
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> Variable </th>
-   <th style="text-align:left;"> Description </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> acad_year </td>
-   <td style="text-align:left;"> Academic year of the course. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> acad_org </td>
-   <td style="text-align:left;"> Academic organization abbreviation of the course; proxy for department. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> class_nbr </td>
-   <td style="text-align:left;"> Unique class number for the course. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> subject </td>
-   <td style="text-align:left;"> Subject abbreviation for course. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> catalog_number </td>
-   <td style="text-align:left;"> Course number within academic organizations. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> class_descr </td>
-   <td style="text-align:left;"> Course name. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> total_enrollment </td>
-   <td style="text-align:left;"> Number of students enrolled in course. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> enrollment_capacity </td>
-   <td style="text-align:left;"> Enrollment capacity for course. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> room_capacity </td>
-   <td style="text-align:left;"> Capacity for students permitted in course room. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> room_descr </td>
-   <td style="text-align:left;"> Room where course is held. </td>
-  </tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</section>
-<section id="number-of-courses-by-department" class="slide level2">
-<h2>Number of Courses By Department</h2>
-<div class="cell quarto-layout-panel" data-fig.asp="0.618">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-21-1.png" width="960"></p>
-</div>
-<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-21-2.png" width="960"></p>
-</div>
-</div>
-</div>
-<p>With this information, the Registrar can better make decisions about the distribution of University resources and/or understand potential department popularity.</p>
-</section>
-<section id="average-class-size" class="slide level2">
-<h2>Average class size</h2>
-<div class="cell quarto-layout-panel" data-fig.asp="0.618">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-23-1.png" width="960"></p>
-</div>
-<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-23-2.png" width="960"></p>
-</div>
-</div>
-</div>
-<p>Helpful resource for the Registrar to pinpoint departments that would benefit from reducing class size.</p>
-</section>
-<section id="enrollment-in-computer-science-courses" class="slide level2">
-<h2>Enrollment in Computer Science courses</h2>
-<div class="cell quarto-layout-panel" data-fig.asp="0.618">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-25-1.png" width="960"></p>
-</div>
-<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-25-2.png" width="960"></p>
-</div>
-</div>
-</div>
-<p>Visualizations suggest that students do not enroll at a high enough rate to fill Computer Science courses.</p>
-</section>
-<section id="enrollment-in-introductory-courses" class="slide level2">
-<h2>Enrollment in introductory courses</h2>
-<div class="cell quarto-layout-panel" data-fig.asp="0.618">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-27-1.png" width="960"></p>
-</div>
-<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-27-2.png" width="960"></p>
-</div>
-</div>
-</div>
-<p>May inform the Registrar’s process of 1) adding sections to these courses and/or 2) identifying reasons for these courses’ success.</p>
-</section>
-<section id="seminar-courses" class="slide level2">
-<h2>Seminar courses</h2>
-<div class="cell quarto-layout-panel" data-fig.asp="0.618">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-29-1.png" width="960"></p>
-</div>
-<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-29-2.png" width="960"></p>
-</div>
-</div>
-</div>
-<p>If the University aims to improve their overall seminar offerings, it is important that they identify departments with lowest proportions.</p>
 </section></section>
 <section>
 <section id="summary" class="title-slide slide level1 center">
@@ -1061,25 +1027,31 @@ Aidan Gildea<br>Dr.&nbsp;Mine Çetinkaya-Rundel
 <h2><strong>duke</strong> package</h2>
 <div class="v-center-container">
 <ul>
-<li>Implements minimalist thematic design</li>
-<li>High contrast color palette in both continuous and discrete geometric objects</li>
-<li>Best used in tandem with other accessibility practices</li>
-<li>Effective tool for promoting accessibility and inclusivity in Duke data visualization</li>
+<li>Implements <strong>minimalist</strong> thematic design</li>
+<li>High contrast color palette in both <strong>continuous</strong> and <strong>discrete</strong> geometric objects</li>
+<li>Effective tool for promoting <strong>accessibility</strong> and <strong>inclusivity</strong> in Duke data visualization</li>
+<li>Best used <strong>in tandem</strong> with other accessibility practices</li>
 </ul>
 </div>
-</section></section>
-<section id="thank-you-questions" class="title-slide slide level1 smaller scrollable">
-<h1>Thank You &amp; Questions</h1>
+</section>
+<section id="thank-you-questions" class="slide level2 center">
+<h2>Thank You &amp; Questions</h2>
+</section>
+<section id="references" class="slide level2 smaller scrollable">
+<h2>References</h2>
 
 <img src="images/dukelogo.png" class="slide-logo r-stretch"><div class="footer footer-default">
 
 </div>
-<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
-<div id="ref-muth2020" class="csl-entry" role="doc-biblioentry">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-muth2020" class="csl-entry" role="listitem">
 Muth, Lisa Charlotte. 2020. <span>“What to Consider When Visualizing Data for Colorblind Readers - Datawrapper Blog.”</span> <a href="https://blog.datawrapper.de/colorblindness-part2/">https://blog.datawrapper.de/colorblindness-part2/</a>.
 </div>
+<div id="ref-wilke" class="csl-entry" role="listitem">
+Wilke, Claus. n.d. <span>“Fundamentals of Data Visualization.”</span> <a href="https://clauswilke.com/dataviz/color-pitfalls.html">https://clauswilke.com/dataviz/color-pitfalls.html</a>.
 </div>
-</section>
+</div>
+</section></section>
     </div>
   </div>
 
@@ -1111,7 +1083,7 @@ Muth, Lisa Charlotte. 2020. <span>“What to Consider When Visualizing Data for 
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -1353,9 +1325,23 @@ Muth, Lisa Charlotte. 2020. <span>“What to Consider When Visualizing Data for 
       tabsets.forEach(function(tabset) {
         const tabby = new Tabby('#' + tabset.id);
       });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
       const clipboard = new window.ClipboardJS('.code-copy-button', {
-        target: function(trigger) {
-          return trigger.previousElementSibling;
+        text: function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
         }
       });
       clipboard.on('success', function(e) {
@@ -1403,7 +1389,7 @@ Muth, Lisa Charlotte. 2020. <span>“What to Consider When Visualizing Data for 
           },
           interactive: true,
           interactiveBorder: 10,
-          theme: 'quarto-reveal',
+          theme: 'light-border',
           placement: 'bottom-start'
         };
           config['offset'] = [0,0];

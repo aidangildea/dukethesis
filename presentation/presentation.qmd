@@ -5,16 +5,26 @@ author: "Aidan Gildea<br>Dr. Mine Çetinkaya-Rundel"
 format: 
   revealjs:
     logo: "images/dukelogo.png"
-    css: 
-      - "logo.css"
-      - "style.css"
-    theme: simple
-    mainfont: Atkinson-Hyperlegible
+    theme: [simple, style.scss]
+    mainfont: Atkinson Hyperlegible
 bibliography: ../references.bib
 ---
 
+```{r}
+#| include: false
+
+# set figure parameters for knitr
+knitr::opts_chunk$set(
+  fig.width = 7,        # 7" width
+  fig.asp = 0.618,      # the golden ratio
+  fig.retina = 3,       # dpi multiplier for displaying HTML output on retina
+  fig.align = "center", # center align figures
+  dpi = 300             # higher dpi, sharper image
+)
+```
+
 ::: v-center-container
-> ***"Accessible design is good design -- it benefits people who don't have disabilities as well as people who do. Accessibility is all about removing barriers and providing the benefits for everyone."***
+> **"Accessible design is good design -- it benefits people who don't have disabilities as well as people who do. Accessibility is all about removing barriers and providing the benefits for everyone."**
 >
 > Steve Ballmer, former Microsoft CEO (2000-2014)
 :::
@@ -23,12 +33,12 @@ bibliography: ../references.bib
 
 ## Motivation
 
-::: v-center-container
+<br><br>
+
 Principal goals of thesis:
 
-1.  identify a ***material issue***, and
-2.  address it with a ***tangible solution***
-:::
+1.  identify a **material issue**, and
+2.  address it with a **tangible solution**
 
 ## Motivation
 
@@ -62,9 +72,17 @@ Principal goals of thesis:
     -   62.5% are deuteronamolous (green-weak vision), 12.5% have protonopia and deuteranopia (cannot distinguish between red and green)
 :::
 
-## 
+## ADD TITLE
 
-![Non-deuteronamolous perspective](images/balloons.png)![Deuteronamolous perspective](images/balloons2.png)
+::: columns
+::: {.column width="50%"}
+![Non-deuteronamolous perspective](images/balloons.png){alt="Non-deuteronamolous perspective"}
+:::
+
+::: {.column width="50%"}
+![Deuteronamolous perspective](images/balloons2.png){alt="Deuteronamolous perspective"}
+:::
+:::
 
 ## Background
 
@@ -143,18 +161,19 @@ ggplot(final_colors, aes(x = x, y = y)) +
 
 ## Accessibility Metrics
 
--   Accessibility guide ranks color pairing using following categories:
-    -   [***AAA:***]{style="color: grey;"} highest compliance, text-background contrast ratio of 7+
-    -   [***AA:***]{style="color: grey;"} mid-range compliance, text-background contrast ratio of 4.5+
-    -   [***AA18:***]{style="color: orange;"} mid-range compliance with large text only (18pt or 14pt bold), text-background contrast ratio of 3+
-    -   [***DNP:***]{style="color: red;"} does not pass compliance guidelines, text-background contrast ratio of less than 3
+Accessibility guide ranks color pairing using following categories:
+
+-   [AAA**:**]{style="color: grey;"} highest compliance, text-background contrast ratio of 7+
+-   [AA**:**]{style="color: grey;"} mid-range compliance, text-background contrast ratio of 4.5+
+-   [AA18**:**]{style="color: orange;"} mid-range compliance with large text only (18pt or 14pt bold), text-background contrast ratio of 3+
+-   [DNP**:**]{style="color: red;"} does not pass compliance guidelines, text-background contrast ratio of less than 3
 
 ## Color Difference Metrics
 
 -   Metrics using the standard RGB (sRGB) space can be flawed due to its perceptual uniformity
 -   CIE chromaticity diagram exhibits the color spectrum according to human vision
 
-![](images/chromaticity.jpg){fig-align = "center"}
+![](images/chromaticity.jpg){fig-align="center" width="400"}
 
 ## Color Contrast Ratio
 
@@ -186,7 +205,7 @@ Ad-hoc approach in order to strike a balance between accessibility and recogniti
 -   Optimal solution would default to use of Atkinson Hyperlegible
     -   Stability across systems and **systemfonts** issues are prohibitive
 
-## `theme_duke()` 
+## `theme_duke()`
 
 ```{r}
 #| label: fig-theme
@@ -232,7 +251,7 @@ scatterplot +
     -   Duke Royal Blue has a CCR of 7.75, Hatteras has a CCR of 1.25
 -   Continuous color scales used for overall trend recognition
 
-## `scale_duke_continuous()`
+## `scale_duke_continuous()` {.smaller}
 
 ```{r}
 #| label: continous
@@ -246,8 +265,6 @@ scatterplot_c <- scatterplot +
 #| label: fig-scale-cont
 #| layout-ncol: 2
 #| echo: true
-#| code-fold: true
-#| code-summary: "see code"
 #| fig-align: "center"
 #| fig-cap: "Plot comparison using continuous color scale"
 #| cap-location: bottom
@@ -290,15 +307,13 @@ mat_melt %>%
   kable()
 ```
 
-## 
+## All pairings
 
 ```{r}
 #| label: fig-hmap
 #| echo: false
 #| fig-align: "center"
 #| fig-asp: .618
-#| fig-cap: "Heatmap of color contrast ratios of all pairings."
-#| cap-location: bottom
 #| warning: false
 
 ggp <- ggplot(mat_melt, aes(`Color 1`, `Color 2`, fill = CCR)) +
@@ -316,17 +331,13 @@ ggp <- ggplot(mat_melt, aes(`Color 1`, `Color 2`, fill = CCR)) +
 ggp
 ```
 
-## 
+## Selected pairings
 
 ```{r}
-#| label: fig-hmap-final
+#| label: hmap-final
 #| echo: false
-#| fig-align: "center"
-#| fig-asp: .618
-#| fig-cap: "Heatmap of color contrast ratios of selected pairings."
-#| cap-location: bottom
+#| fig-width: 6
 #| warning: false
-#| layout-nrow: 2
 
 final_vals <- c("#012169", "#C84E00", "#00539B", "#339898", "#E89923", "#FFD960", "#A1B70D", "#262626")
 final_names <- c("Duke Navy Blue", "Copper", "Duke Royal Blue", "Eno", "Persimmon", "Dandelion", "Piedmont", "Cast Iron")
@@ -352,13 +363,10 @@ ggp_final
 ## Discrete Palette
 
 ```{r}
-#| label: fig-palette
+#| label: palette
 #| echo: false
-#| fig-align: "center"
-#| fig-height: 1
-#| fig-cap: "Selected discrete palette."
-#| cap-location: bottom
-#| warning: false
+#| fig-height: 0.5
+#| fig-width: 12
 
 final_colors <- tibble(
   x = 1:length(final_vals),
@@ -378,7 +386,7 @@ ggplot(final_colors, aes(x = x, y = y)) +
 
 -   14 of 28 color pairings are compliant with WCAG AA18 rating.
 -   Color used for fill or color of geometric object, which offers complimentary features (ie. shape, larger areas, borders).
--   Best practice to use three to five colors from discrete scale [@wilkeb]
+-   Best practice to use three to five colors from discrete scale [@wilke]
 
 ## `scale_duke_color_discrete()`
 
@@ -418,7 +426,7 @@ splot +
 comp
 ```
 
-## `scale_duke_fill_discrete()` in use
+## `scale_duke_fill_discrete()`
 
 ```{r}
 #| label: discrete-fill-plots
@@ -459,11 +467,11 @@ bcomp
 ## Lessons Learned
 
 ::: v-center-container
-1. **Package development is an iterative process, take your time.**
+1.  Package development is an iterative process, take your time.
 
-2. **The devtools package is your best friend.**
+2.  The devtools package is your best friend.
 
-3. **Engage with existing resources online and collaborate with others.**
+3.  Engage with existing resources online and collaborate with others.
 :::
 
 # Case Study
@@ -791,10 +799,12 @@ penguins %>%
 ## **duke** package
 
 ::: v-center-container
--   Implements ***minimalist*** thematic design
--   High contrast color palette in both ***continuous*** and ***discrete*** geometric objects
--   Effective tool for promoting ***accessibility*** and ***inclusivity*** in Duke data visualization
--   Best used ***in tandem*** with other accessibility practices
+-   Implements **minimalist** thematic design
+-   High contrast color palette in both **continuous** and **discrete** geometric objects
+-   Effective tool for promoting **accessibility** and **inclusivity** in Duke data visualization
+-   Best used **in tandem** with other accessibility practices
 :::
 
-# Thank You & Questions
+## Thank You & Questions {.center}
+
+## References
