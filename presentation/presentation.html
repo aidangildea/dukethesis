@@ -10,6 +10,7 @@
   <meta name="generator" content="quarto-1.2.269">
 
   <meta name="author" content="Aidan Gildea">
+  <meta name="author" content="Dr.&nbsp;Mine Çetinkaya-Rundel">
   <title>Promoting Accessibility in Duke Data Visualization:</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -28,8 +29,74 @@
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
     }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="presentation_files/libs/revealjs/dist/theme/quarto.css" id="theme">
+  <link rel="stylesheet" href="logo.css">
+  <link rel="stylesheet" href="style.css">
   <link href="presentation_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="presentation_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="presentation_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -333,15 +400,22 @@
 Aidan Gildea 
 </div>
 </div>
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Dr.&nbsp;Mine Çetinkaya-Rundel 
+</div>
+</div>
 </div>
 
 </section>
 <section class="slide level2">
 
+<div class="v-center-container">
 <blockquote>
 <p><strong><em>“Accessible design is good design – it benefits people who don’t have disabilities as well as people who do. Accessibility is all about removing barriers and providing the benefits for everyone.”</em></strong></p>
 <p>Steve Ballmer, former Microsoft CEO (2000-2014)</p>
 </blockquote>
+</div>
 </section>
 <section>
 <section id="introduction" class="title-slide slide level1 center">
@@ -350,16 +424,12 @@ Aidan Gildea
 </section>
 <section id="motivation" class="slide level2">
 <h2>Motivation</h2>
+<div class="v-center-container">
 <p>Principal goals of thesis:</p>
-<div>
-<ul>
-<li class="fragment"><ol type="1">
-<li class="fragment">identify a <strong><em>material issue</em></strong>, and</li>
-</ol></li>
-<li class="fragment"><ol start="2" type="1">
-<li class="fragment">address it with a <strong><em>tangible solution</em></strong></li>
-</ol></li>
-</ul>
+<ol type="1">
+<li><p>identify a <strong><em>material issue</em></strong>, and</p></li>
+<li><p>address it with a <strong><em>tangible solution</em></strong></p></li>
+</ol>
 </div>
 </section>
 <section id="motivation-1" class="slide level2">
@@ -368,28 +438,23 @@ Aidan Gildea
 <li>Companies can highlight their brand via R packages i.e.&nbsp;<strong><code>ggtech</code></strong> (Airbnb, Facebook, Google), <strong><code>ggthemes</code></strong> (The Economist, The Wall Street Journal)</li>
 <li>Duke has over 17,000 students, 38,000 employees, six campuses and spends more than $1 annually in research expenditures</li>
 <li>No existing R package to represent the Duke brand in data visualization</li>
-<li>Meets criterion of 1) identifying a significant issue and 2) solving it with a real solution (package development)</li>
 </ul>
 </section>
 <section id="motivation-2" class="slide level2">
 <h2>Motivation</h2>
 <ul>
-<li>Data visualization industry expected to nearly double by 2026</li>
-</ul>
-<div>
+<li><p>Data visualization industry expected to nearly double by 2026</p></li>
+<li><p>Important questions to consider:</p>
 <ul>
-<li class="fragment">We must ask questions like:
-<ul>
-<li class="fragment">Who is our audience?</li>
-<li class="fragment">How can we make our visualizations more intelligible?</li>
-<li class="fragment">Who might we be leaving behind?</li>
+<li>Who is our audience?</li>
+<li>How can we make our visualizations more intelligible?</li>
+<li>Who might we be leaving behind?</li>
 </ul></li>
-<li class="fragment">To reach largest audience, Duke branding package must consider colorblind accessibility</li>
+<li><p>To reach largest audience, Duke branding package must consider colorblind accessibility</p></li>
 </ul>
-</div>
 </section>
-<section id="thesis" class="slide level2">
-<h2>Thesis</h2>
+<section id="goal" class="slide level2">
+<h2>Goal</h2>
 <p><strong>Empower users to create Duke branded and color-blind friendly visualizations by constructing an R color package.</strong></p>
 </section>
 <section id="background" class="slide level2">
@@ -405,6 +470,10 @@ Aidan Gildea
 <li>62.5% are deuteronamolous (green-weak vision), 12.5% have protonopia and deuteranopia (cannot distinguish between red and green)</li>
 </ul></li>
 </ul>
+</section>
+<section id="section" class="slide level2">
+<h2></h2>
+<p><img data-src="images/balloons.png" alt="Non-deuteronamolous perspective"><img data-src="images/balloons2.png" alt="Deuteronamolous perspective"></p>
 </section>
 <section id="background-1" class="slide level2">
 <h2>Background</h2>
@@ -449,75 +518,383 @@ Aidan Gildea
 </div>
 </center>
 </section>
-<section id="color-sources" class="slide level2">
-<h2>Color Sources</h2>
+<section id="accessibility-metrics" class="slide level2">
+<h2>Accessibility Metrics</h2>
 <ul>
 <li>Accessibility guide ranks color pairing using following categories:
 <ul>
-<li><strong><em>AAA</em></strong>: highest compliance, text-background contrast ratio of 7+</li>
-<li><strong><em>AA</em></strong>: mid-range compliance, text-background contrast ratio of 4.5+</li>
-<li><strong><em>AA18</em></strong>: mid-range compliance with large text only (18pt or 14pt bold), text-background contrast ratio of 3+</li>
-<li><strong><em>DNP</em></strong>: does not pass compliance guidelines, text-background contrast ratio of less than 3</li>
+<li><span style="color: grey;"><strong><em>AAA:</em></strong></span> highest compliance, text-background contrast ratio of 7+</li>
+<li><span style="color: grey;"><strong><em>AA:</em></strong></span> mid-range compliance, text-background contrast ratio of 4.5+</li>
+<li><span style="color: orange;"><strong><em>AA18:</em></strong></span> mid-range compliance with large text only (18pt or 14pt bold), text-background contrast ratio of 3+</li>
+<li><span style="color: red;"><strong><em>DNP:</em></strong></span> does not pass compliance guidelines, text-background contrast ratio of less than 3</li>
 </ul></li>
 </ul>
 </section>
-<section id="color-metrics" class="slide level2">
-<h2>Color Metrics</h2>
+<section id="color-difference-metrics" class="slide level2">
+<h2>Color Difference Metrics</h2>
 <ul>
 <li>Metrics using the standard RGB (sRGB) space can be flawed due to its perceptual uniformity</li>
-<li>CIE chromaticity diagram (see <strong>?@fig-chromat</strong>) exhibits the color spectrum according to human vision</li>
+<li>CIE chromaticity diagram exhibits the color spectrum according to human vision</li>
 </ul>
-
-<img data-src="~/Desktop/dukethesis/images/chromaticity-diagram.jpg" id="fig-chromat" class="r-stretch"><ul>
-<li>To account for this irregularity, we use the color contrast ratio: <span class="math display">\[\frac{(L1 + 0.05)} {(L2 + 0.05)}\]</span></li>
-</ul>
+<p><img data-src="images/chromaticity.jpg">{fig-align = “center”}</p>
 </section>
-<section id="package-development-process" class="slide level2">
-<h2>Package Development Process</h2>
-<p>Stuff</p>
+<section id="color-contrast-ratio" class="slide level2">
+<h2>Color Contrast Ratio</h2>
+<div class="v-center-container">
+<ul>
+<li>To account for this irregularity, we use the color contrast ratio: <span class="math display">\[CCR = \frac{(L1 + 0.05)} {(L2 + 0.05)}\]</span></li>
+<li>Ranges from a value of 1 (no contrast) to 21 (highest contrast)</li>
+</ul>
+</div>
+</section>
+<section id="definition-of-optimal-pallette" class="slide level2">
+<h2>Definition of Optimal Pallette</h2>
+
+<img data-src="images/flow.png" class="r-stretch"><p>Ad-hoc approach in order to strike a balance between accessibility and recognition of the Duke brand.</p>
+</section></section>
+<section>
+<section id="package-development-process" class="title-slide slide level1 center">
+<h1>Package Development Process</h1>
+
 </section>
 <section id="theme_duke" class="slide level2">
 <h2><code>theme_duke()</code></h2>
-<p>Stuff</p>
+<ul>
+<li>Sets the aesthetic elements for the visualization’s background and accessory features (background color, grid lines, axis ticks, plot text, etc.)</li>
+<li>Minimalist design with a White background and grid lines removed</li>
+<li>Text in Duke Navy Blue for strong contrast to the White background (CCR of 14.76)</li>
+<li>Relative text sizing for consistent scale</li>
+</ul>
 </section>
-<section id="plot-example" class="slide level2">
-<h2>Plot Example</h2>
-<p>Plot</p>
+<section id="font-specification-in-theme_duke" class="slide level2">
+<h2>Font specification in <code>theme_duke()</code></h2>
+<ul>
+<li>Font specification is <strong>challenging</strong></li>
+<li>Recommend the use of Atkinson Hyperlegible font
+<ul>
+<li>“Focuses on letterform distinction to increase character recognition”</li>
+</ul></li>
+<li>Optimal solution would default to use of Atkinson Hyperlegible
+<ul>
+<li>Stability across systems and <strong>systemfonts</strong> issues are prohibitive</li>
+</ul></li>
+</ul>
+</section>
+<section id="theme_duke-in-use" class="slide level2">
+<h2><code>theme_duke()</code> in use</h2>
+<div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>scatterplot</span>
+<span id="cb1-2"><a href="#cb1-2"></a></span>
+<span id="cb1-3"><a href="#cb1-3"></a>scatterplot <span class="sc">+</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a>  <span class="fu">theme_duke</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="fig-theme-duke" class="cell caption-bottom quarto-layout-panel">
+<figure>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-theme-duke-1" class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="presentation_files/figure-revealjs/fig-theme-duke-1.png" data-ref-parent="fig-theme-duke" width="960"></p>
+<p></p><figcaption>(a) Original</figcaption><p></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-theme-duke-2" class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="presentation_files/figure-revealjs/fig-theme-duke-2.png" data-ref-parent="fig-theme-duke" width="960"></p>
+<p></p><figcaption>(b) with theme_duke()</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p></p><figcaption>Figure&nbsp;1: Plot comparison using theme function.</figcaption><p></p>
+</figure>
+</div>
+</div>
 </section>
 <section id="scale_duke_continuous" class="slide level2">
 <h2><code>scale_duke_continuous()</code></h2>
-<p>Stuff</p>
+<ul>
+<li>Applies a Duke-specific continuous color scale to geometric objects (geom)</li>
+<li>Scale sequences from a dark (Duke Royal Blue) to a light color (Hatteras)
+<ul>
+<li>Duke Royal Blue has a CCR of 7.75, Hatteras has a CCR of 1.25</li>
+</ul></li>
+<li>Continuous color scales used for overall trend recognition</li>
+</ul>
 </section>
-<section id="plot-example-1" class="slide level2">
-<h2>Plot Example</h2>
-<p>Plot</p>
+<section id="scale_duke_continuous-in-use" class="slide level2">
+<h2><code>scale_duke_continuous()</code> in use</h2>
+<div>
+<details>
+<summary>see code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>scatterplot_c <span class="sc">+</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>  <span class="fu">theme_duke</span>()</span>
+<span id="cb2-3"><a href="#cb2-3"></a></span>
+<span id="cb2-4"><a href="#cb2-4"></a>scatterplot_c <span class="sc">+</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a>  <span class="fu">theme_duke</span>() <span class="sc">+</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a>  <span class="fu">scale_duke_continuous</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div id="fig-scale-cont" class="cell caption-bottom quarto-layout-panel">
+<figure>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-scale-cont-1" class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="presentation_files/figure-revealjs/fig-scale-cont-1.png" data-ref-parent="fig-scale-cont" width="960"></p>
+<p></p><figcaption>(a) Original</figcaption><p></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-scale-cont-2" class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="presentation_files/figure-revealjs/fig-scale-cont-2.png" data-ref-parent="fig-scale-cont" width="960"></p>
+<p></p><figcaption>(b) with scale_duke_continuous()</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p></p><figcaption>Figure&nbsp;2: Plot comparison using continuous color scale</figcaption><p></p>
+</figure>
+</div>
+</div>
 </section>
-<section id="scale_duke_color_discrete-and-scale_duke_fill_discrete" class="slide level2">
-<h2><code>scale_duke_color_discrete()</code>&nbsp;and&nbsp;<code>scale_duke_fill_discrete()</code></h2>
+<section id="scale_duke_color_discrete-and-scale_duke_fill_discrete" class="slide level2 smaller">
+<h2><code>scale_duke_color_discrete()</code> and <code>scale_duke_fill_discrete()</code></h2>
+<ul>
+<li>Applies a Duke-specific discrete color scale for the color and fill parameters of ggplot geometric objects</li>
+<li>Discrete plots must be able to delineate effectively between specific groups</li>
+</ul>
+<div class="cell caption-bottom" data-tbl-align="center">
+<div class="cell-output-display">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Color 1 </th>
+   <th style="text-align:left;"> Color 2 </th>
+   <th style="text-align:right;"> CCR </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> White </td>
+   <td style="text-align:left;"> Cast Iron </td>
+   <td style="text-align:right;"> 15.13353 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Cast Iron </td>
+   <td style="text-align:left;"> White </td>
+   <td style="text-align:right;"> 15.13353 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> White </td>
+   <td style="text-align:left;"> Duke Navy Blue </td>
+   <td style="text-align:right;"> 14.75945 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Duke Navy Blue </td>
+   <td style="text-align:left;"> White </td>
+   <td style="text-align:right;"> 14.75945 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Ginger Beer </td>
+   <td style="text-align:left;"> Cast Iron </td>
+   <td style="text-align:right;"> 14.10648 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
 </section>
-<section id="stuff" class="slide level2">
-<h2>Stuff</h2>
+<section id="section-1" class="slide level2">
+<h2></h2>
+
+<img data-src="presentation_files/figure-revealjs/fig-hmap-1.png" width="960" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;3: Heatmap of color contrast ratios of all pairings.</p></section>
+<section id="section-2" class="slide level2">
+<h2></h2>
+<div class="cell caption-bottom quarto-layout-panel" data-fig.asp="0.618">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
+<div id="fig-hmap-final" class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="presentation_files/figure-revealjs/fig-hmap-final-1.png" width="960"></p>
+<p></p><figcaption>Figure&nbsp;4: Heatmap of color contrast ratios of selected pairings.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
 </section>
-<section id="plot-example-2" class="slide level2">
-<h2>Plot Example</h2>
-<p>Plot</p>
+<section id="discrete-palette" class="slide level2">
+<h2>Discrete Palette</h2>
+
+<img data-src="presentation_files/figure-revealjs/fig-palette-1.png" width="960" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;5: Selected discrete palette.</p><ul>
+<li>14 of 28 color pairings are compliant with WCAG AA18 rating.</li>
+<li>Color used for fill or color of geometric object, which offers complimentary features (ie. shape, larger areas, borders).</li>
+<li>Best practice to use three to five colors from discrete scale <span class="citation" data-cites="wilkeb">[@wilkeb]</span></li>
+</ul>
 </section>
-<section id="plot-example-3" class="slide level2">
-<h2>Plot Example</h2>
-<p>Plot</p>
+<section id="scale_duke_color_discrete-in-use" class="slide level2">
+<h2><code>scale_duke_color_discrete()</code> in use</h2>
+<div class="cell">
+
+</div>
+<div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>splot <span class="sc">+</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>  <span class="fu">theme_duke</span>() <span class="sc">+</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a>  <span class="fu">scale_duke_color_discrete</span>()</span>
+<span id="cb3-4"><a href="#cb3-4"></a>comp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="fig-discrete-color" class="cell quarto-layout-panel" data-fig.asp="0.618">
+<figure>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-discrete-color-1" class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="presentation_files/figure-revealjs/fig-discrete-color-1.png" data-ref-parent="fig-discrete-color" width="960"></p>
+<p></p><figcaption>(a) Non-Deuteronamolous</figcaption><p></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-discrete-color-2" class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="presentation_files/figure-revealjs/fig-discrete-color-2.png" data-ref-parent="fig-discrete-color" width="960"></p>
+<p></p><figcaption>(b) Deuteronamolous</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p></p><figcaption>Figure&nbsp;6: Sample scatter plot from different perspectives.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</section>
+<section id="scale_duke_fill_discrete-in-use" class="slide level2">
+<h2><code>scale_duke_fill_discrete()</code> in use</h2>
+<div class="cell">
+
+</div>
+<div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>bplot <span class="sc">+</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>  <span class="fu">theme_duke</span>() <span class="sc">+</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a>  <span class="fu">scale_duke_fill_discrete</span>()</span>
+<span id="cb4-4"><a href="#cb4-4"></a>bcomp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="fig-discrete-fill" class="cell quarto-layout-panel" data-fig.asp="0.618">
+<figure>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-discrete-fill-1" class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="presentation_files/figure-revealjs/fig-discrete-fill-1.png" data-ref-parent="fig-discrete-fill" width="960"></p>
+<p></p><figcaption>(a) Non-Deuteronamolous</figcaption><p></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-discrete-fill-2" class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="presentation_files/figure-revealjs/fig-discrete-fill-2.png" data-ref-parent="fig-discrete-fill" width="960"></p>
+<p></p><figcaption>(b) Deuteronamolous</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p></p><figcaption>Figure&nbsp;7: Sample bar plot from different perspectives.</figcaption><p></p>
+</figure>
+</div>
+</div>
 </section>
 <section id="lessons-learned" class="slide level2">
 <h2>Lessons Learned</h2>
-<p>Lessons</p>
+<div class="v-center-container">
+<p><strong>1. Package development is an iterative process, take your time.</strong></p>
+<p><strong>2. The devtools package is your best friend.</strong></p>
+<p><strong>3. Engage with existing resources online and collaborate with others.</strong></p>
+</div>
 </section></section>
 <section>
-<section id="functions" class="title-slide slide level1 center">
-<h1>Functions</h1>
+<section id="colorblind-accessibility-best-practices" class="title-slide slide level1 center">
+<h1>Colorblind Accessibility Best Practices</h1>
 
 </section>
-<section id="functions-overview" class="slide level2">
-<h2>Functions Overview</h2>
-<p>Functions</p>
+<section id="keep-it-simple" class="slide level2">
+<h2>Keep It Simple</h2>
+<div class="v-center-container">
+<ul>
+<li>Reduce the complexity of visualization
+<ul>
+<li><em>What do I need to highlight in the data? What are the primary insights readers should understand?</em></li>
+</ul></li>
+<li>Limit the number of variable categories (ideally 3-5)</li>
+<li>Consolidate data groups insignificant to your goal into single category to eliminate the need for excess colors.</li>
+</ul>
+</div>
+</section>
+<section id="de-emphasize-the-need-for-color" class="slide level2">
+<h2>De-Emphasize the Need for Color</h2>
+<ul>
+<li>“Get it right in black and white” <span class="citation" data-cites="muth2020">[@muth2020]</span></li>
+<li>Use labels, arrows, shapes, annotations to differentiate between categories</li>
+</ul>
+<div id="fig-best-practices" class="cell quarto-layout-panel" data-fig.asp="0.618">
+<figure>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-best-practices-1" class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="presentation_files/figure-revealjs/fig-best-practices-1.png" data-ref-parent="fig-best-practices" width="960"></p>
+<p></p><figcaption>(a)</figcaption><p></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-best-practices-2" class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="presentation_files/figure-revealjs/fig-best-practices-2.png" data-ref-parent="fig-best-practices" width="960"></p>
+<p></p><figcaption>(b)</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<ol type="a">
+<li>Scatterplot using shape. b) Line plot using different linetypes.</li>
+</ol>
+</div>
+</div>
+<p></p><figcaption>Figure&nbsp;8: <strong>?(caption)</strong></figcaption><p></p>
+</figure>
+</div>
+<div id="fig-fillbar" class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/fillbar_2.png"></p>
+<p></p><figcaption>Figure&nbsp;9: Bar plot with fill texture</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="adjust-when-necessary" class="slide level2">
+<h2>Adjust When Necessary</h2>
+<div class="v-center-container">
+<ul>
+<li>Adapt the features of <strong>duke</strong> to meet audience needs</li>
+<li>Specify larger text for visually impaired and/or older audiences</li>
+<li>Rule of light vs.&nbsp;dark in accessibility (i.e.&nbsp;monochromatic palettes)</li>
+</ul>
+</div>
+</section>
+<section id="limitations-future-work" class="slide level2">
+<h2>Limitations + Future Work</h2>
+<div class="v-center-container">
+<ul>
+<li>Duke brand specifies finite suite of colors</li>
+<li>Specification of Atkinson-Hyperlegible font by default</li>
+<li>Ordinal scale, diverging scale</li>
+</ul>
+</div>
 </section></section>
 <section>
 <section id="case-study" class="title-slide slide level1 center">
@@ -526,52 +903,161 @@ Aidan Gildea
 </section>
 <section id="data" class="slide level2">
 <h2>Data</h2>
-<p>Intro to Data</p>
-</section>
-<section id="analysis" class="slide level2">
-<h2>Analysis</h2>
-<p>Plot</p>
-<p>Desc</p>
-</section>
-<section id="analysis-cont." class="slide level2">
-<h2>Analysis (cont.)</h2>
-<p>Plot</p>
-<p>Desc</p>
-</section>
-<section id="analysis-cont.-1" class="slide level2">
-<h2>Analysis (cont.)</h2>
-<p>Plot</p>
-<p>Desc</p>
-</section></section>
-<section>
-<section id="discussion" class="title-slide slide level1 center">
-<h1>Discussion</h1>
+<ul>
+<li>Sourced from the Office of the University Registrar</li>
+<li>Data on all Duke courses between 2013-2022 (10 variables, 63,433 observations)</li>
+<li>Registrar supporting students, faculty and staff in enrollment, academic records, and course scheduling</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
 
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Variable </th>
+   <th style="text-align:left;"> Description </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> acad_year </td>
+   <td style="text-align:left;"> Academic year of the course. </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> acad_org </td>
+   <td style="text-align:left;"> Academic organization abbreviation of the course; proxy for department. </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> class_nbr </td>
+   <td style="text-align:left;"> Unique class number for the course. </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> subject </td>
+   <td style="text-align:left;"> Subject abbreviation for course. </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> catalog_number </td>
+   <td style="text-align:left;"> Course number within academic organizations. </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> class_descr </td>
+   <td style="text-align:left;"> Course name. </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> total_enrollment </td>
+   <td style="text-align:left;"> Number of students enrolled in course. </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> enrollment_capacity </td>
+   <td style="text-align:left;"> Enrollment capacity for course. </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> room_capacity </td>
+   <td style="text-align:left;"> Capacity for students permitted in course room. </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> room_descr </td>
+   <td style="text-align:left;"> Room where course is held. </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
 </section>
-<section id="best-practices-1" class="slide level2">
-<h2>Best Practices (1)</h2>
-<p>Desc</p>
+<section id="number-of-courses-by-department" class="slide level2">
+<h2>Number of Courses By Department</h2>
+<div class="cell quarto-layout-panel" data-fig.asp="0.618">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-21-1.png" width="960"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-21-2.png" width="960"></p>
+</div>
+</div>
+</div>
+<p>With this information, the Registrar can better make decisions about the distribution of University resources and/or understand potential department popularity.</p>
 </section>
-<section id="best-practices-2" class="slide level2">
-<h2>Best Practices (2)</h2>
-<p>Desc</p>
+<section id="average-class-size" class="slide level2">
+<h2>Average class size</h2>
+<div class="cell quarto-layout-panel" data-fig.asp="0.618">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-23-1.png" width="960"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-23-2.png" width="960"></p>
+</div>
+</div>
+</div>
+<p>Helpful resource for the Registrar to pinpoint departments that would benefit from reducing class size.</p>
 </section>
-<section id="best-practices-3" class="slide level2">
-<h2>Best Practices (3)</h2>
-<p>Desc</p>
+<section id="enrollment-in-computer-science-courses" class="slide level2">
+<h2>Enrollment in Computer Science courses</h2>
+<div class="cell quarto-layout-panel" data-fig.asp="0.618">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-25-1.png" width="960"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-25-2.png" width="960"></p>
+</div>
+</div>
+</div>
+<p>Visualizations suggest that students do not enroll at a high enough rate to fill Computer Science courses.</p>
+</section>
+<section id="enrollment-in-introductory-courses" class="slide level2">
+<h2>Enrollment in introductory courses</h2>
+<div class="cell quarto-layout-panel" data-fig.asp="0.618">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-27-1.png" width="960"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-27-2.png" width="960"></p>
+</div>
+</div>
+</div>
+<p>May inform the Registrar’s process of 1) adding sections to these courses and/or 2) identifying reasons for these courses’ success.</p>
+</section>
+<section id="seminar-courses" class="slide level2">
+<h2>Seminar courses</h2>
+<div class="cell quarto-layout-panel" data-fig.asp="0.618">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-29-1.png" width="960"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-29-2.png" width="960"></p>
+</div>
+</div>
+</div>
+<p>If the University aims to improve their overall seminar offerings, it is important that they identify departments with lowest proportions.</p>
 </section></section>
 <section>
 <section id="summary" class="title-slide slide level1 center">
 <h1>Summary</h1>
 
 </section>
-<section id="use-of-duke-package" class="slide level2">
-<h2>Use of duke package</h2>
-<p>Desc</p>
-<div class="footer footer-default">
-
+<section id="duke-package" class="slide level2">
+<h2><strong>duke</strong> package</h2>
+<div class="v-center-container">
+<ul>
+<li>Implements minimalist thematic design</li>
+<li>High contrast color palette in both continuous and discrete geometric objects</li>
+<li>Best used in tandem with other accessibility practices</li>
+<li>Effective tool for promoting accessibility and inclusivity in Duke data visualization</li>
+</ul>
 </div>
 </section></section>
+<section id="thank-you-questions" class="title-slide slide level1 center">
+<h1>Thank You &amp; Questions</h1>
+
+<img src="images/dukelogo.png" class="slide-logo r-stretch"><div class="footer footer-default">
+
+</div>
+</section>
     </div>
   </div>
 
