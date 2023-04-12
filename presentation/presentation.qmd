@@ -64,6 +64,12 @@ Principal goals of thesis:
 
 ## Background
 
+---
+nocite: |
+  @woods2021b
+  @aboutco
+---
+
 ::: incremental
 -   Formally known as Color Vision Deficiency (CVD)
 -   Approximately 300 million color blind people across the globe
@@ -72,7 +78,7 @@ Principal goals of thesis:
     -   62.5% are deuteronamolous (green-weak vision), 12.5% have protonopia and deuteranopia (cannot distinguish between red and green)
 :::
 
-## ADD TITLE
+## Perspective Comparison
 
 ::: columns
 ::: {.column width="50%"}
@@ -131,13 +137,17 @@ final_colors <- tibble(
 <center>
 
 ```{r}
-#| fig-height: .5
+#| warning: false
+#| echo: false
+#| fig-height: .1
+#| fig-asp: .07
 ggplot(blues_df, aes(x = x, y = y)) +
   geom_tile(aes(fill = blues)) +
   scale_fill_identity() +
   geom_text(aes(label = str_wrap(name, 5)), color = "white", fontface = "bold") +
   theme_void() +
   theme(plot.margin = unit(c(0, 0, 0, 0), "cm"))
+
 ```
 
 </center>
@@ -148,7 +158,8 @@ ggplot(blues_df, aes(x = x, y = y)) +
 
 ```{r}
 #| echo: false
-#| fig-height: .5
+#| fig-height: .1
+#| fig-asp: .07
 
 ggplot(final_colors, aes(x = x, y = y)) +
   geom_tile(aes(fill = other_values)) +
@@ -201,14 +212,14 @@ Ad-hoc approach in order to strike a balance between accessibility and recogniti
 
 -   Font specification is **challenging**
 -   Recommend the use of Atkinson Hyperlegible font
-    -   "Focuses on letterform distinction to increase character recognition"
+    -   "Focuses on letterform distinction to increase character recognition" [@staff]
 -   Optimal solution would default to use of Atkinson Hyperlegible
     -   Stability across systems and **systemfonts** issues are prohibitive
 
 ## `theme_duke()`
 
 ```{r}
-#| label: fig-theme
+#| label: theme
 #| warning: false
 #| include: false
 
@@ -230,6 +241,7 @@ scatterplot <- ggplot(
 #| label: fig-theme-duke
 #| layout-ncol: 2
 #| echo: true
+#| fig-asp: 0.618
 #| fig-align: "center"
 #| fig-cap: "Plot comparison using theme function."
 #| cap-location: bottom
@@ -246,9 +258,10 @@ scatterplot +
 
 ## `scale_duke_continuous()`
 
--   Applies a Duke-specific continuous color scale to geometric objects (geom)
+-   Applies a Duke-specific continuous color scale to geometric objects (geoms)
 -   Scale sequences from a dark (Duke Royal Blue) to a light color (Hatteras)
-    -   Duke Royal Blue has a CCR of 7.75, Hatteras has a CCR of 1.25
+    -   Duke Royal Blue and White: 7.75
+    -   Hatteras and White: 1.25
 -   Continuous color scales used for overall trend recognition
 
 ## `scale_duke_continuous()` {.smaller}
@@ -265,6 +278,7 @@ scatterplot_c <- scatterplot +
 #| label: fig-scale-cont
 #| layout-ncol: 2
 #| echo: true
+#| fig-asp: 0.618
 #| fig-align: "center"
 #| fig-cap: "Plot comparison using continuous color scale"
 #| cap-location: bottom
@@ -272,6 +286,7 @@ scatterplot_c <- scatterplot +
 #|   - "Original"
 #|   - "with scale_duke_continuous()"
 #| warning: false
+#| code-line-numbers: "4-6"
 scatterplot_c +
   theme_duke()
 
@@ -294,15 +309,17 @@ colnames(mat_melt) <- c("Color 1", "Color 2", "CCR")
 ```
 
 ```{r}
+#| label: tbl-ratios
 #| echo: false
 #| tbl-align: "center"
+#| tbl-cap: "Highest color contrast ratios."
 #| cap-location: bottom
 #| warning: false
-## ADD CAPTION
 library(kableExtra)
 
 mat_melt %>%
   arrange(desc(CCR)) %>%
+  distinct(CCR, .keep_all = T) %>%
   slice(1:5) %>%
   kable()
 ```
@@ -310,7 +327,7 @@ mat_melt %>%
 ## All pairings
 
 ```{r}
-#| label: fig-hmap
+#| label: hmap
 #| echo: false
 #| fig-align: "center"
 #| fig-asp: .618
@@ -336,6 +353,7 @@ ggp
 ```{r}
 #| label: hmap-final
 #| echo: false
+#| fig-asp: 0.618
 #| fig-width: 6
 #| warning: false
 
@@ -365,21 +383,20 @@ ggp_final
 ```{r}
 #| label: palette
 #| echo: false
-#| fig-height: 0.5
-#| fig-width: 12
+#| fig-height: 2
+#| fig-asp: .1
 
 final_colors <- tibble(
   x = 1:length(final_vals),
   y = rep(1, length(final_vals)),
   hex = final_vals,
   name = final_names
-) |>
-  mutate(name = paste0(name, "\n", hex))
+)
 
 ggplot(final_colors, aes(x = x, y = y)) +
   geom_tile(aes(fill = final_vals)) +
   scale_fill_identity() +
-  geom_text(aes(label = str_wrap(name, 5)), color = "white", fontface = "bold") +
+  geom_text(aes(label = str_wrap(name, 5)), color = "white", fontface = "bold", size = 3) +
   theme_void() +
   theme(plot.margin = unit(c(0, 0, 0, 0), "cm"))
 ```
@@ -395,7 +412,6 @@ ggplot(final_colors, aes(x = x, y = y)) +
 #| echo: false
 #| warning: false
 #| message: false
-# ADD HIGHLIGHT
 library(cowplot)
 
 splot <- ggplot(penguins, aes(
@@ -412,6 +428,7 @@ comp <- readRDS("~/Desktop/dukethesis/data/deutan.rds.gzip")
 ```{r}
 #| label: fig-discrete-color
 #| fig-cap: "Sample scatter plot from different perspectives."
+#| fig-asp: 0.618
 #| fig-subcap: 
 #|   - "Non-Deuteronamolous"
 #|   - "Deuteronamolous"
@@ -419,7 +436,7 @@ comp <- readRDS("~/Desktop/dukethesis/data/deutan.rds.gzip")
 #| echo: true
 #| warning: false
 #| message: false
-#| fig-asp: .618
+#| code-line-numbers: "1-3"
 splot +
   theme_duke() +
   scale_duke_color_discrete()
@@ -453,11 +470,12 @@ bcomp <- readRDS("~/Desktop/dukethesis/data/deutan_fill.rds.gzip")
 #| fig-subcap: 
 #|   - "Non-Deuteronamolous"
 #|   - "Deuteronamolous"
+#| fig-asp: 0.618
 #| layout-ncol: 2
 #| echo: true
 #| warning: false
 #| message: false
-#| fig-asp: .618
+#| code-line-numbers: "1-3"
 bplot +
   theme_duke() +
   scale_duke_fill_discrete()
@@ -467,11 +485,11 @@ bcomp
 ## Lessons Learned
 
 ::: v-center-container
-1.  Package development is an iterative process, take your time.
+1.  Package development is an **iterative** process, take your time.
 
-2.  The devtools package is your best friend.
+2.  The **devtools** package is your best friend.
 
-3.  Engage with existing resources online and collaborate with others.
+3.  Engage with existing resources online and **collaborate** with others.
 :::
 
 # Case Study
@@ -479,7 +497,8 @@ bcomp
 ## Data
 
 -   Sourced from the Office of the University Registrar
--   Data on all Duke courses between 2013-2022 (10 variables, 63,433 observations)
+-   Data on all Duke courses between 2013-2022
+    -   10 variables, 63,433 observations
 -   Registrar supporting students, faculty and staff in enrollment, academic records, and course scheduling
 
 ## Number of Courses By Department
@@ -545,7 +564,7 @@ dept_plot2
 
 With this information, the Registrar can better make decisions about the distribution of University resources and/or understand potential department popularity.
 
-## Average class size
+## Average Class Size
 
 ```{r}
 #| include: false 
@@ -591,7 +610,7 @@ enroll_plot2
 
 Helpful resource for the Registrar to pinpoint departments that would benefit from reducing class size.
 
-## Enrollment in Computer Science courses
+## Enrollment in Computer Science Courses
 
 ```{r}
 #| include: false 
@@ -634,7 +653,7 @@ hist3 / hist4
 
 Visualizations suggest that students do not enroll at a high enough rate to fill Computer Science courses.
 
-## Enrollment in introductory courses
+## Enrollment in Introductory Courses
 
 ```{r}
 #| include: false 
@@ -652,13 +671,13 @@ high_succ <- registrar |>
   ungroup(course) |>
   top_n(8, Enroll_Succ) |>
   ggplot(aes(course, y = Enroll_Succ, color = course)) +
-  geom_point() + 
+  geom_point(size = 2) + 
   geom_text(aes(label= round(Enroll_Succ, 3)), nudge_x=.4, nudge_y=0, 
             size = 3, show.legend = FALSE) +
   geom_segment(aes(x= course, 
                    xend= course, 
                    y=0, 
-                   yend=Enroll_Succ), linewidth = 1) +
+                   yend=Enroll_Succ), linewidth = 2) +
   coord_flip() +
   labs(title = "Intro Courses with Highest\nEnrollment Success", x = "Course", y = "Enrollment Success") +
   theme_duke() +
@@ -722,36 +741,31 @@ sem_plot2
 ```
 
 If the University aims to improve their overall seminar offerings, it is important that they identify departments with lowest proportions.
+
 # Colorblind Accessibility Best Practices
 
-## Keep It Simple
+## 1. Keep It Simple
 
 ::: v-center-container
 -   Reduce the complexity of visualization
-    -   *What do I need to highlight in the data? What are the primary insights readers should understand?*
+    -   *What do I need to highlight in the data?*
+    -   *What are the primary insights readers should understand?*
 -   Limit the number of variable categories (ideally 3-5)
 -   Consolidate data groups insignificant to your goal into single category to eliminate the need for excess colors.
 :::
 
-## De-Emphasize the Need for Color
+## 2. De-Emphasize the Need for Color
 
--   "Get it right in black and white" [@muth2020]
--   Use labels, arrows, shapes, annotations to differentiate between categories
+<br><br> - "Get it right in black and white" [@muth2020]
+
+\- Use labels, arrows, shapes, annotations to differentiate between categories
 
 ```{r}
-## MAKE THESE OWN SLIDES
-#| label: fig-best-practices
-#| fig-cap: "a) Scatterplot using shape. b) Line plot using different linetypes."
-#| fig-subcap: 
-#|   - ""
-#|   - ""
-#| layout-ncol: 2
-#| echo: false
+#| label: best-practices
+#| include: false
 #| warning: false
 #| message: false
-#| fig-asp: .618
-#| fig-width: 8
-ggplot(
+shape_plot <- ggplot(
   penguins,
   aes(x = bill_length_mm, y = bill_depth_mm)
 ) +
@@ -763,22 +777,43 @@ ggplot(
   theme_duke() +
   scale_duke_color_discrete()
 
-penguins %>%
+lineplot <- penguins %>%
   filter(!is.na(bill_length_mm)) %>%
   group_by(island, year) %>%
   summarize(island, year, mean = mean(bill_length_mm)) %>%
   distinct(island, year, .keep_all = T) %>%
   ggplot(aes(x = as.factor(year), y = mean, color = island, group = island)) +
-           geom_point(aes(shape = island)) +
-           geom_line(aes(linetype = island)) +
+           geom_point(aes(shape = island), size = 2) +
+           geom_line(aes(linetype = island), linewidth = 1.5) +
   labs(title = "Average Island Bill Length (mm) Per Year", x = "Year", y = "Bill Length (mm)") +
   theme_duke() +
   scale_duke_color_discrete()
 ```
 
-![Bar plot with fill texture](images/fillbar_2.png){#fig-fillbar}
+## Scatterplot using shape
 
-## Adjust When Necessary
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| fig-asp: .618
+shape_plot
+```
+
+## Line plot using different linetypes
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+lineplot
+```
+
+## Bar plot with fill texture
+
+![](images/fillbar_2.png){fig-align="center"}
+
+## 3. Adjust When Necessary
 
 ::: v-center-container
 -   Adapt the features of **duke** to meet audience needs
