@@ -45,7 +45,7 @@ Principal goals of thesis:
 ## Motivation
 
 -   Companies can highlight their brand via R packages i.e. **`ggtech`** (Airbnb, Facebook, Google), **`ggthemes`** (The Economist, The Wall Street Journal)
--   Duke has over 17,000 students, 38,000 employees, six campuses and spends more than \$1 annually in research expenditures
+-   Duke has over 17,000 students, 38,000 employees, six campuses and spends more than \$1 billion annually in research expenditures
 -   No existing R package to represent the Duke brand in data visualization
 
 ## Motivation
