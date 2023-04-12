@@ -1,9 +1,7 @@
 ---
 title: "Promoting Accessibility in Duke Data Visualization:"
 subtitle: "Creating a Color-Blind Friendly Duke Color Package"
-author: 
-  - "Aidan Gildea"
-  - "Dr. Mine Çetinkaya-Rundel"
+author: "Aidan Gildea<br>Dr. Mine Çetinkaya-Rundel"
 format: 
   revealjs:
     logo: "images/dukelogo.png"
@@ -12,6 +10,7 @@ format:
       - "style.css"
     theme: simple
     mainfont: Atkinson-Hyperlegible
+bibliography: ../references.bib
 ---
 
 ::: v-center-container
@@ -25,12 +24,10 @@ format:
 ## Motivation
 
 ::: v-center-container
-
 Principal goals of thesis:
 
-1)  identify a ***material issue***, and
-
-2)  address it with a ***tangible solution***
+1.  identify a ***material issue***, and
+2.  address it with a ***tangible solution***
 :::
 
 ## Motivation
@@ -51,18 +48,19 @@ Principal goals of thesis:
 
 -   To reach largest audience, Duke branding package must consider colorblind accessibility
 
-## Goal
+## Goal {.center}
 
 **Empower users to create Duke branded and color-blind friendly visualizations by constructing an R color package.**
 
-
 ## Background
 
+::: incremental
 -   Formally known as Color Vision Deficiency (CVD)
 -   Approximately 300 million color blind people across the globe
     -   1 in 12 men (8%) and 1 in 200 women (0.5%) are affected
 -   Red-green color blindness accounts for approximately 99% of the population with CVD
     -   62.5% are deuteronamolous (green-weak vision), 12.5% have protonopia and deuteranopia (cannot distinguish between red and green)
+:::
 
 ## 
 
@@ -188,7 +186,7 @@ Ad-hoc approach in order to strike a balance between accessibility and recogniti
 -   Optimal solution would default to use of Atkinson Hyperlegible
     -   Stability across systems and **systemfonts** issues are prohibitive
 
-## `theme_duke()` in use
+## `theme_duke()` 
 
 ```{r}
 #| label: fig-theme
@@ -220,6 +218,7 @@ scatterplot <- ggplot(
 #|   - "Original"
 #|   - "with theme_duke()"
 #| warning: false
+#| code-line-numbers: "3-4"
 scatterplot
 
 scatterplot +
@@ -233,7 +232,7 @@ scatterplot +
     -   Duke Royal Blue has a CCR of 7.75, Hatteras has a CCR of 1.25
 -   Continuous color scales used for overall trend recognition
 
-## `scale_duke_continuous()` in use
+## `scale_duke_continuous()`
 
 ```{r}
 #| label: continous
@@ -264,9 +263,9 @@ scatterplot_c +
   scale_duke_continuous()
 ```
 
-## `scale_duke_color_discrete()` and `scale_duke_fill_discrete()` {.smaller}
+## `scale_duke_*_discrete()` {.smaller}
 
--   Applies a Duke-specific discrete color scale for the color and fill parameters of ggplot geometric objects
+-   Applies a Duke-specific discrete color scale for the `color` and `fill` aesthetics of ggplot geoms
 -   Discrete plots must be able to delineate effectively between specific groups
 
 ```{r}
@@ -282,7 +281,7 @@ colnames(mat_melt) <- c("Color 1", "Color 2", "CCR")
 #| tbl-align: "center"
 #| cap-location: bottom
 #| warning: false
-
+## ADD CAPTION
 library(kableExtra)
 
 mat_melt %>%
@@ -381,23 +380,24 @@ ggplot(final_colors, aes(x = x, y = y)) +
 -   Color used for fill or color of geometric object, which offers complimentary features (ie. shape, larger areas, borders).
 -   Best practice to use three to five colors from discrete scale [@wilkeb]
 
-## `scale_duke_color_discrete()` in use
+## `scale_duke_color_discrete()`
 
 ```{r}
 #| label: discrete-color-plots
 #| echo: false
 #| warning: false
 #| message: false
-
+# ADD HIGHLIGHT
 library(cowplot)
 
 splot <- ggplot(penguins, aes(
   x = bill_length_mm, y = bill_depth_mm,
   color = species
 )) +
-  geom_point() +
+  geom_point(size = 2) +
   labs(title = "Flipper Length v. Depth", x = "Bill Length (mm)", y = "Bill Depth (mm)")
 
+##FIX THIS
 comp <- readRDS("~/Desktop/dukethesis/data/deutan.rds.gzip")
 ```
 
@@ -459,84 +459,12 @@ bcomp
 ## Lessons Learned
 
 ::: v-center-container
+1. **Package development is an iterative process, take your time.**
 
-**1. Package development is an iterative process, take your time.**
+2. **The devtools package is your best friend.**
 
-**2. The devtools package is your best friend.**
-
-**3. Engage with existing resources online and collaborate with others.**
-
+3. **Engage with existing resources online and collaborate with others.**
 :::
-
-# Colorblind Accessibility Best Practices
-
-## Keep It Simple
-
-::: v-center-container
--   Reduce the complexity of visualization
-    -   *What do I need to highlight in the data? What are the primary insights readers should understand?*
--   Limit the number of variable categories (ideally 3-5)
--   Consolidate data groups insignificant to your goal into single category to eliminate the need for excess colors.
-:::
-
-## De-Emphasize the Need for Color
-
--   "Get it right in black and white" [@muth2020]
--   Use labels, arrows, shapes, annotations to differentiate between categories
-
-```{r}
-#| label: fig-best-practices
-#| fig-cap: "a) Scatterplot using shape. b) Line plot using different linetypes."
-#| fig-subcap: 
-#|   - ""
-#|   - ""
-#| layout-ncol: 2
-#| echo: false
-#| warning: false
-#| message: false
-#| fig-asp: .618
-ggplot(
-  penguins,
-  aes(x = bill_length_mm, y = bill_depth_mm)
-) +
-  geom_point(aes(color = species, shape = species)) +
-  labs(
-    title = "Bill Length vs. Bill Depth",
-    x = "Bill Length (mm)", y = "Bill Depth (mm)"
-  ) +
-  theme_duke() +
-  scale_duke_color_discrete()
-
-penguins %>%
-  filter(!is.na(bill_length_mm)) %>%
-  group_by(island, year) %>%
-  summarize(island, year, mean = mean(bill_length_mm)) %>%
-  distinct(island, year, .keep_all = T) %>%
-  ggplot(aes(x = as.factor(year), y = mean, color = island, group = island)) +
-           geom_point(aes(shape = island)) +
-           geom_line(aes(linetype = island)) +
-  labs(title = "Average Island Bill Length (mm) Per Year", x = "Year", y = "Bill Length (mm)") +
-  theme_duke() +
-  scale_duke_color_discrete()
-```
-
-![Bar plot with fill texture](images/fillbar_2.png){#fig-fillbar}
-
-## Adjust When Necessary
-
-::: v-center-container
--   Adapt the features of **duke** to meet audience needs
--   Specify larger text for visually impaired and/or older audiences
--   Rule of light vs. dark in accessibility (i.e. monochromatic palettes)
-:::
-
-## Limitations + Future Work
-
-::: v-center-container
--   Duke brand specifies finite suite of colors
--   Specification of Atkinson-Hyperlegible font by default
--   Ordinal scale, diverging scale
-::: 
 
 # Case Study
 
@@ -545,16 +473,6 @@ penguins %>%
 -   Sourced from the Office of the University Registrar
 -   Data on all Duke courses between 2013-2022 (10 variables, 63,433 observations)
 -   Registrar supporting students, faculty and staff in enrollment, academic records, and course scheduling
-
-```{r}
-#| echo: false
-#| warning: false
-vars <- c("acad_year", "acad_org", "class_nbr", "subject", "catalog_number", "class_descr",  "total_enrollment", "enrollment_capacity", "room_capacity", "room_descr")
-desc <- c("Academic year of the course.", "Academic organization abbreviation of the course; proxy for department.", "Unique class number for the course.", "Subject abbreviation for course.", "Course number within academic organizations.", "Course name.",  "Number of students enrolled in course.", "Enrollment capacity for course.", "Capacity for students permitted in course room.", "Room where course is held.")
-
-tibble(Variable = vars, Description = desc) %>%
-  kable()
-```
 
 ## Number of Courses By Department
 
@@ -601,8 +519,7 @@ dept_plot <- ggplot(registrar |>
     subtitle = "Between 2013 - 2022"
   ) +
   theme_duke() +
-  scale_duke_fill_discrete() +
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
+  scale_duke_fill_discrete()
 
 dept_plot2 <- edit_colors(dept_plot, deutan, sev = 0.7)
 dept_plot2 <- cowplot::plot_grid(dept_plot2, ncol = 1)
@@ -648,8 +565,7 @@ enroll_plot <- ggplot(
     subtitle = "Between 2013-2022"
   ) +
   theme_duke() +
-  scale_duke_fill_discrete() +
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+  scale_duke_fill_discrete()
 
 enroll_plot2 <- edit_colors(enroll_plot, deutan, sev = 0.7)
 enroll_plot2 <- cowplot::plot_grid(enroll_plot2, ncol = 1)
@@ -738,8 +654,7 @@ high_succ <- registrar |>
   coord_flip() +
   labs(title = "Intro Courses with Highest\nEnrollment Success", x = "Course", y = "Enrollment Success") +
   theme_duke() +
-  scale_duke_color_discrete() +
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+  scale_duke_color_discrete()
 
 high_succ2 <- edit_colors(high_succ, deutan, sev = 0.7)
 high_succ2 <- cowplot::plot_grid(high_succ2, ncol = 1)
@@ -783,8 +698,7 @@ sem_plot <- ggplot(registrar |>
     subtitle = "Between 2013-2022"
   ) +
   theme_duke() +
-  scale_duke_fill_discrete() +
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
+  scale_duke_fill_discrete()
 sem_plot2 <- edit_colors(sem_plot, deutan, sev = 0.7)
 sem_plot2 <- cowplot::plot_grid(sem_plot2, ncol = 1)
 ```
@@ -800,16 +714,87 @@ sem_plot2
 ```
 
 If the University aims to improve their overall seminar offerings, it is important that they identify departments with lowest proportions.
+# Colorblind Accessibility Best Practices
+
+## Keep It Simple
+
+::: v-center-container
+-   Reduce the complexity of visualization
+    -   *What do I need to highlight in the data? What are the primary insights readers should understand?*
+-   Limit the number of variable categories (ideally 3-5)
+-   Consolidate data groups insignificant to your goal into single category to eliminate the need for excess colors.
+:::
+
+## De-Emphasize the Need for Color
+
+-   "Get it right in black and white" [@muth2020]
+-   Use labels, arrows, shapes, annotations to differentiate between categories
+
+```{r}
+## MAKE THESE OWN SLIDES
+#| label: fig-best-practices
+#| fig-cap: "a) Scatterplot using shape. b) Line plot using different linetypes."
+#| fig-subcap: 
+#|   - ""
+#|   - ""
+#| layout-ncol: 2
+#| echo: false
+#| warning: false
+#| message: false
+#| fig-asp: .618
+#| fig-width: 8
+ggplot(
+  penguins,
+  aes(x = bill_length_mm, y = bill_depth_mm)
+) +
+  geom_point(aes(color = species, shape = species)) +
+  labs(
+    title = "Bill Length vs. Bill Depth",
+    x = "Bill Length (mm)", y = "Bill Depth (mm)"
+  ) +
+  theme_duke() +
+  scale_duke_color_discrete()
+
+penguins %>%
+  filter(!is.na(bill_length_mm)) %>%
+  group_by(island, year) %>%
+  summarize(island, year, mean = mean(bill_length_mm)) %>%
+  distinct(island, year, .keep_all = T) %>%
+  ggplot(aes(x = as.factor(year), y = mean, color = island, group = island)) +
+           geom_point(aes(shape = island)) +
+           geom_line(aes(linetype = island)) +
+  labs(title = "Average Island Bill Length (mm) Per Year", x = "Year", y = "Bill Length (mm)") +
+  theme_duke() +
+  scale_duke_color_discrete()
+```
+
+![Bar plot with fill texture](images/fillbar_2.png){#fig-fillbar}
+
+## Adjust When Necessary
+
+::: v-center-container
+-   Adapt the features of **duke** to meet audience needs
+-   Specify larger text for visually impaired and/or older audiences
+-   Rule of light vs. dark in accessibility (i.e. monochromatic palettes)
+:::
+
+## Limitations + Future Work
+
+::: v-center-container
+-   Duke brand specifies finite suite of colors
+-   Specification of Atkinson-Hyperlegible font by default reliably working across all platforms
+-   Additional color scales: ordinal, diverging, etc.
+:::
 
 # Summary
 
 ## **duke** package
 
 ::: v-center-container
--   Implements minimalist thematic design
--   High contrast color palette in both continuous and discrete geometric objects
--   Best used in tandem with other accessibility practices
--   Effective tool for promoting accessibility and inclusivity in Duke data visualization
+-   Implements ***minimalist*** thematic design
+-   High contrast color palette in both ***continuous*** and ***discrete*** geometric objects
+-   Effective tool for promoting ***accessibility*** and ***inclusivity*** in Duke data visualization
+-   Best used ***in tandem*** with other accessibility practices
 :::
 
 # Thank You & Questions

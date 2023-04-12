@@ -9,8 +9,7 @@
 <link href="presentation_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.2.269">
 
-  <meta name="author" content="Aidan Gildea">
-  <meta name="author" content="Dr.&nbsp;Mine Çetinkaya-Rundel">
+  <meta name="author" content="Aidan Gildea Dr.&nbsp;Mine Çetinkaya-Rundel">
   <title>Promoting Accessibility in Duke Data Visualization:</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -93,6 +92,25 @@
     code span.va { color: #111111; } /* Variable */
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+    }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
   </style>
   <link rel="stylesheet" href="presentation_files/libs/revealjs/dist/theme/quarto.css" id="theme">
   <link rel="stylesheet" href="logo.css">
@@ -397,12 +415,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Aidan Gildea 
-</div>
-</div>
-<div class="quarto-title-author">
-<div class="quarto-title-author-name">
-Dr.&nbsp;Mine Çetinkaya-Rundel 
+Aidan Gildea<br>Dr.&nbsp;Mine Çetinkaya-Rundel 
 </div>
 </div>
 </div>
@@ -427,8 +440,8 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
 <div class="v-center-container">
 <p>Principal goals of thesis:</p>
 <ol type="1">
-<li><p>identify a <strong><em>material issue</em></strong>, and</p></li>
-<li><p>address it with a <strong><em>tangible solution</em></strong></p></li>
+<li>identify a <strong><em>material issue</em></strong>, and</li>
+<li>address it with a <strong><em>tangible solution</em></strong></li>
 </ol>
 </div>
 </section>
@@ -453,23 +466,25 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
 <li><p>To reach largest audience, Duke branding package must consider colorblind accessibility</p></li>
 </ul>
 </section>
-<section id="goal" class="slide level2">
+<section id="goal" class="slide level2 center">
 <h2>Goal</h2>
 <p><strong>Empower users to create Duke branded and color-blind friendly visualizations by constructing an R color package.</strong></p>
 </section>
 <section id="background" class="slide level2">
 <h2>Background</h2>
+<div>
 <ul>
-<li>Formally known as Color Vision Deficiency (CVD)</li>
-<li>Approximately 300 million color blind people across the globe
+<li class="fragment">Formally known as Color Vision Deficiency (CVD)</li>
+<li class="fragment">Approximately 300 million color blind people across the globe
 <ul>
-<li>1 in 12 men (8%) and 1 in 200 women (0.5%) are affected</li>
+<li class="fragment">1 in 12 men (8%) and 1 in 200 women (0.5%) are affected</li>
 </ul></li>
-<li>Red-green color blindness accounts for approximately 99% of the population with CVD
+<li class="fragment">Red-green color blindness accounts for approximately 99% of the population with CVD
 <ul>
-<li>62.5% are deuteronamolous (green-weak vision), 12.5% have protonopia and deuteranopia (cannot distinguish between red and green)</li>
+<li class="fragment">62.5% are deuteronamolous (green-weak vision), 12.5% have protonopia and deuteranopia (cannot distinguish between red and green)</li>
 </ul></li>
 </ul>
+</div>
 </section>
 <section id="section" class="slide level2">
 <h2></h2>
@@ -580,10 +595,10 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
 </ul></li>
 </ul>
 </section>
-<section id="theme_duke-in-use" class="slide level2">
-<h2><code>theme_duke()</code> in use</h2>
+<section id="theme_duke-1" class="slide level2">
+<h2><code>theme_duke()</code></h2>
 <div>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>scatterplot</span>
+<div class="sourceCode cell-code" id="cb1" data-code-line-numbers="3-4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>scatterplot</span>
 <span id="cb1-2"><a href="#cb1-2"></a></span>
 <span id="cb1-3"><a href="#cb1-3"></a>scatterplot <span class="sc">+</span></span>
 <span id="cb1-4"><a href="#cb1-4"></a>  <span class="fu">theme_duke</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -623,8 +638,8 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
 <li>Continuous color scales used for overall trend recognition</li>
 </ul>
 </section>
-<section id="scale_duke_continuous-in-use" class="slide level2">
-<h2><code>scale_duke_continuous()</code> in use</h2>
+<section id="scale_duke_continuous-1" class="slide level2">
+<h2><code>scale_duke_continuous()</code></h2>
 <div>
 <details>
 <summary>see code</summary>
@@ -660,10 +675,10 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
 </div>
 </div>
 </section>
-<section id="scale_duke_color_discrete-and-scale_duke_fill_discrete" class="slide level2 smaller">
-<h2><code>scale_duke_color_discrete()</code> and <code>scale_duke_fill_discrete()</code></h2>
+<section id="scale_duke__discrete" class="slide level2 smaller">
+<h2><code>scale_duke_*_discrete()</code></h2>
 <ul>
-<li>Applies a Duke-specific discrete color scale for the color and fill parameters of ggplot geometric objects</li>
+<li>Applies a Duke-specific discrete color scale for the <code>color</code> and <code>fill</code> aesthetics of ggplot geoms</li>
 <li>Discrete plots must be able to delineate effectively between specific groups</li>
 </ul>
 <div class="cell caption-bottom" data-tbl-align="center">
@@ -734,11 +749,11 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
 <img data-src="presentation_files/figure-revealjs/fig-palette-1.png" width="960" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;5: Selected discrete palette.</p><ul>
 <li>14 of 28 color pairings are compliant with WCAG AA18 rating.</li>
 <li>Color used for fill or color of geometric object, which offers complimentary features (ie. shape, larger areas, borders).</li>
-<li>Best practice to use three to five colors from discrete scale <span class="citation" data-cites="wilkeb">[@wilkeb]</span></li>
+<li>Best practice to use three to five colors from discrete scale <span class="citation" data-cites="wilkeb">(<a href="#/thank-you-questions" role="doc-biblioref" onclick=""><strong>wilkeb?</strong></a>)</span></li>
 </ul>
 </section>
-<section id="scale_duke_color_discrete-in-use" class="slide level2">
-<h2><code>scale_duke_color_discrete()</code> in use</h2>
+<section id="scale_duke_color_discrete" class="slide level2">
+<h2><code>scale_duke_color_discrete()</code></h2>
 <div class="cell">
 
 </div>
@@ -810,9 +825,11 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
 <section id="lessons-learned" class="slide level2">
 <h2>Lessons Learned</h2>
 <div class="v-center-container">
-<p><strong>1. Package development is an iterative process, take your time.</strong></p>
-<p><strong>2. The devtools package is your best friend.</strong></p>
-<p><strong>3. Engage with existing resources online and collaborate with others.</strong></p>
+<ol type="1">
+<li><p><strong>Package development is an iterative process, take your time.</strong></p></li>
+<li><p><strong>The devtools package is your best friend.</strong></p></li>
+<li><p><strong>Engage with existing resources online and collaborate with others.</strong></p></li>
+</ol>
 </div>
 </section></section>
 <section>
@@ -836,7 +853,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
 <section id="de-emphasize-the-need-for-color" class="slide level2">
 <h2>De-Emphasize the Need for Color</h2>
 <ul>
-<li>“Get it right in black and white” <span class="citation" data-cites="muth2020">[@muth2020]</span></li>
+<li>“Get it right in black and white” <span class="citation" data-cites="muth2020">(<a href="#/thank-you-questions" role="doc-biblioref" onclick="">Muth 2020</a>)</span></li>
 <li>Use labels, arrows, shapes, annotations to differentiate between categories</li>
 </ul>
 <div id="fig-best-practices" class="cell quarto-layout-panel" data-fig.asp="0.618">
@@ -845,7 +862,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
 <div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
 <div id="fig-best-practices-1" class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="presentation_files/figure-revealjs/fig-best-practices-1.png" data-ref-parent="fig-best-practices" width="960"></p>
+<p><img data-src="presentation_files/figure-revealjs/fig-best-practices-1.png" data-ref-parent="fig-best-practices" width="768"></p>
 <p></p><figcaption>(a)</figcaption><p></p>
 </figure>
 </div>
@@ -853,7 +870,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
 <div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
 <div id="fig-best-practices-2" class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="presentation_files/figure-revealjs/fig-best-practices-2.png" data-ref-parent="fig-best-practices" width="960"></p>
+<p><img data-src="presentation_files/figure-revealjs/fig-best-practices-2.png" data-ref-parent="fig-best-practices" width="768"></p>
 <p></p><figcaption>(b)</figcaption><p></p>
 </figure>
 </div>
@@ -1051,11 +1068,16 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
 </ul>
 </div>
 </section></section>
-<section id="thank-you-questions" class="title-slide slide level1 center">
+<section id="thank-you-questions" class="title-slide slide level1 smaller scrollable">
 <h1>Thank You &amp; Questions</h1>
 
 <img src="images/dukelogo.png" class="slide-logo r-stretch"><div class="footer footer-default">
 
+</div>
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+<div id="ref-muth2020" class="csl-entry" role="doc-biblioentry">
+Muth, Lisa Charlotte. 2020. <span>“What to Consider When Visualizing Data for Colorblind Readers - Datawrapper Blog.”</span> <a href="https://blog.datawrapper.de/colorblindness-part2/">https://blog.datawrapper.de/colorblindness-part2/</a>.
+</div>
 </div>
 </section>
     </div>
