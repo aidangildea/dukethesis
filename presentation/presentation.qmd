@@ -7,6 +7,8 @@ format:
     logo: "images/dukelogo.png"
     theme: [simple, style.scss]
     mainfont: Atkinson Hyperlegible
+    embed-resources: true
+    slide-number: true
 bibliography: ../references.bib
 ---
 
