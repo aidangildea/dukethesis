@@ -5,5 +5,5 @@ A special thanks to my wonderful advisor, Dr. Mine Çetinkaya-Rundel, who carefu
 An additional thank you to the members of my thesis committee, Dr. Colin Rundel and Dr. Merlise Clyde, for offering their extensive experience in statistical computing and R package development.
 I hope this thesis successfully details the motivation, process, and results of the **duke** package and how it can effectively empower users to create colorblind friendly Duke visualizations.
 
-For questions and concerns, please reach out to me at [aidan.gildea\@duke.edu](mailto:aidan.gildea@duke.edu).
+For questions and concerns, please reach out to me at [aidan.gildea23\@gmail.com](mailto:aidan.gildea23@gmail.com).
 In addition, I encourage you to post any Issues on the [package Github repository](https://github.com/aidangildea/duke).
